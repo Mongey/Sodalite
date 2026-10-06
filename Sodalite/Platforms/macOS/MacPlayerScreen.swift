@@ -19,6 +19,7 @@ struct MacPlayerScreen: View {
     @State private var controlsVisible = true
     @State private var hideTask: Task<Void, Never>?
     @FocusState private var hasKeyboardFocus: Bool
+    @State private var hostWindow = HostWindowReference()
 
     private var titleLines: PlayerTitleLines { PlayerTitleLines(item: viewModel.item) }
 
@@ -41,6 +42,8 @@ struct MacPlayerScreen: View {
                     .animation(.easeInOut(duration: 0.2), value: controlsVisible)
             }
         }
+        .ignoresSafeArea()
+        .background(HostWindowReader(reference: hostWindow))
         .frame(minWidth: 720, minHeight: 405)
         .frame(idealWidth: 1280, idealHeight: 720)
         .preferredColorScheme(.dark)
@@ -48,6 +51,9 @@ struct MacPlayerScreen: View {
         .focusable()
         .focusEffectDisabled()
         .focused($hasKeyboardFocus)
+        .onChange(of: controlsVisible) { _, visible in
+            setWindowChromeVisible(visible)
+        }
         .onContinuousHover { phase in
             if case .active = phase { revealControls() }
         }
@@ -69,32 +75,24 @@ struct MacPlayerScreen: View {
 
     private var chrome: some View {
         VStack(spacing: 0) {
-            HStack(alignment: .firstTextBaseline, spacing: 12) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(titleLines.header)
-                        .font(.title2.weight(.semibold))
-                    if let subtitle = titleLines.subtitle {
-                        Text(subtitle)
-                            .font(.callout)
-                            .foregroundStyle(.white.opacity(0.75))
-                    }
+            // Centred in the title bar's band, the way QuickTime titles a window it has hidden the
+            // title bar of: the traffic lights keep the leading corner and close the window.
+            VStack(spacing: 2) {
+                Text(titleLines.header)
+                    .font(.headline)
+                if let subtitle = titleLines.subtitle {
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.75))
                 }
-                Spacer(minLength: 0)
-                Button(action: close) {
-                    Image(systemName: "xmark")
-                        .font(.title3)
-                        .padding(8)
-                        .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-                .keyboardShortcut(.cancelAction)
-                .accessibilityLabel(Text("common.back"))
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 20)
+            .lineLimit(1)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 96)
+            .padding(.top, 8)
             .background(alignment: .top) {
                 LinearGradient(colors: [.black.opacity(0.7), .clear], startPoint: .top, endPoint: .bottom)
-                    .frame(height: 160)
+                    .frame(height: 120)
                     .allowsHitTesting(false)
             }
 
@@ -244,16 +242,45 @@ struct MacPlayerScreen: View {
 
     // MARK: - Window
 
-    /// The sheet's own window, which is not the app's key window while a menu or a panel is up.
-    private var window: NSWindow? {
-        NSApp.keyWindow ?? NSApp.windows.first { $0.isVisible && $0.isSheet }
-    }
+    private var window: NSWindow? { hostWindow.window }
 
     private var isFullScreen: Bool {
         window?.styleMask.contains(.fullScreen) ?? false
     }
 
+    /// The traffic lights go with the rest of the chrome, and so does the pointer, so a still
+    /// window is nothing but the picture. Moving the mouse brings back all three.
+    private func setWindowChromeVisible(_ visible: Bool) {
+        if let titlebar = window?.standardWindowButton(.closeButton)?.superview {
+            NSAnimationContext.runAnimationGroup { context in
+                context.duration = 0.2
+                titlebar.animator().alphaValue = visible ? 1 : 0
+            }
+        }
+        if !visible { NSCursor.setHiddenUntilMouseMoves(true) }
+    }
+
     private func toggleFullScreen() {
         window?.toggleFullScreen(nil)
+    }
+}
+
+/// The window this screen is in, for full screen. Read off the view rather than `NSApp.keyWindow`,
+/// which is the library window whenever that one was clicked last.
+private final class HostWindowReference {
+    weak var window: NSWindow?
+}
+
+private struct HostWindowReader: NSViewRepresentable {
+    let reference: HostWindowReference
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async { [weak view] in reference.window = view?.window }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {
+        reference.window = nsView.window
     }
 }
