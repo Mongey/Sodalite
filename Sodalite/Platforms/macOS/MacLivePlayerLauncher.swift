@@ -21,11 +21,9 @@ struct LivePlayerLauncher: View {
     var body: some View {
         Color.clear
             .allowsHitTesting(false)
-            .sheet(item: $session) { viewModel in
-                MacPlayerScreen(viewModel: viewModel, theme: appearanceTheme) {
-                    isPresented = false
-                }
-            }
+            .modifier(MacPlayerWindowPresenter(session: $session, theme: appearanceTheme) {
+                isPresented = false
+            })
             .onChange(of: isPresented, initial: true) { _, presented in
                 if presented, session == nil, let context {
                     session = makeViewModel(for: context)

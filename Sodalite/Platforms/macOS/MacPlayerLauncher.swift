@@ -5,9 +5,9 @@ import SwiftUI
 ///
 /// It presents from SwiftUI rather than from a view controller because none of the reasons the
 /// other platforms present a modal `UIViewController` survive on a Mac: there is no Menu button to
-/// intercept, no focus engine to keep out of, and no scene modal chain to settle. A sheet is a
-/// window of its own, which is also what makes it the key window, and that is what gets the
-/// keyboard transport its key events.
+/// intercept, no focus engine to keep out of, and no scene modal chain to settle. The player gets a
+/// window of its own (see `MacPlayerWindowSession`), the way a Mac media app plays video: it can
+/// be resized, moved to another display or made full screen without taking the library with it.
 struct PlayerLauncher: View {
     @Binding var isPresented: Bool
     let item: JellyfinItem?
@@ -38,11 +38,9 @@ struct PlayerLauncher: View {
     var body: some View {
         Color.clear
             .allowsHitTesting(false)
-            .sheet(item: $session) { viewModel in
-                MacPlayerScreen(viewModel: viewModel, theme: appearanceTheme) {
-                    isPresented = false
-                }
-            }
+            .modifier(MacPlayerWindowPresenter(session: $session, theme: appearanceTheme) {
+                isPresented = false
+            })
             .onChange(of: isPresented, initial: true) { _, presented in
                 if presented, session == nil, let item {
                     session = makeViewModel(for: item)

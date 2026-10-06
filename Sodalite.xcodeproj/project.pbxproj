@@ -1187,6 +1187,7 @@
 		90BE98FBC33873CD3301C463 /* LivePlayerLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D48C0E2F7E3BC442ECDDB4 /* LivePlayerLauncher.swift */; };
 		90D19563C17ADD2BC8340CC8 /* ChangelogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1FB527AFBC2EF233653E73 /* ChangelogListView.swift */; };
 		90D32EB424FF5A889DF709A3 /* MultiviewHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE600317E4CE08B98B64D44 /* MultiviewHostController.swift */; };
+		90F7143BC6AFD0B55EA8C2B6 /* MacPlayerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24CF478AC370756F29DE1A /* MacPlayerWindow.swift */; };
 		910ADBBEA8840E737462AB4C /* SeerrSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB86B2C38A397724F13D05E0 /* SeerrSettingsView.swift */; };
 		91350490AD4E340E307B5625 /* CombinedServersPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CA1A8BB49C526C8F3D804 /* CombinedServersPreferences.swift */; };
 		9163414A9D63EAD8CC898391 /* TopShelfAccent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76F4E46F2995ECC621AF105 /* TopShelfAccent.swift */; };
@@ -2519,6 +2520,7 @@
 		6EF94E17272A70E89BB80D05 /* MediaDeletionRequestCleanupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDeletionRequestCleanupTests.swift; sourceTree = "<group>"; };
 		6F108CEF8820921CE2B80A2A /* ItemMetadataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMetadataRow.swift; sourceTree = "<group>"; };
 		6F1459E3CC3E393249DCF146 /* CloudSyncSessionRetentionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncSessionRetentionTests.swift; sourceTree = "<group>"; };
+		6F24CF478AC370756F29DE1A /* MacPlayerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPlayerWindow.swift; sourceTree = "<group>"; };
 		6F4E0F9206D8B25B7535B9E5 /* LogTimestampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTimestampTests.swift; sourceTree = "<group>"; };
 		6FB7991EF688676E7E9399CA /* SidebarProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarProfileHeader.swift; sourceTree = "<group>"; };
 		6FE3B2C744AB8F33AB66F94E /* ProfilePINTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePINTests.swift; sourceTree = "<group>"; };
@@ -4167,6 +4169,7 @@
 				1FD513CBF136B97328D9D27D /* MacLivePlayerLauncher.swift */,
 				77FC6E0F5813064F32D9E30B /* MacPlayerLauncher.swift */,
 				494CF29E1CE31A2C2503C455 /* MacPlayerScreen.swift */,
+				6F24CF478AC370756F29DE1A /* MacPlayerWindow.swift */,
 				B9A669716346F72856674D2F /* MacSearchTextField.swift */,
 			);
 			path = macOS;
@@ -5007,6 +5010,7 @@
 				6DD2AFA77E11E04A57A75A0F /* MacLivePlayerLauncher.swift in Sources */,
 				B158C1A6D84F7DDA5E42085C /* MacPlayerLauncher.swift in Sources */,
 				B23077673285C2F5765718B1 /* MacPlayerScreen.swift in Sources */,
+				90F7143BC6AFD0B55EA8C2B6 /* MacPlayerWindow.swift in Sources */,
 				BA7B2A5AED5DC77BC4F8DC06 /* MacSearchTextField.swift in Sources */,
 				BC3363C9D225960A56F6A542 /* MainQueueDefer.swift in Sources */,
 				F15DBE394D54DC9464B882E2 /* MediaBadges.swift in Sources */,

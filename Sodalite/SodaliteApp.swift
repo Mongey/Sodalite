@@ -193,6 +193,10 @@ struct SodaliteApp: App {
         // every library screen was laid out for.
         .defaultSize(width: 1280, height: 820)
         #endif
+
+        #if os(macOS)
+        MacPlayerWindowScene()
+        #endif
     }
 
     /// Handles `sodalite://item/{id}` and `sodalite://play/{id}` (TopShelf's display and play actions): stashes the id in AppState for AppRouter to resolve. Synchronously tears down any active player modal first, else a TopShelf tap waking the app from a paused player loses ~10s to the player's own appDidBecomeActive reload before AppRouter's .task(id:) cycles in.
