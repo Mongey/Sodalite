@@ -1,9 +1,10 @@
-import UIKit
+import Foundation
+
 
 /// What one candidate URL came back as. Not a bool: "nothing arrived", "the connection dropped" and
 /// "a whole transfer that carried only the front of an image" each want a different second try.
 enum ImageLoadOutcome {
-    case image(UIImage)
+    case image(PlatformImage)
     /// A complete HTTP response whose body is not a complete image. The server is mid-write, so the
     /// next attempt is likely to get the whole thing.
     case incompletePayload
@@ -29,7 +30,7 @@ enum ImageLoadOutcome {
 }
 
 enum ImageLadderResult {
-    case image(UIImage)
+    case image(PlatformImage)
     /// Every rung refused. `retryOnActivate` is true when at least one refusal was the kind that
     /// heals on its own (a dropped connection, a payload still being written).
     case exhausted(retryOnActivate: Bool)

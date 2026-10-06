@@ -1,7 +1,11 @@
 import Foundation
 import AVFoundation
-import UIKit
 import AetherEngine
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 /// System Now Playing wiring via `AVPlayerItem.externalMetadata`. AVKit's internal Now Playing session (from `showsPlaybackControls = true`) reads title/description/artwork from externalMetadata and publishes to MPNowPlayingInfoCenter; the host VC suppresses visible chrome (`playbackControlsIncludeTransportBar/InfoViews = false`) but keeps AVKit's backend for privileged features (AirPods auto-detect, Enhance Dialogue, Reduce Loud Sounds, synchronized Atmos).
 ///
@@ -43,7 +47,7 @@ extension PlayerViewModel {
             return
         }
         LogTap.shared.note("[NowPlaying] artwork: bytes=\(data.count)")
-        guard let image = UIImage(data: data),
+        guard let image = PlatformImage(data: data),
               let jpeg = image.jpegData(compressionQuality: 0.85) else {
             LogTap.shared.note("[NowPlaying] artwork: decode/re-encode failed")
             return

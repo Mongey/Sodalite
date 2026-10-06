@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 /// Three passes, 250ms and then 500ms apart. Long enough to outlast the server finishing the resize
 /// it served half of, short enough that a caller's own fallback is not held back by much when the
@@ -16,7 +15,7 @@ struct AsyncCachedImage<Content: View, Placeholder: View>: View {
     var fallbackURL: URL? = nil
     /// Fires with the decoded image whenever one lands, cache hit included, so a caller can derive
     /// artwork colours (ArtworkTint) without decoding the bytes a second time.
-    var onImageLoaded: ((UIImage) -> Void)? = nil
+    var onImageLoaded: ((PlatformImage) -> Void)? = nil
     /// Fires false when a load starts and true once every candidate has failed. The placeholder is
     /// also what shows WHILE loading, so a caller that deliberately blanks its placeholder (the
     /// detail-page logo reserving its slot, Sodalite#97) can only tell "still coming" from "never
@@ -33,7 +32,7 @@ struct AsyncCachedImage<Content: View, Placeholder: View>: View {
     init(
         url: URL?,
         fallbackURL: URL? = nil,
-        onImageLoaded: ((UIImage) -> Void)? = nil,
+        onImageLoaded: ((PlatformImage) -> Void)? = nil,
         onLoadFailed: ((Bool) -> Void)? = nil,
         @ViewBuilder content: @escaping (Image) -> Content,
         @ViewBuilder placeholder: @escaping () -> Placeholder
@@ -51,7 +50,7 @@ struct AsyncCachedImage<Content: View, Placeholder: View>: View {
     init(
         url: URL?,
         fallbackURL: URL? = nil,
-        onImageLoaded: ((UIImage) -> Void)? = nil,
+        onImageLoaded: ((PlatformImage) -> Void)? = nil,
         onLoadFailed: ((Bool) -> Void)? = nil,
         @ViewBuilder sizedContent: @escaping (Image, CGSize) -> Content,
         @ViewBuilder placeholder: @escaping () -> Placeholder
@@ -67,7 +66,7 @@ struct AsyncCachedImage<Content: View, Placeholder: View>: View {
     @Environment(\.dependencies) private var dependencies
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.appState) private var appState
-    @State private var loaded: UIImage?
+    @State private var loaded: PlatformImage?
     /// Failures that heal on their own (offline blip, an iOS local-network permission prompt still
     /// unanswered, a resize the server had not finished writing) must not latch the placeholder
     /// forever.
@@ -83,7 +82,7 @@ struct AsyncCachedImage<Content: View, Placeholder: View>: View {
     var body: some View {
         ZStack {
             if let loaded {
-                content(Image(uiImage: loaded), loaded.size)
+                content(Image(platformImage: loaded), loaded.size)
                     .transition(.opacity.animation(.easeIn(duration: 0.25)))
                     // Above the placeholder for the length of the swap, which is what lets the
                     // placeholder stay opaque underneath instead of having to fade in step.
@@ -221,8 +220,8 @@ struct AsyncCachedImage<Content: View, Placeholder: View>: View {
     nonisolated private static func fetchAndDecode(request: URLRequest, attempt: Int) async -> ImageLoadOutcome {
         switch await ImageFetch.load(request, attempt: attempt) {
         case .whole(let data):
-            guard let image = UIImage(data: data) else { return .noImage }
-            return .image(image.preparingForDisplay() ?? image)
+            guard let image = PlatformImage(data: data) else { return .noImage }
+            return .image(image.preparedForDisplay() ?? image)
         case .incomplete:
             return .incompletePayload
         case .noImage:
@@ -246,22 +245,22 @@ final class ImageCache: @unchecked Sendable {
     nonisolated static let shared = ImageCache()
 
     // `nonisolated(unsafe)`: NSCache is thread-safe, so prefetch can `store` from background tasks without a per-image MainActor hop.
-    nonisolated(unsafe) private let cache: NSCache<NSURL, UIImage>
+    nonisolated(unsafe) private let cache: NSCache<NSURL, PlatformImage>
 
     /// Cost-based eviction by decoded byte size; the 150 MB budget gates (countLimit stays generous), bounded so long sessions don't grow into hundreds of MB.
     nonisolated private init() {
-        let cache = NSCache<NSURL, UIImage>()
+        let cache = NSCache<NSURL, PlatformImage>()
         cache.totalCostLimit = 150_000_000
         cache.countLimit = 1000
         self.cache = cache
     }
 
     // nonisolated so the prefetch hot path stores from off-actor tasks without a per-image MainActor hop (NSCache is thread-safe).
-    nonisolated func image(for url: URL) -> UIImage? {
+    nonisolated func image(for url: URL) -> PlatformImage? {
         cache.object(forKey: url as NSURL)
     }
 
-    nonisolated func store(_ image: UIImage, for url: URL) {
+    nonisolated func store(_ image: PlatformImage, for url: URL) {
         cache.setObject(image, forKey: url as NSURL, cost: estimatedBytes(for: image))
     }
 
@@ -271,8 +270,8 @@ final class ImageCache: @unchecked Sendable {
     }
 
     /// Decoded size estimate: width × height × scale² × 4 bytes (RGBA8). Ignores HDR/wide-gamut backing, fine as an NSCache cost signal.
-    nonisolated private func estimatedBytes(for image: UIImage) -> Int {
-        let scale = image.scale
+    nonisolated private func estimatedBytes(for image: PlatformImage) -> Int {
+        let scale = image.pixelScale
         let pixels = image.size.width * scale * image.size.height * scale
         return Int(pixels) * 4
     }
@@ -317,8 +316,8 @@ extension ImageCache {
         // half-written resize into either cache, and the HTTP entry it would leave behind is what
         // the first focus would then read (Sodalite#123).
         guard case .whole(let data) = await ImageFetch.load(request),
-              let image = UIImage(data: data)
+              let image = PlatformImage(data: data)
         else { return }
-        ImageCache.shared.store(image.preparingForDisplay() ?? image, for: url)
+        ImageCache.shared.store(image.preparedForDisplay() ?? image, for: url)
     }
 }
