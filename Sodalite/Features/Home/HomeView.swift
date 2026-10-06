@@ -66,6 +66,8 @@ struct HomeView: View {
             .detailCover(item: $heroPlayItem) { item in
                 DetailRouterView(item: item, autoPlay: true)
             }
+            // The cards' context-menu Play (Mac) takes the same autoplay route as the hero's.
+            .environment(\.playMediaItem) { heroPlayItem = $0 }
             .detailCover(item: $selectedFilter) { filter in
                 FilteredGridView(
                     title: filter.title,

@@ -253,6 +253,7 @@ struct SearchView: View {
                                 isFocused: isFocused
                             )
                         }
+                        .mediaContextMenu(for: item) { destination = .library(item) }
                     }
                 }
                 .enrichesPosterBadges(items)

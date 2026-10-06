@@ -61,6 +61,7 @@ struct HorizontalMediaRow: View {
                                 serverLabel: itemLabel?(item)
                             )
                         }
+                        .mediaContextMenu(for: item) { onItemSelected?(item) }
                     }
                 }
             }

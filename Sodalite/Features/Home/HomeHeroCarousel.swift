@@ -85,6 +85,7 @@ struct HomeHeroCarousel: View {
                 #else
                 .contentShape(Rectangle())
                 .onTapGesture { onOpen(current) }
+                .mediaContextMenu(for: current) { onOpen(current) }
                 .onHover { isHovering = $0 }
                 #endif
                 #if os(iOS)

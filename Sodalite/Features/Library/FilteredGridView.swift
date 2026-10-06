@@ -283,6 +283,7 @@ struct FilteredGridView: View {
                                 }
                                 .buttonStyle(GridCardButtonStyle())
                                 .focused($focusedItemID, equals: item.originKey)
+                                .mediaContextMenu(for: item) { open(item) }
                                 .onAppear { loadMoreIfNeeded(after: item) }
                             }
                             }
@@ -543,6 +544,7 @@ struct FilteredGridView: View {
             }
             .buttonStyle(GridCardButtonStyle())
             .focused($focusedSlot, equals: index)
+            .mediaContextMenu(for: item) { open(item) }
         } else {
             Button {} label: { PlaceholderCard(style: cardStyle, isFocused: focusedSlot == index) }
                 .buttonStyle(GridCardButtonStyle())
