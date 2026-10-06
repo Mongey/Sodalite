@@ -5,6 +5,10 @@ import SwiftUI
 /// facts, the overview and Play sit over a scrim at the bottom leading corner.
 struct HomeHeroCarousel: View {
     let items: [JellyfinItem]
+    /// How far the scroll view insets its content below the window's top edge (the toolbar), which
+    /// the art grows upward by. The scroll view's inset, not a safe area: inside it the banner
+    /// reports no top safe area at all.
+    let topExtension: CGFloat
     let backdropURL: (JellyfinItem) -> URL?
     let onOpen: (JellyfinItem) -> Void
     let onPlay: (JellyfinItem) -> Void
@@ -14,7 +18,6 @@ struct HomeHeroCarousel: View {
 
     @State private var index = 0
     @State private var isHovering = false
-    @State private var topInset: CGFloat = 0
 
     /// Long enough to read an overview, short enough that the banner visibly moves.
     private static let dwell: Duration = .seconds(8)
@@ -32,18 +35,16 @@ struct HomeHeroCarousel: View {
                 .containerRelativeFrame(.vertical) { height, _ in max(440, height * 0.66) }
                 .frame(maxWidth: .infinity)
                 // Up under the transparent toolbar, the way the TV app's banner reaches the window's
-                // top edge. Grown by the measured inset and pinned to the bottom: `ignoresSafeArea`
-                // inside a scroll view grew the art by the same amount but let it hang below the
-                // banner as well, a strip of unscrimmed picture above the first row.
+                // top edge. Grown by the scroll view's inset and pinned to the bottom:
+                // `ignoresSafeArea` inside a scroll view let the art hang below the banner as well.
                 .background(alignment: .bottom) {
                     ZStack {
                         backdrop(for: current)
                         scrim
                     }
-                    .padding(.top, -topInset)
+                    .padding(.top, -topExtension)
                 }
-                .onGeometryChange(for: CGFloat.self) { $0.safeAreaInsets.top } action: { topInset = $0 }
-                .overlay(alignment: .bottomLeading) {
+                                .overlay(alignment: .bottomLeading) {
                     details(for: current)
                         // Lined up with the rows' titles below it.
                         .padding(.leading, LayoutMetrics.current(hSizeClass).rowInset)
