@@ -1,6 +1,7 @@
 import CloudKit
 import Foundation
 import Observation
+import Security
 
 enum CloudSyncStatus: Equatable {
     case disabled
@@ -146,6 +147,11 @@ final class CloudSyncService: CloudSyncServiceProtocol {
             observeWhileOff()
             return
         }
+        guard Self.isEntitledForCloudKit else {
+            status = .disabled
+            LogTap.shared.note("[CloudSync] not started, this build carries no iCloud container entitlement")
+            return
+        }
         guard engine == nil, !startInFlight else { return }
         startInFlight = true
         removeObservers()
@@ -160,6 +166,32 @@ final class CloudSyncService: CloudSyncServiceProtocol {
         if !isHealthy { status = .syncing }
         startTask = Task { await startEngine() }
     }
+
+    /// Whether this build may reach CloudKit at all.
+    ///
+    /// `CKContainer(identifier:)` does not fail when the entitlement is missing, it traps, so the
+    /// check has to come before the container is ever constructed, and a build without the
+    /// entitlement dies on launch rather than reporting sync as unavailable. Measured on the Mac
+    /// target: an unsigned local build aborts inside `CKContainer.__allocating_init` before a
+    /// window appears.
+    ///
+    /// macOS only, because asking is macOS only: `SecTaskCreateFromSelf` is not public API on iOS
+    /// or tvOS, and the alternative there is reading a provisioning profile that a simulator build
+    /// does not have. It is also where the question arises, since a Mac app can be signed locally
+    /// with no entitlements at all, while an iOS or tvOS build that reaches a device or a simulator
+    /// was signed with them.
+    private static let isEntitledForCloudKit: Bool = {
+        #if os(macOS)
+        guard let task = SecTaskCreateFromSelf(nil),
+              let containers = SecTaskCopyValueForEntitlement(
+                  task, "com.apple.developer.icloud-container-identifiers" as CFString, nil
+              ) as? [String]
+        else { return false }
+        return containers.contains(containerID)
+        #else
+        return true
+        #endif
+    }()
 
     private var isHealthy: Bool {
         if case .active = status { return true }
@@ -698,6 +730,10 @@ final class CloudSyncService: CloudSyncServiceProtocol {
     /// adoption the zone is about to lose, uploads included, so the zone goes directly; the
     /// confirmation is the consent. A failure has to reach the status row: "Off" alone read as done.
     private func deleteZoneWhileOff() async {
+        guard Self.isEntitledForCloudKit else {
+            status = .disabled
+            return
+        }
         status = .syncing
         let container = CKContainer(identifier: Self.containerID)
         do {
