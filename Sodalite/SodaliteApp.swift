@@ -187,11 +187,20 @@ struct SodaliteApp: App {
                 .onOpenURL { url in
                     handleDeepLink(url)
                 }
+                #if os(macOS)
+                // Artwork runs up to the window's top edge with only the traffic lights over it;
+                // the sidebar already names where you are, so the title is noise.
+                .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
+                .toolbar(removing: .title)
+                #endif
         }
         #if os(macOS)
         // Wide enough for the sidebar plus a poster grid that is not one column, which is the shape
         // every library screen was laid out for.
         .defaultSize(width: 1280, height: 820)
+        // Restoration alone can bring back nothing: quit with only the player window open and the
+        // next launch restores that one, which opts out of restoring, and no window at all.
+        .defaultLaunchBehavior(.presented)
         #endif
 
         #if os(macOS)
