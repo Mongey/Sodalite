@@ -323,7 +323,7 @@ private struct LiveServerChip: View {
             .padding(.vertical, 8)
             .background(Capsule().fill(focused ? AnyShapeStyle(tint) : AnyShapeStyle(Color.Theme.restFillStrong)))
             .focusResponse(.chip, isFocused: focused)
-            .focusable(isFocusable)
+            .focusableSurface(isFocusable)
             .focused($focused)
             .stableTap(isFocused: focused) { action() }
             .fixedSize()

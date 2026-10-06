@@ -23,7 +23,7 @@ struct FocusableCard<Content: View>: View {
 
     private var baseCard: some View {
         content(isHighlighted)
-            .focusable()
+            .focusableSurface()
             .focused($isFocused)
             .stableTap(isFocused: isFocused) { action() }
             .focusResponse(.card, isFocused: isHighlighted)

@@ -230,7 +230,7 @@ private struct AccentCategoryButton: View {
             )
             .focusStroke(cornerRadius: AccentCategoryChip.cornerRadius, isFocused: focused)
             .focusResponse(.chip, isFocused: focused)
-            .focusable(true)
+            .focusableSurface(true)
             .focused($focused)
             .stableTap(isFocused: focused, perform: action)
             .accessibilityElement(children: .combine)

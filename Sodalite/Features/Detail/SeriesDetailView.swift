@@ -1539,7 +1539,7 @@ struct SeriesDetailView: View {
             Color.clear
                 .frame(maxWidth: .infinity)
                 .frame(height: 24)
-                .focusable()
+                .focusableSurface()
                 .focused($focusBridgeActive)
                 .onChange(of: focusBridgeActive) { _, active in
                     guard active else { return }

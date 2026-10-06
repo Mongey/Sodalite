@@ -342,7 +342,7 @@ private struct EditPickerRow<Option: Identifiable & Equatable>: View {
                           : AnyShapeStyle(Color.Theme.restFill))
             )
             .focusStroke(cornerRadius: 16, isFocused: focused)
-            .focusable(!options.isEmpty)
+            .focusableSurface(!options.isEmpty)
             .focused($focused)
             #if os(tvOS)
             .onMoveCommand { direction in

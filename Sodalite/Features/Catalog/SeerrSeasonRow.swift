@@ -46,7 +46,7 @@ struct SeerrSeasonRow: View {
                       : AnyShapeStyle(Color.Theme.restFill))
         )
         .focusStroke(cornerRadius: 14, isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         .stableTap(isFocused: focused) { toggle() }
         .animation(.easeInOut(duration: 0.15), value: focused)

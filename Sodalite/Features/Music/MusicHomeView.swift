@@ -111,7 +111,7 @@ struct MusicHomeView: View {
             // .focusable so the tab keeps a focus target while loading; without one tvOS bounces focus to the previous tab.
             ProgressView()
                 .frame(maxWidth: .infinity, minHeight: 400)
-                .focusable()
+                .focusableSurface()
         } else if let error = viewModel.displayedError {
             VStack(spacing: 12) {
                 Image(systemName: "exclamationmark.triangle")
@@ -143,7 +143,7 @@ struct MusicHomeView: View {
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, minHeight: 400)
-            .focusable()
+            .focusableSurface()
         } else {
             let metrics = LayoutMetrics.current(hSizeClass)
             LazyVGrid(columns: [

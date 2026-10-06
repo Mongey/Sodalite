@@ -145,7 +145,7 @@ struct MultiviewView: View {
         .clipShape(shape)
         .overlay(shape.stroke(.tint, lineWidth: 4).opacity(isFocused ? 1 : 0))
         .animation(.easeOut(duration: 0.2), value: isFocused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focusedTile, equals: tile.id)
         .stableTap(isFocused: isFocused, longPressOpensMenu: true) {
             coordinator.showFullScreen(tile.id)
@@ -231,7 +231,7 @@ struct MultiviewView: View {
             .frame(width: size.width, height: size.height)
             .background(addFocused ? tint : Color.Theme.restFillStrong, in: shape)
             .accessibilityLabel(String(localized: "multiview.addChannel", defaultValue: "Add channel"))
-            .focusable(true)
+            .focusableSurface(true)
             .focused($addFocused)
             .stableTap(isFocused: addFocused) { coordinator.pickerRequest = .add }
     }
@@ -243,7 +243,7 @@ struct MultiviewView: View {
             .padding(.horizontal, 40)
             .frame(height: Self.addButtonHeight)
             .background(addFocused ? tint : Color.Theme.restFillStrong, in: Capsule())
-            .focusable(true)
+            .focusableSurface(true)
             .focused($addFocused)
             .stableTap(isFocused: addFocused) { coordinator.pickerRequest = .add }
     }
@@ -313,7 +313,7 @@ private struct MultiviewChannelPicker: View {
                 .fill(isFocused ? tint : Color.Theme.restFillStrong)
         )
         .foregroundStyle(isFocused ? Color.black : Color.primary)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focusedChannel, equals: channel.id)
         .stableTap(isFocused: isFocused) { onSelect(channel) }
     }

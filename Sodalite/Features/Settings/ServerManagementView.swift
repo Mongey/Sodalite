@@ -322,7 +322,7 @@ private struct ServerManagementRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .focusStroke(RoundedRectangle(cornerRadius: 14, style: .continuous), isFocused: focused)
         .focusResponse(.row, isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         // The hold belongs to the menu below: without this the row switched servers on the way into
         // its own context menu, which is why an inactive row never showed one (Sodalite#75).
@@ -459,7 +459,7 @@ private struct AddServerSettingsRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .focusStroke(RoundedRectangle(cornerRadius: 14, style: .continuous), isFocused: focused)
         .focusResponse(.row, isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         .stableTap(isFocused: focused, perform: onTap)
     }

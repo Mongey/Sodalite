@@ -287,7 +287,7 @@ private struct DiscoveredServerRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .focusStroke(RoundedRectangle(cornerRadius: 14, style: .continuous), isFocused: focused)
         .focusResponse(.row, isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         .stableTap(isFocused: focused, perform: onSelect)
     }

@@ -191,7 +191,7 @@ struct SearchView: View {
             )
             .focusStroke(Circle(), isFocused: clearFocused)
             .focusResponse(.chip, isFocused: clearFocused)
-            .focusable()
+            .focusableSurface()
             .focused($clearFocused)
             .stableTap(isFocused: clearFocused) {
                 // scheduleSearch runs off the query's own onChange, which clears the results.

@@ -556,7 +556,7 @@ private struct TransportIconButton: View {
                 y: 4
             )
             .animation(.easeInOut(duration: 0.15), value: isFocused)
-            .focusable(!isDisabled)
+            .focusableSurface(!isDisabled)
             .focused($transportFocus, equals: focusKey)
             .stableTap(isFocused: isFocused) {
                 action()
@@ -702,7 +702,7 @@ private struct QueueRow: View {
         .focusStroke(cornerRadius: 12, isFocused: focused)
         // Own shadow: `focusOverhang` budgets 20pt against this blur, and the column clips.
         .focusResponse(.row.withShadow(opacity: 0.3, radius: 10, y: 4), isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($queueFocus, equals: track.id)
         .stableTap(isFocused: focused) {
             onSelect()

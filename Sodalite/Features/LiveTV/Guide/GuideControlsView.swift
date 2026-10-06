@@ -146,7 +146,7 @@ private struct GuideChip: View {
                 Capsule().strokeBorder(isOn ? tint : Color.clear, lineWidth: focused ? 0 : 2)
             )
             .focusResponse(.chip, isFocused: focused)
-            .focusable(isFocusable)
+            .focusableSurface(isFocusable)
             .focused($focused)
             .stableTap(isFocused: focused) { action() }
     }

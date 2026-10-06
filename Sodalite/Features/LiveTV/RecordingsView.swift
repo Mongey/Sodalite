@@ -227,7 +227,7 @@ private struct RecordingCard: View {
                 }
             }
             .focusResponse(.card.flat, isFocused: focused)
-            .focusable()
+            .focusableSurface()
             .focused($focused)
             .stableTap(isFocused: focused) { onPlay() }
 
@@ -244,7 +244,7 @@ private struct RecordingCard: View {
                         .foregroundStyle(deleteFocused ? Color.black : .secondary)
                         .padding(8)
                         .background(Circle().fill(deleteFocused ? AnyShapeStyle(tint) : AnyShapeStyle(Color.clear)))
-                        .focusable()
+                        .focusableSurface()
                         .focused($deleteFocused)
                         .stableTap(isFocused: deleteFocused) { onDelete() }
                 }
@@ -287,7 +287,7 @@ private struct TimerRow: View {
         .padding(.vertical, 12)
         .padding(.horizontal, 20)
         .background(RoundedRectangle(cornerRadius: 10).fill(Color.white.opacity(focused ? 0.10 : 0.04)))
-        .focusable()
+        .focusableSurface()
         .focused($focused)
         .stableTap(isFocused: focused) { onCancel?() }
     }

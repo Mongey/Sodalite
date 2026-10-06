@@ -107,7 +107,7 @@ private struct HighlightRow: View {
         .focusStroke(cornerRadius: 14, isFocused: isFocused)
         .focusResponse(.tile, isFocused: isFocused)
         // Focusable so the tvOS focus engine can step through rows and auto-scroll the list.
-        .focusable()
+        .focusableSurface()
         .focused($isFocused)
     }
 

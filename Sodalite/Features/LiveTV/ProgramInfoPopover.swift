@@ -166,7 +166,7 @@ private struct PopoverActionButton: View {
                 Capsule().strokeBorder(accent, lineWidth: focused ? 0 : 2)
             )
             .focusResponse(.chip, isFocused: focused)
-            .focusable()
+            .focusableSurface()
             .focused($focused)
             .stableTap(isFocused: focused) { action() }
     }

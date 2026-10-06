@@ -47,7 +47,7 @@ struct ExpandableTextBox: View {
             )
             .focusStroke(cornerRadius: 16, isFocused: isFocused)
             .focusResponse(.inline, isFocused: isFocused)
-            .focusable()
+            .focusableSurface()
             .focused($isFocused)
             .stableTap(isFocused: isFocused) {
                 // Sodalite#50: same two-step as EpisodeSynopsisBox, uncover first, expand second.
@@ -151,7 +151,7 @@ private struct FocusableTextBlock: View {
                     .fill(isFocused ? Color.Theme.focusFill : .clear)
             )
             .animation(.easeInOut(duration: 0.2), value: isFocused)
-            .focusable()
+            .focusableSurface()
             .focused($isFocused)
     }
 }

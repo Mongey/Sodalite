@@ -352,7 +352,7 @@ struct EpisodeSynopsisBox: View {
             )
             .focusStroke(cornerRadius: 12, isFocused: isFocused)
             .focusResponse(.inline, isFocused: isFocused)
-            .focusable(hasText)
+            .focusableSurface(hasText)
             .focused($isFocused)
             .stableTap(isFocused: isFocused) {
                 guard hasText else { return }

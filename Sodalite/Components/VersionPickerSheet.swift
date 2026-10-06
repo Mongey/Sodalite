@@ -165,7 +165,7 @@ struct VersionPickerSheet: View {
                 .fill(isFocused ? tintColor : Color.Theme.surface)
         )
         .foregroundStyle(isFocused ? Color.black : Color.primary)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focusedID, equals: source.id)
         .stableTap(isFocused: isFocused) {
             onSelect(source)

@@ -321,7 +321,7 @@ private struct DigitKey: View {
             )
             .focusStroke(cornerRadius: 16, isFocused: focused)
             .focusResponse(.chip, isFocused: focused)
-            .focusable(true)
+            .focusableSurface(true)
             .focused($focused)
             .stableTap(isFocused: focused, perform: action)
         #else

@@ -31,7 +31,7 @@ struct StatTile: View {
         .focusStroke(cornerRadius: 16, isFocused: focused)
         .focusResponse(.tile.flat, isFocused: focused)
         #if os(tvOS)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         #endif
     }

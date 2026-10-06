@@ -53,7 +53,7 @@ struct ValuePickerRow<Value: Hashable>: View {
             )
             .focusStroke(cornerRadius: 16, isFocused: focused)
             .focusResponse(.row, isFocused: focused)
-            .focusable(true)
+            .focusableSurface(true)
             .focused($focused)
             .animation(.easeInOut(duration: 0.15), value: selection)
             #if os(tvOS)

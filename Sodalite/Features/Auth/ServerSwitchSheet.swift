@@ -123,7 +123,7 @@ private struct ServerRow: View {
                 .strokeBorder(Color.Theme.panelEdge, lineWidth: 1)
         )
         .focusStroke(RoundedRectangle(cornerRadius: 14, style: .continuous), isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         .stableTap(isFocused: focused, perform: onTap)
     }
@@ -151,7 +151,7 @@ private struct AddServerRow: View {
                 .strokeBorder(Color.Theme.panelEdge, lineWidth: 1)
         )
         .focusStroke(RoundedRectangle(cornerRadius: 14, style: .continuous), isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         .stableTap(isFocused: focused, perform: onTap)
     }

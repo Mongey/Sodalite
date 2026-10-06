@@ -252,7 +252,7 @@ private struct FilterChip: View {
         )
         .focusStroke(Capsule(), isFocused: focused)
         .focusResponse(.chip, isFocused: focused)
-        .focusable(true)
+        .focusableSurface(true)
         .focused($focused)
         .stableTap(isFocused: focused) { action() }
         .animation(.easeInOut(duration: 0.15), value: isSelected)

@@ -383,3 +383,21 @@ private struct ScrollsUnderShellChrome: ViewModifier {
         #endif
     }
 }
+
+extension View {
+    /// `.focusable` for a surface that draws its own focus indicator (a `MediaFocusRing` or a
+    /// `focusStroke`), which is every focusable surface here.
+    ///
+    /// On the Mac it takes focus the way a Mac control does: from keyboard navigation, not from a
+    /// click. A click-focused card kept its ring after the click, and the system's own rectangular
+    /// ring was drawn around the app's rounded one, so a focused card wore two. Everywhere else it is
+    /// plain `.focusable`, which the tvOS focus engine and the iPad keyboard rely on unchanged.
+    func focusableSurface(_ isFocusable: Bool = true) -> some View {
+        #if os(macOS)
+        focusable(isFocusable, interactions: .activate)
+            .focusEffectDisabled()
+        #else
+        focusable(isFocusable)
+        #endif
+    }
+}

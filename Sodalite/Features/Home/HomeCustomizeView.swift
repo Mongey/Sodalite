@@ -521,7 +521,7 @@ struct FocusableTile<Content: View>: View {
 
     var body: some View {
         content(isFocused)
-            .focusable()
+            .focusableSurface()
             .focused($isFocused)
             .focusResponse(.inline, isFocused: isFocused)
             .stableTap(isFocused: isFocused) { action() }
@@ -561,7 +561,7 @@ struct RowToggleButton: View {
         .focusStroke(Capsule(), isFocused: focused)
         .focusResponse(.chip, isFocused: focused)
         .animation(.easeInOut(duration: 0.15), value: isOn)
-        .focusable()
+        .focusableSurface()
         .focused($focused)
         .stableTap(isFocused: focused) { action() }
     }

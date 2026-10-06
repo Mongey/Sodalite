@@ -177,7 +177,7 @@ private struct MediaCastCard: View {
         }
         // Own shadow: a 180pt circular portrait does not carry a rectangular card's r20/y10 throw.
         .focusResponse(.card.withShadow(opacity: 0.3, radius: 10, y: 5), isFocused: isFocused)
-        .focusable()
+        .focusableSurface()
         .focused($isFocused)
         .stableTap(isFocused: isFocused) { onSelect?() }
     }
