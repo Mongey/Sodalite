@@ -552,7 +552,15 @@ struct TabRootView: View {
             case .liveTV:
                 // Selection is passed rather than inferred from onAppear: a tab that is not selected
                 // keeps its content in the hierarchy, so its clocks have to be told (#96).
+                #if os(macOS)
+                // Every other tab roots its own stack; this one did not need one while its program
+                // pages were covers, and on the Mac they are pushes (see detailCover).
+                ThemeNavigationStack {
+                    LiveTVTabView(isTabSelected: selectedTab == .liveTV, capableServerIDs: liveTVServerIDs)
+                }
+                #else
                 LiveTVTabView(isTabSelected: selectedTab == .liveTV, capableServerIDs: liveTVServerIDs)
+                #endif
             case .catalog:
                 CatalogView()
             case .search:

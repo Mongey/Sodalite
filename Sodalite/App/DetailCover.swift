@@ -4,13 +4,59 @@ extension View {
     /// Presents a full-screen detail as a cover (over the tab bar) instead of a NavigationStack push. The cover covers the tab bar WITHOUT ever removing it, so tvOS never re-templates the bar's icons gray on return (the tvOS 26 system bug that a `.toolbar(.hidden)` push triggers). Each cover hosts its own NavigationStack so the detail's deeper navigation (detail -> detail, -> person) still pushes normally.
     ///
     /// A static themed background sits behind the stack. Detail views draw their own full-screen backdrop over it, while backdrop-less pages show the selected theme.
+    ///
+    /// On the Mac it is a push onto the enclosing NavigationStack instead. A window has no tab bar to
+    /// keep on screen, and a sheet there is a modal panel floating over the window, which is the wrong
+    /// shape for browsing: the toolbar's back button, the back gesture and Cmd-[ all expect a stack.
+    @ViewBuilder
     func detailCover<Item: Identifiable, Content: View>(
+        item: Binding<Item?>,
+        @ViewBuilder content: @escaping (Item) -> Content
+    ) -> some View {
+        #if os(macOS)
+        modifier(DetailPushPresenter(item: item, destination: content))
+        #else
+        detailCoverModal(item: item, content: content)
+        #endif
+    }
+
+    /// Always a cover (a sheet on the Mac), for a presenter that sits above every NavigationStack and
+    /// so has nothing to push onto: the router's deep links.
+    func detailCoverModal<Item: Identifiable, Content: View>(
         item: Binding<Item?>,
         @ViewBuilder content: @escaping (Item) -> Content
     ) -> some View {
         modifier(DetailCoverPresenter(item: item, coverContent: content))
     }
 }
+
+#if os(macOS)
+/// `navigationDestination(item:)` wants a Hashable item and these are only Identifiable, so the push
+/// is driven by presence instead. The pushed value is held here rather than read back from the
+/// binding: a pop clears the binding before the page has finished sliding out, and a destination
+/// read from it would blank mid-animation.
+private struct DetailPushPresenter<Item: Identifiable, Destination: View>: ViewModifier {
+    @Binding var item: Item?
+    @ViewBuilder let destination: (Item) -> Destination
+
+    @State private var pushed: Item?
+
+    func body(content: Content) -> some View {
+        content
+            .navigationDestination(isPresented: Binding(
+                get: { item != nil },
+                set: { if !$0 { item = nil } }
+            )) {
+                if let value = item ?? pushed {
+                    destination(value).themedStaticBackground()
+                }
+            }
+            .onChange(of: item?.id, initial: true) { _, _ in
+                if let item { pushed = item }
+            }
+    }
+}
+#endif
 
 /// Presents one detail cover, and owns its claim on the fullscreen music player.
 ///

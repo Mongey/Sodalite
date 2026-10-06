@@ -318,7 +318,7 @@ struct AppRouter: View {
         }
         // The same cover every other detail page opens in, so a deep-linked page closes from the same
         // corner, hides its close while a page is pushed, and can host the music player (Sodalite#142).
-        .detailCover(item: $deepLinkPresentation) { presentation in
+        .detailCoverModal(item: $deepLinkPresentation) { presentation in
             DetailRouterView(item: presentation.item, autoPlay: presentation.autoPlay)
         }
         // The router's own player cover, for a track started where nothing is presented above it
