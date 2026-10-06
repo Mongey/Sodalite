@@ -423,6 +423,10 @@ struct HomeView: View {
                 .padding(.vertical, 40)
             }
             .scrollsUnderShellChrome()
+            #if os(tvOS)
+            // tvOS only: the move it answers is the focus engine handing Up to the tab bar. On the Mac
+            // the hero rebuilds its buttons on every page, focus left the first row each time, and
+            // the page jumped back to the top while someone was scrolling it.
             .onChange(of: focusedRowIndex) { oldValue, newValue in
                 // Scroll to top only on a real top-row → tab-bar arrival, gated two ways:
                 // 1. oldValue == 0: the focus engine routes Up to the tab bar only from the top row; a row-N→nil (N>0) is a transient between LazyVStack row materializations, not a tab-bar arrival.
@@ -437,6 +441,7 @@ struct HomeView: View {
                     }
                 }
             }
+            #endif
         }
     }
 
