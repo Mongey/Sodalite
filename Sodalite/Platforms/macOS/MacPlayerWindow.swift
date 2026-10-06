@@ -12,6 +12,10 @@ import AppKit
 final class MacPlayerWindowSession {
     static let shared = MacPlayerWindowSession()
     static let windowID = "player"
+    /// The one value the player window is opened with. Opening a `WindowGroup` by value brings the
+    /// window already showing that value forward instead of adding another, which is what keeps
+    /// this group to a single window.
+    static let windowValue = "player"
 
     struct Entry {
         let viewModel: PlayerViewModel
@@ -22,24 +26,49 @@ final class MacPlayerWindowSession {
     }
 
     private(set) var current: Entry?
+    private var started = false
 
     func show(_ entry: Entry) {
         let replaced = current
+        if let replaced { tearDown(replaced) }
         current = entry
+        started = false
+        PlayerModalPresence.claimPlayerActive()
         replaced?.onClose()
+    }
+
+    /// Called by the screen whenever it appears. Only the first call starts playback: the screen
+    /// appears again after every full screen transition, and that is not a new session.
+    func startIfNeeded(_ viewModel: PlayerViewModel) {
+        guard current?.viewModel === viewModel, !started else { return }
+        started = true
+        viewModel.beginPlayback()
     }
 
     /// Clears the window's session only if it is still this one, so a launcher tearing down late
     /// cannot close a player that a newer launcher has since put up.
     func end(_ viewModel: PlayerViewModel) {
-        guard current?.viewModel === viewModel else { return }
-        let ended = current
+        guard let ended = current, ended.viewModel === viewModel else { return }
+        tearDown(ended)
         current = nil
-        ended?.onClose()
+        ended.onClose()
+    }
+
+    /// Playback ends with the session, never with a view: SwiftUI takes the window's content off
+    /// screen and back while it moves the window into and out of its full screen space, and a
+    /// player stopped from `onDisappear` closed itself every time it went full screen.
+    private func tearDown(_ entry: Entry) {
+        entry.viewModel.stopPlayback()
+        PlayerModalPresence.releasePlayerActive()
     }
 }
 
 /// The player window's scene. Not restored on relaunch: the session it would restore is gone.
+///
+/// A `WindowGroup`, not a single-instance `Window`, because SwiftUI makes a `Window` a full screen
+/// auxiliary, a window that can only join another one's full screen space: the green button,
+/// Ctrl-Cmd-F and the player's own F all did nothing, and `windowFullScreenBehavior(.enabled)` only
+/// changes which of the two kinds of auxiliary it is.
 struct MacPlayerWindowScene: Scene {
     private static func placement(on display: DisplayProxy) -> WindowPlacement {
         let visible = display.visibleRect
@@ -52,7 +81,7 @@ struct MacPlayerWindowScene: Scene {
     }
 
     var body: some Scene {
-        Window("Player", id: MacPlayerWindowSession.windowID) {
+        WindowGroup("Player", id: MacPlayerWindowSession.windowID, for: String.self) { _ in
             MacPlayerWindowContent()
         }
         .windowStyle(.hiddenTitleBar)
@@ -68,6 +97,7 @@ struct MacPlayerWindowScene: Scene {
 
 private struct MacPlayerWindowContent: View {
     @Environment(\.dismissWindow) private var dismissWindow
+    @State private var hostWindow = HostWindowReference()
     private let session = MacPlayerWindowSession.shared
 
     var body: some View {
@@ -83,13 +113,17 @@ private struct MacPlayerWindowContent: View {
                 Color.black
             }
         }
+        .background(HostWindowReader(reference: hostWindow))
         .onChange(of: session.current == nil) { _, ended in
             if ended { dismissWindow(id: MacPlayerWindowSession.windowID) }
         }
         // The window's own close button: the session has to end with it, or the launcher would
-        // still believe its player is up.
-        .onDisappear {
-            if let viewModel = session.current?.viewModel { session.end(viewModel) }
+        // still believe its player is up. The close itself, not `onDisappear`, which also fires on
+        // the way into full screen.
+        .onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { note in
+            guard let closing = note.object as? NSWindow, closing === hostWindow.window,
+                  let viewModel = session.current?.viewModel else { return }
+            session.end(viewModel)
         }
     }
 }
@@ -115,7 +149,39 @@ struct MacPlayerWindowPresenter: ViewModifier {
                 shown = session
                 guard let viewModel = session else { return }
                 MacPlayerWindowSession.shared.show(.init(viewModel: viewModel, theme: theme, onClose: onClose))
-                openWindow(id: MacPlayerWindowSession.windowID)
+                openWindow(id: MacPlayerWindowSession.windowID, value: MacPlayerWindowSession.windowValue)
             }
+    }
+}
+
+/// The window a view is in, read off the view itself rather than `NSApp.keyWindow`, which is the
+/// library window whenever that one was clicked last.
+final class HostWindowReference {
+    weak var window: NSWindow?
+}
+
+struct HostWindowReader: NSViewRepresentable {
+    let reference: HostWindowReference
+
+    func makeNSView(context: Context) -> NSView {
+        WindowTrackingView(reference: reference)
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+
+    private final class WindowTrackingView: NSView {
+        let reference: HostWindowReference
+
+        init(reference: HostWindowReference) {
+            self.reference = reference
+            super.init(frame: .zero)
+        }
+
+        required init?(coder: NSCoder) { nil }
+
+        override func viewDidMoveToWindow() {
+            super.viewDidMoveToWindow()
+            if let window { reference.window = window }
+        }
     }
 }

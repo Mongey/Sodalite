@@ -18,7 +18,7 @@ struct MacPlayerScreen: View {
     /// left alone is just the picture. Keyboard transport works either way.
     @State private var controlsVisible = true
     @State private var hideTask: Task<Void, Never>?
-    @FocusState private var hasKeyboardFocus: Bool
+    @State private var keyMonitor: Any?
     @State private var hostWindow = HostWindowReference()
 
     private var titleLines: PlayerTitleLines { PlayerTitleLines(item: viewModel.item) }
@@ -55,9 +55,6 @@ struct MacPlayerScreen: View {
         .frame(idealWidth: 1280, idealHeight: 720)
         .preferredColorScheme(.dark)
         .tint(theme.palette.control.color)
-        .focusable()
-        .focusEffectDisabled()
-        .focused($hasKeyboardFocus)
         .onChange(of: viewModel.isLoading) { _, loading in
             if !loading { fitWindow(to: viewModel.videoSize) }
         }
@@ -67,17 +64,23 @@ struct MacPlayerScreen: View {
         .onContinuousHover { phase in
             if case .active = phase { revealControls() }
         }
-        .onKeyPress(keys: [.space, .leftArrow, .rightArrow, .escape, "f", "k"], action: handle)
         .task {
-            hasKeyboardFocus = true
-            PlayerModalPresence.claimPlayerActive()
-            viewModel.beginPlayback()
+            MacPlayerWindowSession.shared.startIfNeeded(viewModel)
             revealControls()
+        }
+        // A monitor on the window rather than `onKeyPress`: that needs a focused view, and a click
+        // anywhere on the picture lands on the drag layer, which takes focus away from it, so the
+        // keys died the first time anyone moved the window.
+        .onAppear {
+            keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+                guard event.window === hostWindow.window, handle(event) else { return event }
+                return nil
+            }
         }
         .onDisappear {
             hideTask?.cancel()
-            viewModel.stopPlayback()
-            PlayerModalPresence.releasePlayerActive()
+            if let keyMonitor { NSEvent.removeMonitor(keyMonitor) }
+            keyMonitor = nil
         }
     }
 
@@ -201,15 +204,18 @@ struct MacPlayerScreen: View {
 
     // MARK: - Input
 
-    private func handle(_ press: KeyPress) -> KeyPress.Result {
-        switch press.key {
-        case .space:
+    /// True when the key was the player's. Anything with Command, Control or Option held goes on
+    /// to the menus, so Cmd-W and Ctrl-Cmd-F keep working.
+    private func handle(_ event: NSEvent) -> Bool {
+        guard event.modifierFlags.intersection([.command, .control, .option]).isEmpty else { return false }
+        switch event.keyCode {
+        case 49:
             viewModel.togglePlayPause()
-        case .leftArrow:
+        case 123:
             skip(direction: -1)
-        case .rightArrow:
+        case 124:
             skip(direction: 1)
-        case .escape:
+        case 53:
             // Leave full screen first, the way QuickTime does: Escape in full screen means "give me
             // the window back", and only then "close the player".
             if isFullScreen {
@@ -218,14 +224,14 @@ struct MacPlayerScreen: View {
                 close()
             }
         default:
-            switch press.characters {
+            switch event.charactersIgnoringModifiers?.lowercased() {
             case "f": toggleFullScreen()
             case "k": viewModel.togglePlayPause()
-            default: return .ignored
+            default: return false
             }
         }
         revealControls()
-        return .handled
+        return true
     }
 
     /// A keyboard or a click asks for the jump and gets it now: unlike a remote there is no burst
@@ -286,25 +292,5 @@ struct MacPlayerScreen: View {
 
     private func toggleFullScreen() {
         window?.toggleFullScreen(nil)
-    }
-}
-
-/// The window this screen is in, for full screen. Read off the view rather than `NSApp.keyWindow`,
-/// which is the library window whenever that one was clicked last.
-private final class HostWindowReference {
-    weak var window: NSWindow?
-}
-
-private struct HostWindowReader: NSViewRepresentable {
-    let reference: HostWindowReference
-
-    func makeNSView(context: Context) -> NSView {
-        let view = NSView()
-        DispatchQueue.main.async { [weak view] in reference.window = view?.window }
-        return view
-    }
-
-    func updateNSView(_ nsView: NSView, context: Context) {
-        reference.window = nsView.window
     }
 }
