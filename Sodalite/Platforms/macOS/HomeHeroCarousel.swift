@@ -1,0 +1,220 @@
+import SwiftUI
+
+/// The top of the Mac's Home: the newest titles as a full-width banner that pages by itself, the way
+/// the TV app opens. The art runs to the window's top edge under the toolbar; the title, a line of
+/// facts, the overview and Play sit over a scrim at the bottom leading corner.
+struct HomeHeroCarousel: View {
+    let items: [JellyfinItem]
+    let backdropURL: (JellyfinItem) -> URL?
+    let onOpen: (JellyfinItem) -> Void
+    let onPlay: (JellyfinItem) -> Void
+
+    @Environment(\.dependencies) private var dependencies
+    @Environment(\.horizontalSizeClass) private var hSizeClass
+
+    @State private var index = 0
+    @State private var isHovering = false
+    @State private var topInset: CGFloat = 0
+
+    /// Long enough to read an overview, short enough that the banner visibly moves.
+    private static let dwell: Duration = .seconds(8)
+
+    private var current: JellyfinItem? {
+        items.indices.contains(index) ? items[index] : items.first
+    }
+
+    var body: some View {
+        if let current {
+            // The box is a placeholder sized off the window, and everything else is laid onto it, so
+            // the art, the text and the pager all agree on one height. Built the other way round, the
+            // filled backdrop picked the size and the clip cut the buttons and the dots off the bottom.
+            Color.clear
+                .containerRelativeFrame(.vertical) { height, _ in max(440, height * 0.66) }
+                .frame(maxWidth: .infinity)
+                // Up under the transparent toolbar, the way the TV app's banner reaches the window's
+                // top edge. Grown by the measured inset and pinned to the bottom: `ignoresSafeArea`
+                // inside a scroll view grew the art by the same amount but let it hang below the
+                // banner as well, a strip of unscrimmed picture above the first row.
+                .background(alignment: .bottom) {
+                    ZStack {
+                        backdrop(for: current)
+                        scrim
+                    }
+                    .padding(.top, -topInset)
+                }
+                .onGeometryChange(for: CGFloat.self) { $0.safeAreaInsets.top } action: { topInset = $0 }
+                .overlay(alignment: .bottomLeading) {
+                    details(for: current)
+                        // Lined up with the rows' titles below it.
+                        .padding(.leading, LayoutMetrics.current(hSizeClass).rowInset)
+                        .padding(.trailing, 160)
+                        .padding(.bottom, 52)
+                        .id(current.originKey)
+                        .transition(.opacity)
+                }
+                .overlay(alignment: .bottom) {
+                    pager.padding(.bottom, 20)
+                }
+                .overlay { arrows }
+                .contentShape(Rectangle())
+                .onTapGesture { onOpen(current) }
+                .onHover { isHovering = $0 }
+                .animation(.easeInOut(duration: 0.6), value: index)
+                // Restarted by every page change, so a click on an arrow gets a full dwell before the
+                // banner moves on by itself. Held while the pointer is over it, so nothing slides away
+                // from under someone reading it.
+                .task(id: "\(index)|\(isHovering)|\(items.count)") {
+                    guard !isHovering, items.count > 1 else { return }
+                    try? await Task.sleep(for: Self.dwell)
+                    guard !Task.isCancelled else { return }
+                    step(1)
+                }
+                .onChange(of: items.map(\.originKey)) { _, _ in index = 0 }
+        }
+    }
+
+    // MARK: - Layers
+
+    private func backdrop(for item: JellyfinItem) -> some View {
+        AsyncCachedImage(url: backdropURL(item)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } placeholder: {
+            Color.black
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
+        .id(item.originKey)
+        .transition(.opacity)
+    }
+
+    private var scrim: some View {
+        ZStack {
+            LinearGradient(
+                stops: [.init(color: .clear, location: 0.35), .init(color: .black.opacity(0.85), location: 1)],
+                startPoint: .top, endPoint: .bottom
+            )
+            LinearGradient(
+                stops: [.init(color: .black.opacity(0.6), location: 0), .init(color: .clear, location: 0.55)],
+                startPoint: .leading, endPoint: .trailing
+            )
+        }
+        .allowsHitTesting(false)
+    }
+
+    private func details(for item: JellyfinItem) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            ContentLogoTitle(
+                itemID: item.id,
+                logo: .from(imageTags: item.imageTags, hasFullDetail: true)
+            ) {
+                Text(item.name)
+                    .font(.system(size: 40, weight: .bold))
+                    .lineLimit(2)
+            }
+            .frame(maxWidth: 420, maxHeight: 130, alignment: .bottomLeading)
+
+            if let facts = facts(for: item) {
+                Text(verbatim: facts)
+                    .font(.callout.weight(.medium))
+                    .foregroundStyle(.white.opacity(0.85))
+            }
+
+            if let overview = item.overview, !overview.isEmpty {
+                Text(verbatim: overview)
+                    .font(.body)
+                    .foregroundStyle(.white.opacity(0.8))
+                    .lineLimit(2)
+                    .frame(maxWidth: 520, alignment: .leading)
+            }
+
+            HStack(spacing: 12) {
+                Button {
+                    onPlay(item)
+                } label: {
+                    Label("detail.play", systemImage: "play.fill")
+                        .font(.headline)
+                        .padding(.horizontal, 22)
+                        .padding(.vertical, 10)
+                        .foregroundStyle(.black)
+                        .background(.white, in: Capsule())
+                }
+                .buttonStyle(.plain)
+
+                Button {
+                    onOpen(item)
+                } label: {
+                    Image(systemName: "info")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(width: 40, height: 40)
+                        .glassEffect(.regular.interactive(), in: .circle)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text(verbatim: item.name))
+            }
+            .padding(.top, 4)
+        }
+        .foregroundStyle(.white)
+        // The serverSession a combined Home's secondary title needs for its logo request.
+        .environment(\.serverSession, item.serverID.map { dependencies.sessionRegistry.session(forServerID: $0) })
+    }
+
+    @ViewBuilder
+    private var pager: some View {
+        if items.count > 1 {
+            HStack(spacing: 8) {
+                ForEach(items.indices, id: \.self) { page in
+                    Circle()
+                        .fill(.white.opacity(page == index ? 1 : 0.4))
+                        .frame(width: 7, height: 7)
+                        .contentShape(Rectangle().inset(by: -4))
+                        .onTapGesture { index = page }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var arrows: some View {
+        if items.count > 1 {
+            HStack {
+                arrow("chevron.left") { step(-1) }
+                Spacer()
+                arrow("chevron.right") { step(1) }
+            }
+            .padding(.horizontal, 12)
+            .frame(maxHeight: .infinity)
+            .opacity(isHovering ? 1 : 0)
+            .animation(.easeInOut(duration: 0.2), value: isHovering)
+        }
+    }
+
+    private func arrow(_ systemImage: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.title.weight(.semibold))
+                .foregroundStyle(.white)
+                .frame(width: 44, height: 88)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+
+    // MARK: - Helpers
+
+    private func step(_ delta: Int) {
+        guard !items.isEmpty else { return }
+        index = (index + delta + items.count) % items.count
+    }
+
+    /// "Movie · 2025 · Drama · Thriller · PG-13", with whatever the server knows.
+    private func facts(for item: JellyfinItem) -> String? {
+        var parts: [String] = []
+        if let year = item.productionYear { parts.append(String(year)) }
+        parts += (item.genres ?? []).prefix(2)
+        if let rating = item.officialRating, !rating.isEmpty { parts.append(rating) }
+        return parts.isEmpty ? nil : parts.joined(separator: " · ")
+    }
+}
