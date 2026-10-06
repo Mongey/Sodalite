@@ -5,10 +5,6 @@ import SwiftUI
 /// facts, the overview and Play sit over a scrim at the bottom leading corner.
 struct HomeHeroCarousel: View {
     let items: [JellyfinItem]
-    /// How far the scroll view insets its content below the window's top edge (the toolbar), which
-    /// the art grows upward by. The scroll view's inset, not a safe area: inside it the banner
-    /// reports no top safe area at all.
-    let topExtension: CGFloat
     let backdropURL: (JellyfinItem) -> URL?
     let onOpen: (JellyfinItem) -> Void
     let onPlay: (JellyfinItem) -> Void
@@ -18,6 +14,12 @@ struct HomeHeroCarousel: View {
 
     @State private var index = 0
     @State private var isHovering = false
+    /// How far below the window's top edge the banner starts: the toolbar's inset plus the stack
+    /// spacing above it, and more while the page is pulled past its top. The art grows upward by
+    /// exactly that. Measured in window space because every scroll-relative reading falls short:
+    /// the top safe area is zero inside the scroll view, the content inset misses the spacing, and
+    /// the `.scrollView` space starts below the inset, so it saw only the 8pt of spacing.
+    @State private var topExtension: CGFloat = 0
 
     /// Long enough to read an overview, short enough that the banner visibly moves.
     private static let dwell: Duration = .seconds(8)
@@ -35,14 +37,17 @@ struct HomeHeroCarousel: View {
                 .containerRelativeFrame(.vertical) { height, _ in max(440, height * 0.66) }
                 .frame(maxWidth: .infinity)
                 // Up under the transparent toolbar, the way the TV app's banner reaches the window's
-                // top edge. Grown by the scroll view's inset and pinned to the bottom:
-                // `ignoresSafeArea` inside a scroll view let the art hang below the banner as well.
+                // top edge. Pinned to the bottom: `ignoresSafeArea` inside a scroll view let the art
+                // hang below the banner as well.
                 .background(alignment: .bottom) {
                     ZStack {
                         backdrop(for: current)
                         scrim
                     }
                     .padding(.top, -topExtension)
+                }
+                .onGeometryChange(for: CGFloat.self) { max(0, $0.frame(in: .global).minY) } action: {
+                    topExtension = $0
                 }
                                 .overlay(alignment: .bottomLeading) {
                     details(for: current)

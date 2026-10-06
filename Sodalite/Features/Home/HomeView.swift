@@ -9,7 +9,6 @@ struct HomeView: View {
     #if os(macOS)
     /// The hero's Play: the same detail page as a click on it, told to start playing once it is ready.
     @State private var heroPlayItem: JellyfinItem?
-    @State private var heroTopExtension: CGFloat = 0
     #endif
     @State private var selectedFilter: FilterDestination?
 
@@ -327,7 +326,6 @@ struct HomeView: View {
                 #if os(macOS)
                 HomeHeroCarousel(
                     items: vm.heroItems,
-                    topExtension: heroTopExtension,
                     backdropURL: vm.heroBackdropURL(for:),
                     onOpen: { selectedItem = $0 },
                     onPlay: { heroPlayItem = $0 }
@@ -425,11 +423,6 @@ struct HomeView: View {
                 .padding(.vertical, 40)
             }
             .scrollsUnderShellChrome()
-            #if os(macOS)
-            .onScrollGeometryChange(for: CGFloat.self) { $0.contentInsets.top } action: { _, inset in
-                heroTopExtension = inset
-            }
-            #endif
             .onChange(of: focusedRowIndex) { oldValue, newValue in
                 // Scroll to top only on a real top-row → tab-bar arrival, gated two ways:
                 // 1. oldValue == 0: the focus engine routes Up to the tab bar only from the top row; a row-N→nil (N>0) is a transient between LazyVStack row materializations, not a tab-bar arrival.
