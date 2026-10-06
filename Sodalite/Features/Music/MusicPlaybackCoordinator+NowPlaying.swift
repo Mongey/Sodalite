@@ -1,7 +1,11 @@
 import Foundation
 import MediaPlayer
 import AVFoundation
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 import AetherEngine
 
 /// Native system Now-Playing for the music path.
@@ -33,7 +37,33 @@ extension MusicPlaybackCoordinator {
 
     /// Command center for transport handlers: the active session's own center, else the shared default.
     private var commandCenter: MPRemoteCommandCenter {
+        #if os(tvOS) || os(iOS)
         engine.audioNowPlayingSession?.remoteCommandCenter ?? MPRemoteCommandCenter.shared()
+        #else
+        MPRemoteCommandCenter.shared()
+        #endif
+    }
+
+    /// Whether the engine publishes a Now-Playing session of its own for the AVPlayer audio path.
+    ///
+    /// It does on tvOS and iOS, where a paused bare AVPlayer loses Now-Playing unless a session
+    /// holds it, and `MPNowPlayingSession` exists to hold it. macOS has neither the rule nor the
+    /// class, so every Mac session takes the route the FFmpeg fallback takes on the other
+    /// platforms: a direct write to the shared center.
+    private var engineOwnsNowPlayingSession: Bool {
+        #if os(tvOS) || os(iOS)
+        engine.audioNowPlayingSession != nil
+        #else
+        false
+        #endif
+    }
+
+    /// Stages the per-item dictionary on the engine's session path, and is a no-op where there is
+    /// no such session to stage it on.
+    private func stageEngineNowPlayingInfo(_ info: [String: Any]) {
+        #if os(tvOS) || os(iOS)
+        engine.setAudioNowPlayingInfo(info)
+        #endif
     }
 
     /// Build + publish the now-playing dictionary, register remote commands (once), kick an async
@@ -50,8 +80,8 @@ extension MusicPlaybackCoordinator {
         // AVPlayer path: hand the staged dict (with a guaranteed-valid artwork) to the engine, which stamps it on
         // AVPlayerItem.nowPlayingInfo; the auto-publishing session merges in elapsed/rate/duration. NO manual write
         // to MPNowPlayingInfoCenter, and NO externalMetadata (an AVKit property the bare audio AVPlayer never surfaces).
-        if engine.audioNowPlayingSession != nil {
-            engine.setAudioNowPlayingInfo(baseNowPlayingDict(for: item))
+        if engineOwnsNowPlayingSession {
+            stageEngineNowPlayingInfo(baseNowPlayingDict(for: item))
             loadArtwork(for: item)
             return
         }
@@ -89,17 +119,25 @@ extension MusicPlaybackCoordinator {
     /// artwork slot is never empty. @Sendable handler (MediaPlayer requests the bitmap off the main actor). Built once.
     static let placeholderArtwork: MPMediaItemArtwork = {
         let size = CGSize(width: 600, height: 600)
-        let format = UIGraphicsImageRendererFormat.preferred()
-        format.opaque = true
-        let image = UIGraphicsImageRenderer(size: size, format: format).image { ctx in
-            UIColor(white: 0.12, alpha: 1).setFill()
-            ctx.fill(CGRect(origin: .zero, size: size))
-            let cfg = UIImage.SymbolConfiguration(pointSize: 220, weight: .regular)
-            if let symbol = UIImage(systemName: "music.note", withConfiguration: cfg)?
-                .withTintColor(UIColor(white: 0.5, alpha: 1), renderingMode: .alwaysOriginal) {
-                symbol.draw(at: CGPoint(x: (size.width - symbol.size.width) / 2,
-                                        y: (size.height - symbol.size.height) / 2))
-            }
+        let image = PlatformImage.drawn(size: size, opaque: true) { context in
+            context.setFillColor(CGColor(gray: 0.12, alpha: 1))
+            context.fill(CGRect(origin: .zero, size: size))
+            // Filled through the glyph's alpha rather than by tinting the symbol image: the two
+            // frameworks tint one by different routes, and a fill clipped to the glyph is the same
+            // picture on both.
+            guard let glyph = PlatformImage.systemSymbol("music.note", pointSize: 220)?.cgImage
+            else { return }
+            let box = CGRect(
+                x: (size.width - CGFloat(glyph.width)) / 2,
+                y: (size.height - CGFloat(glyph.height)) / 2,
+                width: CGFloat(glyph.width),
+                height: CGFloat(glyph.height)
+            )
+            context.saveGState()
+            context.clip(to: box, mask: glyph)
+            context.setFillColor(CGColor(gray: 0.5, alpha: 1))
+            context.fill(box)
+            context.restoreGState()
         }
         return MPMediaItemArtwork(boundsSize: image.size) { @Sendable _ in image }
     }()
@@ -109,7 +147,7 @@ extension MusicPlaybackCoordinator {
     /// write), keeps it alive across a pause (stale entries get dropped), and moves the scrubber.
     func refreshNowPlayingElapsed() {
         // On the session path the engine drives elapsed/rate from the player; only the FFmpeg fallback needs this.
-        guard engine.audioNowPlayingSession == nil, currentItem != nil else { return }
+        guard !engineOwnsNowPlayingSession, currentItem != nil else { return }
         let center = infoCenter
         guard var info = center.nowPlayingInfo else {
             // No entry yet (first publish): build the full one.
@@ -124,9 +162,9 @@ extension MusicPlaybackCoordinator {
 
     func clearNowPlayingInfo() {
         // Clear the AVPlayer path's staged per-item dictionary (no-op if no audio host).
-        engine.setAudioNowPlayingInfo([:])
+        stageEngineNowPlayingInfo([:])
         // The session auto-clears on stop; only the FFmpeg fallback's shared-center entry needs an explicit nil.
-        if engine.audioNowPlayingSession == nil {
+        if !engineOwnsNowPlayingSession {
             infoCenter.nowPlayingInfo = nil
         }
         cachedArtwork = nil
@@ -150,11 +188,11 @@ extension MusicPlaybackCoordinator {
             // the lock screen would keep it. ImageFetch also drops the refused entry, so the next
             // track change is not served the same half file out of the HTTP cache (Sodalite#123).
             guard case .whole(let data) = await ImageFetch.load(URLRequest(url: url)),
-                  let image = UIImage(data: data),
+                  let image = PlatformImage(data: data),
                   // Force-decode off-main. A corrupt cover (Jellyfin can serve a truncated embedded image:
                   // "Error -17102 decompressing image -- possibly corrupt") otherwise crashes MediaPlayer when
                   // it decodes the image lazily. nil = undecodable, so keep the already-published placeholder.
-                  let decoded = await image.byPreparingForDisplay() else { return }
+                  let decoded = await image.byPreparedForDisplay() else { return }
 
             await MainActor.run { [weak self] in
                 guard let self, self.nowPlayingArtworkItemID == itemID else { return }
@@ -162,13 +200,13 @@ extension MusicPlaybackCoordinator {
                 // via -[MPMediaItemArtwork jpegDataWithSize:] on its own thread). The MediaPlayer header does not
                 // declare the handler @Sendable, so a plain closure silently inherits MainActor isolation and, in a
                 // Swift 6 target, trips _dispatch_assert_queue_fail on that thread (Apple DTS forum 764874). `decoded`
-                // is an immutable, already-force-decoded UIImage, so the @Sendable capture is sound.
+                // is an immutable, already-force-decoded image, so the @Sendable capture is sound.
                 let artwork = MPMediaItemArtwork(boundsSize: decoded.size) { @Sendable _ in decoded }
                 self.cachedArtwork = artwork
                 self.cachedArtworkItemID = itemID
-                if self.engine.audioNowPlayingSession != nil {
+                if self.engineOwnsNowPlayingSession {
                     // AVPlayer path: re-stamp the dict with the real cover (replacing the placeholder) on the item.
-                    self.engine.setAudioNowPlayingInfo(self.baseNowPlayingDict(for: item))
+                    self.stageEngineNowPlayingInfo(self.baseNowPlayingDict(for: item))
                 } else {
                     // FFmpeg fallback: merge artwork into the shared center.
                     guard var info = self.infoCenter.nowPlayingInfo else { return }

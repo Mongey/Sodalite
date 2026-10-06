@@ -2,7 +2,6 @@ import Foundation
 import Combine
 import AVFoundation
 import MediaPlayer
-import UIKit
 import AetherEngine
 
 /// Owns music playback end-to-end: queue, transport, the shared `AetherEngine` audio-only backend,
@@ -286,6 +285,10 @@ final class MusicPlaybackCoordinator {
     /// system can deactivate on pause, after which AVPlayer.play() yields no audio until reactivated.
     /// setCategory/setActive are idempotent, so repeated calls are cheap.
     private func configureAudioSessionIfNeeded() {
+        #if os(macOS)
+        // There is no app-level audio session on a Mac: output is the device's, and AVPlayer plays
+        // into it without being asked.
+        #else
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(.playback, mode: .default)
@@ -294,6 +297,7 @@ final class MusicPlaybackCoordinator {
         } catch {
             LogTap.shared.note("[MusicCoordinator] audio session setup FAILED: \(error.localizedDescription)")
         }
+        #endif
     }
 
     // MARK: - Engine observation
@@ -384,8 +388,8 @@ final class MusicPlaybackCoordinator {
         // from an update landing around the background transition; if the last write was while
         // foreground (music started before minimizing) the badge never appears. Re-publishing here
         // with live state gives the system a fresh entry the moment the app backgrounds.
-        NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)
-            .merge(with: NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification))
+        NotificationCenter.default.publisher(for: AppActivity.didLeaveForeground)
+            .merge(with: NotificationCenter.default.publisher(for: AppActivity.didBecomeActive))
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self, self.currentItem != nil else { return }
