@@ -1,5 +1,7 @@
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#endif
 
 enum MyRequestsPresentationPolicy {
     static func shouldPresent(unseen: Int, authenticated: Bool, loading: Bool, modalActive: Bool) -> Bool {
@@ -11,12 +13,18 @@ enum MyRequestsPresentationPolicy {
     @MainActor
     static var isModalActive: Bool {
         if PlayerModalPresence.isPlayerActive { return true }
+        #if os(macOS)
+        // AppKit has no modal chain to walk: a SwiftUI sheet on a Mac is a child window, and the
+        // player answers for itself above. Nothing else here can be covered by one.
+        return false
+        #else
         let root = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .first { $0.activationState == .foregroundActive }?
             .windows.first { $0.isKeyWindow }?
             .rootViewController
         return root?.presentedViewController != nil
+        #endif
     }
 }
 
@@ -128,7 +136,9 @@ private struct MyRequestsPresentation: ViewModifier {
             .onChange(of: scenePhase) { _, phase in
                 guard phase == .background else { return }
                 perform(flow.didEnterBackground(panelPresented: isPresented))
+                #if !os(macOS)
                 if watcher.isEnabled { MyRequestsBackgroundRefresh.schedule() }
+                #endif
             }
             .menuPresentation(isPresented: presentedBinding, onDismiss: {
                 let dismissal = flow.panelDidDismiss()

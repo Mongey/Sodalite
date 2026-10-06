@@ -1,3 +1,6 @@
+#if !os(macOS)
+// The guide canvas is a UICollectionView (GuideGridContainer). The Mac shows
+// ChannelListView instead, which is the same answer the phone gets for the same reason.
 import SwiftUI
 
 /// Bundles channel and program so the action cover receives both atomically. With two separate
@@ -157,3 +160,4 @@ struct GuideView: View {
         }
     }
 }
+#endif

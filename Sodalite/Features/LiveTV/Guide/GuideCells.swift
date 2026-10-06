@@ -1,3 +1,5 @@
+#if !os(macOS)
+// The guide grid is a UICollectionView driven by the focus engine. macOS has neither, and the Mac draws the channel lineup instead (GuideView).
 import SwiftUI
 import UIKit
 
@@ -287,3 +289,4 @@ final class GuideGridLineView: UICollectionReusableView {
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }
+#endif

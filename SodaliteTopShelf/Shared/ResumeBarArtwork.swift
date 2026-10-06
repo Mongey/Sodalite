@@ -216,7 +216,13 @@ enum ResumeBarArtwork {
         // The one number a pass cannot reason about from here. A composite holds two bitmaps of
         // `maxPixelSize`, so that width trades sharpness against a hard ceiling, and the headroom
         // left at the end is what says whether there is room to go on.
+        // Only the extension's host platforms have a per-process footprint to report: the figure is
+        // the jetsam headroom, and a Mac process has no such ceiling to count down from.
+        #if os(tvOS) || os(iOS)
         log.info("composited \(done.count) cells, \(os_proc_available_memory() / 1_048_576)MB left")
+        #else
+        log.info("composited \(done.count) cells")
+        #endif
         return done
     }
 

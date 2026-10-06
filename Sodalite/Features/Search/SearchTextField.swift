@@ -1,3 +1,5 @@
+#if !os(macOS)
+// A UITextField the remote can focus. macOS uses SwiftUI's own field, which already behaves like a Mac text field.
 import SwiftUI
 import UIKit
 
@@ -68,3 +70,4 @@ struct SearchTextField: UIViewRepresentable {
         #endif
     }
 }
+#endif

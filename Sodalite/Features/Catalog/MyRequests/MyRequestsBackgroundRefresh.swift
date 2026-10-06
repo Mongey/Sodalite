@@ -1,3 +1,6 @@
+#if !os(macOS)
+// BGTaskScheduler does not exist on macOS, and the transition it schedules against does not
+// either: a Mac app that is not frontmost is still running and still refreshing.
 import Foundation
 import BackgroundTasks
 
@@ -33,3 +36,4 @@ nonisolated enum MyRequestsBackgroundRefresh {
         try? BGTaskScheduler.shared.submit(request)
     }
 }
+#endif
