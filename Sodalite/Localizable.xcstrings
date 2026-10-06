@@ -70,6 +70,30 @@
     "+%lld" : {
 
     },
+    "about.discussions" : {
+      "comment" : "macOS About window: link to the project's GitHub Discussions",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discussions"
+          }
+        }
+      }
+    },
+    "about.tagline" : {
+      "comment" : "macOS About window: one-line description under the app name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Jellyfin library and Seerr, together on every Apple screen."
+          }
+        }
+      }
+    },
     "action.shuffle" : {
       "localizations" : {
         "cs" : {

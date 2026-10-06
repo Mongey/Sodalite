@@ -205,6 +205,7 @@ struct SodaliteApp: App {
 
         #if os(macOS)
         MacPlayerWindowScene()
+        MacAboutWindowScene()
         #endif
     }
 
