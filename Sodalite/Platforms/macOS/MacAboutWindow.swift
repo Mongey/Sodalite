@@ -110,6 +110,8 @@ private struct MacAboutView: View {
         .frame(width: 400)
         .fixedSize(horizontal: false, vertical: true)
         .containerBackground(.thickMaterial, for: .window)
+        // Dark like every other window of the app, whatever the system appearance.
+        .preferredColorScheme(.dark)
         .windowMinimizeBehavior(.disabled)
         .sheet(item: $sheet) { sheet in
             NavigationStack {
