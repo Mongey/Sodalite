@@ -1,7 +1,21 @@
-#if os(macOS)
 import Foundation
 
 extension HomeViewModel {
+    func setHeroEnabled(_ enabled: Bool) {
+        guard enabled != heroEnabled else { return }
+        heroEnabled = enabled
+        reloadHero()
+    }
+
+    func reloadHero() {
+        heroTask?.cancel()
+        guard heroEnabled else {
+            heroItems = []
+            return
+        }
+        heroTask = Task { [weak self] in await self?.loadHero() }
+    }
+
     /// How many titles the carousel pages through.
     static let heroLimit = 8
 
@@ -46,4 +60,3 @@ extension HomeViewModel {
         imageService.backdropURL(for: item, maxWidth: ImageWidth.fullBleed)
     }
 }
-#endif

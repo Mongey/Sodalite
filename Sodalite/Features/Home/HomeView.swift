@@ -6,10 +6,8 @@ struct HomeView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel: HomeViewModel?
     @State private var selectedItem: JellyfinItem?
-    #if os(macOS)
     /// The hero's Play: the same detail page as a click on it, told to start playing once it is ready.
     @State private var heroPlayItem: JellyfinItem?
-    #endif
     @State private var selectedFilter: FilterDestination?
 
     /// Spinner accent: HomeView's NavigationStack resets the inherited TabView tint to white, so re-apply the effective tint to match the Live TV spinner.
@@ -65,11 +63,9 @@ struct HomeView: View {
             .detailCover(item: $selectedItem) { item in
                 DetailRouterView(item: item)
             }
-            #if os(macOS)
             .detailCover(item: $heroPlayItem) { item in
                 DetailRouterView(item: item, autoPlay: true)
             }
-            #endif
             .detailCover(item: $selectedFilter) { filter in
                 FilteredGridView(
                     title: filter.title,
@@ -323,14 +319,14 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 // Invisible zero-height scroll-to-top anchor for when focus leaves the rows.
                 Color.clear.frame(height: 0).id("top")
-                #if os(macOS)
-                HomeHeroCarousel(
-                    items: vm.heroItems,
-                    backdropURL: vm.heroBackdropURL(for:),
-                    onOpen: { selectedItem = $0 },
-                    onPlay: { heroPlayItem = $0 }
-                )
-                #endif
+                if dependencies.appearancePreferences.showHomeHero {
+                    HomeHeroCarousel(
+                        items: vm.heroItems,
+                        backdropURL: vm.heroBackdropURL(for:),
+                        onOpen: { selectedItem = $0 },
+                        onPlay: { heroPlayItem = $0 }
+                    )
+                }
                 LazyVStack(alignment: .leading, spacing: 40) {
                     if !vm.unreachableServerNames.isEmpty {
                         CombinedHomeNotice(serverNames: vm.unreachableServerNames)
@@ -423,6 +419,10 @@ struct HomeView: View {
                 .padding(.vertical, 40)
             }
             .scrollsUnderShellChrome()
+            // Off by default everywhere but the Mac, so nothing is fetched for a banner nobody sees.
+            .onChange(of: dependencies.appearancePreferences.showHomeHero, initial: true) { _, enabled in
+                vm.setHeroEnabled(enabled)
+            }
             #if os(tvOS)
             // tvOS only: the move it answers is the focus engine handing Up to the tab bar. On the Mac
             // the hero rebuilds its buttons on every page, focus left the first row each time, and

@@ -159415,6 +159415,30 @@
         }
       }
     },
+    "settings.appearance.homeHero" : {
+      "comment" : "Appearance setting (Mac): toggle for the banner carousel at the top of Home",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home Banner"
+          }
+        }
+      }
+    },
+    "settings.appearance.homeHero.subtitle" : {
+      "comment" : "Appearance setting (Mac): explains the Home banner toggle",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A large banner of the newest movies and shows at the top of Home"
+          }
+        }
+      }
+    },
     "settings.appearance.largeCards" : {
       "comment" : "Appearance toggle: render Home cards larger",
       "extractionState" : "manual",

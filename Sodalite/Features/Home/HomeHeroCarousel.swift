@@ -1,7 +1,7 @@
 import SwiftUI
 
-/// The top of the Mac's Home: the newest titles as a full-width banner that pages by itself, the way
-/// the TV app opens. The art runs to the window's top edge under the toolbar; the title, a line of
+/// The top of Home: the newest titles as a full-width banner that pages
+/// by itself, the way the TV app opens. The art runs to the window's top edge under the toolbar; the title, a line of
 /// facts, the overview and Play sit over a scrim at the bottom leading corner.
 struct HomeHeroCarousel: View {
     let items: [JellyfinItem]
@@ -13,7 +13,11 @@ struct HomeHeroCarousel: View {
     @Environment(\.horizontalSizeClass) private var hSizeClass
 
     @State private var index = 0
+    /// The pointer is over the banner, or on tvOS focus is on its buttons; either way it holds still.
     @State private var isHovering = false
+    #if os(tvOS)
+    @FocusState private var buttonsFocused: Bool
+    #endif
     /// How far below the window's top edge the banner starts: the toolbar's inset plus the stack
     /// spacing above it, and more while the page is pulled past its top. The art grows upward by
     /// exactly that. Measured in window space because every scroll-relative reading falls short:
@@ -23,6 +27,16 @@ struct HomeHeroCarousel: View {
 
     /// Long enough to read an overview, short enough that the banner visibly moves.
     private static let dwell: Duration = .seconds(8)
+
+    private var isCompact: Bool { hSizeClass == .compact }
+
+    private var titleSize: CGFloat {
+        #if os(tvOS)
+        64
+        #else
+        isCompact ? 28 : 40
+        #endif
+    }
 
     private var current: JellyfinItem? {
         items.indices.contains(index) ? items[index] : items.first
@@ -34,7 +48,9 @@ struct HomeHeroCarousel: View {
             // the art, the text and the pager all agree on one height. Built the other way round, the
             // filled backdrop picked the size and the clip cut the buttons and the dots off the bottom.
             Color.clear
-                .containerRelativeFrame(.vertical) { height, _ in max(440, height * 0.66) }
+                .containerRelativeFrame(.vertical) { height, _ in
+                    isCompact ? max(320, height * 0.5) : max(440, height * 0.66)
+                }
                 .frame(maxWidth: .infinity)
                 // Up under the transparent toolbar, the way the TV app's banner reaches the window's
                 // top edge. Pinned to the bottom: `ignoresSafeArea` inside a scroll view let the art
@@ -53,7 +69,7 @@ struct HomeHeroCarousel: View {
                     details(for: current)
                         // Lined up with the rows' titles below it.
                         .padding(.leading, LayoutMetrics.current(hSizeClass).rowInset)
-                        .padding(.trailing, 160)
+                        .padding(.trailing, isCompact ? LayoutMetrics.current(hSizeClass).rowInset : 160)
                         .padding(.bottom, 52)
                         .id(current.originKey)
                         .transition(.opacity)
@@ -62,9 +78,24 @@ struct HomeHeroCarousel: View {
                     pager.padding(.bottom, 20)
                 }
                 .overlay { arrows }
+                #if os(tvOS)
+                // Focus stands in for the pointer: a page change rebuilds the buttons, which would
+                // throw focus off the one the viewer is on.
+                .onChange(of: buttonsFocused) { _, focused in isHovering = focused }
+                #else
                 .contentShape(Rectangle())
                 .onTapGesture { onOpen(current) }
                 .onHover { isHovering = $0 }
+                #endif
+                #if os(iOS)
+                .simultaneousGesture(
+                    DragGesture(minimumDistance: 24).onEnded { drag in
+                        guard abs(drag.translation.width) > abs(drag.translation.height),
+                              abs(drag.translation.width) > 40 else { return }
+                        step(drag.translation.width < 0 ? 1 : -1)
+                    }
+                )
+                #endif
                 .animation(.easeInOut(duration: 0.6), value: index)
                 // Restarted by every page change, so a click on an arrow gets a full dwell before the
                 // banner moves on by itself. Held while the pointer is over it, so nothing slides away
@@ -116,7 +147,7 @@ struct HomeHeroCarousel: View {
                 logo: .from(imageTags: item.imageTags, hasFullDetail: true)
             ) {
                 Text(item.name)
-                    .font(.system(size: 40, weight: .bold))
+                    .font(.system(size: titleSize, weight: .bold))
                     .lineLimit(2)
             }
             .frame(maxWidth: 420, maxHeight: 130, alignment: .bottomLeading)
@@ -135,6 +166,23 @@ struct HomeHeroCarousel: View {
                     .frame(maxWidth: 520, alignment: .leading)
             }
 
+            #if os(tvOS)
+            // The system styles, because they carry the focus lift a remote needs to see where it is.
+            HStack(spacing: 24) {
+                Button { onPlay(item) } label: {
+                    Label("detail.play", systemImage: "play.fill")
+                }
+                .buttonStyle(.borderedProminent)
+                Button { onOpen(item) } label: {
+                    Image(systemName: "info")
+                }
+                .buttonStyle(.bordered)
+                .accessibilityLabel(Text(verbatim: item.name))
+            }
+            .focused($buttonsFocused)
+            .focusSection()
+            .padding(.top, 8)
+            #else
             HStack(spacing: 12) {
                 Button {
                     onPlay(item)
@@ -161,6 +209,7 @@ struct HomeHeroCarousel: View {
                 .accessibilityLabel(Text(verbatim: item.name))
             }
             .padding(.top, 4)
+            #endif
         }
         .foregroundStyle(.white)
         // The serverSession a combined Home's secondary title needs for its logo request.
@@ -176,7 +225,9 @@ struct HomeHeroCarousel: View {
                         .fill(.white.opacity(page == index ? 1 : 0.4))
                         .frame(width: 7, height: 7)
                         .contentShape(Rectangle().inset(by: -4))
+                        #if !os(tvOS)
                         .onTapGesture { index = page }
+                        #endif
                 }
             }
         }
@@ -184,6 +235,7 @@ struct HomeHeroCarousel: View {
 
     @ViewBuilder
     private var arrows: some View {
+        #if !os(tvOS)
         if items.count > 1 {
             HStack {
                 arrow("chevron.left") { step(-1) }
@@ -195,6 +247,7 @@ struct HomeHeroCarousel: View {
             .opacity(isHovering ? 1 : 0)
             .animation(.easeInOut(duration: 0.2), value: isHovering)
         }
+        #endif
     }
 
     private func arrow(_ systemImage: String, action: @escaping () -> Void) -> some View {

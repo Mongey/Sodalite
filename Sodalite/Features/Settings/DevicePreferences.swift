@@ -24,6 +24,7 @@ final class DevicePreferences {
         static let forceDolbyVisionOnNonDVDisplay = "playback.forceDolbyVisionOnNonDVDisplay"
         static let showTopShelfRow = "appearance.showTopShelfRow"
         static let topShelfImage = "appearance.topShelfImage"
+        static let showHomeHero = "appearance.showHomeHero"
     }
 
     /// Stats panel "i" button. Read-only, so it is App Store safe and needs no diagnostic-build gate.
@@ -103,6 +104,19 @@ final class DevicePreferences {
         didSet { store.set(topShelfImage.rawValue, forKey: Keys.topShelfImage) }
     }
 
+    /// The Home banner carousel. On by default on the Mac, whose window has the room for it, and off
+    /// on iPhone, iPad and Apple TV, where it pushes the rows most of a screen down. A device value:
+    /// it is a choice about this screen's layout.
+    var showHomeHero: Bool {
+        didSet { store.set(showHomeHero, forKey: Keys.showHomeHero) }
+    }
+
+    #if os(macOS)
+    static let showsHomeHeroByDefault = true
+    #else
+    static let showsHomeHeroByDefault = false
+    #endif
+
     private let store: PreferenceKeyspace
 
     init(keyspace store: PreferenceKeyspace) {
@@ -126,6 +140,7 @@ final class DevicePreferences {
         self.showTopShelfRow = store.object(forKey: Keys.showTopShelfRow) as? Bool ?? true
         self.topShelfImage = store.string(forKey: Keys.topShelfImage)
             .flatMap(AppearancePreferences.ContinueWatchingImage.init(rawValue:)) ?? .thumb
+        self.showHomeHero = store.object(forKey: Keys.showHomeHero) as? Bool ?? Self.showsHomeHeroByDefault
     }
 
     /// Reads every value again, for a factory reset that wiped the store underneath this object:
@@ -149,6 +164,7 @@ final class DevicePreferences {
         update(\.forceDolbyVisionOnNonDVDisplay)
         update(\.showTopShelfRow)
         update(\.topShelfImage)
+        update(\.showHomeHero)
     }
 
     convenience init(store defaults: UserDefaults = .standard) {

@@ -4,11 +4,11 @@ import SwiftUI
 final class HomeViewModel {
     var rows: [HomeRowData] = []
     var tagRows: [HomeTagRowData] = []
-    #if os(macOS)
-    /// The Mac's hero carousel: the newest titles that have a backdrop to show (see loadHero).
+    /// The hero carousel: the newest titles that have a backdrop to show (see loadHero).
     var heroItems: [JellyfinItem] = []
     @ObservationIgnored var heroTask: Task<Void, Never>?
-    #endif
+    /// Mirrors the Home Banner setting, so a load fetches the hero only when it will be shown.
+    @ObservationIgnored var heroEnabled = false
     var isLoading = true
     /// Home's own verdict: the fan-out drained and not one row produced anything. Deliberately not
     /// a message. Home can only know THAT the load failed; WHY comes from
@@ -362,10 +362,7 @@ final class HomeViewModel {
         providerCountsTask = nil
         genreCachesTask = nil
 
-        #if os(macOS)
-        heroTask?.cancel()
-        heroTask = Task { [weak self] in await self?.loadHero() }
-        #endif
+        reloadHero()
 
         let isFirstLoad = rows.isEmpty && tagRows.isEmpty
         if isFirstLoad {

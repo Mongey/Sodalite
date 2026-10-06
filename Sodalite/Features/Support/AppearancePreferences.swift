@@ -130,6 +130,12 @@ final class AppearancePreferences {
     }
 
     /// Device value, see DevicePreferences.
+    var showHomeHero: Bool {
+        get { device.showHomeHero }
+        set { device.showHomeHero = newValue }
+    }
+
+    /// Device value, see DevicePreferences.
     var topShelfImage: ContinueWatchingImage {
         get { device.topShelfImage }
         set { device.topShelfImage = newValue }
