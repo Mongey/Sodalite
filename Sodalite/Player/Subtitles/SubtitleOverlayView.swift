@@ -67,6 +67,11 @@ struct SubtitleOverlayView: View {
     }
 
     var body: some View {
+        #if os(macOS)
+        // No host for the libass frame stream on this platform, so a styled track draws through
+        // the plain overlay: the same fallback a secondary track already takes.
+        cueOverlay
+        #else
         // libass styling used ONLY without a secondary track; with one the primary
         // falls back to the plain-text overlay so both share one stack (issue #47).
         if let assRenderer, !hasSecondaryTrack {
@@ -92,6 +97,7 @@ struct SubtitleOverlayView: View {
         } else {
             cueOverlay
         }
+        #endif
     }
 
     private var cueOverlay: some View {
@@ -731,6 +737,7 @@ struct SubtitleOverlayView: View {
 /// publishes a transient nil before the identical re-render lands, which blinked every visible
 /// sub; the coordinator pre-announces reloads via `reloadSignal` so suppression is deterministic.
 /// A nil with no announced reload is a real cue end and hides instantly.
+#if !os(macOS)
 private struct ASSRenderedSubtitles: UIViewRepresentable {
     let renderer: AssSubtitlesRenderer
     let reloadSignal: PassthroughSubject<Void, Never>
@@ -881,3 +888,4 @@ final class ASSFrameHostView: UIView {
         suppressNilDeadline = .distantPast
     }
 }
+#endif

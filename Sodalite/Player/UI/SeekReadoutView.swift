@@ -1,5 +1,11 @@
+#if !os(macOS)
+// Player chrome for the UIKit host: it is display-only by construction, because
+// PlayerHostController owns every press and moves a cursor through it. macOS has its own
+// transport, whose controls handle their own clicks (Platforms/macOS/MacPlayerScreen.swift).
 import SwiftUI
+#if os(tvOS)
 import UIKit
+#endif
 
 /// Sodalite#104: a press and a hold, in the two languages they actually speak.
 ///
@@ -131,7 +137,6 @@ enum SeekReadoutMetrics {
     private static let tallestDrawnHeight = rowHeight(
         symbol: UIImage.SymbolConfiguration(textStyle: .callout),
         lineHeight: UIFont.preferredFont(forTextStyle: .callout).lineHeight)
-    #endif
 
     /// The tallest glyph `SeekReadoutView` can draw at `configuration`, never shorter than the text
     /// line it stands beside.
@@ -141,4 +146,6 @@ enum SeekReadoutMetrics {
             .compactMap { UIImage(systemName: $0, withConfiguration: configuration)?.size.height }
         return ceil(max(lineHeight, glyphs.max() ?? lineHeight))
     }
+    #endif
 }
+#endif

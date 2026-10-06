@@ -1,3 +1,5 @@
+#if !os(macOS)
+// Counts the UIKit player hosts on screen; macOS presents no such host.
 import Foundation
 
 /// Sodalite#175: which `PlayerHostController`s are still alive, and what the system believes is playing.
@@ -46,3 +48,4 @@ enum PlayerHostDiagnostics {
         }
     }
 }
+#endif

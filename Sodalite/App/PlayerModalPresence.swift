@@ -1,4 +1,7 @@
+import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Non-destructive twin of PlayerModalDismisser's modal walk: reports whether a player
 /// session is on screen (modal PlayerHostController, or tvOS PiP with no modal to walk).
@@ -9,6 +12,25 @@ enum PlayerModalPresence {
         NotificationCenter.default.post(name: .playerModalPresenceDidChange, object: nil)
     }
 
+    #if os(macOS)
+    /// Sessions on screen. The Mac player is a SwiftUI view with no modal chain to walk, so it says
+    /// so itself: `MacPlayerScreen` holds a claim for as long as it is mounted. A count rather than
+    /// a flag because a session handed from one screen to the next mounts the new one before the
+    /// old one goes away.
+    private static var claims = 0
+
+    static func claimPlayerActive() {
+        claims += 1
+        notifyDidChange()
+    }
+
+    static func releasePlayerActive() {
+        claims = max(0, claims - 1)
+        notifyDidChange()
+    }
+
+    static var isPlayerActive: Bool { claims > 0 }
+    #else
     static var isPlayerActive: Bool {
         #if os(tvOS)
         if PiPSessionCoordinator.shared.hasActiveSession { return true }
@@ -28,4 +50,5 @@ enum PlayerModalPresence {
         }
         return false
     }
+    #endif
 }

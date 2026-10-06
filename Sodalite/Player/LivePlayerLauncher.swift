@@ -1,8 +1,10 @@
+#if !os(macOS)
+// Live playback presents the same UIKit modal as the rest; the Mac has no live player yet.
 import SwiftUI
-import UIKit
 #if os(tvOS)
 import AetherEngine
 #endif
+import UIKit
 
 // MARK: - Live Player Launcher (UIKit modal presentation)
 
@@ -169,3 +171,4 @@ struct LivePlayerLauncher: UIViewControllerRepresentable {
     }
     #endif
 }
+#endif

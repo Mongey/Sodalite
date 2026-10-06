@@ -1,3 +1,8 @@
+#if !os(macOS)
+// The UIKit modal player. macOS presents the same view model from SwiftUI instead, see
+// Platforms/macOS/MacPlayerLauncher.swift, because every reason this is a presented
+// UIViewController (Menu interception, the focus engine, a scene's modal chain) is a reason
+// that does not exist on a Mac.
 import SwiftUI
 import UIKit
 
@@ -262,3 +267,4 @@ final class PlayerLauncherHostVC: UIViewController {
             ?? UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
     }
 }
+#endif

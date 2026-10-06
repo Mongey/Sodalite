@@ -1,5 +1,8 @@
+#if !os(macOS)
+// Player chrome for the UIKit host: it is display-only by construction, because
+// PlayerHostController owns every press and moves a cursor through it. macOS has its own
+// transport, whose controls handle their own clicks (Platforms/macOS/MacPlayerScreen.swift).
 import SwiftUI
-import UIKit
 
 /// Sodalite#104: what the live rail says in words, for whichever transport is on screen.
 ///
@@ -137,3 +140,4 @@ struct LiveBadge: View {
             .background(Capsule().fill(Color.Theme.restFillStrong))
     }
 }
+#endif

@@ -1,3 +1,7 @@
+#if !os(macOS)
+// Player chrome for the UIKit host: it is display-only by construction, because
+// PlayerHostController owns every press and moves a cursor through it. macOS has its own
+// transport, whose controls handle their own clicks (Platforms/macOS/MacPlayerScreen.swift).
 import SwiftUI
 import AetherEngine
 
@@ -900,3 +904,4 @@ private struct ErrorActionButton: View {
             .padding(.vertical, 12)
     }
 }
+#endif

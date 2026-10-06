@@ -4,7 +4,9 @@ import Observation
 import AetherEngine
 import SwiftAssRenderer
 import AVKit
+#if canImport(UIKit)
 import UIKit
+#endif
 import os
 
 /// Bridges AetherEngine with Jellyfin session reporting and the custom tvOS player UI.
@@ -622,8 +624,8 @@ final class PlayerViewModel {
         // drawn as one, and the HTTP entry it leaves behind would be read again on the next open
         // (Sodalite#123).
         guard case .whole(let data) = await ImageFetch.load(request),
-              let image = UIImage(data: data) else { return nil }
-        let prepared = image.preparingForDisplay() ?? image
+              let image = PlatformImage(data: data) else { return nil }
+        let prepared = image.preparedForDisplay() ?? image
         ImageCache.shared.store(prepared, for: url)
         return prepared.cgImage
     }
@@ -633,15 +635,15 @@ final class PlayerViewModel {
     /// resolves the tile URL + crop rect from the TrickplayTileSet first. Nil on fetch failure or
     /// an out-of-bounds crop.
     nonisolated private static func fetchTrickplayCrop(from url: URL, crop: CGRect) async -> CGImage? {
-        let tileImage: UIImage
+        let tileImage: PlatformImage
         if let cached = ImageCache.shared.image(for: url) {
             tileImage = cached
         } else {
             var request = URLRequest(url: url)
             request.timeoutInterval = 15
             guard case .whole(let data) = await ImageFetch.load(request),
-                  let image = UIImage(data: data) else { return nil }
-            let prepared = image.preparingForDisplay() ?? image
+                  let image = PlatformImage(data: data) else { return nil }
+            let prepared = image.preparedForDisplay() ?? image
             ImageCache.shared.store(prepared, for: url)
             tileImage = prepared
         }
@@ -1868,8 +1870,8 @@ final class PlayerViewModel {
                 // Backstop for the volume KVO, which needs an active audio session to fire and the
                 // native path deliberately does not activate one. A float read per tick, and only
                 // while the window is open.
-                if self.systemCaptionWindow != nil {
-                    self.closeSystemCaptionWindowIfAudible(volume: AVAudioSession.sharedInstance().outputVolume)
+                if self.systemCaptionWindow != nil, let volume = Self.systemOutputVolume {
+                    self.closeSystemCaptionWindowIfAudible(volume: volume)
                 }
                 // Intro/outro/recap markers are absolute source-timeline values; currentTime is the AVPlayer
                 // clock (source - playlistShiftSeconds on native HLS), so compare against sourceTime.
@@ -3397,6 +3399,18 @@ final class PlayerViewModel {
     /// own subtitles in the language the system picked. The other two triggers arrive here as well
     /// and are left alone: skip back is `SkipBackSubtitleWindow`, a language mismatch at load is the
     /// preferred-subtitle settings, and both would otherwise switch a second track on top.
+    /// System output volume, where there is an audio session that reports one.
+    ///
+    /// macOS has none: output volume there belongs to the device rather than to the app, and there
+    /// is no muted-playback signal to answer, so the caption window below never opens.
+    private static var systemOutputVolume: Float? {
+        #if os(tvOS) || os(iOS)
+        AVAudioSession.sharedInstance().outputVolume
+        #else
+        nil
+        #endif
+    }
+
     private func handleSystemCaptionRequest(_ request: SystemCaptionRequest) {
         guard systemCaptionWindow == nil else { return }
         // The skip-back trigger fires the same signal, and at a very low volume it would otherwise
@@ -3404,7 +3418,7 @@ final class PlayerViewModel {
         // the skip-back behaviour promises. That trigger belongs to SkipBackSubtitleWindow.
         if let jump = lastBackwardJumpAt,
            Date().timeIntervalSince(jump) < Self.systemCaptionSkipBackGrace { return }
-        let volume = AVAudioSession.sharedInstance().outputVolume
+        guard let volume = Self.systemOutputVolume else { return }
         guard SystemCaptionWindow.shouldOpen(
             subtitlesActive: activeSubtitleIndex != nil,
             volume: volume
