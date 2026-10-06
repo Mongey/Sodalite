@@ -4,6 +4,7 @@ options:
   deploymentTarget:
     tvOS: "26.0"
     iOS: "26.0"
+    macOS: "26.0"
   createIntermediateGroups: true
   groupSortPosition: top
 settings:
@@ -110,6 +111,35 @@ targets:
     dependencies:
       - package: AetherEngine
       - package: SwiftAssRenderer
+  Sodalite-macOS:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sodalite
+        excludes:
+          - "Platforms/iOS/**"
+          - "Platforms/tvOS/**"
+      - path: Sodalite/Platforms/iOS/AppIcon.icon
+      - path: SodaliteTopShelf/Shared
+    settings:
+      groups:
+        - app
+      base:
+        INFOPLIST_FILE: SupportingFiles/Info-macOS.plist
+        CODE_SIGN_ENTITLEMENTS: SupportingFiles/Sodalite-macOS.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: YES
+        COMBINE_HIDPI_IMAGES: YES
+      configs:
+        Debug:
+          ENABLE_PREVIEWS: YES
+        Release:
+          ENABLE_PREVIEWS: NO
+          ENABLE_XOJIT_PREVIEWS: NO
+          ENABLE_DEBUG_DYLIB: NO
+    dependencies:
+      - package: AetherEngine
+      - package: SwiftAssRenderer
   SodaliteTopShelf:
     type: com.apple.product-type.tv-app-extension
     platform: tvOS
@@ -153,3 +183,7 @@ schemes:
     build:
       targets:
         Sodalite-iOS: all
+  Sodalite-macOS:
+    build:
+      targets:
+        Sodalite-macOS: all
