@@ -206,6 +206,15 @@ struct SodaliteApp: App {
         #if os(macOS)
         MacPlayerWindowScene()
         MacAboutWindowScene()
+
+        MacSettingsWindowScene {
+            MacSettingsWindowContent()
+                .environment(\.appState, appState)
+                .environment(\.dependencies, dependencies)
+                .environment(\.appearanceTheme, theme)
+                .preferredColorScheme(.dark)
+                .tint(theme.palette.control.color)
+        }
         #endif
     }
 

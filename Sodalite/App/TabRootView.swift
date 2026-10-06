@@ -79,12 +79,16 @@ struct TabRootView: View {
     ///
     /// iPhone (compact) also drops Settings from the tab bar so the 6 tabs do not overflow into
     /// the iOS "More" tab, whose nested navigation controller skips the Settings root on back.
-    /// Settings is reached via the gear overlay instead. tvOS + iPad keep it as a tab/sidebar item.
+    /// Settings is reached via the gear overlay instead. tvOS + iPad keep it as a tab/sidebar item,
+    /// and the Mac moves it to the Settings window.
     private var displayedTabs: [AppTab] {
         var tabs = AppTab.withDownloads(availableTabs, hasDownloads: showsDownloadsTab)
             .filter { !appearance.isTabHidden($0) }
         #if os(iOS)
         if hSizeClass == .compact { tabs = tabs.filter { $0 != .settings } }
+        #elseif os(macOS)
+        // The Mac keeps Settings in its own window (Cmd-,), see MacSettingsWindowContent.
+        tabs = tabs.filter { $0 != .settings }
         #endif
         return tabs
     }
