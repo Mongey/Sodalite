@@ -176,10 +176,19 @@ extension View {
     /// Applies .ignoresSafeArea only when `active`. Lets a detail screen stay full-bleed on
     /// tvOS/iPad while its scroll content respects the safe area on iPhone portrait (so the
     /// content is not clipped under the status bar / home indicator).
+    ///
+    /// On the Mac the leading inset is the sidebar, since detail pages are pushed into the split
+    /// view's detail column there, so only the vertical edges are given up: the page still runs
+    /// under the toolbar, and its title and buttons stay out from under the sidebar. The backdrop
+    /// keeps its own unconditional `.ignoresSafeArea()` and still extends beneath it.
     @ViewBuilder
     func ignoresSafeArea(when active: Bool, edges: Edge.Set = .all) -> some View {
         if active {
+            #if os(macOS)
+            ignoresSafeArea(edges: edges.intersection(.vertical))
+            #else
             ignoresSafeArea(edges: edges)
+            #endif
         } else {
             self
         }
