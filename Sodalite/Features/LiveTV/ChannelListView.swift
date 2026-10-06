@@ -1,3 +1,4 @@
+#if !os(tvOS)
 import SwiftUI
 
 private struct ChannelSelection: Identifiable {
@@ -11,8 +12,10 @@ private struct ChannelProgramSelection: Identifiable {
     var id: String { "\(channel.id)-\(program.id)" }
 }
 
-/// Live TV on the phone. A 2D grid behind a channel column does not fit 393pt, so compact gets a
-/// list that answers "what is on now" directly and defers the timeline to a per-channel sheet.
+/// Live TV wherever the 2D guide grid is not drawn: the phone, where a channel column plus a
+/// timeline does not fit 393pt, and the Mac, where the grid is a UICollectionView that does not
+/// exist. A list that answers "what is on now" directly and defers the timeline to a per-channel
+/// sheet.
 struct ChannelListView: View {
     @State private var model: ChannelListViewModel
     let tint: Color
@@ -103,8 +106,7 @@ struct ChannelListView: View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
             TextField("livetv.guide.search.placeholder", text: $searchText)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
+                .verbatimTextEntry()
             if !searchText.isEmpty {
                 Button { searchText = "" } label: {
                     Image(systemName: "xmark.circle.fill").foregroundStyle(.secondary)
@@ -314,7 +316,7 @@ private struct ChannelScheduleSheet: View {
                 }
             }
             .navigationTitle(channel.name)
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("common.done") { dismiss() }
@@ -341,3 +343,4 @@ private struct ChannelScheduleSheet: View {
         }
     }
 }
+#endif

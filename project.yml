@@ -5,6 +5,7 @@ options:
     tvOS: "26.0"
     iOS: "26.0"
     macOS: "26.0"
+    macOS: "26.0"
   createIntermediateGroups: true
   groupSortPosition: top
 settings:
@@ -58,6 +59,7 @@ targets:
       - path: Sodalite
         excludes:
           - "Platforms/iOS/**"
+          - "Platforms/macOS/**"
       # Pure helpers the extension shares with the app (and, via @testable, with SodaliteTests).
       # Compiled here rather than added to the test target: a second JellyfinItem in the test
       # module would make every unqualified use ambiguous.
@@ -90,6 +92,7 @@ targets:
       - path: Sodalite
         excludes:
           - "Platforms/tvOS/**"
+          - "Platforms/macOS/**"
       - path: SodaliteTopShelf/Shared
     settings:
       groups:

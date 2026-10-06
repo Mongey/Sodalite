@@ -1,5 +1,11 @@
 import SwiftUI
 
+/// What a field holds, for the keyboards that pick a layout from it. See `verbatimTextEntry`.
+enum VerbatimTextEntryKind {
+    case plain
+    case url
+}
+
 struct ThemeNavigationStack<Content: View>: View {
     @ViewBuilder let content: () -> Content
 
@@ -206,6 +212,93 @@ extension View {
     func onExitCommandIfEnabled(_ enabled: Bool, perform action: @escaping () -> Void) -> some View {
         #if os(tvOS)
         onExitCommand(perform: enabled ? action : nil)
+        #else
+        self
+        #endif
+    }
+
+    /// Hides the navigation bar on a screen that draws its own header.
+    ///
+    /// A Mac `NavigationStack` puts its controls in the window's toolbar, which is the window's and
+    /// not this screen's to hide, so there is nothing here to take away.
+    @ViewBuilder
+    func hidesNavigationBar() -> some View {
+        #if os(macOS)
+        self
+        #else
+        navigationBarHidden(true)
+        #endif
+    }
+
+    /// Keeps the navigation title on one line with the bar's controls.
+    ///
+    /// A Mac window title has no large form to shrink from, and tvOS draws no navigation bar at
+    /// all, so on neither is there a choice to make.
+    @ViewBuilder
+    func inlineNavigationTitle() -> some View {
+        #if os(iOS)
+        navigationBarTitleDisplayMode(.inline)
+        #else
+        self
+        #endif
+    }
+
+    /// Takes a field's text exactly as typed.
+    ///
+    /// The touch and remote keyboards correct, capitalise and choose a layout for a field unless
+    /// told not to, and a server address or a username is none of those things. A Mac keyboard does
+    /// not do any of it in the first place, so there is nothing there to switch off, and the
+    /// iOS-only modifiers that switch it off do not exist.
+    @ViewBuilder
+    func verbatimTextEntry(_ kind: VerbatimTextEntryKind = .plain) -> some View {
+        #if os(macOS)
+        autocorrectionDisabled()
+        #else
+        autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
+            .keyboardType(kind == .url ? .URL : .default)
+        #endif
+    }
+
+    /// A presentation that takes the whole screen on iOS and tvOS.
+    ///
+    /// macOS has no `fullScreenCover` at all, and would be the wrong place for one: a Mac window is
+    /// one of several on a desktop, so the app's covers arrive there as sheets. A sheet is a window
+    /// of its own, which is also what makes it key and hands its content the keyboard.
+    @ViewBuilder
+    func fullScreenCoverCompat<Content: View>(
+        isPresented: Binding<Bool>,
+        onDismiss: (() -> Void)? = nil,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View {
+        #if os(macOS)
+        sheet(isPresented: isPresented, onDismiss: onDismiss) { content().macCoverFrame() }
+        #else
+        fullScreenCover(isPresented: isPresented, onDismiss: onDismiss, content: content)
+        #endif
+    }
+
+    /// `item:` form, for the covers that carry their subject in the binding.
+    @ViewBuilder
+    func fullScreenCoverCompat<Item: Identifiable, Content: View>(
+        item: Binding<Item?>,
+        onDismiss: (() -> Void)? = nil,
+        @ViewBuilder content: @escaping (Item) -> Content
+    ) -> some View {
+        #if os(macOS)
+        sheet(item: item, onDismiss: onDismiss) { content($0).macCoverFrame() }
+        #else
+        fullScreenCover(item: item, onDismiss: onDismiss, content: content)
+        #endif
+    }
+
+    /// A Mac sheet sizes itself to its content, where a cover was handed the screen. These screens
+    /// were laid out for a window, so the sheet is floored at one rather than left to collapse
+    /// around whatever its first row happens to measure.
+    @ViewBuilder
+    func macCoverFrame() -> some View {
+        #if os(macOS)
+        frame(minWidth: 820, minHeight: 560)
         #else
         self
         #endif
