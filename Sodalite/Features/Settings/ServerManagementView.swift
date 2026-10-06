@@ -61,7 +61,7 @@ struct ServerManagementView: View {
             .screenContentInset()
         }
         .onAppear(perform: load)
-        .fullScreenCover(isPresented: $showAddServerFlow) {
+        .fullScreenCoverCompat(isPresented: $showAddServerFlow) {
             ServerDiscoveryView(addMode: true, onCompletion: {
                 showAddServerFlow = false
                 load()

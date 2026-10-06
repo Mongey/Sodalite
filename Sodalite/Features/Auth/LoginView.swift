@@ -232,8 +232,7 @@ struct LoginView: View {
             // Username already shown above when picked from the user-grid.
             if preSelectedUser == nil {
                 TextField(String(localized: "auth.login.username"), text: Bindable(vm).username)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
+                    .verbatimTextEntry()
             }
 
             SecureField(String(localized: "auth.login.password"), text: Bindable(vm).password)

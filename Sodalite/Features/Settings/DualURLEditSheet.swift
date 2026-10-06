@@ -33,18 +33,14 @@ struct DualURLEditSheet: View {
             Form {
                 Section {
                     TextField(internalPlaceholder, text: $internalText)
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
+                        .verbatimTextEntry(.url)
                         .disabled(isValidating)
                 } header: {
                     Text("multiServer.urls.internal", bundle: .main)
                 }
                 Section {
                     TextField(externalPlaceholder, text: $externalText)
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
+                        .verbatimTextEntry(.url)
                         .disabled(isValidating)
                 } header: {
                     Text("multiServer.urls.external", bundle: .main)
@@ -60,7 +56,7 @@ struct DualURLEditSheet: View {
             }
             .scrollContentBackground(.hidden)
             .navigationTitle(Text(title, bundle: .main))
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("common.cancel") { dismiss() }

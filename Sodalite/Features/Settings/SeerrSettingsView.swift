@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 
 struct SeerrSettingsView: View {
     @Environment(\.appState) private var appState
@@ -86,9 +87,7 @@ struct SeerrSettingsView: View {
                 text: $serverAddressText
             )
             .textContentType(.URL)
-            .autocorrectionDisabled()
-            .textInputAutocapitalization(.never)
-            .keyboardType(.URL)
+            .verbatimTextEntry(.url)
 
             if let jellyfinHost = appState.activeServer?.url.host {
                 Button {
@@ -188,8 +187,7 @@ struct SeerrSettingsView: View {
                         String(localized: "auth.login.username", defaultValue: "Username"),
                         text: $usernameText
                     )
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
+                    .verbatimTextEntry()
                     .disabled(useJellyfinCredentials && hasJellyfinUser)
                     .opacity(useJellyfinCredentials && hasJellyfinUser ? 0.6 : 1.0)
                 }

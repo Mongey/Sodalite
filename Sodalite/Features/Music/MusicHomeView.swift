@@ -91,7 +91,7 @@ struct MusicHomeView: View {
                 }
             }
             .scrollsUnderShellChrome()
-            .navigationBarHidden(true)
+            .hidesNavigationBar()
             // Full-screen cover (over the tab bar) instead of a push: the bar is never hidden/removed, so it is never re-templated gray on return (tvOS 26). See detailCover.
             .detailCover(item: $selectedAlbum) { album in
                 AlbumDetailView(album: album)

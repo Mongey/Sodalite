@@ -58,7 +58,7 @@ struct LaunchProfilePickerView: View {
             #if os(iOS)
             .toolbar {
                 if context == .chooser {
-                    ToolbarItem(placement: .topBarTrailing) {
+                    ToolbarItem(placement: .confirmationAction) {
                         Button(role: .close) { onFinished?() }
                     }
                 }
@@ -151,7 +151,7 @@ struct LaunchProfilePickerView: View {
                     }
                 )
             }
-            .fullScreenCover(isPresented: $showAddServerFlow) {
+            .fullScreenCoverCompat(isPresented: $showAddServerFlow) {
                 ServerDiscoveryView(addMode: true) {
                     showAddServerFlow = false
                 }

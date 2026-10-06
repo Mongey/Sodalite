@@ -100,7 +100,7 @@ struct PINEntryView: View {
         // Only advance `now` (and re-render) while a lockout countdown is actually running;
         // during normal PIN entry the 1 Hz tick would otherwise invalidate the whole view for nothing.
         .onReceive(ticker) { if lockoutUntil != nil { now = $0 } }
-        .fullScreenCover(isPresented: $showRecovery) {
+        .fullScreenCoverCompat(isPresented: $showRecovery) {
             PINRecoveryView(
                 onRecovered: {
                     showRecovery = false

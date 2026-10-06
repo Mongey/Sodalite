@@ -71,7 +71,7 @@ struct ExpandableTextBox: View {
             // The box can leave the tree while it holds focus (the series page rebuilds it per
             // episode); without this the caller would keep its buttons suppressed for good.
             .onDisappear { onFocusChanged?(false) }
-            .fullScreenCover(isPresented: $showFullText) {
+            .fullScreenCoverCompat(isPresented: $showFullText) {
                 TextOverlay(text: text, isPresented: $showFullText)
             }
     }

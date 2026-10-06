@@ -341,7 +341,7 @@ struct FilteredGridView: View {
         .onChange(of: appState.requestPlayerDismissal) { _, _ in
             if showPlayer { showPlayer = false }
         }
-        .navigationBarHidden(true)
+        .hidesNavigationBar()
         .hidesShellTabBar()
         .navigationDestination(item: $selectedItem) { item in
             DetailRouterView(item: item)

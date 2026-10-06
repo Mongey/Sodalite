@@ -364,7 +364,7 @@ struct EpisodeSynopsisBox: View {
                 }
                 showFullText = true
             }
-            .fullScreenCover(isPresented: $showFullText) {
+            .fullScreenCoverCompat(isPresented: $showFullText) {
                 TextOverlay(text: text, isPresented: $showFullText)
             }
     }

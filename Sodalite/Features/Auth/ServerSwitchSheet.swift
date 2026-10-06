@@ -24,7 +24,7 @@ struct ServerSwitchSheet: View {
             content(horizontalInset: 20)
                 .padding(.top, 8)
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
+                    ToolbarItem(placement: .confirmationAction) {
                         Button(role: .close) { dismiss() }
                     }
                 }

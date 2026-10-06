@@ -326,7 +326,7 @@ struct AppRouter: View {
         // via `nowPlayingCoverHost()`, because a cover cannot stack on a cover from the same hosting
         // controller, and BOTH shells are one such controller (Sodalite#140, re-measured in #110
         // round 3: the top bar is no exception).
-        .fullScreenCover(isPresented: Binding(
+        .fullScreenCoverCompat(isPresented: Binding(
             get: { nowPlaying.isPresented && nowPlaying.routerPresents },
             set: { if !$0 { nowPlaying.dismiss() } }
         )) {
@@ -340,7 +340,7 @@ struct AppRouter: View {
                 dependencies.musicPlaybackCoordinator.stop()
             }
         }
-        .fullScreenCover(isPresented: $showWhatsNew) {
+        .fullScreenCoverCompat(isPresented: $showWhatsNew) {
             if let entry = Changelog.latest {
                 WhatsNewView(entry: entry) {
                     ChangelogPreferences.markCurrentSeen()
@@ -352,7 +352,7 @@ struct AppRouter: View {
         // The router hosts the PIN cover for everything that lives at its own level. A surface
         // presented above it (the iOS Settings sheet) registers with the gate and hosts its own,
         // because a cover cannot stack on a sheet from the same hosting controller.
-        .fullScreenCover(item: Binding(
+        .fullScreenCoverCompat(item: Binding(
             get: { routerOwnsTheGate ? dependencies.parentalGate.activeRequest : nil },
             set: { if $0 == nil { dependencies.parentalGate.resolve(false) } }
         )) { request in
@@ -361,7 +361,7 @@ struct AppRouter: View {
             }
             .pausesAppBackgroundMotion()
         }
-        .fullScreenCover(item: $profileCover) { cover in
+        .fullScreenCoverCompat(item: $profileCover) { cover in
             LaunchProfilePickerView(
                 server: cover.server,
                 context: cover.context,
@@ -373,7 +373,7 @@ struct AppRouter: View {
             .interactiveDismissDisabled(cover.context == .reprompt)
             // The AppRouter-level PIN cover can't stack on this cover (one cover per host view),
             // so the gate presents from inside while this one is up.
-            .fullScreenCover(item: Binding(
+            .fullScreenCoverCompat(item: Binding(
                 get: { dependencies.parentalGate.activeRequest },
                 set: { if $0 == nil { dependencies.parentalGate.resolve(false) } }
             )) { request in

@@ -40,9 +40,7 @@ struct AddSecondURLSheet: View {
                 }
                 Section {
                     TextField(placeholder, text: $urlText)
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
+                        .verbatimTextEntry(.url)
                         .disabled(isValidating)
                 } footer: {
                     Text("multiServer.addURL.footer", bundle: .main)
@@ -56,7 +54,7 @@ struct AddSecondURLSheet: View {
             }
             .scrollContentBackground(.hidden)
             .navigationTitle(Text(title, bundle: .main))
-            .navigationBarTitleDisplayMode(.inline)
+            .inlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("common.cancel") { dismiss() }
