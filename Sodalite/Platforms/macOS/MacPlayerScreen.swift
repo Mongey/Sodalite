@@ -27,6 +27,13 @@ struct MacPlayerScreen: View {
         ZStack {
             Color.black
             AetherPlayerSurface(engine: viewModel.player)
+            // The title bar is hidden, so the picture is the handle. A layer of its own, under the
+            // chrome, so dragging never steals a press meant for the transport (Apple's Destination
+            // Video sample layers it the same way).
+            Color.clear
+                .contentShape(Rectangle())
+                .gesture(WindowDragGesture())
+                .allowsWindowActivationEvents(true)
 
             if viewModel.isLoading, viewModel.errorMessage == nil {
                 ProgressView()
@@ -51,6 +58,9 @@ struct MacPlayerScreen: View {
         .focusable()
         .focusEffectDisabled()
         .focused($hasKeyboardFocus)
+        .onChange(of: viewModel.isLoading) { _, loading in
+            if !loading { fitWindow(to: viewModel.videoSize) }
+        }
         .onChange(of: controlsVisible) { _, visible in
             setWindowChromeVisible(visible)
         }
@@ -258,6 +268,20 @@ struct MacPlayerScreen: View {
             }
         }
         if !visible { NSCursor.setHiddenUntilMouseMoves(true) }
+    }
+
+    /// Locks the window to the picture's shape, so resizing never adds bars, and reshapes it once
+    /// now around its current width. The window opens at 16:9 before the source is known.
+    private func fitWindow(to videoSize: CGSize) {
+        guard let window, videoSize.width > 0, videoSize.height > 0,
+              !window.styleMask.contains(.fullScreen) else { return }
+        window.contentAspectRatio = videoSize
+        var frame = window.frame
+        let content = window.contentRect(forFrameRect: frame)
+        let height = (content.width * videoSize.height / videoSize.width).rounded()
+        frame.origin.y += content.height - height
+        frame.size.height += height - content.height
+        window.setFrame(frame, display: true, animate: true)
     }
 
     private func toggleFullScreen() {

@@ -41,15 +41,28 @@ final class MacPlayerWindowSession {
 
 /// The player window's scene. Not restored on relaunch: the session it would restore is gone.
 struct MacPlayerWindowScene: Scene {
+    private static func placement(on display: DisplayProxy) -> WindowPlacement {
+        let visible = display.visibleRect
+        let width = min(1280, visible.width * 2 / 3)
+        let size = CGSize(width: width, height: (width * 9 / 16).rounded())
+        return WindowPlacement(
+            CGPoint(x: visible.midX - size.width / 2, y: visible.midY - size.height / 2),
+            size: size
+        )
+    }
+
     var body: some Scene {
         Window("Player", id: MacPlayerWindowSession.windowID) {
             MacPlayerWindowContent()
         }
         .windowStyle(.hiddenTitleBar)
-        .windowBackgroundDragBehavior(.enabled)
         .defaultSize(width: 1280, height: 720)
-        .windowResizability(.contentMinSize)
+        // Opens centred at 16:9 and at most two thirds of the display, and zooms back to that;
+        // `MacPlayerScreen` reshapes it to the source once that is known.
+        .defaultWindowPlacement { _, context in Self.placement(on: context.defaultDisplay) }
+        .windowIdealPlacement { _, context in Self.placement(on: context.defaultDisplay) }
         .restorationBehavior(.disabled)
+        .defaultLaunchBehavior(.suppressed)
     }
 }
 
