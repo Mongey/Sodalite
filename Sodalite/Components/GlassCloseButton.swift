@@ -1,7 +1,7 @@
-#if os(iOS)
+#if !os(tvOS)
 import SwiftUI
 
-/// The iOS close button of covers and sheets that draw their own: a glass circle with the cross in
+/// The close button of covers and sheets that draw their own: a glass circle with the cross in
 /// the accent, the way the system's toolbar close button (the profile picker's) renders it, so every
 /// "close" in the app looks the same.
 struct GlassCloseButton: View {

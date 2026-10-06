@@ -61,7 +61,8 @@ final class DependencyContainer {
     /// Sodalite#81. The on-disk truth of the downloads; empty on tvOS, where nothing downloads.
     let downloadStore = DownloadStore(paths: DownloadPaths(root: DownloadPaths.defaultRoot()))
     let downloadPreferences: DownloadPreferences
-    /// Nil on tvOS. Created last in init because its backend reads the session through the container.
+    /// Nil on tvOS, where nothing downloads. Created last in init because its backend reads the
+    /// session through the container.
     private(set) var downloadManager: DownloadManager?
     #if os(iOS)
     /// Sodalite#81: the Dynamic Island / Lock Screen progress of running downloads.
@@ -298,9 +299,11 @@ final class DependencyContainer {
         profileSettings.migrateIfNeeded(profiles: profileKeysOnThisDevice())
         profileSettings.markEarlierMigrationSeedsIfNeeded()
 
-        #if os(iOS)
+        #if !os(tvOS)
         let manager = makeDownloadManager()
         downloadManager = manager
+        #endif
+        #if os(iOS)
         downloadActivity = DownloadProgressActivity(store: downloadStore, liveProgress: { [weak manager] in
             manager?.liveProgress ?? [:]
         })

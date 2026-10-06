@@ -114,6 +114,18 @@ struct LiveTVTabView: View {
                     } else {
                         ProgressView()
                     }
+                    #elseif os(macOS)
+                    // Same list the phone gets, for the same kind of reason: the guide canvas is a
+                    // UICollectionView, so there is no grid to draw here.
+                    if let channelListModel {
+                        ChannelListView(model: channelListModel, tint: tint,
+                                        onWatchLive: { context in
+                                            liveContext = context
+                                            isPlayerPresented = true
+                                        })
+                    } else {
+                        ProgressView()
+                    }
                     #else
                     if let guideModel {
                         GuideView(

@@ -1,4 +1,4 @@
-#if os(iOS)
+#if !os(tvOS)
 import SwiftUI
 
 /// One downloaded show, season by season (Sodalite#81).

@@ -60,7 +60,7 @@ extension DownloadFailure {
     }
 }
 
-#if os(iOS)
+#if !os(tvOS)
 /// Asks which rung to download at, every time, with the last one used on top (Sodalite#81).
 private struct DownloadRungDialog: ViewModifier {
     @Binding var target: DownloadTarget?
@@ -112,7 +112,7 @@ private struct DownloadRungDialog: ViewModifier {
                 case .season(let seriesID, let seasonID, _):
                     try await manager.enqueueSeason(seriesID: seriesID, seasonID: seasonID, quality: quality)
                 }
-                dependencies.downloadActivity?.begin()
+                dependencies.beginDownloadActivity()
             } catch {
                 errorMessage = ErrorText.user(for: error)
             }
@@ -126,7 +126,7 @@ extension View {
     /// No-op on tvOS, where nothing downloads.
     @ViewBuilder
     func downloadRungDialog(target: Binding<DownloadTarget?>) -> some View {
-        #if os(iOS)
+        #if !os(tvOS)
         modifier(DownloadRungDialog(target: target))
         #else
         self
@@ -134,7 +134,7 @@ extension View {
     }
 }
 
-#if os(iOS)
+#if !os(tvOS)
 
 /// The download control of a detail page: starts, shows progress, and offers pause, retry and removal.
 struct DownloadActionButton: View {
@@ -156,7 +156,7 @@ struct DownloadActionButton: View {
                 case .available: target = .item(item)
                 case .paused:
                     manager.resume(itemID: item.id)
-                    dependencies.downloadActivity?.begin()
+                    dependencies.beginDownloadActivity()
                 default: showsMenu = true
                 }
             }
@@ -183,12 +183,12 @@ struct DownloadMenuActions: View {
         case .paused:
             Button("downloads.action.resume") {
                 manager.resume(itemID: itemID)
-                dependencies.downloadActivity?.begin()
+                dependencies.beginDownloadActivity()
             }
         case .failed:
             Button("downloads.action.retry") {
                 manager.retry(itemID: itemID)
-                dependencies.downloadActivity?.begin()
+                dependencies.beginDownloadActivity()
             }
         default:
             EmptyView()

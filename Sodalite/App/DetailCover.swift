@@ -26,7 +26,7 @@ private struct DetailCoverPresenter<Item: Identifiable, CoverContent: View>: Vie
 
     func body(content: Content) -> some View {
         content
-            .fullScreenCover(item: $item) { value in
+            .fullScreenCoverCompat(item: $item) { value in
                 DetailCoverHost(dismiss: { item = nil }) {
                     coverContent(value)
                 }
@@ -66,8 +66,8 @@ private struct DetailCoverHost<Content: View>: View {
         #else
         .themedStaticBackground()
         #endif
-        #if os(iOS)
-        // tvOS dismisses via the Menu button; iOS needs a touch close (a fullScreenCover
+        #if !os(tvOS)
+        // tvOS dismisses via the Menu button; everywhere else needs a close control (a cover
         // has no swipe-to-dismiss), else detail / program-info covers are a dead end.
         // Top-trailing glass circle (matching the settings gear) so it never sits on the
         // leading page title.

@@ -1,4 +1,4 @@
-#if os(iOS)
+#if !os(tvOS)
 import SwiftUI
 
 /// Settings > Downloads (Sodalite#81): Wi-Fi only, storage used, delete this profile's downloads.

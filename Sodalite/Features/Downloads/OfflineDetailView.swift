@@ -1,4 +1,4 @@
-#if os(iOS)
+#if !os(tvOS)
 import SwiftUI
 
 /// A reduced detail page built from the snapshot, for a download opened with no server (Sodalite#81).
@@ -35,7 +35,7 @@ struct OfflineDetailView: View {
             .padding()
         }
         .navigationTitle(snapshot.name)
-        .navigationBarTitleDisplayMode(.inline)
+        .inlineNavigationTitle()
         .overlay {
             if let userID = appState.activeUser?.id ?? appState.profileKey?.userID {
                 PlayerLauncher(

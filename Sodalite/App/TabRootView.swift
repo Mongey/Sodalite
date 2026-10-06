@@ -1,5 +1,7 @@
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#endif
 
 struct TabRootView: View {
     @State private var selectedTab: AppTab = .home
@@ -64,7 +66,7 @@ struct TabRootView: View {
     /// Pending-approval count for the Catalog tab badge; nil for other tabs, tvOS, or a zero count
     /// (a `.badge(0)` renders nothing).
     private func catalogBadgeCount(_ tab: AppTab) -> Int? {
-        #if os(iOS)
+        #if !os(tvOS)
         guard tab == .catalog else { return nil }
         let count = dependencies.pendingRequestsMonitor.pendingApprovalCount ?? 0
         return count > 0 ? count : nil
@@ -102,7 +104,7 @@ struct TabRootView: View {
     private var tabShell: some View {
         TabView(selection: $selectedTab) {
             ForEach(tabsOnScreen, id: \.self) { tab in
-                #if os(iOS)
+                #if !os(tvOS)
                 if tab == .search {
                     Tab(value: tab, role: .search) {
                         tabContent(for: tab)
@@ -137,7 +139,7 @@ struct TabRootView: View {
     /// fresh. That is why the settings screen commits the change on the way out, not under focus.
     @ViewBuilder
     private var styledTabShell: some View {
-        #if os(iOS)
+        #if !os(tvOS)
         tabShell
             .tabViewStyle(.sidebarAdaptable)
         #else
@@ -186,6 +188,9 @@ struct TabRootView: View {
                 ActiveUserBadge(rememberedCount: rememberedProfileCount,
                                 onTap: { appState.requestProfilePicker = true })
             }
+            #elseif os(macOS)
+            ActiveUserBadge(rememberedCount: rememberedProfileCount,
+                            onTap: { appState.requestProfilePicker = true })
             #else
             // Not in sidebar mode: the rail carries the profile as its header, so a second badge in
             // the corner is both a duplicate and, without a top bar under it, a thing that lands on
@@ -511,6 +516,7 @@ struct TabRootView: View {
         #endif
     }
 
+    #if os(tvOS)
     private static func applyTabBarAppearance(_ appearance: UITabBarAppearance, tint: UIColor, in view: UIView) {
         if let tabBar = view as? UITabBar {
             tabBar.standardAppearance = appearance
@@ -530,6 +536,7 @@ struct TabRootView: View {
             applyTabBarAppearance(appearance, tint: tint, in: subview)
         }
     }
+    #endif
 
     #if os(iOS)
     /// Identifies the Settings sheet as the Guardian-PIN presenter while it is up.
@@ -553,7 +560,7 @@ struct TabRootView: View {
             case .music:
                 MusicHomeView()
             case .downloads:
-                #if os(iOS)
+                #if !os(tvOS)
                 DownloadsView()
                 #else
                 EmptyView()
@@ -578,6 +585,8 @@ struct TabRootView: View {
         // (`scrollsUnderShellChrome`), since a padding here shrinks the page and it clips its rows
         // at the line below the buttons.
         .padding(.top, hSizeClass == .compact && !Self.scrollsUnderChrome.contains(tab) ? Self.gearChromeHeight : 0)
+        #endif
+        #if !os(tvOS)
         .background {
             AppBackgroundView(
                 theme: appearanceTheme,
@@ -591,6 +600,8 @@ struct TabRootView: View {
     private var showsDownloadsTab: Bool {
         #if os(iOS)
         hSizeClass != .compact && !dependencies.downloadStore.items.isEmpty
+        #elseif os(macOS)
+        !dependencies.downloadStore.items.isEmpty
         #else
         false
         #endif

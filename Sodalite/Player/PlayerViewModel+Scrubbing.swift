@@ -105,8 +105,9 @@ extension PlayerViewModel {
         } else { updateLiveScrubPreview() }
     }
 
-    #if os(iOS)
-    /// Absolute touch scrub: drag the progress bar to a 0...1 fraction (vs the delta-based touchpad path).
+    #if !os(tvOS)
+    /// Absolute pointer scrub: drag the progress bar to a 0...1 fraction (vs the delta-based
+    /// touchpad path the Siri Remote drives).
     func scrub(toFraction fraction: Float) {
         let dur = scrubReferenceDuration
         guard dur > 0 else { return }

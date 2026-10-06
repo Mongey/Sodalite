@@ -134,7 +134,7 @@ private struct NowPlayingContent: View {
         #endif
     }
 
-    #if os(iOS)
+    #if !os(tvOS)
     private var closeControl: some View {
         Button {
             close()
@@ -154,7 +154,9 @@ private struct NowPlayingContent: View {
     /// fit in. An iPhone Plus / Max in landscape reports a regular width class with ~420pt of height,
     /// where the cover, the title block and the chrome need 638 (Sodalite#142).
     private func usesStackedLayout(container: CGSize) -> Bool {
+        #if os(iOS)
         if hSizeClass == .compact { return true }
+        #endif
         let minimum = NowPlayingMetrics.wideMinimumSize
         return container.width < minimum.width || container.height < minimum.height
     }

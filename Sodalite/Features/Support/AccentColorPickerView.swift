@@ -182,7 +182,7 @@ private enum AccentCategoryChip {
     }
 }
 
-#if os(iOS)
+#if !os(tvOS)
 private struct AccentCategoryChipStyle: ButtonStyle {
     let selected: Bool
 

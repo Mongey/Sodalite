@@ -1,7 +1,8 @@
-#if os(iOS)
+#if !os(tvOS)
 import SwiftUI
 
 /// The Downloads tab (Sodalite#81). Reads only the store, so it works with no server at all.
+/// Not on tvOS, which downloads nothing.
 struct DownloadsView: View {
     @Environment(\.dependencies) private var dependencies
     /// Set when the view is a sheet (compact iPhone, opened from the button beside the gear).
@@ -63,7 +64,7 @@ struct DownloadsView: View {
             .task(id: usageKey) { measureUsage() }
             .toolbar {
                 if let onClose {
-                    ToolbarItem(placement: .topBarTrailing) {
+                    ToolbarItem(placement: .confirmationAction) {
                         Button(role: .close, action: onClose)
                     }
                 }
@@ -176,18 +177,18 @@ private struct SeriesRow: View {
 struct LocalArtwork: View {
     let url: URL?
 
-    private static let cache = NSCache<NSURL, UIImage>()
+    private static let cache = NSCache<NSURL, PlatformImage>()
 
-    private static func image(at url: URL) -> UIImage? {
+    private static func image(at url: URL) -> PlatformImage? {
         if let cached = cache.object(forKey: url as NSURL) { return cached }
-        guard let image = UIImage(contentsOfFile: url.path) else { return nil }
+        guard let image = PlatformImage(contentsOfFile: url.path) else { return nil }
         cache.setObject(image, forKey: url as NSURL)
         return image
     }
 
     var body: some View {
         if let url, let image = Self.image(at: url) {
-            Image(uiImage: image).resizable().aspectRatio(contentMode: .fill)
+            Image(platformImage: image).resizable().aspectRatio(contentMode: .fill)
         } else {
             Rectangle().fill(Color.Theme.restFill)
         }

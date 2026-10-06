@@ -74,7 +74,7 @@ final class JellyfinDownloadBackend: DownloadBackend {
     }
 
     func availableCapacity() -> Int64? {
-        #if os(iOS)
+        #if !os(tvOS)
         let values = try? URL(fileURLWithPath: NSHomeDirectory())
             .resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
         return values?.volumeAvailableCapacityForImportantUsage

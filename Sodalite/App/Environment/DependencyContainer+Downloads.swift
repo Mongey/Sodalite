@@ -15,6 +15,19 @@ extension DependencyContainer {
         return manager
     }
 
+    /// Starts the system's progress activity for the downloads now running, where the system has
+    /// one. iOS draws it in the Dynamic Island and on the Lock Screen; nothing else has the concept,
+    /// and the transfers themselves are a background URLSession either way.
+    ///
+    /// Apple's rule for that task type is that it may only start from something the viewer just
+    /// did, which is why this is called from the download, resume and retry buttons and nowhere
+    /// else.
+    func beginDownloadActivity() {
+        #if os(iOS)
+        downloadActivity?.begin()
+        #endif
+    }
+
     /// Points the store at the active profile and re-attaches to whatever the session still runs.
     func activateDownloads() {
         downloadStore.activate(appState?.profileKey)
