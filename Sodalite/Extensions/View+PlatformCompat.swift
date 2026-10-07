@@ -58,7 +58,7 @@ extension View {
         #if os(iOS)
         containerBackground(.clear, for: .navigation)
         #else
-        self
+        pushedPage()
         #endif
     }
 }

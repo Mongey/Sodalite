@@ -198,6 +198,7 @@ struct SodaliteApp: App {
         // Wide enough for the sidebar plus a poster grid that is not one column, which is the shape
         // every library screen was laid out for.
         .defaultSize(width: 1280, height: 820)
+        .commands { BackCommands() }
         // Restoration alone can bring back nothing: quit with only the player window open and the
         // next launch restores that one, which opts out of restoring, and no window at all.
         .defaultLaunchBehavior(.presented)

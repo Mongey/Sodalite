@@ -48,7 +48,9 @@ private struct DetailPushPresenter<Item: Identifiable, Destination: View>: ViewM
                 set: { if !$0 { item = nil } }
             )) {
                 if let value = item ?? pushed {
-                    destination(value).themedStaticBackground()
+                    destination(value)
+                        .themedStaticBackground()
+                        .pushedPage()
                 }
             }
             .onChange(of: item?.id, initial: true) { _, _ in

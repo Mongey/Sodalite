@@ -57,6 +57,7 @@ private struct DetailCoverPush: ViewModifier {
         content
             .onAppear { stack?.enter(token) }
             .onDisappear { stack?.leave(token) }
+            .pushedPage()
     }
 }
 
