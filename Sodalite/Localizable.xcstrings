@@ -75017,6 +75017,54 @@
         }
       }
     },
+    "contextMenu.favorite" : {
+      "comment" : "Mac right-click menu on a media card",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to Favorites"
+          }
+        }
+      }
+    },
+    "contextMenu.markUnwatched" : {
+      "comment" : "Mac right-click menu on a media card",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark as Unwatched"
+          }
+        }
+      }
+    },
+    "contextMenu.markWatched" : {
+      "comment" : "Mac right-click menu on a media card",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark as Watched"
+          }
+        }
+      }
+    },
+    "contextMenu.unfavorite" : {
+      "comment" : "Mac right-click menu on a media card",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from Favorites"
+          }
+        }
+      }
+    },
     "Continue Watching" : {
       "comment" : "Intent title for resuming the most recent show or movie.",
       "extractionState" : "manual",

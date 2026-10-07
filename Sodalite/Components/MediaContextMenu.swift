@@ -48,7 +48,7 @@ private struct MediaContextMenu: View {
 
         if offersWatched {
             Button(
-                isPlayed ? "detail.markUnwatched" : "detail.markWatched",
+                isPlayed ? "contextMenu.markUnwatched" : "contextMenu.markWatched",
                 systemImage: isPlayed ? "eye.slash" : "checkmark.circle"
             ) {
                 setPlayed(!isPlayed)
@@ -56,7 +56,7 @@ private struct MediaContextMenu: View {
         }
 
         Button(
-            isFavorite ? "detail.unfavorite" : "detail.favorite",
+            isFavorite ? "contextMenu.unfavorite" : "contextMenu.favorite",
             systemImage: isFavorite ? "heart.slash" : "heart"
         ) {
             setFavorite(!isFavorite)
