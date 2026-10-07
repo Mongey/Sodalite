@@ -146,6 +146,9 @@ struct TabRootView: View {
         #if !os(tvOS)
         tabShell
             .tabViewStyle(.sidebarAdaptable)
+            #if os(macOS)
+            .background(MacSidebarToggleRepair())
+            #endif
         #else
         Group {
             if appearance.navigationStyle == .sidebar {

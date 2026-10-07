@@ -658,6 +658,7 @@
 		4F7DCDFC22CFEC4C45DB53F0 /* SeerrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CDF4F0B8FC70934BBB838 /* SeerrClient.swift */; };
 		4FD1D8F3A5C0224E3CB562E9 /* HomeCustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F20293DC3BAA83586C3058 /* HomeCustomizeView.swift */; };
 		4FD948A718ED0781F0938364 /* LocalNetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E68F119A7E37585120CE2 /* LocalNetworkAccess.swift */; };
+		4FDFCB8C600C83653DAC0EE2 /* MacSidebarToggleRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F228D93F5A4018CF17BD35E /* MacSidebarToggleRepair.swift */; };
 		4FF01EE9C4D2C7BE2EFD2790 /* CertificateTrustFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E28A7002618314BCD6123 /* CertificateTrustFailure.swift */; };
 		5001F7B2935C54870C7CE7C5 /* WatchStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25744AF04149582645C9 /* WatchStats.swift */; };
 		5014D2B5FDC274AE79600BDF /* SeerrAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88E8CE251D5B15713F56E /* SeerrAuthResponse.swift */; };
@@ -2484,6 +2485,7 @@
 		5E8136D19ED8A02F5CA7A904 /* JellyfinPasswordAdoptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyfinPasswordAdoptionTests.swift; sourceTree = "<group>"; };
 		5E97880F967A329D4C748338 /* RememberedSeerrSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberedSeerrSession.swift; sourceTree = "<group>"; };
 		5EB05864EA1D0988DF5BF302 /* PosterBadgeMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterBadgeMetrics.swift; sourceTree = "<group>"; };
+		5F228D93F5A4018CF17BD35E /* MacSidebarToggleRepair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacSidebarToggleRepair.swift; sourceTree = "<group>"; };
 		5FAE153258CB34980ED7C41A /* GlassBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassBackground.swift; sourceTree = "<group>"; };
 		6026A54BB12475741F988832 /* HomeMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMerger.swift; sourceTree = "<group>"; };
 		602D5AFF859F3E9604F56EEE /* TopShelfCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopShelfCache.swift; sourceTree = "<group>"; };
@@ -4197,6 +4199,7 @@
 				6F24CF478AC370756F29DE1A /* MacPlayerWindow.swift */,
 				B9A669716346F72856674D2F /* MacSearchTextField.swift */,
 				A95BAA514256C1B35106C5D5 /* MacSettingsWindow.swift */,
+				5F228D93F5A4018CF17BD35E /* MacSidebarToggleRepair.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -5043,6 +5046,7 @@
 				90F7143BC6AFD0B55EA8C2B6 /* MacPlayerWindow.swift in Sources */,
 				BA7B2A5AED5DC77BC4F8DC06 /* MacSearchTextField.swift in Sources */,
 				D54CF197199D7BB61B4ED70E /* MacSettingsWindow.swift in Sources */,
+				4FDFCB8C600C83653DAC0EE2 /* MacSidebarToggleRepair.swift in Sources */,
 				BC3363C9D225960A56F6A542 /* MainQueueDefer.swift in Sources */,
 				F15DBE394D54DC9464B882E2 /* MediaBadges.swift in Sources */,
 				325A0413EC8A7F9568938457 /* MediaCard.swift in Sources */,
