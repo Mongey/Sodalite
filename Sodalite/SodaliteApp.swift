@@ -191,7 +191,11 @@ struct SodaliteApp: App {
                 // Artwork runs up to the window's top edge with only the traffic lights over it;
                 // the sidebar already names where you are, so the title is noise.
                 .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
-                .toolbar(removing: .title)
+                // Hidden on the window rather than removed from the toolbar: `.toolbar(removing:
+                // .title)` changed how the toolbar lays out, and with the sidebar collapsed its
+                // toggle went into the overflow menu at the far right. The window keeps its title
+                // for the Window menu and Mission Control.
+                .navigationTitle(Text(verbatim: ""))
                 #endif
         }
         #if os(macOS)
