@@ -356,6 +356,28 @@
         }
       }
     },
+    "Play what's next in ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play what's next in ${applicationName}"
+          }
+        }
+      }
+    },
+    "Play what's next on ${device} in ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play what's next on ${device} in ${applicationName}"
+          }
+        }
+      }
+    },
     "Resume ${applicationName}": {
       "extractionState": "manual",
       "localizations": {

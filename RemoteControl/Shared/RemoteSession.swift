@@ -14,6 +14,9 @@ nonisolated struct RemoteSession: Identifiable, Sendable, Equatable {
     let lastActivity: Date?
     let supportsRemoteControl: Bool
     var nowPlaying: NowPlaying?
+    /// False only for a session that lists what it can play and video is not among it (an audio-only
+    /// client), so "Play on" never offers a device that would refuse an episode.
+    var playsVideo = true
 
     nonisolated struct NowPlaying: Sendable, Equatable {
         let itemID: String
@@ -122,6 +125,18 @@ nonisolated extension RemoteSession {
         return controllable.first { $0.deviceKey == deviceKey }
     }
 
+    /// The devices "Play on" can start something on, most recently active first, one entry per
+    /// device. Unlike `controllable`, an idle session counts: an Apple TV sitting on its home
+    /// screen is exactly where an episode gets sent.
+    static func playTargets(_ sessions: [RemoteSession], excludingDeviceID ownDeviceID: String?) -> [RemoteSession] {
+        var seen = Set<String>()
+        return sessions
+            .filter { $0.supportsRemoteControl && $0.playsVideo }
+            .filter { ownDeviceID == nil || $0.deviceID != ownDeviceID }
+            .sorted { ($0.lastActivity ?? .distantPast) > ($1.lastActivity ?? .distantPast) }
+            .filter { seen.insert($0.deviceKey).inserted }
+    }
+
     /// The state the session will report once the command has landed, so a control can show it
     /// without waiting a poll for the server to catch up. Nil for `stop`: the session stops
     /// playing and leaves the list.
@@ -195,6 +210,30 @@ nonisolated enum RemoteCommand: Sendable, Equatable {
     }
 }
 
+// MARK: - Play on
+
+/// Starting an item on another session: `POST /Sessions/{id}/Playing?PlayCommand=PlayNow`.
+nonisolated struct RemotePlayRequest: Sendable, Equatable {
+    let itemID: String
+    /// Where to start, for an item already part-watched. Nil or zero starts at the beginning.
+    let startPositionTicks: Int64?
+
+    func path(sessionID: String) -> String {
+        "/Sessions/\(sessionID)/Playing"
+    }
+
+    var queryItems: [URLQueryItem] {
+        var items = [
+            URLQueryItem(name: "PlayCommand", value: "PlayNow"),
+            URLQueryItem(name: "ItemIds", value: itemID),
+        ]
+        if let startPositionTicks, startPositionTicks > 0 {
+            items.append(URLQueryItem(name: "StartPositionTicks", value: String(startPositionTicks)))
+        }
+        return items
+    }
+}
+
 // MARK: - Decoding
 
 nonisolated extension RemoteSession: Decodable {
@@ -207,6 +246,7 @@ nonisolated extension RemoteSession: Decodable {
         case supportsRemoteControl = "SupportsRemoteControl"
         case nowPlayingItem = "NowPlayingItem"
         case playState = "PlayState"
+        case playableMediaTypes = "PlayableMediaTypes"
     }
 
     private enum ItemKeys: String, CodingKey {
@@ -243,6 +283,8 @@ nonisolated extension RemoteSession: Decodable {
         lastActivity = (try? container.decodeIfPresent(String.self, forKey: .lastActivity))
             .flatMap(Self.parseDate)
         supportsRemoteControl = (try? container.decodeIfPresent(Bool.self, forKey: .supportsRemoteControl)) ?? false
+        let mediaTypes = (try? container.decodeIfPresent([String].self, forKey: .playableMediaTypes)) ?? []
+        playsVideo = mediaTypes.isEmpty || mediaTypes.contains("Video")
 
         guard let item = try? container.nestedContainer(keyedBy: ItemKeys.self, forKey: .nowPlayingItem),
               let itemID = try? item.decode(String.self, forKey: .id)

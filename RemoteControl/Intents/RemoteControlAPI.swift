@@ -3,7 +3,7 @@ import Foundation
 import ImageIO
 
 /// The remote-control client the widget, the Control Center control and the Shortcuts actions share:
-/// list the sessions, send a command, fetch one poster. Not the app's client, for the reason
+/// list the sessions, send a command or a play request, read Up Next, fetch artwork. Not the app's client, for the reason
 /// `TopShelfAPI` gives: an extension runs on a tight memory budget, and the app's dependency graph
 /// is a lot to carry for three requests. An action Shortcuts runs in the app's process takes this
 /// client too, so it works the same whether or not the app has signed in yet this launch.
@@ -35,16 +35,75 @@ nonisolated struct RemoteControlAPI: Sendable {
         _ = try await send(request)
     }
 
-    /// The poster, downsampled to `maxPixelSize` before it is kept. A widget's memory limit is a
-    /// few tens of megabytes, and a full-size poster decoded at its native size would spend most
-    /// of it on one tile. ImageIO and CGImage rather than UIImage, so these sources carry over to
-    /// a macOS widget unchanged.
     func poster(for playing: RemoteSession.NowPlaying, maxPixelSize: Int) async -> CGImage? {
         var query = [URLQueryItem(name: "maxHeight", value: String(maxPixelSize)), URLQueryItem(name: "quality", value: "85")]
         if let tag = playing.imageTag {
             query.append(URLQueryItem(name: "tag", value: tag))
         }
-        let url = endpoint(path: "/Items/\(playing.imageItemID)/Images/Primary", query: query)
+        return await image(at: endpoint(path: "/Items/\(playing.imageItemID)/Images/Primary", query: query),
+                           maxPixelSize: maxPixelSize)
+    }
+
+    // MARK: - Up Next
+
+    /// Every device that could be told to play something, idle ones included.
+    func playTargets() async throws -> [RemoteSession] {
+        let url = endpoint(path: RemoteSession.listPath, query: RemoteSession.listQuery(userID: session.userID))
+        let data = try await send(URLRequest(url: url))
+        let sessions = try JSONDecoder().decode([RemoteSession].self, from: data)
+        return RemoteSession.playTargets(sessions, excludingDeviceID: Self.deviceID)
+    }
+
+    func play(_ request: RemotePlayRequest, on sessionID: String) async throws {
+        var urlRequest = URLRequest(url: endpoint(path: request.path(sessionID: sessionID), query: request.queryItems))
+        urlRequest.httpMethod = "POST"
+        _ = try await send(urlRequest)
+    }
+
+    /// Continue Watching then Next Up: the Top Shelf's two requests with the same fields, merged
+    /// one entry per show. Next Up leaves part-watched episodes to Resume (`EnableResumable=false`),
+    /// so the merge only settles shows that sit in both.
+    func upNext(limit: Int) async throws -> [TopShelfItem] {
+        let fields = "ImageTags,BackdropImageTags,ParentBackdropImageTags,ParentThumbImageTag"
+        async let resume = items(
+            path: "/Users/\(session.userID)/Items/Resume",
+            query: [
+                URLQueryItem(name: "MediaTypes", value: "Video"),
+                URLQueryItem(name: "Limit", value: String(limit)),
+                URLQueryItem(name: "Fields", value: fields),
+            ]
+        )
+        async let nextUp = items(
+            path: "/Shows/NextUp",
+            query: [
+                URLQueryItem(name: "UserId", value: session.userID),
+                URLQueryItem(name: "Limit", value: String(limit)),
+                URLQueryItem(name: "Fields", value: fields),
+                URLQueryItem(name: "EnableResumable", value: "false"),
+            ]
+        )
+        return UpNextFeed.merge(resume: try await resume, nextUp: try await nextUp, limit: limit)
+    }
+
+    /// The item's wide picture, along the chain the viewer picked for the Top Shelf.
+    func artwork(for item: TopShelfItem, maxPixelSize: Int) async -> CGImage? {
+        guard let url = item.topShelfImageURL(baseURL: session.baseURL,
+                                              token: session.accessToken,
+                                              artwork: TopShelfArtwork.read())
+        else { return nil }
+        return await image(at: url, maxPixelSize: maxPixelSize)
+    }
+
+    private func items(path: String, query: [URLQueryItem]) async throws -> [TopShelfItem] {
+        let data = try await send(URLRequest(url: endpoint(path: path, query: query)))
+        return try JSONDecoder().decode(UpNextItemsResponse.self, from: data).items ?? []
+    }
+
+    /// Downsampled to `maxPixelSize` before it is kept. A widget's memory limit is a few tens of
+    /// megabytes, and a full-size picture decoded at its native size would spend most of it on one
+    /// tile. ImageIO and CGImage rather than UIImage, so these sources carry over to a macOS widget
+    /// unchanged.
+    private func image(at url: URL, maxPixelSize: Int) async -> CGImage? {
         guard let data = try? await send(URLRequest(url: url)),
               let source = CGImageSourceCreateWithData(data as CFData, nil)
         else { return nil }
@@ -97,6 +156,13 @@ nonisolated struct RemoteControlAPI: Sendable {
             "Token=\"\(session.accessToken)\"",
         ]
         return "MediaBrowser " + parts.joined(separator: ", ")
+    }
+}
+
+nonisolated private struct UpNextItemsResponse: Decodable {
+    let items: [TopShelfItem]?
+    enum CodingKeys: String, CodingKey {
+        case items = "Items"
     }
 }
 

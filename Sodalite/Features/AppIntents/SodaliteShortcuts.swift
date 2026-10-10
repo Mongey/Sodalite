@@ -56,6 +56,15 @@ struct SodaliteShortcutsProvider: AppShortcutsProvider {
             shortTitle: "Skip",
             systemImageName: "goforward.30"
         )
+        AppShortcut(
+            intent: PlayUpNextOnDeviceIntent(),
+            phrases: [
+                "Play what's next in \(.applicationName)",
+                "Play what's next on \(\.$device) in \(.applicationName)",
+            ],
+            shortTitle: "Play Next",
+            systemImageName: "tv"
+        )
         #endif
     }
 

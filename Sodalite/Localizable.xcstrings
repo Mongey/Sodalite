@@ -105518,6 +105518,138 @@
         }
       }
     },
+    "intents.playOn.device" : {
+      "comment" : "Shortcuts parameter: which device to start playback on. Optional; without it the device that was active last.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device"
+          }
+        }
+      }
+    },
+    "intents.playOn.device.type" : {
+      "comment" : "Shortcuts: the name of the type of thing Play On sends to, a device that can play from Jellyfin.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device"
+          }
+        }
+      }
+    },
+    "intents.playOn.error.deviceUnavailable" : {
+      "comment" : "Siri/Shortcuts/widget: the chosen device is not connected to the server, so it cannot be told to play.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That device isn't available. Open a Jellyfin app on it and try again."
+          }
+        }
+      }
+    },
+    "intents.playOn.error.nothingUpNext" : {
+      "comment" : "Siri/Shortcuts: Play Next on Device ran but nothing is in Continue Watching or Next Up.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing is up next. You're all caught up."
+          }
+        }
+      }
+    },
+    "intents.playOn.item.item" : {
+      "comment" : "Hidden action parameter: the Jellyfin item to play.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Item"
+          }
+        }
+      }
+    },
+    "intents.playOn.item.position" : {
+      "comment" : "Hidden action parameter: where to start playing, for a part-watched item.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Position"
+          }
+        }
+      }
+    },
+    "intents.playOn.item.title" : {
+      "comment" : "Hidden action behind the Up Next widget's TV button: play one item on another device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play on Device"
+          }
+        }
+      }
+    },
+    "intents.playOn.upNext.description" : {
+      "comment" : "Shortcuts: description of the Play Next on Device action.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plays the top of Up Next on another device, picking up where you left off."
+          }
+        }
+      }
+    },
+    "intents.playOn.upNext.done %@ %@" : {
+      "comment" : "Siri/Shortcuts confirmation. The first %@ is what plays (e.g. Severance \u00b7 S1, E3 \u00b7 Half Loop), the second the device name (e.g. Living Room).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playing %1$@ on %2$@."
+          }
+        }
+      }
+    },
+    "intents.playOn.upNext.summary ${device}" : {
+      "comment" : "Shortcuts: one-line summary of the Play Next on Device action. ${device} is the chosen device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play what's next on ${device}"
+          }
+        }
+      }
+    },
+    "intents.playOn.upNext.title" : {
+      "comment" : "Shortcuts: name of the action that starts the next episode or movie from Up Next on another device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play Next on Device"
+          }
+        }
+      }
+    },
     "intents.remote.device" : {
       "comment" : "Shortcuts parameter: which of the user's other devices to control. Optional; without it the device that played last.",
       "extractionState" : "manual",
@@ -136422,6 +136554,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seerr 未連接。請在「設定」中連接 Seerr 以檢視此頁面。"
+          }
+        }
+      }
+    },
+    "Play Next" : {
+      "comment" : "Shortcuts app: short title of the action that plays the top of Up Next on another device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play Next"
           }
         }
       }

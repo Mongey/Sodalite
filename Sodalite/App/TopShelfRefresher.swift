@@ -1,10 +1,12 @@
 #if os(tvOS)
 import TVServices
+#else
+import WidgetKit
 #endif
 
 /// Tells tvOS the Top Shelf's backing data changed, so it re-asks the extension instead of
-/// serving its last snapshot until its own refresh cycle comes around. No-op off tvOS: the
-/// iOS target compiles the same sources and has no shelf.
+/// serving its last snapshot until its own refresh cycle comes around. On iPhone, iPad and Mac the
+/// same moments (a stop report landing, a played mark) move Up Next, so there it reloads that widget.
 enum TopShelfRefresher {
     /// Cheap and idempotent, so call sites fire it unconditionally rather than diffing against
     /// what the shelf currently shows.
@@ -17,6 +19,8 @@ enum TopShelfRefresher {
         Task.detached(priority: .utility) {
             await refresh()
         }
+        #else
+        WidgetCenter.shared.reloadTimelines(ofKind: UpNextFeed.kind)
         #endif
     }
 
