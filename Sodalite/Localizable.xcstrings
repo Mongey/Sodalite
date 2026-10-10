@@ -183095,7 +183095,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lets the Jellyfin apps and Sodalite on your other devices pause, seek, stop and start playback on this device while you are signed in."
+            "value" : "Lets the Jellyfin apps on your other devices pause, seek, stop and start playback here."
           }
         }
       }
