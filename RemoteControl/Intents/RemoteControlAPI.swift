@@ -2,18 +2,20 @@ import CoreGraphics
 import Foundation
 import ImageIO
 
-/// The widget's Jellyfin client: list the sessions, send a command, fetch one poster. Not the app's
-/// client, for the reason `TopShelfAPI` gives: an extension runs on a tight memory budget, and the
-/// app's dependency graph is a lot to carry for three requests.
-nonisolated struct WidgetRemoteAPI: Sendable {
+/// The remote-control client the widget, the Control Center control and the Shortcuts actions share:
+/// list the sessions, send a command, fetch one poster. Not the app's client, for the reason
+/// `TopShelfAPI` gives: an extension runs on a tight memory budget, and the app's dependency graph
+/// is a lot to carry for three requests. An action Shortcuts runs in the app's process takes this
+/// client too, so it works the same whether or not the app has signed in yet this launch.
+nonisolated struct RemoteControlAPI: Sendable {
     let session: SharedSession
 
     /// Its own stable id in the app group, distinct from the app's and the Top Shelf's, so the
-    /// widget's refreshes show up in Jellyfin's session list as one device rather than a new one
-    /// per timeline.
+    /// widget's refreshes and the actions show up in Jellyfin's session list as one device rather
+    /// than a new one per timeline.
     static let deviceID: String = {
-        let defaults = UserDefaults(suiteName: WidgetAppGroup.id)
-        let key = "widgets.deviceID"
+        let defaults = UserDefaults(suiteName: RemoteControlAppGroup.id)
+        let key = "remoteControl.deviceID"
         if let existing = defaults?.string(forKey: key) { return existing }
         let new = UUID().uuidString
         defaults?.set(new, forKey: key)
@@ -81,7 +83,7 @@ nonisolated struct WidgetRemoteAPI: Sendable {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let (data, response) = try await Self.urlSession.data(for: request)
         if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
-            throw WidgetHTTPError(status: http.statusCode)
+            throw RemoteControlHTTPError(status: http.statusCode)
         }
         return data
     }
@@ -89,7 +91,7 @@ nonisolated struct WidgetRemoteAPI: Sendable {
     private var authHeader: String {
         let parts = [
             "Client=\"Sodalite\"",
-            "Device=\"Sodalite Widget\"",
+            "Device=\"Sodalite Remote\"",
             "DeviceId=\"\(Self.deviceID)\"",
             "Version=\"1.0\"",
             "Token=\"\(session.accessToken)\"",
@@ -98,11 +100,11 @@ nonisolated struct WidgetRemoteAPI: Sendable {
     }
 }
 
-nonisolated struct WidgetHTTPError: LocalizedError {
+nonisolated struct RemoteControlHTTPError: LocalizedError {
     let status: Int
     var errorDescription: String? { "HTTP \(status)" }
 }
 
-nonisolated enum WidgetAppGroup {
+nonisolated enum RemoteControlAppGroup {
     static let id = "group.de.superuser404.Sodalite"
 }

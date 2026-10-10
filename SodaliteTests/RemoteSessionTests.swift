@@ -150,4 +150,34 @@ struct RemoteSessionTests {
         #expect(atv.applying(.seek(toTicks: 5))?.nowPlaying?.positionTicks == 5)
         #expect(atv.applying(.stop) == nil)
     }
+
+    // MARK: - Actions
+
+    @Test func anActionWithNoDeviceNamedGoesToTheOneThatPlayedLast() throws {
+        let kept = RemoteSession.controllable(try decodedSample(), excludingDeviceID: "own-device")
+        #expect(RemoteSession.target(in: kept, deviceKey: nil)?.id == "web")
+        #expect(RemoteSession.target(in: [], deviceKey: nil) == nil)
+    }
+
+    @Test func aNamedDeviceIsFoundByDeviceNotBySession() throws {
+        let kept = RemoteSession.controllable(try decodedSample(), excludingDeviceID: "own-device")
+        #expect(RemoteSession.target(in: kept, deviceKey: "atv-1")?.id == "atv")
+        // A device that stopped, or one whose session the server has replaced, is not guessed at.
+        #expect(RemoteSession.target(in: kept, deviceKey: "atv") == nil)
+        #expect(RemoteSession.target(in: kept, deviceKey: "dlna-1") == nil)
+    }
+
+    @Test func aSessionWithoutADeviceIdStandsForItsOwnDevice() {
+        let session = RemoteSession(
+            id: "s1", deviceID: nil, deviceName: "TV", client: "", lastActivity: nil,
+            supportsRemoteControl: true, nowPlaying: nil
+        )
+        #expect(session.deviceKey == "s1")
+    }
+
+    @Test func theSummaryNamesTheSeriesAndEpisodeOrJustTheMovie() throws {
+        let sessions = try decodedSample()
+        #expect(sessions.first { $0.id == "atv" }?.nowPlaying?.summary == "Severance · S2:E3 · The Long Night")
+        #expect(sessions.first { $0.id == "web" }?.nowPlaying?.summary == "Arrival")
+    }
 }

@@ -44,6 +44,12 @@ nonisolated struct RemoteSession: Identifiable, Sendable, Equatable {
             }
         }
 
+        /// One line for what plays: "Northern Lights · S2:E5 · The Long Night Shift", or a movie's
+        /// name alone.
+        var summary: String {
+            [title, episodeLine].compactMap { $0 }.joined(separator: " · ")
+        }
+
         var progress: Double? {
             guard let runtimeTicks, runtimeTicks > 0 else { return nil }
             return min(max(Double(positionTicks) / Double(runtimeTicks), 0), 1)
@@ -82,7 +88,7 @@ nonisolated struct RemoteSession: Identifiable, Sendable, Equatable {
 
 // MARK: - Listing
 
-extension RemoteSession {
+nonisolated extension RemoteSession {
     static let listPath = "/Sessions"
 
     /// `ControllableByUserId` is the server's own answer to "may this user steer that session", so
@@ -102,6 +108,18 @@ extension RemoteSession {
             .filter { $0.supportsRemoteControl && $0.nowPlaying != nil }
             .filter { ownDeviceID == nil || $0.deviceID != ownDeviceID }
             .sorted { ($0.lastActivity ?? .distantPast) > ($1.lastActivity ?? .distantPast) }
+    }
+
+    /// What identifies this device across its sessions. Jellyfin starts a new session id each time
+    /// a client reconnects, so a Shortcut that stored one would lose its device by the next day.
+    var deviceKey: String { deviceID ?? id }
+
+    /// The session a command addresses, from a list `controllable` already ordered: the named
+    /// device's, or with none named the most recently active one. Nil when the named device is
+    /// not playing any more.
+    static func target(in controllable: [RemoteSession], deviceKey: String?) -> RemoteSession? {
+        guard let deviceKey else { return controllable.first }
+        return controllable.first { $0.deviceKey == deviceKey }
     }
 
     /// The state the session will report once the command has landed, so a control can show it
@@ -179,7 +197,7 @@ nonisolated enum RemoteCommand: Sendable, Equatable {
 
 // MARK: - Decoding
 
-extension RemoteSession: Decodable {
+nonisolated extension RemoteSession: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id = "Id"
         case deviceID = "DeviceId"

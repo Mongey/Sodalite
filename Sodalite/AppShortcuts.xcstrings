@@ -323,6 +323,72 @@
         }
       }
     },
+    "Pause ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause ${applicationName}"
+          }
+        }
+      }
+    },
+    "Pause ${applicationName} on ${device}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause ${applicationName} on ${device}"
+          }
+        }
+      }
+    },
+    "Pause ${device} in ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause ${device} in ${applicationName}"
+          }
+        }
+      }
+    },
+    "Resume ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume ${applicationName}"
+          }
+        }
+      }
+    },
+    "Resume ${applicationName} on ${device}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume ${applicationName} on ${device}"
+          }
+        }
+      }
+    },
+    "Resume ${device} in ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume ${device} in ${applicationName}"
+          }
+        }
+      }
+    },
     "Show ${applicationName}": {
       "extractionState": "manual",
       "localizations": {
@@ -480,6 +546,61 @@
           "stringUnit": {
             "state": "translated",
             "value": "顯示${applicationName}"
+          }
+        }
+      }
+    },
+    "Skip ahead in ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip ahead in ${applicationName}"
+          }
+        }
+      }
+    },
+    "Skip ahead on ${device} in ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip ahead on ${device} in ${applicationName}"
+          }
+        }
+      }
+    },
+    "Stop ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop ${applicationName}"
+          }
+        }
+      }
+    },
+    "Stop ${applicationName} on ${device}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop ${applicationName} on ${device}"
+          }
+        }
+      }
+    },
+    "Stop ${device} in ${applicationName}": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop ${device} in ${applicationName}"
           }
         }
       }

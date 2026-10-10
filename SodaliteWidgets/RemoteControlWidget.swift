@@ -69,7 +69,7 @@ struct RemoteControlProvider: TimelineProvider {
         guard let shared = SharedSession.read() else {
             return RemoteControlEntry(date: now, state: .signedOut)
         }
-        let api = WidgetRemoteAPI(session: shared)
+        let api = RemoteControlAPI(session: shared)
         guard let sessions = try? await api.controllableSessions(),
               let session = PendingRemoteCommands.apply(to: sessions, now: now).first,
               let playing = session.nowPlaying

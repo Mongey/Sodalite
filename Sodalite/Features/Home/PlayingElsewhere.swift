@@ -1,3 +1,4 @@
+import AppIntents
 import SwiftUI
 
 /// What the user's other devices are playing, and the controls to steer them, at the top of Home.
@@ -40,6 +41,9 @@ final class PlayingElsewhereModel {
             let fresh = try await service.controllableSessions(userID: userID)
             fetchedAt = Date()
             sessions = expected(from: fresh)
+            #if !os(tvOS)
+            offerDevicesToSiri(fresh)
+            #endif
         } catch is CancellationError {
             return
         } catch {
@@ -58,6 +62,19 @@ final class PlayingElsewhereModel {
             await refresh()
         }
     }
+
+    #if !os(tvOS)
+    private var devicesOfferedToSiri: Set<String> = []
+
+    /// Siri matches "Pause Living Room in Sodalite" only against device names it has been handed,
+    /// so the phrases are refreshed whenever the set of playing devices changes.
+    private func offerDevicesToSiri(_ fresh: [RemoteSession]) {
+        let devices = Set(fresh.map(\.deviceKey))
+        guard devices != devicesOfferedToSiri else { return }
+        devicesOfferedToSiri = devices
+        SodaliteShortcutsProvider.updateAppShortcutParameters()
+    }
+    #endif
 
     private func apply(_ command: RemoteCommand, to sessionID: String) {
         guard let index = sessions.firstIndex(where: { $0.id == sessionID }) else { return }

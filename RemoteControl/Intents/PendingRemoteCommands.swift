@@ -41,14 +41,14 @@ nonisolated enum PendingRemoteCommands {
     }
 
     private static func load(now: Date) -> [String: Record] {
-        guard let data = UserDefaults(suiteName: WidgetAppGroup.id)?.data(forKey: key),
+        guard let data = UserDefaults(suiteName: RemoteControlAppGroup.id)?.data(forKey: key),
               let records = try? JSONDecoder().decode([String: Record].self, from: data)
         else { return [:] }
         return records.filter { $0.value.until > now }
     }
 
     private static func save(_ records: [String: Record]) {
-        let defaults = UserDefaults(suiteName: WidgetAppGroup.id)
+        let defaults = UserDefaults(suiteName: RemoteControlAppGroup.id)
         if records.isEmpty {
             defaults?.removeObject(forKey: key)
         } else if let data = try? JSONEncoder().encode(records) {

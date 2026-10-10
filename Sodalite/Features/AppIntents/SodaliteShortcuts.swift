@@ -14,6 +14,49 @@ struct SodaliteShortcutsProvider: AppShortcutsProvider {
             shortTitle: "Open",
             systemImageName: "play.tv"
         )
+        // The remote-control actions run on iPhone, iPad and Mac. tvOS has no Shortcuts app, and
+        // its Siri turns custom intents away (see above).
+        #if !os(tvOS)
+        AppShortcut(
+            intent: PauseRemoteDeviceIntent(),
+            phrases: [
+                "Pause \(.applicationName)",
+                "Pause \(\.$device) in \(.applicationName)",
+                "Pause \(.applicationName) on \(\.$device)",
+            ],
+            shortTitle: "Pause",
+            systemImageName: "pause.fill"
+        )
+        AppShortcut(
+            intent: ResumeRemoteDeviceIntent(),
+            phrases: [
+                "Resume \(.applicationName)",
+                "Resume \(\.$device) in \(.applicationName)",
+                "Resume \(.applicationName) on \(\.$device)",
+            ],
+            shortTitle: "Resume",
+            systemImageName: "play.fill"
+        )
+        AppShortcut(
+            intent: StopRemoteDeviceIntent(),
+            phrases: [
+                "Stop \(.applicationName)",
+                "Stop \(\.$device) in \(.applicationName)",
+                "Stop \(.applicationName) on \(\.$device)",
+            ],
+            shortTitle: "Stop",
+            systemImageName: "stop.fill"
+        )
+        AppShortcut(
+            intent: SkipRemoteDeviceIntent(),
+            phrases: [
+                "Skip ahead in \(.applicationName)",
+                "Skip ahead on \(\.$device) in \(.applicationName)",
+            ],
+            shortTitle: "Skip",
+            systemImageName: "goforward.30"
+        )
+        #endif
     }
 
     static let shortcutTileColor: ShortcutTileColor = .teal

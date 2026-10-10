@@ -31,7 +31,7 @@ struct RemoteCommandIntent: AppIntent {
         else { return .result() }
         PendingRemoteCommands.record(command, for: sessionID)
         do {
-            try await WidgetRemoteAPI(session: session).send(command, to: sessionID)
+            try await RemoteControlAPI(session: session).send(command, to: sessionID)
         } catch {
             // The reload that follows has to show what the device is really doing.
             PendingRemoteCommands.forget(sessionID)

@@ -1,6 +1,294 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "intents.remote.device" : {
+      "comment" : "Shortcuts parameter: which of the user's other devices to control. Optional; without it the device that played last.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device"
+          }
+        }
+      }
+    },
+    "intents.remote.device.type" : {
+      "comment" : "Shortcuts: the name of the type of thing the remote-control actions act on, another device playing from Jellyfin.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device"
+          }
+        }
+      }
+    },
+    "intents.remote.error.nothingPlaying" : {
+      "comment" : "Shortcuts/Siri: a remote-control action found no other device playing anything.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing is playing on your other devices."
+          }
+        }
+      }
+    },
+    "intents.remote.error.notPlaying %@" : {
+      "comment" : "Shortcuts/Siri: the chosen device is not playing. %@ is the device name, e.g. Living Room.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ isn't playing anything right now."
+          }
+        }
+      }
+    },
+    "intents.remote.error.signedOut" : {
+      "comment" : "Shortcuts/Siri: a remote-control action ran while no Jellyfin account is signed in.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to Sodalite first."
+          }
+        }
+      }
+    },
+    "intents.remote.pause.description" : {
+      "comment" : "Shortcuts: description of the Pause a Device action.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause what another device is playing."
+          }
+        }
+      }
+    },
+    "intents.remote.pause.done %@" : {
+      "comment" : "Siri/Shortcuts confirmation. %@ is the device name, e.g. Living Room.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paused %@."
+          }
+        }
+      }
+    },
+    "intents.remote.pause.summary ${device}" : {
+      "comment" : "Shortcuts: one-line summary of the Pause a Device action. ${device} is the chosen device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause ${device}"
+          }
+        }
+      }
+    },
+    "intents.remote.pause.title" : {
+      "comment" : "Shortcuts: name of the action that pauses another device's playback.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause a Device"
+          }
+        }
+      }
+    },
+    "intents.remote.resume.description" : {
+      "comment" : "Shortcuts: description of the Resume a Device action.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume what another device was playing."
+          }
+        }
+      }
+    },
+    "intents.remote.resume.done %@" : {
+      "comment" : "Siri/Shortcuts confirmation. %@ is the device name, e.g. Living Room.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumed %@."
+          }
+        }
+      }
+    },
+    "intents.remote.resume.summary ${device}" : {
+      "comment" : "Shortcuts: one-line summary of the Resume a Device action. ${device} is the chosen device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume ${device}"
+          }
+        }
+      }
+    },
+    "intents.remote.resume.title" : {
+      "comment" : "Shortcuts: name of the action that resumes another device's playback.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume a Device"
+          }
+        }
+      }
+    },
+    "intents.remote.skip.description" : {
+      "comment" : "Shortcuts: description of the Skip on a Device action.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip forward or back on another device. A negative number of seconds skips back."
+          }
+        }
+      }
+    },
+    "intents.remote.skip.done %@" : {
+      "comment" : "Siri/Shortcuts confirmation. %@ is the device name, e.g. Living Room.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skipped on %@."
+          }
+        }
+      }
+    },
+    "intents.remote.skip.seconds" : {
+      "comment" : "Shortcuts parameter: how far to skip, in seconds; negative skips back.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seconds"
+          }
+        }
+      }
+    },
+    "intents.remote.skip.summary ${device} ${seconds}" : {
+      "comment" : "Shortcuts: one-line summary of the Skip on a Device action.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip ${device} by ${seconds} seconds"
+          }
+        }
+      }
+    },
+    "intents.remote.skip.title" : {
+      "comment" : "Shortcuts: name of the action that skips forward or back on another device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip on a Device"
+          }
+        }
+      }
+    },
+    "intents.remote.stop.description" : {
+      "comment" : "Shortcuts: description of the Stop a Device action.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop what another device is playing."
+          }
+        }
+      }
+    },
+    "intents.remote.stop.done %@" : {
+      "comment" : "Siri/Shortcuts confirmation. %@ is the device name, e.g. Living Room.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopped %@."
+          }
+        }
+      }
+    },
+    "intents.remote.stop.summary ${device}" : {
+      "comment" : "Shortcuts: one-line summary of the Stop a Device action. ${device} is the chosen device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop ${device}"
+          }
+        }
+      }
+    },
+    "intents.remote.stop.title" : {
+      "comment" : "Shortcuts: name of the action that stops another device's playback.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop a Device"
+          }
+        }
+      }
+    },
+    "intents.remote.toggle.title" : {
+      "comment" : "App Intent behind the Control Center play/pause control. Not shown in Shortcuts.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play or Pause the Last Device"
+          }
+        }
+      }
+    },
+    "intents.remote.toggle.value" : {
+      "comment" : "App Intent parameter of the Control Center control: whether the device should play.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playing"
+          }
+        }
+      }
+    },
     "widget.remote.back10" : {
       "comment" : "Remote-control widget: skip back 10 seconds (accessibility label).",
       "extractionState" : "manual",
