@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(UIKit)
+import UIKit
+#endif
 
 @MainActor
 final class JellyfinClient {
@@ -70,7 +73,7 @@ final class JellyfinClient {
     private func buildMediaBrowserHeader(includeToken: Bool) -> String {
         var authParts = [
             "Client=\"Sodalite\"",
-            "Device=\"Apple TV\"",
+            "Device=\"\(Self.deviceName)\"",
             "DeviceId=\"\(deviceID)\"",
             "Version=\"\(appVersion)\"",
         ]
@@ -78,6 +81,19 @@ final class JellyfinClient {
             authParts.append("Token=\"\(token)\"")
         }
         return "MediaBrowser \(authParts.joined(separator: ", "))"
+    }
+
+    /// The name other clients list this device under, in their session lists and "play on" menus.
+    /// Every platform used to say Apple TV, which put an iPhone in those lists as a television once
+    /// it could be steered. The server keys the device on `DeviceId`, so the name changes nothing else.
+    static var deviceName: String {
+        #if os(tvOS)
+        "Apple TV"
+        #elseif os(macOS)
+        "Mac"
+        #else
+        UIDevice.current.userInterfaceIdiom == .pad ? "iPad" : "iPhone"
+        #endif
     }
 
     private func buildHeaders(requiresAuth: Bool) -> [String: String] {
