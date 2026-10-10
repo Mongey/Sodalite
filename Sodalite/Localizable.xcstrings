@@ -103966,6 +103966,78 @@
         }
       }
     },
+    "home.playingElsewhere.back10" : {
+      "comment" : "Playing Elsewhere: skip back 10 seconds (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back 10 Seconds"
+          }
+        }
+      }
+    },
+    "home.playingElsewhere.forward10" : {
+      "comment" : "Playing Elsewhere: skip forward 10 seconds (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forward 10 Seconds"
+          }
+        }
+      }
+    },
+    "home.playingElsewhere.pause" : {
+      "comment" : "Playing Elsewhere: pause playback on the other device (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        }
+      }
+    },
+    "home.playingElsewhere.play" : {
+      "comment" : "Playing Elsewhere: resume playback on the other device (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        }
+      }
+    },
+    "home.playingElsewhere.stop" : {
+      "comment" : "Playing Elsewhere: stop playback on the other device (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "home.playingElsewhere.title" : {
+      "comment" : "Home: heading over the cards for media playing on the user's other devices.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playing Elsewhere"
+          }
+        }
+      }
+    },
     "home.playlists" : {
       "comment" : "Section title for playlists",
       "extractionState" : "manual",

@@ -5,6 +5,7 @@ struct HomeView: View {
     @Environment(\.dependencies) private var dependencies
     @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel: HomeViewModel?
+    @State private var playingElsewhere: PlayingElsewhereModel?
     @State private var selectedItem: JellyfinItem?
     /// The hero's Play: the same detail page as a click on it, told to start playing once it is ready.
     @State private var heroPlayItem: JellyfinItem?
@@ -85,6 +86,9 @@ struct HomeView: View {
         }
         .onAppear {
             guard let userID = appState.activeUser?.id else { return }
+            if playingElsewhere == nil {
+                playingElsewhere = PlayingElsewhereModel(service: dependencies.remoteControlService, userID: userID)
+            }
             if viewModel == nil {
                 viewModel = HomeViewModel(
                     libraryService: dependencies.jellyfinLibraryService,
@@ -112,6 +116,12 @@ struct HomeView: View {
         // moment, and a fan-out landing on the shared request limiter next to a player that is
         // rebuilding its pipeline is the class of burst that starves a stream (Sodalite#12). The
         // observer below picks it up when the cover goes.
+        // Polls only while Home is the screen: not behind a detail page or the player, where a
+        // request every few seconds would share the limiter with a stream for nothing on view.
+        .task(id: [!isCovered && scenePhase == .active, playingElsewhere != nil]) {
+            guard !isCovered, scenePhase == .active else { return }
+            await playingElsewhere?.poll()
+        }
         .onChange(of: scenePhase) { _, phase in
             guard phase == .active else { return }
             Task { await viewModel?.refreshIfStale(trigger: .foreground, covered: isCovered) }
@@ -329,6 +339,18 @@ struct HomeView: View {
                     onPlay: { heroPlayItem = $0 }
                 )
                 LazyVStack(alignment: .leading, spacing: 40) {
+                    if let playingElsewhere {
+                        PlayingElsewhereSection(model: playingElsewhere) { playing in
+                            dependencies.jellyfinImageService.imageURL(
+                                itemID: playing.imageItemID,
+                                tag: playing.imageTag,
+                                maxWidth: ImageWidth.card
+                            )
+                        }
+                        // Below every row index, so focus here still counts as "in the rows" for
+                        // the scroll-to-top logic.
+                        .focused($focusedRowIndex, equals: -1)
+                    }
                     if !vm.unreachableServerNames.isEmpty {
                         CombinedHomeNotice(serverNames: vm.unreachableServerNames)
                     }
