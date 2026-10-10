@@ -36,18 +36,15 @@ nonisolated struct RemoteSession: Identifiable, Sendable, Equatable {
         /// The series for an episode, the item's own name otherwise.
         var title: String { seriesName ?? name }
 
-        /// "S1:E3 · Pilot" for an episode, nil for anything that is not one.
+        /// "S1, E3 · Pilot" for an episode, in the app's one spelling, nil for anything that is not
+        /// one.
         var episodeLine: String? {
             guard seriesName != nil else { return nil }
-            switch (seasonNumber, episodeNumber) {
-            case let (season?, episode?):
-                return "S\(season):E\(episode) · \(name)"
-            default:
-                return name
-            }
+            return EpisodeMetadataFormatter.episodeLine(under: seriesName, season: seasonNumber,
+                                                        episode: episodeNumber, title: name)
         }
 
-        /// One line for what plays: "Northern Lights · S2:E5 · The Long Night Shift", or a movie's
+        /// One line for what plays: "Northern Lights · S2, E5 · The Long Night Shift", or a movie's
         /// name alone.
         var summary: String {
             [title, episodeLine].compactMap { $0 }.joined(separator: " · ")

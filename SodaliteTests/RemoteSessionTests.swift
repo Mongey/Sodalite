@@ -50,7 +50,7 @@ struct RemoteSessionTests {
         let playing = try #require(atv.nowPlaying)
         #expect(playing.itemID == "ep-2")
         #expect(playing.title == "Severance")
-        #expect(playing.episodeLine == "S2:E3 · The Long Night")
+        #expect(playing.episodeLine == "S2, E3 · The Long Night")
         #expect(playing.imageItemID == "series-1")
         #expect(playing.imageTag == "series-tag")
         #expect(playing.positionTicks == 6_000_000_000)
@@ -177,7 +177,7 @@ struct RemoteSessionTests {
 
     @Test func theSummaryNamesTheSeriesAndEpisodeOrJustTheMovie() throws {
         let sessions = try decodedSample()
-        #expect(sessions.first { $0.id == "atv" }?.nowPlaying?.summary == "Severance · S2:E3 · The Long Night")
+        #expect(sessions.first { $0.id == "atv" }?.nowPlaying?.summary == "Severance · S2, E3 · The Long Night")
         #expect(sessions.first { $0.id == "web" }?.nowPlaying?.summary == "Arrival")
     }
 }
