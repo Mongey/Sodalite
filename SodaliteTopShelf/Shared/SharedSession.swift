@@ -42,6 +42,9 @@ nonisolated enum SharedSessionKeys {
     static let service = "de.superuser404.Sodalite.shared"
 }
 
+/// The data protection keychain is where `SharedSessionMirror` writes on macOS; iOS and tvOS ignore
+/// the key.
+///
 /// No access group in the query. The service is unique to this slot, so searching every group
 /// the process is entitled to finds the same item without knowing the team prefix.
 ///
@@ -53,6 +56,7 @@ nonisolated enum SharedSessionKeys {
 nonisolated private func readSharedKeychainData(account: String) -> Data? {
     let query: [String: Any] = [
         kSecClass as String: kSecClassGenericPassword,
+        kSecUseDataProtectionKeychain as String: true,
         kSecAttrService as String: SharedSessionKeys.service,
         kSecAttrAccount as String: account,
         kSecReturnData as String: true,

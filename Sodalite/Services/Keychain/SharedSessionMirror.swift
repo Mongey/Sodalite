@@ -1,12 +1,15 @@
 import Foundation
 import os.log
 import Security
-#if canImport(WidgetKit) && os(iOS)
+#if os(iOS) || os(macOS)
 import WidgetKit
 #endif
 
-/// Mirrors active Jellyfin credentials into the shared keychain access group the extensions read: the Top Shelf on tvOS, the remote-control widget on iOS. One JSON `Payload` in a single slot, re-mirrored on every login/profile-switch/logout; the keychain itself is per tvOS user under the user-management entitlement. Own service bucket (`…Sodalite.shared`) to keep it separate from the app's primary entries.
+/// Mirrors active Jellyfin credentials into the shared keychain access group the extensions read: the Top Shelf on tvOS, the remote-control widget on iOS and macOS. One JSON `Payload` in a single slot, re-mirrored on every login/profile-switch/logout; the keychain itself is per tvOS user under the user-management entitlement. Own service bucket (`…Sodalite.shared`) to keep it separate from the app's primary entries.
 enum SharedSessionMirror {
+    /// Every query here names the data protection keychain. On macOS the default is the legacy file
+    /// keychain, which ignores `keychain-access-groups`, so the widget could never read the slot. iOS
+    /// and tvOS only have the data protection keychain and ignore the key.
     static let service = "de.superuser404.Sodalite.shared"
 
     /// JSON shape per slot; keep in sync with the decoder in `SodaliteTopShelf/Shared/SharedSession.swift`.
@@ -17,13 +20,6 @@ enum SharedSessionMirror {
     }
 
     static func write(serverURL: URL, userID: String, accessToken: String) {
-        // The Top Shelf reads this on tvOS and the widget on iOS. Anywhere else the write would mint
-        // a second copy of the access token with no consumer, so take the chance to remove one an
-        // earlier build of this app left behind instead.
-        #if !os(tvOS) && !os(iOS)
-        clear()
-        return
-        #else
         let slot = KeychainKeys.sharedSession
         let payload = Payload(
             serverURL: serverURL.absoluteString,
@@ -36,7 +32,6 @@ enum SharedSessionMirror {
         }
         save(data, account: slot)
         extensionsNeedRefresh()
-        #endif
     }
 
     static func clear() {
@@ -54,6 +49,7 @@ enum SharedSessionMirror {
     static func clearAll() {
         var query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
+            kSecUseDataProtectionKeychain as String: true,
             kSecAttrService as String: service,
             kSecMatchLimit as String: kSecMatchLimitAll,
             kSecReturnAttributes as String: true,
@@ -79,7 +75,7 @@ enum SharedSessionMirror {
     /// asks them.
     private static func extensionsNeedRefresh() {
         TopShelfRefresher.invalidate()
-        #if canImport(WidgetKit) && os(iOS)
+        #if os(iOS) || os(macOS)
         WidgetCenter.shared.reloadAllTimelines()
         #endif
     }
@@ -90,6 +86,7 @@ enum SharedSessionMirror {
     private static func save(_ data: Data, account: String) {
         var match: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
+            kSecUseDataProtectionKeychain as String: true,
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
         ]
@@ -115,6 +112,7 @@ enum SharedSessionMirror {
     private static func delete(account: String) {
         var query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
+            kSecUseDataProtectionKeychain as String: true,
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
         ]
@@ -140,6 +138,7 @@ enum SharedSessionMirror {
     private static func teamPrefix() -> String? {
         let probe: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
+            kSecUseDataProtectionKeychain as String: true,
             kSecMatchLimit as String: kSecMatchLimitOne,
             kSecReturnAttributes as String: true,
         ]
@@ -151,6 +150,7 @@ enum SharedSessionMirror {
 
         let marker: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
+            kSecUseDataProtectionKeychain as String: true,
             kSecAttrService as String: service + ".probe",
             kSecAttrAccount as String: "teamPrefix",
         ]
