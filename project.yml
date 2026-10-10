@@ -63,6 +63,8 @@ targets:
       # Compiled here rather than added to the test target: a second JellyfinItem in the test
       # module would make every unqualified use ambiguous.
       - path: SodaliteTopShelf/Shared
+      # The /Sessions shape and the playstate commands, shared with the iOS widget extension.
+      - path: RemoteControl/Shared
     settings:
       groups:
         - app
@@ -93,6 +95,7 @@ targets:
           - "Platforms/tvOS/**"
           - "Platforms/macOS/**"
       - path: SodaliteTopShelf/Shared
+      - path: RemoteControl/Shared
     settings:
       groups:
         - app
@@ -123,6 +126,7 @@ targets:
           - "Platforms/tvOS/**"
       - path: Sodalite/Platforms/iOS/AppIcon.icon
       - path: SodaliteTopShelf/Shared
+      - path: RemoteControl/Shared
     settings:
       groups:
         - app

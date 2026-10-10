@@ -36,6 +36,7 @@ final class DependencyContainer {
     let jellyfinItemService: JellyfinItemServiceProtocol
     let jellyfinImageService: JellyfinImageService
     let jellyfinPlaybackService: JellyfinPlaybackServiceProtocol
+    let remoteControlService: RemoteControlServiceProtocol
     /// Every Jellyfin session held at once; the active one wraps `jellyfinClient` (Sodalite#85).
     let sessionRegistry: ServerSessionRegistry
     /// Per-profile playback and appearance settings plus the shared device values. The two
@@ -185,6 +186,7 @@ final class DependencyContainer {
         )
         self.jellyfinItemService = JellyfinItemService(client: jellyfinClient)
         self.jellyfinPlaybackService = JellyfinPlaybackService(client: jellyfinClient)
+        self.remoteControlService = JellyfinRemoteControlService(client: jellyfinClient)
         let sessionRegistry = ServerSessionRegistry(
             activeClient: jellyfinClient,
             httpClient: httpClient,

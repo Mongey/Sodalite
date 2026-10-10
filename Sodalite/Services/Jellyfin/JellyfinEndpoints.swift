@@ -91,6 +91,10 @@ enum JellyfinEndpoint: APIEndpoint {
     case stopActiveEncodings(deviceID: String, playSessionID: String)
     /// GET /Sessions: who the server thinks is playing what, right now. Read by the tuner sweep, which has to know whether a channel-scoped live stream id belongs to somebody else before closing it (#147).
     case sessions
+    /// GET /Sessions narrowed to the ones this user may steer, for Playing Elsewhere.
+    case controllableSessions(userID: String)
+    /// POST /Sessions/{id}/Playing/{command}: pause, resume, stop or seek another device.
+    case remoteCommand(sessionID: String, command: RemoteCommand)
     case liveTvRecordings(userID: String, isInProgress: Bool?)
     case liveTvTimers
     case liveTvSeriesTimers
@@ -198,6 +202,10 @@ enum JellyfinEndpoint: APIEndpoint {
             "/Videos/ActiveEncodings"
         case .sessions:
             "/Sessions"
+        case .controllableSessions:
+            RemoteSession.listPath
+        case .remoteCommand(let sessionID, let command):
+            command.path(sessionID: sessionID)
         case .liveTvRecordings:
             "/LiveTv/Recordings"
         case .liveTvTimers, .createLiveTvTimer:
@@ -229,7 +237,7 @@ enum JellyfinEndpoint: APIEndpoint {
              .markPlayed, .sessionLogout, .updateUserItemData,
              .playbackInfo, .livePlaybackInfo,
              .sessionPlaying, .sessionProgress, .sessionStopped,
-             .closeLiveStream,
+             .closeLiveStream, .remoteCommand,
              .createLiveTvTimer, .createLiveTvSeriesTimer,
              .downloadRemoteSubtitle:
             .post
@@ -507,6 +515,12 @@ enum JellyfinEndpoint: APIEndpoint {
 
         case .liveTvTimerDefaults(let programID):
             return [URLQueryItem(name: "programId", value: programID)]
+
+        case .controllableSessions(let userID):
+            return RemoteSession.listQuery(userID: userID)
+
+        case .remoteCommand(_, let command):
+            return command.queryItems
 
         default:
             return nil
