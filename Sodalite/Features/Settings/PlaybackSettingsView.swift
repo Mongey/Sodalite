@@ -470,6 +470,19 @@ struct PlaybackSettingsView: View {
                 )
                 .settingsValueScope(.device)
 
+                sectionHeader("settings.playback.section.remoteControl")
+
+                boolRow(
+                    icon: "appletvremote.gen4",
+                    title: "settings.playback.allowRemoteControl",
+                    subtitle: "settings.playback.allowRemoteControl.subtitle",
+                    value: Binding(
+                        get: { prefs.allowRemoteControl },
+                        set: { prefs.allowRemoteControl = $0 }
+                    )
+                )
+                .settingsValueScope(.device)
+
                 sectionHeader("settings.playback.section.advanced")
 
                 boolRow(

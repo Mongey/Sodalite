@@ -24,6 +24,7 @@ final class DevicePreferences {
         static let forceDolbyVisionOnNonDVDisplay = "playback.forceDolbyVisionOnNonDVDisplay"
         static let showTopShelfRow = "appearance.showTopShelfRow"
         static let topShelfImage = "appearance.topShelfImage"
+        static let allowRemoteControl = "playback.allowRemoteControl"
     }
 
     /// Stats panel "i" button. Read-only, so it is App Store safe and needs no diagnostic-build gate.
@@ -103,6 +104,12 @@ final class DevicePreferences {
         didSet { store.set(topShelfImage.rawValue, forKey: Keys.topShelfImage) }
     }
 
+    /// Whether other Jellyfin clients may pause, seek, stop or start playback here. A device value:
+    /// it is a question about this box, and a phone allowing it says nothing about the TV.
+    var allowRemoteControl: Bool {
+        didSet { store.set(allowRemoteControl, forKey: Keys.allowRemoteControl) }
+    }
+
     private let store: PreferenceKeyspace
 
     init(keyspace store: PreferenceKeyspace) {
@@ -126,6 +133,7 @@ final class DevicePreferences {
         self.showTopShelfRow = store.object(forKey: Keys.showTopShelfRow) as? Bool ?? true
         self.topShelfImage = store.string(forKey: Keys.topShelfImage)
             .flatMap(AppearancePreferences.ContinueWatchingImage.init(rawValue:)) ?? .thumb
+        self.allowRemoteControl = store.object(forKey: Keys.allowRemoteControl) as? Bool ?? true
     }
 
     /// Reads every value again, for a factory reset that wiped the store underneath this object:
@@ -149,6 +157,7 @@ final class DevicePreferences {
         update(\.forceDolbyVisionOnNonDVDisplay)
         update(\.showTopShelfRow)
         update(\.topShelfImage)
+        update(\.allowRemoteControl)
     }
 
     convenience init(store defaults: UserDefaults = .standard) {

@@ -95,6 +95,9 @@ enum JellyfinEndpoint: APIEndpoint {
     case controllableSessions(userID: String)
     /// POST /Sessions/{id}/Playing/{command}: pause, resume, stop or seek another device.
     case remoteCommand(sessionID: String, command: RemoteCommand)
+    /// POST /Sessions/Capabilities/Full: what this device accepts from other clients, so the server
+    /// offers it as a target for their remote controls.
+    case sessionCapabilities(ClientCapabilities)
     case liveTvRecordings(userID: String, isInProgress: Bool?)
     case liveTvTimers
     case liveTvSeriesTimers
@@ -206,6 +209,8 @@ enum JellyfinEndpoint: APIEndpoint {
             RemoteSession.listPath
         case .remoteCommand(let sessionID, let command):
             command.path(sessionID: sessionID)
+        case .sessionCapabilities:
+            "/Sessions/Capabilities/Full"
         case .liveTvRecordings:
             "/LiveTv/Recordings"
         case .liveTvTimers, .createLiveTvTimer:
@@ -237,7 +242,7 @@ enum JellyfinEndpoint: APIEndpoint {
              .markPlayed, .sessionLogout, .updateUserItemData,
              .playbackInfo, .livePlaybackInfo,
              .sessionPlaying, .sessionProgress, .sessionStopped,
-             .closeLiveStream, .remoteCommand,
+             .closeLiveStream, .remoteCommand, .sessionCapabilities,
              .createLiveTvTimer, .createLiveTvSeriesTimer,
              .downloadRemoteSubtitle:
             .post
@@ -545,6 +550,8 @@ enum JellyfinEndpoint: APIEndpoint {
             report
         case .createLiveTvTimer(let payload), .createLiveTvSeriesTimer(let payload):
             payload
+        case .sessionCapabilities(let capabilities):
+            capabilities
         default:
             nil
         }

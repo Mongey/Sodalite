@@ -1091,6 +1091,7 @@ final class PlayerViewModel {
         guard !Task.isCancelled else { return }
         isTearingDown = false
         didStopPlayback = false
+        ActiveRemotePlayback.register(self)
         // Everything a previous attempt on this view model armed (a retry, an item recovery): its sinks
         // would double every handler, and a carried-over start flag would swallow this session's start.
         cancellables.removeAll()
@@ -1527,6 +1528,7 @@ final class PlayerViewModel {
     func stopPlayback() {
         guard !didStopPlayback else { return }
         didStopPlayback = true
+        ActiveRemotePlayback.unregister(self)
         // Latch teardown + cancel the in-flight launch (re-checked after every await in startPlayback;
         // cancel throws CancellationError out of player.load()) so a back-press-during-load can't resume
         // into player.load() after the player.stop() below.

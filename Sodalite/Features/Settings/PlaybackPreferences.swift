@@ -422,6 +422,11 @@ final class PlaybackPreferences {
         set { device.showEngineDiagnostics = newValue }
     }
 
+    var allowRemoteControl: Bool {
+        get { device.allowRemoteControl }
+        set { device.allowRemoteControl = newValue }
+    }
+
     var preferLosslessAudioBridge: Bool {
         get { device.preferLosslessAudioBridge }
         set { device.preferLosslessAudioBridge = newValue }

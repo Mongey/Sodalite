@@ -37,6 +37,7 @@ struct SodaliteApp: App {
     // Shared singletons, NOT fresh instances: SwiftUI may build the App value and the @Environment default separately, and a fresh DependencyContainer spawns a zombie MusicPlaybackCoordinator that clears system Now-Playing on every engine state change.
     @State private var appState = AppState.shared
     @State private var dependencies = DependencyContainer.shared
+    @Environment(\.scenePhase) private var scenePhase
 
     init() {
         // Back-wire so switchServer/removeServer can bump serverDidSwitch; must run before any switch fires.
@@ -187,6 +188,10 @@ struct SodaliteApp: App {
                 .onOpenURL { url in
                     handleDeepLink(url)
                 }
+                .task(id: remoteReceiverKey) {
+                    guard remoteReceiverKey.shouldConnect else { return }
+                    await dependencies.runRemoteReceiver(appState: appState)
+                }
                 #if os(macOS)
                 // Artwork runs up to the window's top edge with only the traffic lights over it;
                 // the sidebar already names where you are, so the title is noise.
@@ -226,12 +231,32 @@ struct SodaliteApp: App {
     /// Handles `sodalite://item/{id}` and `sodalite://play/{id}` (TopShelf's display and play actions): stashes the id in AppState for AppRouter to resolve. Synchronously tears down any active player modal first, else a TopShelf tap waking the app from a paused player loses ~10s to the player's own appDidBecomeActive reload before AppRouter's .task(id:) cycles in.
     private func handleDeepLink(_ url: URL) {
         guard let route = DeepLinkRoute.parse(url) else { return }
+        appState.open(route)
+    }
+
+    /// Another Jellyfin client may steer this device while someone is signed in, the setting allows
+    /// it, and the app is in use: in the foreground, or playing with the app behind something else.
+    private var remoteReceiverKey: RemoteReceiverKey {
+        RemoteReceiverKey(
+            serverID: appState.activeServer?.id,
+            userID: appState.activeUser?.id,
+            shouldConnect: appState.isAuthenticated
+                && dependencies.playbackPreferences.allowRemoteControl
+                && (scenePhase != .background || PlayerModalPresence.isPlayerActive),
+            contentReload: appState.requestContentReload
+        )
+    }
+}
+
+extension AppState {
+    /// Opens an item the way a `sodalite://` link does, for the link handler and for remote control.
+    func open(_ route: DeepLinkRoute) {
         PlayerModalDismisser.dismissActive(logPrefix: "[SodaliteApp]")
-        appState.requestPlayerDismissal &+= 1
+        requestPlayerDismissal &+= 1
         // Mask the prior detail view during the fetch + cover slide-in; AppRouter clears this once the new sheet takes over.
-        appState.isResolvingDeepLink = true
+        isResolvingDeepLink = true
         // Assigned before the id: AppRouter's .task is keyed on the id, so the flag has to be in place when it fires.
-        appState.pendingDeepLinkAutoPlay = route.autoPlay
-        appState.pendingDeepLinkItemID = route.itemID
+        pendingDeepLinkAutoPlay = route.autoPlay
+        pendingDeepLinkItemID = route.itemID
     }
 }

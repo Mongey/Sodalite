@@ -71627,6 +71627,28 @@
         }
       }
     },
+    "changelog.1_1_0.remoteTarget.body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Jellyfin apps and Sodalite on another device can now pause, seek, stop and start playback here. Turn it off in Settings, Playback."
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.remoteTarget.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steer this device from elsewhere"
+          }
+        }
+      }
+    },
     "changelog.1_1_0.restingTouch.body" : {
       "comment" : "Changelog highlight for the 1.1.0 release",
       "extractionState" : "manual",
@@ -183056,6 +183078,28 @@
         }
       }
     },
+    "settings.playback.allowRemoteControl" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow Remote Control"
+          }
+        }
+      }
+    },
+    "settings.playback.allowRemoteControl.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lets the Jellyfin apps and Sodalite on your other devices pause, seek, stop and start playback on this device while you are signed in."
+          }
+        }
+      }
+    },
     "settings.playback.autoForcedSubtitles" : {
       "comment" : "Boolean playback preference title",
       "extractionState" : "manual",
@@ -198537,6 +198581,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "畫面"
+          }
+        }
+      }
+    },
+    "settings.playback.section.remoteControl" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remote Control"
           }
         }
       }
