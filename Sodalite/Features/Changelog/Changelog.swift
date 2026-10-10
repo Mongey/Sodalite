@@ -40,6 +40,12 @@ enum Changelog {
                 ),
                 ChangelogHighlight(
                     .new,
+                    "changelog.1_1_0.remoteControl.title",
+                    "changelog.1_1_0.remoteControl.body",
+                    icon: "appletvremote.gen4"
+                ),
+                ChangelogHighlight(
+                    .new,
                     "changelog.1_1_0.restingTouch.title",
                     "changelog.1_1_0.restingTouch.body",
                     icon: "hand.tap.fill"

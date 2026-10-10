@@ -71603,6 +71603,30 @@
         }
       }
     },
+    "changelog.1_1_0.remoteControl.body" : {
+      "comment" : "What's New 1.1.0: body for Playing Elsewhere.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home now shows what your other devices are playing, with pause, skip and stop. On iPhone and iPad the Playing Elsewhere widget puts the same controls on your Home Screen."
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.remoteControl.title" : {
+      "comment" : "What's New 1.1.0: title for Playing Elsewhere, the remote control for other Jellyfin devices.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Control your other devices"
+          }
+        }
+      }
+    },
     "changelog.1_1_0.restingTouch.body" : {
       "comment" : "Changelog highlight for the 1.1.0 release",
       "extractionState" : "manual",
