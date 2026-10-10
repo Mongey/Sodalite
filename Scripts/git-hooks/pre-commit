@@ -34,7 +34,7 @@ fi
 #    the keys sorted, so an unsorted catalog buys a five-figure cosmetic diff on the next
 #    build, and a diff that changes nothing semantically is that churn rather than work.
 SORTER="swift Scripts/xcstrings-sort.swift"
-for CATALOG in Sodalite/Localizable.xcstrings SodaliteTopShelf/Localizable.xcstrings; do
+for CATALOG in Sodalite/Localizable.xcstrings SodaliteTopShelf/Localizable.xcstrings SodaliteWidgets/Localizable.xcstrings; do
     staged "$CATALOG" || continue
 
     WORK=$(mktemp -d -t xcstrings)

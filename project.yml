@@ -116,6 +116,7 @@ targets:
     dependencies:
       - package: AetherEngine
       - package: SwiftAssRenderer
+      - target: SodaliteWidgets
   Sodalite-macOS:
     type: application
     platform: macOS
@@ -146,6 +147,27 @@ targets:
     dependencies:
       - package: AetherEngine
       - package: SwiftAssRenderer
+  SodaliteWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: SodaliteWidgets
+      - path: RemoteControl/Shared
+      # SharedSession and what it logs through, the same reader the Top Shelf uses.
+      - path: SodaliteTopShelf/Shared
+    settings:
+      base:
+        INFOPLIST_FILE: SupportingFiles/SodaliteWidgets-Info.plist
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: de.superuser404.Sodalite.Widgets
+        PRODUCT_NAME: SodaliteWidgets
+        CODE_SIGN_ENTITLEMENTS: SupportingFiles/SodaliteWidgets.entitlements
+        SWIFT_DEFAULT_ACTOR_ISOLATION: nonisolated
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SKIP_INSTALL: YES
+    dependencies:
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
   SodaliteTopShelf:
     type: com.apple.product-type.tv-app-extension
     platform: tvOS

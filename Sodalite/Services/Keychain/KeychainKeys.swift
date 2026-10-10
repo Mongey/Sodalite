@@ -92,7 +92,7 @@ nonisolated enum KeychainKeys {
     /// of a security decision, and wiping defaults must not silently widen what the app trusts.
     static let trustedCertificates = "trustedCertificates"
 
-    /// The one shared-session blob the TopShelf extension reads. Under `runs-as-current-user` the
+    /// The one shared-session blob the extensions read (Top Shelf on tvOS, widget on iOS). Under `runs-as-current-user` the
     /// keychain is already per tvOS user, so a second per-user key would be a partition inside a
     /// partition. The `_default` suffix is kept verbatim: existing installs carry that account name.
     static let sharedSession = "tvOSSession_default"

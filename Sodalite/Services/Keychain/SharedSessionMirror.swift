@@ -1,12 +1,15 @@
 import Foundation
 import os.log
 import Security
+#if canImport(WidgetKit) && os(iOS)
+import WidgetKit
+#endif
 
-/// Mirrors active Jellyfin credentials into the shared keychain access group the TopShelf extension reads. One JSON `Payload` in a single slot, re-mirrored on every login/profile-switch/logout; the keychain itself is per tvOS user under the user-management entitlement. Own service bucket (`…Sodalite.shared`) to keep it separate from the app's primary entries.
+/// Mirrors active Jellyfin credentials into the shared keychain access group the extensions read: the Top Shelf on tvOS, the remote-control widget on iOS. One JSON `Payload` in a single slot, re-mirrored on every login/profile-switch/logout; the keychain itself is per tvOS user under the user-management entitlement. Own service bucket (`…Sodalite.shared`) to keep it separate from the app's primary entries.
 enum SharedSessionMirror {
     static let service = "de.superuser404.Sodalite.shared"
 
-    /// JSON shape per slot; keep in sync with the decoder in `SodaliteTopShelf/SharedSession.swift`.
+    /// JSON shape per slot; keep in sync with the decoder in `SodaliteTopShelf/Shared/SharedSession.swift`.
     struct Payload: Codable {
         let serverURL: String
         let userID: String
@@ -14,10 +17,10 @@ enum SharedSessionMirror {
     }
 
     static func write(serverURL: URL, userID: String, accessToken: String) {
-        // Only tvOS has a Top Shelf to read this. Everywhere else the write would mint a second copy
-        // of the access token with no consumer, so take the chance to remove one an earlier build of
-        // this app left behind instead.
-        #if !os(tvOS)
+        // The Top Shelf reads this on tvOS and the widget on iOS. Anywhere else the write would mint
+        // a second copy of the access token with no consumer, so take the chance to remove one an
+        // earlier build of this app left behind instead.
+        #if !os(tvOS) && !os(iOS)
         clear()
         return
         #else
@@ -32,7 +35,7 @@ enum SharedSessionMirror {
             return
         }
         save(data, account: slot)
-        TopShelfRefresher.invalidate()
+        extensionsNeedRefresh()
         #endif
     }
 
@@ -43,8 +46,8 @@ enum SharedSessionMirror {
         // tidy-up so a logged-out device carries no library titles in its container.
         TopShelfCachePolicy.delete()
         // Without this the shelf keeps serving the previous profile's cells until tvOS
-        // asks again on its own schedule.
-        TopShelfRefresher.invalidate()
+        // asks again on its own schedule, and the widget the previous profile's devices.
+        extensionsNeedRefresh()
     }
 
     /// Wipes every shared-session slot (full logout). Enumerates by `tvOSSession_` account-prefix since SecItem has no prefix match.
@@ -69,7 +72,16 @@ enum SharedSessionMirror {
             delete(account: account)
         }
         TopShelfCachePolicy.delete()
+        extensionsNeedRefresh()
+    }
+
+    /// The readers redraw from the slot that just changed rather than whenever their system next
+    /// asks them.
+    private static func extensionsNeedRefresh() {
         TopShelfRefresher.invalidate()
+        #if canImport(WidgetKit) && os(iOS)
+        WidgetCenter.shared.reloadAllTimelines()
+        #endif
     }
 
     /// Updates in place and adds only when there is nothing to update. Delete-then-add left a

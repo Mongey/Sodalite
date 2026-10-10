@@ -1,0 +1,162 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "widget.remote.back10" : {
+      "comment" : "Remote-control widget: skip back 10 seconds (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back 10 Seconds"
+          }
+        }
+      }
+    },
+    "widget.remote.description" : {
+      "comment" : "Widget gallery: description of the remote-control widget.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause, resume or stop what your other devices are playing."
+          }
+        }
+      }
+    },
+    "widget.remote.forward10" : {
+      "comment" : "Remote-control widget: skip forward 10 seconds (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forward 10 Seconds"
+          }
+        }
+      }
+    },
+    "widget.remote.idle" : {
+      "comment" : "Remote-control widget: no other device is playing anything.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing playing on your other devices"
+          }
+        }
+      }
+    },
+    "widget.remote.intent.command" : {
+      "comment" : "App Intent parameter: the playback command to send.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command"
+          }
+        }
+      }
+    },
+    "widget.remote.intent.position" : {
+      "comment" : "App Intent parameter: the seek target.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position"
+          }
+        }
+      }
+    },
+    "widget.remote.intent.session" : {
+      "comment" : "App Intent parameter: the Jellyfin session to control.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session"
+          }
+        }
+      }
+    },
+    "widget.remote.intent.title" : {
+      "comment" : "App Intent behind the remote-control widget's buttons. Not shown in Shortcuts.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Control Playback"
+          }
+        }
+      }
+    },
+    "widget.remote.name" : {
+      "comment" : "Widget gallery: name of the remote-control widget.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playing Elsewhere"
+          }
+        }
+      }
+    },
+    "widget.remote.pause" : {
+      "comment" : "Remote-control widget: pause playback on the other device (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        }
+      }
+    },
+    "widget.remote.play" : {
+      "comment" : "Remote-control widget: resume playback on the other device (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        }
+      }
+    },
+    "widget.remote.signedOut" : {
+      "comment" : "Remote-control widget: the app has no signed-in server.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to Sodalite"
+          }
+        }
+      }
+    },
+    "widget.remote.stop" : {
+      "comment" : "Remote-control widget: stop playback on the other device (accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
