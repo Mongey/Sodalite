@@ -46,6 +46,12 @@ enum Changelog {
                 ),
                 ChangelogHighlight(
                     .new,
+                    "changelog.1_1_0.upNextWidget.title",
+                    "changelog.1_1_0.upNextWidget.body",
+                    icon: "rectangle.stack.badge.play"
+                ),
+                ChangelogHighlight(
+                    .new,
                     "changelog.1_1_0.restingTouch.title",
                     "changelog.1_1_0.restingTouch.body",
                     icon: "hand.tap.fill"

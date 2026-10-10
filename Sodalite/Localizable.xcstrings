@@ -74217,6 +74217,30 @@
         }
       }
     },
+    "changelog.1_1_0.upNextWidget.body" : {
+      "comment" : "What's New 1.1.0: body for the Up Next widget.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Up Next widget lists what to watch next on iPhone, iPad and Mac. Tap a show to play it, or pick a TV in the widget's settings and send it there."
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.upNextWidget.title" : {
+      "comment" : "What's New 1.1.0: title for the Up Next widget.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up Next on your Home Screen"
+          }
+        }
+      }
+    },
     "changelog.1_1_0.versionLabel.body" : {
       "comment" : "Changelog highlight for the 1.1.0 release",
       "extractionState" : "manual",
