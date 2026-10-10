@@ -109,6 +109,7 @@ struct PlayingElsewhereSection: View {
                                     fetchedAt: model.fetchedAt,
                                     imageURL: imageURL(playing),
                                     metrics: metrics,
+                                    leavesRoomForNext: model.sessions.count > 1,
                                     send: { command in Task { await model.send(command, to: session) } }
                                 )
                             }
@@ -127,7 +128,19 @@ private struct RemoteSessionCard: View {
     let fetchedAt: Date
     let imageURL: URL?
     let metrics: LayoutMetrics
+    /// With another card after this one, part of it has to show, or the row does not read as one
+    /// that scrolls.
+    let leavesRoomForNext: Bool
     let send: (RemoteCommand) -> Void
+
+    private static let nextCardPeek: CGFloat = 44
+    /// Room for "1:59:59" in the caption font. A running timer text otherwise claims as much
+    /// width as it can get, which left a gap wider than the time beside the bar.
+    #if os(tvOS)
+    private static let timeSlotWidth: CGFloat = 100
+    #else
+    private static let timeSlotWidth: CGFloat = 50
+    #endif
 
     private var artworkSize: CGSize {
         CGSize(width: metrics.listPosterSize.width, height: metrics.listPosterSize.height)
@@ -166,9 +179,11 @@ private struct RemoteSessionCard: View {
         .padding(metrics.itemSpacing * 0.6)
         .frame(maxWidth: .infinity, alignment: .leading)
         // Two landscape cards wide, but never wider than the row can show whole: on a phone the
-        // card fills the row instead of running off its trailing edge.
+        // card fills the row instead of running off its trailing edge, less a slice for the next
+        // card when there is one.
         .containerRelativeFrame(.horizontal) { length, _ in
-            min(length - metrics.rowInset * 2, metrics.landscapeSize.width * 1.9)
+            let peek = leavesRoomForNext ? metrics.itemSpacing + Self.nextCardPeek : 0
+            return min(length - metrics.rowInset * 2 - peek, metrics.landscapeSize.width * 1.9)
         }
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
     }
@@ -179,15 +194,25 @@ private struct RemoteSessionCard: View {
             HStack(spacing: 8) {
                 if playing.isPaused {
                     ProgressView(value: playing.progress ?? 0)
-                    Text(playing.remainingText ?? "")
                 } else {
                     ProgressView(timerInterval: interval, countsDown: false) {
                         EmptyView()
                     } currentValueLabel: {
                         EmptyView()
                     }
-                    Text(timerInterval: interval, countsDown: true)
                 }
+                // Text(timerInterval:) and the static time measure differently; one trailing
+                // slot keeps the bar the same length when the device pauses.
+                Group {
+                    if playing.isPaused {
+                        Text(playing.remainingText ?? "")
+                    } else {
+                        Text(timerInterval: interval, countsDown: true)
+                    }
+                }
+                .multilineTextAlignment(.trailing)
+                .lineLimit(1)
+                .frame(width: Self.timeSlotWidth, alignment: .trailing)
             }
             .font(.caption.monospacedDigit())
             .foregroundStyle(.secondary)
