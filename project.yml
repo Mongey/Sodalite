@@ -147,6 +147,29 @@ targets:
     dependencies:
       - package: AetherEngine
       - package: SwiftAssRenderer
+      - target: SodaliteWidgets-macOS
+  # The same widget sources as SodaliteWidgets. A second target rather than one multiplatform
+  # target: the Mac extension has to be sandboxed, so it signs with entitlements of its own.
+  SodaliteWidgets-macOS:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: SodaliteWidgets
+      - path: RemoteControl/Shared
+      - path: SodaliteTopShelf/Shared
+    settings:
+      base:
+        INFOPLIST_FILE: SupportingFiles/SodaliteWidgets-Info.plist
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: de.superuser404.Sodalite.Widgets
+        PRODUCT_NAME: SodaliteWidgets
+        CODE_SIGN_ENTITLEMENTS: SupportingFiles/SodaliteWidgets-macOS.entitlements
+        SWIFT_DEFAULT_ACTOR_ISOLATION: nonisolated
+        ENABLE_HARDENED_RUNTIME: YES
+        SKIP_INSTALL: YES
+    dependencies:
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
   SodaliteWidgets:
     type: app-extension
     platform: iOS

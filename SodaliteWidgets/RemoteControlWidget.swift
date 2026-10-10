@@ -12,7 +12,16 @@ struct RemoteControlWidget: Widget {
         }
         .configurationDisplayName("widget.remote.name")
         .description("widget.remote.description")
-        .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular])
+        .supportedFamilies(Self.families)
+    }
+
+    /// The Mac desktop has no Lock Screen family to offer.
+    private static var families: [WidgetFamily] {
+        #if os(macOS)
+        [.systemSmall, .systemMedium]
+        #else
+        [.systemSmall, .systemMedium, .accessoryRectangular]
+        #endif
     }
 }
 
@@ -189,8 +198,11 @@ struct RemoteControlWidgetView: View {
         let shape = RoundedRectangle(cornerRadius: 6)
         Group {
             if let poster {
+                // Tinted on iOS and accented on the Mac desktop, a full-colour poster would turn
+                // into a flat block of the tint; desaturated it keeps its detail.
                 Image(decorative: poster, scale: 1)
                     .resizable()
+                    .widgetAccentedRenderingMode(.accentedDesaturated)
                     .aspectRatio(contentMode: .fill)
             } else {
                 Rectangle().fill(.quaternary)
