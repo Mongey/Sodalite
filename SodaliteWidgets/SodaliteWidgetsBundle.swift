@@ -5,5 +5,6 @@ import WidgetKit
 struct SodaliteWidgetsBundle: WidgetBundle {
     var body: some Widget {
         RemoteControlWidget()
+        RemotePlaybackControl()
     }
 }

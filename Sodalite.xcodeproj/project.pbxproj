@@ -691,6 +691,7 @@
 		4FDFCB8C600C83653DAC0EE2 /* MacSidebarToggleRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F228D93F5A4018CF17BD35E /* MacSidebarToggleRepair.swift */; };
 		4FF01EE9C4D2C7BE2EFD2790 /* CertificateTrustFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E28A7002618314BCD6123 /* CertificateTrustFailure.swift */; };
 		5001F7B2935C54870C7CE7C5 /* WatchStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25744AF04149582645C9 /* WatchStats.swift */; };
+		50073B444325553DED7CD68B /* RemotePlaybackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C79CF512B49FD816B915DA /* RemotePlaybackControl.swift */; };
 		5014D2B5FDC274AE79600BDF /* SeerrAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B88E8CE251D5B15713F56E /* SeerrAuthResponse.swift */; };
 		505A63B23F5DC6F5960ACD98 /* NowPlayingWakeSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653E7EF00474F38C86221991 /* NowPlayingWakeSink.swift */; };
 		50AC05242DDAD481A91E524E /* LiveRailGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD54A37321E5D6A5380099 /* LiveRailGeometryTests.swift */; };
@@ -1658,6 +1659,7 @@
 		C1D1ABFEA4AB6870855914DE /* PlayerEngineErrorPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9493A2724219ECC64C99BE /* PlayerEngineErrorPresentation.swift */; };
 		C20B74C27182FEDECE6937DA /* SeerrRequestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037432B32516DB6ADA13E8B1 /* SeerrRequestSheet.swift */; };
 		C21B13A07B26C06237B72AC4 /* PersonTMDBMatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8355D10DC1A209909C2853 /* PersonTMDBMatchTests.swift */; };
+		C230A49C7B66A5F0DA62B214 /* RemotePlaybackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C79CF512B49FD816B915DA /* RemotePlaybackControl.swift */; };
 		C24655E0BA2549E43946E42F /* WatchStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A657EB081E4069ED70DD3F8 /* WatchStatsView.swift */; };
 		C275910D6BCE13DA464EF2E0 /* CollectionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB5B0BE20FDDBCD2C5796 /* CollectionDetailView.swift */; };
 		C27945C52651E989D9C140ED /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D429621806EC6D71F260770 /* SearchTextField.swift */; };
@@ -2330,6 +2332,7 @@
 		116E63A3D0E2D96FFA20EC65 /* LivePlaybackContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlaybackContext.swift; sourceTree = "<group>"; };
 		11735278116778A1D183DA55 /* ProfileKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKey.swift; sourceTree = "<group>"; };
 		11B9B1527B6C250C5F62332C /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		11C79CF512B49FD816B915DA /* RemotePlaybackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaybackControl.swift; sourceTree = "<group>"; };
 		12C9EC049C02787E96058C21 /* PlayerActionPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerActionPill.swift; sourceTree = "<group>"; };
 		12D48C0E2F7E3BC442ECDDB4 /* LivePlayerLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerLauncher.swift; sourceTree = "<group>"; };
 		1379D65D0C8EAC5CB5F97764 /* DependencyContainer+Caches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DependencyContainer+Caches.swift"; sourceTree = "<group>"; };
@@ -4331,6 +4334,7 @@
 			children = (
 				B476D058E398B0B6AFD96615 /* Localizable.xcstrings */,
 				417F7F6DC1DA606C8D243B6E /* RemoteControlWidget.swift */,
+				11C79CF512B49FD816B915DA /* RemotePlaybackControl.swift */,
 				FF1F4985F118D6AF9B1810E3 /* SodaliteWidgetsBundle.swift */,
 			);
 			path = SodaliteWidgets;
@@ -5119,6 +5123,7 @@
 				657A5FEDF700E6525920DF04 /* RemoteControlWidget.swift in Sources */,
 				637DDE5EF3DE38AD94FFB7BC /* RemoteDeviceEntity.swift in Sources */,
 				AF7D671E01F110E0AEBE6A35 /* RemoteDeviceIntents.swift in Sources */,
+				50073B444325553DED7CD68B /* RemotePlaybackControl.swift in Sources */,
 				E86F01D88E21928E6F82460A /* RemoteSession.swift in Sources */,
 				6B0FC3E750C23172556BAA84 /* ResumeBarArtwork.swift in Sources */,
 				D37FAAE7DEC06160A0CB0C8B /* ResumeBarFile.swift in Sources */,
@@ -6696,6 +6701,7 @@
 				61D6807B242582BB5CBD4568 /* RemoteControlWidget.swift in Sources */,
 				35A7BE8507EC1376683CFCC3 /* RemoteDeviceEntity.swift in Sources */,
 				7F1F503BC9C319C717EC1B90 /* RemoteDeviceIntents.swift in Sources */,
+				C230A49C7B66A5F0DA62B214 /* RemotePlaybackControl.swift in Sources */,
 				9DDA92CB9DB9C9958D63BE41 /* RemoteSession.swift in Sources */,
 				B3EC4C062B68D00134390727 /* ResumeBarArtwork.swift in Sources */,
 				F25E77998EA735C35E4B9E50 /* ResumeBarFile.swift in Sources */,

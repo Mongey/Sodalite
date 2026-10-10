@@ -1,6 +1,66 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "control.remote.description" : {
+      "comment" : "Control Center gallery: description of the remote play/pause control.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause or resume whatever your other device is playing."
+          }
+        }
+      }
+    },
+    "control.remote.name" : {
+      "comment" : "Control Center gallery: name of the control that plays or pauses the user's other device.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Device"
+          }
+        }
+      }
+    },
+    "control.remote.nothingPlaying" : {
+      "comment" : "Control Center control title when no other device is playing.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing Playing"
+          }
+        }
+      }
+    },
+    "control.remote.paused" : {
+      "comment" : "Control Center control state: the other device is paused.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paused"
+          }
+        }
+      }
+    },
+    "control.remote.playing" : {
+      "comment" : "Control Center control state: the other device is playing.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playing"
+          }
+        }
+      }
+    },
     "intents.remote.device" : {
       "comment" : "Shortcuts parameter: which of the user's other devices to control. Optional; without it the device that played last.",
       "extractionState" : "manual",
