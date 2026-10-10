@@ -86,6 +86,10 @@ struct RemoteControlWidgetView: View {
 
     @Environment(\.widgetFamily) private var family
 
+    /// Wide enough for "1:59:59" in monospaced caption2.
+    private static let timeSlotWidth: CGFloat = 50
+    private static let progressRowHeight: CGFloat = 14
+
     var body: some View {
         content
             .containerBackground(.background, for: .widget)
@@ -185,9 +189,15 @@ struct RemoteControlWidgetView: View {
             Text(playing.title)
                 .font(.headline)
                 .lineLimit(1)
-            Text(session.deviceName)
-                .font(.caption)
-                .lineLimit(1)
+            HStack(spacing: 3) {
+                if playing.isPaused {
+                    Image(systemName: "pause.fill")
+                        .accessibilityLabel(Text("widget.remote.paused"))
+                }
+                Text(session.deviceName)
+                    .lineLimit(1)
+            }
+            .font(.caption)
             progress(playing, showsTime: false)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -220,19 +230,30 @@ struct RemoteControlWidgetView: View {
             HStack(spacing: 6) {
                 if playing.isPaused {
                     ProgressView(value: playing.progress ?? 0)
-                    if showsTime { Text(playing.remainingText ?? "") }
                 } else {
                     ProgressView(timerInterval: interval, countsDown: false) {
                         EmptyView()
                     } currentValueLabel: {
                         EmptyView()
                     }
-                    if showsTime {
-                        Text(timerInterval: interval, countsDown: true)
-                            .frame(maxWidth: 52, alignment: .trailing)
+                }
+                // One fixed slot for both states. A running timer text claims more width than
+                // the static one, so sized by content the bar jumped on every pause.
+                if showsTime {
+                    Group {
+                        if playing.isPaused {
+                            Text(playing.remainingText ?? "")
+                        } else {
+                            Text(timerInterval: interval, countsDown: true)
+                        }
                     }
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: Self.timeSlotWidth, alignment: .trailing)
                 }
             }
+            // Fixed height for the same reason: the two ProgressView forms differ by a few
+            // points, which moved every line above the bar.
+            .frame(height: Self.progressRowHeight)
             .font(.caption2.monospacedDigit())
             .foregroundStyle(.secondary)
             .tint(.primary)

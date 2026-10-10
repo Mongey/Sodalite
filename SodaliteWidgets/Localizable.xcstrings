@@ -121,6 +121,18 @@
         }
       }
     },
+    "widget.remote.paused" : {
+      "comment" : "Remote-control widget: the other device is paused (Lock Screen accessibility label).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paused"
+          }
+        }
+      }
+    },
     "widget.remote.play" : {
       "comment" : "Remote-control widget: resume playback on the other device (accessibility label).",
       "extractionState" : "manual",
