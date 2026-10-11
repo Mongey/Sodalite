@@ -59,6 +59,20 @@ struct TrackDisplayFormatterTests {
         #expect(TrackDisplayFormatter.shortName(for: track) == "Dolby Atmos")
     }
 
+    /// AetherEngine#731: TrueHD Atmos is the track that keeps its heights, so the menu has to say which
+    /// of a film's TrueHD tracks it is. `isAtmos` answers for E-AC-3 JOC only; the profile tells TrueHD.
+    @Test("TrueHD Atmos names itself, plain TrueHD keeps its layout")
+    func trueHDAtmosNamesItself() {
+        let atmos = TrackInfo(id: 1, name: "Track 1 (truehd)", codec: "truehd", language: nil, channels: 8,
+                              isDefault: true, profile: "Dolby TrueHD + Dolby Atmos")
+        #expect(TrackDisplayFormatter.shortName(for: atmos) == "Dolby TrueHD Atmos")
+        #expect(TrackDisplayFormatter.audioDisplayName(for: atmos) == "Dolby TrueHD Atmos")
+        let plain = TrackInfo(id: 2, name: "Track 2 (truehd)", codec: "truehd", language: nil, channels: 8,
+                              isDefault: false, profile: nil)
+        #expect(!TrackDisplayFormatter.isTrueHDAtmos(plain))
+        #expect(TrackDisplayFormatter.audioDisplayName(for: plain) != "Dolby TrueHD Atmos")
+    }
+
     @Test("a track with neither language nor a describable format keeps its name")
     func lastResortIsTheName() {
         let track = audio(language: nil, codec: "", channels: 0, name: "Commentary")

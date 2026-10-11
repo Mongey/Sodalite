@@ -65810,7 +65810,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las pistas TrueHD con Dolby Atmos ahora conservan sus canales de altura. Sodalite renderiza los objetos Atmos y los envía a tu receptor o barra de sonido como Dolby Atmos, o a los AirPods como audio espacial, y elige la pista TrueHD Atmos en tu idioma cuando una película la tiene. Activado por defecto, se puede desactivar en los ajustes de reproducción."
+            "value" : "Las pistas TrueHD con Dolby Atmos ahora conservan sus canales de altura. Sodalite renderiza los objetos Atmos y los envía a tu receptor o barra de sonido como Dolby Atmos, o a los AirPods como audio espacial, y elige la pista TrueHD Atmos en tu idioma cuando la película tiene una. Activado por defecto, se puede desactivar en los ajustes de reproducción."
           }
         },
         "fi" : {
@@ -203114,7 +203114,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Behält die Höhenkanäle von TrueHD-Atmos-Spuren und gibt sie als Dolby Atmos aus, an AirPods als 3D-Audio, und wählt eine solche Spur in deiner Sprache. Verlustbehaftet. Aus spielt sie nach der Einstellung darüber."
+            "value" : "Behält die Höhenkanäle von TrueHD-Atmos-Spuren und gibt sie als Dolby Atmos aus, an AirPods als 3D-Audio, und wählt eine solche Spur in deiner Sprache. Verlustbehaftet. Aus: Wiedergabe nach der Einstellung darüber."
           }
         },
         "el" : {

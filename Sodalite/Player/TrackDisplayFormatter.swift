@@ -17,6 +17,8 @@ enum TrackDisplayFormatter {
         // Atmos", not "Dolby Digital+ 5.1"), matching other Atmos UIs.
         if track.isAtmos {
             parts.append("Dolby Atmos")
+        } else if isTrueHDAtmos(track) {
+            parts.append("Dolby TrueHD Atmos")
         } else {
             let quality = audioQuality(codec: track.codec, channels: track.channels)
             if !quality.isEmpty {
@@ -71,8 +73,17 @@ enum TrackDisplayFormatter {
     static func shortName(for track: TrackInfo) -> String {
         if let lang = languageName(for: track) { return lang }
         if track.isAtmos { return "Dolby Atmos" }
+        if isTrueHDAtmos(track) { return "Dolby TrueHD Atmos" }
         let quality = audioQuality(codec: track.codec, channels: track.channels)
         return quality.isEmpty ? track.name : quality
+    }
+
+    /// AetherEngine#731: `TrackInfo.isAtmos` answers for E-AC-3 JOC only. A TrueHD Atmos track is told by
+    /// the profile FFmpeg reads off its major sync, the same test `MediaBadges` applies to the server's
+    /// stream profile, and with the heights setting on it is the track that keeps them.
+    static func isTrueHDAtmos(_ track: TrackInfo) -> Bool {
+        track.codec.lowercased() == "truehd"
+            && (track.profile?.localizedCaseInsensitiveContains("Dolby Atmos") ?? false)
     }
 
     // MARK: - Private
