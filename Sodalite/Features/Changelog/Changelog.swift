@@ -75,6 +75,12 @@ enum Changelog {
                     icon: "captions.bubble"
                 ),
                 ChangelogHighlight(
+                    .new,
+                    "changelog.1_1_0.atmosHeights.title",
+                    "changelog.1_1_0.atmosHeights.body",
+                    icon: "hifispeaker.2.fill"
+                ),
+                ChangelogHighlight(
                     .improve,
                     "changelog.1_1_0.durations.title",
                     "changelog.1_1_0.durations.body",
