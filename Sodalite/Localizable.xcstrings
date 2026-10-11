@@ -65780,157 +65780,157 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stopy TrueHD s Dolby Atmos si nyní zachovají výškové kanály. Sodalite vykreslí objekty Atmos a pošle je do receiveru nebo soundbaru jako Dolby Atmos, případně do AirPods jako prostorový zvuk. Zapnout to lze v nastavení přehrávání."
+            "value" : "Stopy TrueHD s Dolby Atmos si nyní zachovají výškové kanály. Sodalite vykreslí objekty Atmos a pošle je do receiveru nebo soundbaru jako Dolby Atmos, případně do AirPods jako prostorový zvuk, a když film takovou stopu má, vybere ji ve vašem jazyce. Zapnuto ve výchozím stavu, vypnout lze v nastavení přehrávání."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-spor med Dolby Atmos beholder nu deres højdekanaler. Sodalite gengiver Atmos-objekterne og sender dem til din receiver eller soundbar som Dolby Atmos eller til AirPods som rumlig lyd. Du slår det til i indstillingerne for afspilning."
+            "value" : "TrueHD-spor med Dolby Atmos beholder nu deres højdekanaler. Sodalite gengiver Atmos-objekterne og sender dem til din receiver eller soundbar som Dolby Atmos eller til AirPods som rumlig lyd, og vælger TrueHD Atmos-sporet på dit sprog, når en film har et. Slået til som standard og kan slås fra i indstillingerne for afspilning."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-Spuren mit Dolby Atmos behalten jetzt ihre Höhenkanäle. Sodalite rendert die Atmos-Objekte und gibt sie als Dolby Atmos an Receiver oder Soundbar weiter, an AirPods als 3D-Audio. Einschalten lässt es sich in den Wiedergabeeinstellungen."
+            "value" : "TrueHD-Spuren mit Dolby Atmos behalten jetzt ihre Höhenkanäle. Sodalite rendert die Atmos-Objekte und gibt sie als Dolby Atmos an Receiver oder Soundbar weiter, an AirPods als 3D-Audio, und wählt die TrueHD-Atmos-Spur in deiner Sprache, wenn ein Film eine hat. Standardmäßig an, abschaltbar in den Wiedergabeeinstellungen."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Τα κομμάτια TrueHD με Dolby Atmos διατηρούν πλέον τα κανάλια ύψους τους. Το Sodalite αποδίδει τα αντικείμενα Atmos και τα στέλνει στον δέκτη ή στο soundbar ως Dolby Atmos ή στα AirPods ως χωρικό ήχο. Ενεργοποιείται στις ρυθμίσεις αναπαραγωγής."
+            "value" : "Τα κομμάτια TrueHD με Dolby Atmos διατηρούν πλέον τα κανάλια ύψους τους. Το Sodalite αποδίδει τα αντικείμενα Atmos και τα στέλνει στον δέκτη ή στο soundbar ως Dolby Atmos ή στα AirPods ως χωρικό ήχο, και επιλέγει το κομμάτι TrueHD Atmos στη γλώσσα σας όταν μια ταινία έχει. Ενεργό από προεπιλογή, απενεργοποιείται στις ρυθμίσεις αναπαραγωγής."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD tracks with Dolby Atmos now keep their height channels. Sodalite renders the Atmos objects and sends them to your receiver or soundbar as Dolby Atmos, or to AirPods as Spatial Audio. Turn it on in the playback settings."
+            "value" : "TrueHD tracks with Dolby Atmos now keep their height channels. Sodalite renders the Atmos objects and sends them to your receiver or soundbar as Dolby Atmos, or to AirPods as Spatial Audio, and picks the TrueHD Atmos track in your language when a film has one. On by default, and switchable in the playback settings."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las pistas TrueHD con Dolby Atmos ahora conservan sus canales de altura. Sodalite renderiza los objetos Atmos y los envía a tu receptor o barra de sonido como Dolby Atmos, o a los AirPods como audio espacial. Actívalo en los ajustes de reproducción."
+            "value" : "Las pistas TrueHD con Dolby Atmos ahora conservan sus canales de altura. Sodalite renderiza los objetos Atmos y los envía a tu receptor o barra de sonido como Dolby Atmos, o a los AirPods como audio espacial, y elige la pista TrueHD Atmos en tu idioma cuando una película la tiene. Activado por defecto, se puede desactivar en los ajustes de reproducción."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmosia sisältävät TrueHD-raidat säilyttävät nyt korkeuskanavansa. Sodalite renderöi Atmos-objektit ja lähettää ne vastaanottimeen tai soundbariin Dolby Atmosina tai AirPodeihin tilaäänenä. Ota se käyttöön toistoasetuksista."
+            "value" : "Dolby Atmosia sisältävät TrueHD-raidat säilyttävät nyt korkeuskanavansa. Sodalite renderöi Atmos-objektit ja lähettää ne vastaanottimeen tai soundbariin Dolby Atmosina tai AirPodeihin tilaäänenä, ja valitsee TrueHD Atmos -raidan kielelläsi, kun elokuvassa sellainen on. Oletuksena päällä, poistettavissa toistoasetuksista."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les pistes TrueHD en Dolby Atmos conservent désormais leurs canaux de hauteur. Sodalite effectue le rendu des objets Atmos et les envoie à votre ampli ou barre de son en Dolby Atmos, ou aux AirPods en audio spatial. Activez-le dans les réglages de lecture."
+            "value" : "Les pistes TrueHD en Dolby Atmos conservent désormais leurs canaux de hauteur. Sodalite effectue le rendu des objets Atmos et les envoie à votre ampli ou barre de son en Dolby Atmos, ou aux AirPods en audio spatial, et choisit la piste TrueHD Atmos dans votre langue quand un film en a une. Activé par défaut, désactivable dans les réglages de lecture."
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD zapisi s Dolby Atmosom sada zadržavaju visinske kanale. Sodalite renderira Atmos objekte i šalje ih prijemniku ili soundbaru kao Dolby Atmos, a AirPodsima kao prostorni zvuk. Uključuje se u postavkama reprodukcije."
+            "value" : "TrueHD zapisi s Dolby Atmosom sada zadržavaju visinske kanale. Sodalite renderira Atmos objekte i šalje ih prijemniku ili soundbaru kao Dolby Atmos, a AirPodsima kao prostorni zvuk, te bira TrueHD Atmos zapis na vašem jeziku kad ga film ima. Uključeno prema zadanim postavkama, isključuje se u postavkama reprodukcije."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Dolby Atmost tartalmazó TrueHD sávok mostantól megtartják a magassági csatornáikat. A Sodalite rendereli az Atmos objektumokat, és Dolby Atmosként küldi őket az erősítőnek vagy hangprojektornak, illetve térhatású hangként az AirPodsnak. A lejátszási beállításokban kapcsolható be."
+            "value" : "A Dolby Atmost tartalmazó TrueHD sávok mostantól megtartják a magassági csatornáikat. A Sodalite rendereli az Atmos objektumokat, Dolby Atmosként küldi őket az erősítőnek vagy hangprojektornak, térhatású hangként az AirPodsnak, és a nyelvedhez tartozó TrueHD Atmos sávot választja, ha a filmben van ilyen. Alapból bekapcsolva, a lejátszási beállításokban kikapcsolható."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le tracce TrueHD con Dolby Atmos ora mantengono i canali di altezza. Sodalite esegue il rendering degli oggetti Atmos e li invia al ricevitore o alla soundbar come Dolby Atmos, oppure agli AirPods come audio spaziale. Attivalo nelle impostazioni di riproduzione."
+            "value" : "Le tracce TrueHD con Dolby Atmos ora mantengono i canali di altezza. Sodalite esegue il rendering degli oggetti Atmos e li invia al ricevitore o alla soundbar come Dolby Atmos, oppure agli AirPods come audio spaziale, e sceglie la traccia TrueHD Atmos nella tua lingua quando un film ne ha una. Attivo per impostazione predefinita, disattivabile nelle impostazioni di riproduzione."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos付きのTrueHDトラックで、ハイトチャンネルが保持されるようになりました。SodaliteがAtmosオブジェクトをレンダリングし、レシーバーやサウンドバーにはDolby Atmosとして、AirPodsには空間オーディオとして送ります。再生設定でオンにできます。"
+            "value" : "Dolby Atmos付きのTrueHDトラックで、ハイトチャンネルが保持されるようになりました。SodaliteがAtmosオブジェクトをレンダリングし、レシーバーやサウンドバーにはDolby Atmosとして、AirPodsには空間オーディオとして送り、映画にTrueHD Atmosトラックがあればあなたの言語のものを選びます。デフォルトでオン、再生設定で切り替えられます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos가 포함된 TrueHD 트랙이 이제 높이 채널을 유지합니다. Sodalite가 Atmos 오브젝트를 렌더링하여 리시버나 사운드바에는 Dolby Atmos로, AirPods에는 공간 음향으로 보냅니다. 재생 설정에서 켤 수 있습니다."
+            "value" : "Dolby Atmos가 포함된 TrueHD 트랙이 이제 높이 채널을 유지합니다. Sodalite가 Atmos 오브젝트를 렌더링하여 리시버나 사운드바에는 Dolby Atmos로, AirPods에는 공간 음향으로 보내고, 영화에 TrueHD Atmos 트랙이 있으면 사용자 언어의 트랙을 선택합니다. 기본적으로 켜져 있으며 재생 설정에서 끌 수 있습니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-spor med Dolby Atmos beholder nå høydekanalene sine. Sodalite gjengir Atmos-objektene og sender dem til receiveren eller lydplanken som Dolby Atmos, eller til AirPods som romlig lyd. Slå det på i avspillingsinnstillingene."
+            "value" : "TrueHD-spor med Dolby Atmos beholder nå høydekanalene sine. Sodalite gjengir Atmos-objektene og sender dem til receiveren eller lydplanken som Dolby Atmos, eller til AirPods som romlig lyd, og velger TrueHD Atmos-sporet på ditt språk når en film har et. På som standard, kan slås av i avspillingsinnstillingene."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-sporen met Dolby Atmos behouden nu hun hoogtekanalen. Sodalite rendert de Atmos-objecten en stuurt ze als Dolby Atmos naar je receiver of soundbar, of als ruimtelijke audio naar AirPods. Zet het aan in de afspeelinstellingen."
+            "value" : "TrueHD-sporen met Dolby Atmos behouden nu hun hoogtekanalen. Sodalite rendert de Atmos-objecten en stuurt ze als Dolby Atmos naar je receiver of soundbar, of als ruimtelijke audio naar AirPods, en kiest het TrueHD Atmos-spoor in jouw taal als een film er een heeft. Standaard aan, uit te zetten in de afspeelinstellingen."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ścieżki TrueHD z Dolby Atmos zachowują teraz kanały wysokości. Sodalite renderuje obiekty Atmos i wysyła je do amplitunera lub soundbara jako Dolby Atmos, a do AirPods jako dźwięk przestrzenny. Włączysz to w ustawieniach odtwarzania."
+            "value" : "Ścieżki TrueHD z Dolby Atmos zachowują teraz kanały wysokości. Sodalite renderuje obiekty Atmos i wysyła je do amplitunera lub soundbara jako Dolby Atmos, a do AirPods jako dźwięk przestrzenny, oraz wybiera ścieżkę TrueHD Atmos w Twoim języku, gdy film ją ma. Domyślnie włączone, można wyłączyć w ustawieniach odtwarzania."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faixas TrueHD com Dolby Atmos agora mantêm seus canais de altura. O Sodalite renderiza os objetos Atmos e os envia ao seu receiver ou soundbar como Dolby Atmos, ou aos AirPods como Áudio Espacial. Ative nos ajustes de reprodução."
+            "value" : "Faixas TrueHD com Dolby Atmos agora mantêm seus canais de altura. O Sodalite renderiza os objetos Atmos e os envia ao seu receiver ou soundbar como Dolby Atmos, ou aos AirPods como Áudio Espacial, e escolhe a faixa TrueHD Atmos no seu idioma quando um filme tem uma. Ativado por padrão, pode ser desativado nos ajustes de reprodução."
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As faixas TrueHD com Dolby Atmos mantêm agora os canais de altura. O Sodalite processa os objetos Atmos e envia-os para o recetor ou barra de som como Dolby Atmos, ou para os AirPods como áudio espacial. Ative nas definições de reprodução."
+            "value" : "As faixas TrueHD com Dolby Atmos mantêm agora os canais de altura. O Sodalite processa os objetos Atmos e envia-os para o recetor ou barra de som como Dolby Atmos, ou para os AirPods como áudio espacial, e escolhe a faixa TrueHD Atmos no seu idioma quando um filme tem uma. Ativado por predefinição, pode ser desativado nas definições de reprodução."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pistele TrueHD cu Dolby Atmos își păstrează acum canalele de înălțime. Sodalite randează obiectele Atmos și le trimite receiverului sau soundbarului ca Dolby Atmos, ori căștilor AirPods ca audio spațial. Se activează din setările de redare."
+            "value" : "Pistele TrueHD cu Dolby Atmos își păstrează acum canalele de înălțime. Sodalite randează obiectele Atmos și le trimite receiverului sau soundbarului ca Dolby Atmos, ori căștilor AirPods ca audio spațial, și alege pista TrueHD Atmos în limba ta când un film are una. Activat implicit, se poate dezactiva din setările de redare."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дорожки TrueHD с Dolby Atmos теперь сохраняют высотные каналы. Sodalite рендерит объекты Atmos и передаёт их на ресивер или саундбар как Dolby Atmos, а на AirPods как пространственное аудио. Включается в настройках воспроизведения."
+            "value" : "Дорожки TrueHD с Dolby Atmos теперь сохраняют высотные каналы. Sodalite рендерит объекты Atmos и передаёт их на ресивер или саундбар как Dolby Atmos, а на AirPods как пространственное аудио, и выбирает дорожку TrueHD Atmos на вашем языке, если она есть в фильме. Включено по умолчанию, отключается в настройках воспроизведения."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stopy TrueHD s Dolby Atmos si teraz zachovajú výškové kanály. Sodalite vykreslí objekty Atmos a pošle ich do prijímača alebo soundbaru ako Dolby Atmos, prípadne do AirPods ako priestorový zvuk. Zapnúť to môžete v nastaveniach prehrávania."
+            "value" : "Stopy TrueHD s Dolby Atmos si teraz zachovajú výškové kanály. Sodalite vykreslí objekty Atmos a pošle ich do prijímača alebo soundbaru ako Dolby Atmos, prípadne do AirPods ako priestorový zvuk, a keď film takú stopu má, vyberie ju vo vašom jazyku. Predvolene zapnuté, vypnúť sa dá v nastaveniach prehrávania."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-spår med Dolby Atmos behåller nu sina höjdkanaler. Sodalite renderar Atmos-objekten och skickar dem till din receiver eller soundbar som Dolby Atmos, eller till AirPods som rumsligt ljud. Slå på det i uppspelningsinställningarna."
+            "value" : "TrueHD-spår med Dolby Atmos behåller nu sina höjdkanaler. Sodalite renderar Atmos-objekten och skickar dem till din receiver eller soundbar som Dolby Atmos, eller till AirPods som rumsligt ljud, och väljer TrueHD Atmos-spåret på ditt språk när en film har ett. På som standard, kan stängas av i uppspelningsinställningarna."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos içeren TrueHD parçaları artık yükseklik kanallarını koruyor. Sodalite Atmos nesnelerini işler ve alıcınıza ya da ses çubuğunuza Dolby Atmos olarak, AirPods'a ise uzamsal ses olarak gönderir. Oynatma ayarlarından açabilirsiniz."
+            "value" : "Dolby Atmos içeren TrueHD parçaları artık yükseklik kanallarını koruyor. Sodalite Atmos nesnelerini işler ve alıcınıza ya da ses çubuğunuza Dolby Atmos olarak, AirPods'a uzamsal ses olarak gönderir ve bir filmde varsa dilinizdeki TrueHD Atmos parçasını seçer. Varsayılan olarak açık, oynatma ayarlarından kapatılabilir."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Доріжки TrueHD з Dolby Atmos тепер зберігають висотні канали. Sodalite рендерить об’єкти Atmos і передає їх на ресивер або саундбар як Dolby Atmos, а на AirPods як просторове аудіо. Вмикається в налаштуваннях відтворення."
+            "value" : "Доріжки TrueHD з Dolby Atmos тепер зберігають висотні канали. Sodalite рендерить об’єкти Atmos і передає їх на ресивер або саундбар як Dolby Atmos, а на AirPods як просторове аудіо, та вибирає доріжку TrueHD Atmos вашою мовою, якщо вона є у фільмі. Увімкнено за замовчуванням, вимикається в налаштуваннях відтворення."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "带 Dolby Atmos 的 TrueHD 音轨现在会保留其高度声道。Sodalite 会渲染 Atmos 对象，并以 Dolby Atmos 发送到你的功放或回音壁，或以空间音频发送到 AirPods。可在播放设置中开启。"
+            "value" : "带 Dolby Atmos 的 TrueHD 音轨现在会保留其高度声道。Sodalite 会渲染 Atmos 对象，并以 Dolby Atmos 发送到你的功放或回音壁，或以空间音频发送到 AirPods；影片有 TrueHD Atmos 音轨时，会选择你的语言的那条。默认开启，可在播放设置中关闭。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "含 Dolby Atmos 的 TrueHD 音軌現在會保留其高度聲道。Sodalite 會渲染 Atmos 物件，並以 Dolby Atmos 傳送至你的擴大機或聲霸，或以空間音訊傳送至 AirPods。可在播放設定中開啟。"
+            "value" : "含 Dolby Atmos 的 TrueHD 音軌現在會保留其高度聲道。Sodalite 會渲染 Atmos 物件，並以 Dolby Atmos 傳送至你的擴大機或聲霸，或以空間音訊傳送至 AirPods；影片有 TrueHD Atmos 音軌時，會選擇你的語言的那條。預設開啟，可在播放設定中關閉。"
           }
         }
       }
@@ -202929,6 +202929,330 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在遙控器觸控面上滑動即可移動播放位置。關閉後只有左右鍵跳轉，手指擱在觸控面上也不會移動時間軸。"
+          }
+        }
+      }
+    },
+    "settings.playback.trueHDAtmos" : {
+      "comment" : "Playback settings: toggle that renders TrueHD Atmos objects with their heights (AetherEngine#731).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos z TrueHD"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos fra TrueHD"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos aus TrueHD"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos από TrueHD"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos from TrueHD"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos desde TrueHD"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos TrueHD:stä"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos depuis TrueHD"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos iz TrueHD-a"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos TrueHD-ból"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos da TrueHD"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrueHDからDolby Atmos"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrueHD의 Dolby Atmos"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos fra TrueHD"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos uit TrueHD"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos z TrueHD"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos a partir de TrueHD"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos a partir de TrueHD"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos din TrueHD"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos из TrueHD"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos z TrueHD"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos från TrueHD"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrueHD'den Dolby Atmos"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolby Atmos із TrueHD"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "来自 TrueHD 的 Dolby Atmos"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自 TrueHD 的 Dolby Atmos"
+          }
+        }
+      }
+    },
+    "settings.playback.trueHDAtmos.subtitle" : {
+      "comment" : "Playback settings: subtitle of the TrueHD Atmos heights toggle.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zachová výškové kanály stop TrueHD Atmos a pošle je jako Dolby Atmos, do AirPods jako prostorový zvuk, a vybere takovou stopu ve vašem jazyce. Ztrátové. Vypnuto přehraje stopy podle nastavení výše."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevarer højdekanalerne i TrueHD Atmos-spor og sender dem som Dolby Atmos, til AirPods som rumlig lyd, og vælger et sådant spor på dit sprog. Med tab. Slået fra afspilles de efter indstillingen ovenfor."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Behält die Höhenkanäle von TrueHD-Atmos-Spuren und gibt sie als Dolby Atmos aus, an AirPods als 3D-Audio, und wählt eine solche Spur in deiner Sprache. Verlustbehaftet. Aus spielt sie nach der Einstellung darüber."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διατηρεί τα κανάλια ύψους των κομματιών TrueHD Atmos και τα στέλνει ως Dolby Atmos, στα AirPods ως χωρικό ήχο, και επιλέγει τέτοιο κομμάτι στη γλώσσα σας. Με απώλειες. Όταν είναι ανενεργό, παίζουν σύμφωνα με την παραπάνω ρύθμιση."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keeps the height channels of TrueHD Atmos tracks and sends them as Dolby Atmos, to AirPods as Spatial Audio, and picks such a track in your language. Lossy. Off plays them through the setting above."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conserva los canales de altura de las pistas TrueHD Atmos y los envía como Dolby Atmos, a los AirPods como audio espacial, y elige una pista así en tu idioma. Con pérdida. Desactivado, se reproducen según el ajuste de arriba."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Säilyttää TrueHD Atmos -raitojen korkeuskanavat ja lähettää ne Dolby Atmosina, AirPodeihin tilaäänenä, ja valitsee tällaisen raidan kielelläsi. Häviöllinen. Pois päältä ne toistetaan yllä olevan asetuksen mukaan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conserve les canaux de hauteur des pistes TrueHD Atmos et les envoie en Dolby Atmos, aux AirPods en audio spatial, et choisit une telle piste dans votre langue. Avec perte. Désactivé, elles suivent le réglage ci-dessus."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadržava visinske kanale TrueHD Atmos zapisa i šalje ih kao Dolby Atmos, AirPodsima kao prostorni zvuk, te bira takav zapis na vašem jeziku. S gubicima. Isključeno ih reproducira prema postavci iznad."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Megtartja a TrueHD Atmos sávok magassági csatornáit, Dolby Atmosként küldi őket, az AirPodsnak térhatású hangként, és ilyen sávot választ a nyelveden. Veszteséges. Kikapcsolva a fenti beállítás szerint szólnak."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantiene i canali di altezza delle tracce TrueHD Atmos e li invia come Dolby Atmos, agli AirPods come audio spaziale, e sceglie una traccia simile nella tua lingua. Con perdita. Disattivato, seguono l'impostazione sopra."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrueHD Atmosトラックのハイトチャンネルを保持してDolby Atmosとして、AirPodsには空間オーディオとして送り、あなたの言語のそのようなトラックを選びます。非可逆です。オフにすると上の設定に従って再生します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrueHD Atmos 트랙의 높이 채널을 유지해 Dolby Atmos로, AirPods에는 공간 음향으로 보내고, 사용자 언어의 해당 트랙을 선택합니다. 손실 압축입니다. 끄면 위 설정에 따라 재생됩니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beholder høydekanalene i TrueHD Atmos-spor og sender dem som Dolby Atmos, til AirPods som romlig lyd, og velger et slikt spor på ditt språk. Med tap. Av spiller dem etter innstillingen over."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Behoudt de hoogtekanalen van TrueHD Atmos-sporen en stuurt ze als Dolby Atmos, naar AirPods als ruimtelijke audio, en kiest zo'n spoor in jouw taal. Met verlies. Uit speelt ze af volgens de instelling hierboven."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zachowuje kanały wysokości ścieżek TrueHD Atmos i wysyła je jako Dolby Atmos, do AirPods jako dźwięk przestrzenny, oraz wybiera taką ścieżkę w Twoim języku. Stratne. Wyłączone odtwarza je według ustawienia powyżej."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantém os canais de altura das faixas TrueHD Atmos e os envia como Dolby Atmos, aos AirPods como Áudio Espacial, e escolhe uma faixa assim no seu idioma. Com perda. Desativado, elas seguem o ajuste acima."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantém os canais de altura das faixas TrueHD Atmos e envia-os como Dolby Atmos, para os AirPods como áudio espacial, e escolhe uma faixa assim no seu idioma. Com perda. Desativado, seguem a definição acima."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Păstrează canalele de înălțime ale pistelor TrueHD Atmos și le trimite ca Dolby Atmos, către AirPods ca audio spațial, și alege o astfel de pistă în limba ta. Cu pierderi. Dezactivat, se redau după setarea de mai sus."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохраняет высотные каналы дорожек TrueHD Atmos и передаёт их как Dolby Atmos, на AirPods как пространственное аудио, и выбирает такую дорожку на вашем языке. С потерями. Если выключено, они воспроизводятся по настройке выше."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zachová výškové kanály stôp TrueHD Atmos a pošle ich ako Dolby Atmos, do AirPods ako priestorový zvuk, a vyberie takú stopu vo vašom jazyku. Stratové. Vypnuté ich prehrá podľa nastavenia vyššie."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Behåller höjdkanalerna i TrueHD Atmos-spår och skickar dem som Dolby Atmos, till AirPods som rumsligt ljud, och väljer ett sådant spår på ditt språk. Med förlust. Av spelar dem enligt inställningen ovan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TrueHD Atmos parçalarının yükseklik kanallarını korur, Dolby Atmos olarak, AirPods'a uzamsal ses olarak gönderir ve dilinizdeki böyle bir parçayı seçer. Kayıplı. Kapalıyken yukarıdaki ayara göre çalınır."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберігає висотні канали доріжок TrueHD Atmos і передає їх як Dolby Atmos, на AirPods як просторове аудіо, та вибирає таку доріжку вашою мовою. Із втратами. Якщо вимкнено, вони відтворюються за налаштуванням вище."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保留 TrueHD Atmos 音轨的高度声道，以 Dolby Atmos 发送，发送到 AirPods 时为空间音频，并选择你的语言中的此类音轨。有损。关闭时按上方设置播放。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保留 TrueHD Atmos 音軌的高度聲道，以 Dolby Atmos 傳送，傳送至 AirPods 時為空間音訊，並選擇你的語言中的此類音軌。有損。關閉時依上方設定播放。"
           }
         }
       }
