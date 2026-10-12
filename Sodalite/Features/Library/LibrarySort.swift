@@ -140,6 +140,10 @@ struct LibrarySortScope: Hashable, Sendable {
     static func genre(name: String, scope: String) -> LibrarySortScope {
         LibrarySortScope(scope: scope, key: "genre-\(name)")
     }
+
+    static func homeRow(_ type: String, scope: String) -> LibrarySortScope {
+        LibrarySortScope(scope: scope, key: "homeRow-\(type)")
+    }
 }
 
 /// Per-profile, per-tile sort choice. Plain `UserDefaults` like `HomeRowConfig`'s other per-server

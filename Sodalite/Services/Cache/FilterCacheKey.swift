@@ -13,6 +13,11 @@ enum FilterCacheKey {
             "home-genre-\(name)"
         }
 
+        /// The full list behind a capped Home row ("All Movies", "All Series").
+        nonisolated static func row(_ type: String) -> String {
+            "home-row-\(type)"
+        }
+
         /// My Media library grid. The grouping mode is in the key because it changes the shape of the result (collection tiles vs. single movies); a shared key would repaint the previous shape from cache after the setting flips.
         nonisolated static func library(id: String, grouping: CollectionGrouping) -> String {
             "library_\(id)_\(grouping.rawValue)"

@@ -356,7 +356,8 @@ struct HomeView: View {
                             onItemSelected: { selectedItem = $0 },
                             cardStyle: row.type.cardStyle,
                             showsSeriesArtwork: cwImage != .still,
-                            itemLabel: { vm.serverLabel(forItem: $0, in: row) }
+                            itemLabel: { vm.serverLabel(forItem: $0, in: row) },
+                            onShowAll: showAllFilter(for: row).map { filter in { selectedFilter = filter } }
                         )
                         .focused($focusedRowIndex, equals: idx)
 
@@ -459,6 +460,32 @@ struct HomeView: View {
             smartProviderID: provider.tmdbWatchProviderID,
             smartProviderRegion: region,
             cacheScope: homeTileScope(FilterCacheKey.Home.provider(id: provider.id, region: region)),
+            sources: combinedSources
+        )
+    }
+
+    /// The full list behind a capped "All Movies" / "All Series" row; nil while the row is not full,
+    /// since it then already shows everything there is.
+    private func showAllFilter(for row: HomeRowData) -> FilterDestination? {
+        let type: ItemType
+        let title: String
+        switch row.type {
+        case .allMovies: type = .movie; title = String(localized: "home.allMovies")
+        case .allSeries: type = .series; title = String(localized: "home.allSeries")
+        default: return nil
+        }
+        guard row.items.count >= HomeMerger.limit(for: row.type, mergedContinueWatching: false) else { return nil }
+        return FilterDestination(
+            title: title,
+            query: ItemQuery(
+                includeItemTypes: [type],
+                sortBy: "SortName",
+                sortOrder: "Ascending",
+                limit: 50,
+                fields: JellyfinEndpoint.homeRowFields
+            ),
+            cacheScope: homeTileScope(FilterCacheKey.Home.row(row.type.rawValue)),
+            sortScope: sortScopeID.map { LibrarySortScope.homeRow(row.type.rawValue, scope: $0) },
             sources: combinedSources
         )
     }
