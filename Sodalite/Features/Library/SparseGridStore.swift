@@ -150,33 +150,45 @@ final class SparseGridStore {
         let generation = generation
         let start = page * pageSize
         inFlight[page] = Task { [pageSize] in
-            let response = try? await fetch(start, pageSize)
-            guard !Task.isCancelled, generation == self.generation else { return }
+            // A server may answer a page short and still report more behind it: AIOMetadata caps a
+            // request over 100 at 50 and reports only one page of lookahead as its total. The rest
+            // of the page is asked for until it is full or the list ends.
+            var filled = 0
+            var failed = false
+            while filled < pageSize {
+                let response = try? await fetch(start + filled, pageSize - filled)
+                guard !Task.isCancelled, generation == self.generation else { return }
+                guard let response else { failed = true; break }
+                self.apply(response, at: start + filled, page: page, isFirstChunk: filled == 0)
+                filled += response.items.count
+                if response.items.isEmpty || start + filled >= response.totalRecordCount { break }
+            }
             self.inFlight[page] = nil
-            if let response {
-                self.apply(response, page: page)
-            } else if page == 0, self.loadedPages.isEmpty {
-                self.firstPage = .failed
+            if failed {
+                if filled > 0 { self.loadedPages.remove(page) }
+                if page == 0, self.loadedPages.isEmpty, filled == 0 { self.firstPage = .failed }
             }
             self.pump()
         }
     }
 
-    private func apply(_ response: JellyfinItemsResponse, page: Int) {
+    private func apply(_ response: JellyfinItemsResponse, at start: Int, page: Int, isFirstChunk: Bool) {
         let total = response.totalRecordCount
         if slots.count < total {
             slots += Array(repeating: .pending, count: total - slots.count)
-        } else if slots.count > total {
+        } else if slots.count > total, start + response.items.count >= total {
+            // Only a response that reaches the end of the list may shorten the grid. Before that its
+            // total can be a lower bound (AIOMetadata's lookahead), and a refetch of page 0 would cut
+            // every page already read behind it.
             slots.removeLast(slots.count - total)
             loadedPages = loadedPages.filter { $0 * pageSize < total }
         }
-        let start = page * pageSize
         for (offset, item) in response.items.enumerated() where start + offset < slots.count {
             slots[start + offset] = isHidden(item) ? .hidden : .loaded(item)
         }
         loadedPages.insert(page)
         knowsTotal = true
-        if page == 0 { firstPage = .loaded(response.items) }
+        if page == 0, isFirstChunk { firstPage = .loaded(response.items) }
         rebuildVisibleIndices()
     }
 
