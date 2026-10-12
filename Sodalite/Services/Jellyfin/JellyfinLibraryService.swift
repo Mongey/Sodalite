@@ -40,10 +40,23 @@ final class JellyfinLibraryService: JellyfinLibraryServiceProtocol {
     }
 
     func getItems(userID: String, query: ItemQuery) async throws -> JellyfinItemsResponse {
-        try await client.request(
-            endpoint: JellyfinEndpoint.items(userID: userID, query: query),
+        guard let studioNames = query.studioNames, !studioNames.isEmpty else {
+            return try await client.request(
+                endpoint: JellyfinEndpoint.items(userID: userID, query: query),
+                responseType: JellyfinItemsResponse.self
+            )
+        }
+        var checked = query
+        checked.fields = StudioFilterCheck.fields(query.fields)
+        let response = try await client.request(
+            endpoint: JellyfinEndpoint.items(userID: userID, query: checked),
             responseType: JellyfinItemsResponse.self
         )
+        let result = StudioFilterCheck.filter(response, studioNames: studioNames)
+        if result.dropped > 0 {
+            LogTap.shared.note("[jellyfin] Studios filter not applied by the server, dropped \(result.dropped) of \(response.items.count) items")
+        }
+        return result.response
     }
 
     func getResumeItems(userID: String, mediaType: String, limit: Int) async throws -> JellyfinItemsResponse {
