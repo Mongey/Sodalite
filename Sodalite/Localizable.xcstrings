@@ -69335,6 +69335,330 @@
         }
       }
     },
+    "changelog.1_1_0.playlistOrder.body" : {
+      "comment" : "Changelog highlight for the 1.1.0 release",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisty se teď zobrazují a přehrávají v pořadí, které jste nastavili na serveru, a dlouhé playlisty se už neořezávají po 200 položkách."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlister vises og afspilles nu i den rækkefølge, du har lagt dem i på serveren, og lange playlister bliver ikke længere afkortet efter 200 elementer."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlists erscheinen und spielen jetzt in der Reihenfolge, die du auf dem Server festgelegt hast, und lange Playlists werden nicht mehr nach 200 Einträgen abgeschnitten."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι λίστες αναπαραγωγής εμφανίζονται και παίζουν πλέον με τη σειρά που ορίσατε στον διακομιστή, και οι μεγάλες λίστες δεν κόβονται πια μετά από 200 στοιχεία."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlists now show and play in the order you arranged on the server, and long playlists are no longer cut off after 200 entries."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las listas de reproducción ahora se muestran y reproducen en el orden que estableciste en el servidor, y las listas largas ya no se cortan tras 200 elementos."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soittolistat näkyvät ja toistuvat nyt palvelimella määrittämässäsi järjestyksessä, eikä pitkiä soittolistoja enää katkaista 200 kohteen jälkeen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les playlists s’affichent et se lisent désormais dans l’ordre défini sur le serveur, et les longues playlists ne sont plus tronquées après 200 éléments."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popisi za reprodukciju sada se prikazuju i reproduciraju redoslijedom koji ste postavili na poslužitelju, a dugi popisi više se ne prekidaju nakon 200 stavki."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A lejátszási listák mostantól a szerveren beállított sorrendben jelennek meg és játszódnak le, és a hosszú listák már nem szakadnak meg 200 elem után."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le playlist ora vengono mostrate e riprodotte nell’ordine impostato sul server, e quelle lunghe non vengono più troncate dopo 200 elementi."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレイリストはサーバーで並べた順序で表示・再生されるようになり、長いプレイリストも200項目で途切れなくなりました。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재생목록이 이제 서버에서 정한 순서대로 표시되고 재생되며, 긴 재생목록도 더 이상 200개 항목에서 잘리지 않습니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spillelister vises og spilles nå i rekkefølgen du har satt på serveren, og lange spillelister kuttes ikke lenger etter 200 elementer."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afspeellijsten worden nu getoond en afgespeeld in de volgorde die je op de server hebt ingesteld, en lange afspeellijsten worden niet meer afgekapt na 200 items."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisty są teraz wyświetlane i odtwarzane w kolejności ustawionej na serwerze, a długie playlisty nie są już ucinane po 200 pozycjach."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As playlists agora aparecem e tocam na ordem definida no servidor, e playlists longas não são mais cortadas após 200 itens."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As playlists aparecem e são reproduzidas agora pela ordem definida no servidor, e as playlists longas já não são cortadas após 200 itens."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisturile apar și se redau acum în ordinea stabilită pe server, iar playlisturile lungi nu mai sunt tăiate după 200 de elemente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Плейлисты теперь отображаются и воспроизводятся в том порядке, который задан на сервере, а длинные плейлисты больше не обрываются после 200 элементов."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisty sa teraz zobrazujú a prehrávajú v poradí nastavenom na serveri a dlhé playlisty sa už neorezávajú po 200 položkách."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spellistor visas och spelas nu i den ordning du har satt på servern, och långa spellistor kapas inte längre efter 200 objekt."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çalma listeleri artık sunucuda belirlediğiniz sırayla gösterilip oynatılıyor ve uzun listeler 200 öğeden sonra kesilmiyor."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Плейлисти тепер показуються й відтворюються в порядку, заданому на сервері, а довгі плейлисти більше не обриваються після 200 елементів."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "播放列表现在按你在服务器上排列的顺序显示和播放，长播放列表也不再在 200 项后被截断。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "播放清單現在會依你在伺服器上排列的順序顯示與播放，長播放清單也不再於 200 項後被截斷。"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.playlistOrder.title" : {
+      "comment" : "Changelog highlight for the 1.1.0 release",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisty si zachovají pořadí"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlister bevarer deres rækkefølge"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlists behalten ihre Reihenfolge"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι λίστες αναπαραγωγής κρατούν τη σειρά τους"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlists keep their order"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las listas mantienen su orden"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soittolistat säilyttävät järjestyksensä"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les playlists gardent leur ordre"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popisi za reprodukciju zadržavaju redoslijed"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A lejátszási listák megtartják a sorrendjüket"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le playlist mantengono il loro ordine"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレイリストの順序を維持"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재생목록 순서 유지"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spillelister beholder rekkefølgen"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afspeellijsten behouden hun volgorde"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisty zachowują kolejność"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlists mantêm sua ordem"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As playlists mantêm a ordem"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisturile își păstrează ordinea"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Плейлисты сохраняют порядок"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlisty si zachovajú poradie"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spellistor behåller sin ordning"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çalma listeleri sırasını korur"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Плейлисти зберігають порядок"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "播放列表保持顺序"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "播放清單保持順序"
+          }
+        }
+      }
+    },
     "changelog.1_1_0.playlistSeries.body" : {
       "comment" : "Changelog highlight for the 1.1.0 release",
       "extractionState" : "manual",

@@ -117,6 +117,12 @@ enum Changelog {
                     icon: "list.bullet.rectangle"
                 ),
                 ChangelogHighlight(
+                    .fix,
+                    "changelog.1_1_0.playlistOrder.title",
+                    "changelog.1_1_0.playlistOrder.body",
+                    icon: "list.number"
+                ),
+                ChangelogHighlight(
                     .new,
                     "changelog.1_1_0.multiview.title",
                     "changelog.1_1_0.multiview.body",

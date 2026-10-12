@@ -106,8 +106,8 @@ struct PlaylistDetailView: View {
     }
 
     /// A playlist can hold the same item twice (an imported .m3u, or one built before the server's
-    /// own add-dedupe), so ForEach's id can't be the bare item id (`ParentId=` entries differ only
-    /// by `PlaylistItemId`, which the model doesn't carry). Disambiguates only a REPEATED id, by the
+    /// own add-dedupe), so ForEach's id can't be the bare item id (entries differ only by
+    /// `PlaylistItemId`, which the model doesn't carry). Disambiguates only a REPEATED id, by the
     /// order it appears, so the common case (no duplicates) keeps pure content identity: an edit
     /// elsewhere in the list doesn't reflow every row the way a position-qualified id would (Audit
     /// 2026-09-25 BROWSE-8).

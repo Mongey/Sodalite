@@ -106,6 +106,7 @@ struct PrefetchedPlaybackInfoIdentityTests {
         func getSeasons(seriesID: String, userID: String) async throws -> JellyfinItemsResponse { throw NotUsed() }
         func getEpisodes(seriesID: String, seasonID: String, userID: String) async throws -> JellyfinItemsResponse { throw NotUsed() }
         func getSimilarItems(itemID: String, userID: String, limit: Int) async throws -> JellyfinItemsResponse { throw NotUsed() }
+        func getPlaylistItems(playlistID: String, userID: String, startIndex: Int, limit: Int) async throws -> JellyfinItemsResponse { throw NotUsed() }
         func setFavorite(userID: String, itemID: String, isFavorite: Bool) async throws {}
         func setPlayed(userID: String, itemID: String, isPlayed: Bool) async throws {}
         func getCollectionItems(userID: String, query: ItemQuery) async throws -> JellyfinItemsResponse { throw NotUsed() }

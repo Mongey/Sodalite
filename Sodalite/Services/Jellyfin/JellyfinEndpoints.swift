@@ -36,6 +36,9 @@ enum JellyfinEndpoint: APIEndpoint {
     case seasons(seriesID: String, userID: String)
     case episodes(seriesID: String, seasonID: String, userID: String)
     case similarItems(itemID: String, userID: String, limit: Int)
+    /// GET /Playlists/{id}/Items: the playlist in its stored (manual) order. /Items?ParentId= gives
+    /// no ordering guarantee for a playlist.
+    case playlistItems(playlistID: String, userID: String, startIndex: Int, limit: Int)
     /// GET /Persons by name. People are their own item namespace, so a person is not reachable
     /// through the /Items search; this is the only way to a Jellyfin person id from a name.
     case persons(userID: String, searchTerm: String, limit: Int)
@@ -137,6 +140,8 @@ enum JellyfinEndpoint: APIEndpoint {
             "/Shows/\(seriesID)/Episodes"
         case .similarItems(let itemID, _, _):
             "/Items/\(itemID)/Similar"
+        case .playlistItems(let playlistID, _, _, _):
+            "/Playlists/\(playlistID)/Items"
         case .persons:
             "/Persons"
         case .deleteItem(let itemID):
@@ -341,6 +346,15 @@ enum JellyfinEndpoint: APIEndpoint {
                 URLQueryItem(name: "UserId", value: userID),
                 // episodeListFields, NOT defaultFields: dropping the heavy per-episode arrays is the big win on slow servers; episode detail (TechInfoBox) pulls the full set lazily on open.
                 URLQueryItem(name: "Fields", value: Self.episodeListFields),
+            ]
+
+        case .playlistItems(_, let userID, let startIndex, let limit):
+            return [
+                URLQueryItem(name: "UserId", value: userID),
+                URLQueryItem(name: "StartIndex", value: String(startIndex)),
+                URLQueryItem(name: "Limit", value: String(limit)),
+                // detailFields: the playlist's Play and Shuffle buttons enqueue these items directly.
+                URLQueryItem(name: "Fields", value: Self.detailFields),
             ]
 
         case .similarItems(_, let userID, let limit):

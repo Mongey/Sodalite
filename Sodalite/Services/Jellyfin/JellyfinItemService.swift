@@ -11,6 +11,8 @@ protocol JellyfinItemServiceProtocol: MovieCatalogQuerying {
     func getSeasons(seriesID: String, userID: String) async throws -> JellyfinItemsResponse
     func getEpisodes(seriesID: String, seasonID: String, userID: String) async throws -> JellyfinItemsResponse
     func getSimilarItems(itemID: String, userID: String, limit: Int) async throws -> JellyfinItemsResponse
+    /// One page of a playlist in its stored order.
+    func getPlaylistItems(playlistID: String, userID: String, startIndex: Int, limit: Int) async throws -> JellyfinItemsResponse
     func setFavorite(userID: String, itemID: String, isFavorite: Bool) async throws
     func setPlayed(userID: String, itemID: String, isPlayed: Bool) async throws
     /// Resolves a library item by TMDB id; first verified match or nil. `searchTerm` narrows the candidate set (see findByProviderIDs).
@@ -67,6 +69,14 @@ final class JellyfinItemService: JellyfinItemServiceProtocol {
     func getSimilarItems(itemID: String, userID: String, limit: Int) async throws -> JellyfinItemsResponse {
         try await client.request(
             endpoint: JellyfinEndpoint.similarItems(itemID: itemID, userID: userID, limit: limit),
+            responseType: JellyfinItemsResponse.self
+        )
+    }
+
+    func getPlaylistItems(playlistID: String, userID: String, startIndex: Int, limit: Int) async throws -> JellyfinItemsResponse {
+        try await client.request(
+            endpoint: JellyfinEndpoint.playlistItems(
+                playlistID: playlistID, userID: userID, startIndex: startIndex, limit: limit),
             responseType: JellyfinItemsResponse.self
         )
     }

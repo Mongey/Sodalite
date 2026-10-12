@@ -500,12 +500,15 @@ final class DetailViewModel {
         guard item.type == .playlist else { return }
 
         do {
-            // No sortBy: keep the user's manual playlist order (sorting would defeat the purpose).
-            // detailFields for the same reason as loadCollectionItems: the playlist's Play and
-            // Shuffle buttons enqueue these items directly.
-            let query = ItemQuery(parentID: item.id, limit: 200, fields: JellyfinEndpoint.detailFields)
-            let response = try await itemService.getCollectionItems(userID: userID, query: query)
-            collectionItems = response.items
+            let pageSize = 200
+            var items: [JellyfinItem] = []
+            while true {
+                let page = try await itemService.getPlaylistItems(
+                    playlistID: item.id, userID: userID, startIndex: items.count, limit: pageSize)
+                items += page.items
+                if page.items.count < pageSize || items.count >= page.totalRecordCount { break }
+            }
+            collectionItems = items
         } catch {
             // Leave collectionItems empty; the view shows its empty state.
         }
