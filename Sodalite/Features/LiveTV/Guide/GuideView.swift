@@ -119,7 +119,7 @@ struct GuideView: View {
     @ViewBuilder
     private var canvas: some View {
         if model.channels.isEmpty {
-            if model.channelsComplete && !model.isResolvingGenres {
+            if model.channelsComplete && !model.genres.isResolving {
                 // A filter or a search that matched nothing, not a failure. Naming the cause beats
                 // an empty grid that reads as a broken server, and the chips stay reachable above.
                 ContentUnavailableView("livetv.guide.empty.filtered",

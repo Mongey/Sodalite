@@ -29,6 +29,22 @@ struct JellyfinChannel: Codable, Sendable, Identifiable, Equatable {
     var isFavorite: Bool { userData?.isFavorite ?? false }
 }
 
+extension JellyfinChannel {
+    /// Same XMLTV over-escaping as program text (#182): the name is display-only, so it is decoded
+    /// here once rather than on every surface that draws it.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        self.init(
+            id: try c.decode(String.self, forKey: .id),
+            name: try c.decode(String.self, forKey: .name).epgDisplayText,
+            channelNumber: try c.decodeIfPresent(String.self, forKey: .channelNumber),
+            imageTags: try c.decodeIfPresent([String: String].self, forKey: .imageTags),
+            currentProgram: try c.decodeIfPresent(JellyfinProgram.self, forKey: .currentProgram),
+            userData: try c.decodeIfPresent(ChannelUserData.self, forKey: .userData),
+            serverID: try c.decodeIfPresent(String.self, forKey: .serverID))
+    }
+}
+
 /// Channel `UserData` slice the guide reads; favorites use the same UserData.IsFavorite as regular items.
 struct ChannelUserData: Codable, Sendable, Equatable {
     let isFavorite: Bool?

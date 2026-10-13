@@ -1,9 +1,10 @@
 import SwiftUI
 
-/// Genre selection for the guide (#182). Toggling a genre applies at once, so the grid behind the
-/// panel is already narrowed when it closes; several genres combine as OR.
+/// Genre selection for the guide and the iPhone channel list (#182). Toggling a genre applies at
+/// once, so the list behind the panel is already narrowed when it closes; several genres combine as
+/// OR.
 struct GuideGenrePicker: View {
-    let model: GuideViewModel
+    let genres: GuideGenreController
     let tint: Color
 
     @FocusState private var focusedRow: String?
@@ -14,7 +15,7 @@ struct GuideGenrePicker: View {
     /// control character.
     private static let allRowID = "\u{1}all"
 
-    private var scope: GuideGenreFilter.Scope { model.genreFilter.scope }
+    private var scope: GuideGenreFilter.Scope { genres.filter.scope }
 
     var body: some View {
         VStack(spacing: isCompact ? 20 : 32) {
@@ -38,18 +39,18 @@ struct GuideGenrePicker: View {
         .background(.thinMaterial)
         .presentationDetents([.medium, .large])
         #endif
-        .task(id: scope) { await model.loadGenres(for: scope) }
+        .task(id: scope) { await genres.loadNames(for: scope) }
     }
 
     @ViewBuilder
     private var content: some View {
-        if let names = model.genreNames[scope] {
+        if let names = genres.names[scope] {
             if names.isEmpty {
                 ContentUnavailableView("livetv.guide.genre.empty", systemImage: "tag.slash")
             } else {
                 VStack(spacing: 16) {
                     // A failed match drops the selection; this says why the grid did not narrow.
-                    if let error = model.genreError {
+                    if let error = genres.error {
                         Label(error, systemImage: "exclamationmark.triangle")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
@@ -57,7 +58,7 @@ struct GuideGenrePicker: View {
                     list(names)
                 }
             }
-        } else if let error = model.genreError, model.loadingGenreScope == nil {
+        } else if let error = genres.error, genres.loadingScope == nil {
             ContentUnavailableView {
                 Label("livetv.loadFailed.title", systemImage: "tv.slash")
             } description: {
@@ -73,38 +74,38 @@ struct GuideGenrePicker: View {
         ScrollView {
             LazyVStack(spacing: isCompact ? 12 : 16) {
                 row(id: Self.allRowID, title: Text("livetv.guide.genre.all"),
-                    isSelected: !model.genreFilter.isActive) {
-                    apply(genres: [])
+                    isSelected: !genres.filter.isActive) {
+                    select([])
                 }
                 // A selected genre that is not on offer in this scope stays listed, or it could
                 // not be switched off from here.
                 ForEach(listed(names), id: \.self) { name in
                     // Verbatim: an EPG genre is server data, not a catalog key.
                     row(id: name, title: Text(verbatim: name.epgDisplayText),
-                        isSelected: model.genreFilter.genres.contains(name)) {
-                        var genres = model.genreFilter.genres
-                        if genres.contains(name) { genres.remove(name) } else { genres.insert(name) }
-                        apply(genres: genres)
+                        isSelected: genres.filter.genres.contains(name)) {
+                        var selection = genres.filter.genres
+                        if selection.contains(name) { selection.remove(name) } else { selection.insert(name) }
+                        select(selection)
                     }
                 }
             }
             .padding(.vertical, 8)
         }
         .onAppear {
-            focusedRow = model.genreFilter.genres.sorted().first ?? Self.allRowID
+            focusedRow = genres.filter.genres.sorted().first ?? Self.allRowID
         }
     }
 
     private func listed(_ names: [String]) -> [String] {
-        let missing = model.genreFilter.genres.filter { !names.contains($0) }
+        let missing = genres.filter.genres.filter { !names.contains($0) }
         guard !missing.isEmpty else { return names }
         return (names + missing).sorted { $0.localizedStandardCompare($1) == .orderedAscending }
     }
 
-    private func apply(genres: Set<String>) {
-        var next = model.genreFilter
-        next.genres = genres
-        Task { await model.apply(genreFilter: next) }
+    private func select(_ selection: Set<String>) {
+        var next = genres.filter
+        next.genres = selection
+        Task { await genres.apply(next) }
     }
 
     private func row(id: String, title: Text, isSelected: Bool,
@@ -155,9 +156,9 @@ struct GuideGenrePicker: View {
             .focused($focusedRow, equals: id)
             .stableTap(isFocused: isFocused) {
                 guard !isOn else { return }
-                var next = model.genreFilter
+                var next = genres.filter
                 next.scope = option
-                Task { await model.apply(genreFilter: next) }
+                Task { await genres.apply(next) }
             }
     }
 }
