@@ -18,6 +18,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/tvOS-26%2B-black?logo=apple">
   <img src="https://img.shields.io/badge/iOS%20%7C%20iPadOS-26%2B-black?logo=apple">
+  <img src="https://img.shields.io/badge/macOS-26%2B-black?logo=apple">
   <img src="https://img.shields.io/badge/Swift-6.0%2B-F05138?logo=swift&logoColor=white">
   <img src="https://img.shields.io/badge/license-GPL--3.0%20%2B%20App%20Store%20Exception-lightgrey">
   <img src="https://img.shields.io/badge/languages-26-blue">
@@ -92,6 +93,8 @@ Almost everything is identical across devices, it's one codebase. A handful of c
 | Offline downloads | – | ✓ |
 | Separate profiles per Apple TV user | ✓ | – |
 | Top Shelf &amp; Siri Remote focus UX | ✓ | – |
+
+From 1.1 Sodalite also runs natively on the Mac (SwiftUI on AppKit, not Catalyst), built from the iPhone and iPad screens with Mac conventions on top: a sidebar, pages that push with a back button and Cmd-[, a player in its own window with keyboard control and full screen, Settings under Cmd-, and right-click menus on cards. Live TV uses the channel list there rather than the guide grid, and styled ASS/SSA subtitles render as plain text.
 
 ## Open source, end to end
 

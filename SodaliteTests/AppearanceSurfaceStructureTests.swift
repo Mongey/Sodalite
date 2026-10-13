@@ -211,11 +211,11 @@ struct AppearanceSurfaceStructureTests {
         let whatsNew = try sourceFile("Sodalite/Features/Changelog/WhatsNewView.swift")
         let cover = try #require(
             router.components(
-                separatedBy: ".fullScreenCover(isPresented: $showWhatsNew)"
+                separatedBy: ".fullScreenCoverCompat(isPresented: $showWhatsNew)"
             ).dropFirst().first
         )
         let coverBody = cover.components(
-            separatedBy: ".fullScreenCover(item: Binding("
+            separatedBy: ".fullScreenCoverCompat(item: Binding("
         ).first ?? cover
 
         #expect(coverBody.contains("WhatsNewView(entry: entry)"))

@@ -10,6 +10,12 @@ enum Changelog {
             highlights: [
                 ChangelogHighlight(
                     .new,
+                    "changelog.1_1_0.mac.title",
+                    "changelog.1_1_0.mac.body",
+                    icon: "macbook"
+                ),
+                ChangelogHighlight(
+                    .new,
                     "changelog.1_1_0.combinedServers.title",
                     "changelog.1_1_0.combinedServers.body",
                     icon: "square.stack.3d.up.fill"

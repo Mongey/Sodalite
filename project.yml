@@ -5,7 +5,6 @@ options:
     tvOS: "26.0"
     iOS: "26.0"
     macOS: "26.0"
-    macOS: "26.0"
   createIntermediateGroups: true
   groupSortPosition: top
 settings:
