@@ -68689,6 +68689,330 @@
         }
       }
     },
+    "changelog.1_1_0.liveReconnect.body" : {
+      "comment" : "What's New 1.1.0: body for live TV that skips a repeated stretch after a reconnect and keeps its rewind buffer.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Když se stream kanálu přeruší a server pošle jeho část znovu, Sodalite přeskočí to, co už bylo vidět, místo aby to přehrálo dvakrát, a ponechá vyrovnávací paměť pro přetáčení, místo aby kanál spustil znovu."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Når en kanals stream afbrydes, og serveren sender en del af den igen, springer Sodalite det over, der allerede er vist, i stedet for at afspille det to gange, og beholder tilbagespolingsbufferen i stedet for at genstarte kanalen."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bricht der Stream eines Senders ab und schickt der Server einen Teil davon erneut, überspringt Sodalite, was schon zu sehen war, statt es doppelt abzuspielen, und behält den Zurückspul-Puffer, statt den Sender neu zu starten."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όταν η ροή ενός καναλιού διακόπτεται και ο διακομιστής στέλνει ξανά μέρος της, το Sodalite παραλείπει ό,τι έχει ήδη προβληθεί αντί να το παίξει δύο φορές και κρατά το buffer επαναφοράς αντί να επανεκκινήσει το κανάλι."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When a channel's stream drops and the server sends part of it again, Sodalite skips what was already shown instead of playing it twice, and keeps the rewind buffer instead of restarting the channel."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuando la emisión de un canal se corta y el servidor vuelve a enviar parte de ella, Sodalite omite lo que ya se ha visto en lugar de reproducirlo dos veces y conserva el búfer para retroceder en lugar de reiniciar el canal."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kun kanavan lähetys katkeaa ja palvelin lähettää osan siitä uudelleen, Sodalite ohittaa jo näytetyn sen sijaan, että toistaisi sen kahdesti, ja säilyttää kelauspuskurin sen sijaan, että käynnistäisi kanavan uudelleen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand le flux d'une chaîne se coupe et que le serveur en renvoie une partie, Sodalite saute ce qui a déjà été affiché au lieu de le lire deux fois, et conserve la mémoire tampon de retour en arrière au lieu de redémarrer la chaîne."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kad se prijenos kanala prekine i poslužitelj ponovno pošalje njegov dio, Sodalite preskače ono što je već prikazano umjesto da to reproducira dvaput i zadržava međuspremnik za premotavanje umjesto da ponovno pokrene kanal."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ha egy csatorna adása megszakad, és a szerver egy részét újra elküldi, a Sodalite átugorja a már látottakat ahelyett, hogy kétszer játszaná le, és megtartja a visszatekerési puffert ahelyett, hogy újraindítaná a csatornát."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando lo stream di un canale si interrompe e il server ne invia di nuovo una parte, Sodalite salta ciò che è già stato mostrato invece di riprodurlo due volte e mantiene il buffer per tornare indietro invece di riavviare il canale."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャンネルのストリームが途切れ、サーバーがその一部を再送した場合、Sodaliteは表示済みの部分を二重に再生せずにスキップし、チャンネルを再起動せずに巻き戻し用バッファを保持します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채널 스트림이 끊긴 뒤 서버가 일부를 다시 보내면, Sodalite는 이미 표시된 부분을 두 번 재생하지 않고 건너뛰며, 채널을 다시 시작하지 않고 되감기 버퍼를 유지합니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Når en kanals strøm brytes og serveren sender en del av den på nytt, hopper Sodalite over det som allerede er vist i stedet for å spille det av to ganger, og beholder tilbakespolingsbufferen i stedet for å starte kanalen på nytt."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als de stream van een zender wegvalt en de server een deel ervan opnieuw stuurt, slaat Sodalite over wat al te zien was in plaats van het twee keer af te spelen, en behoudt de terugspoelbuffer in plaats van de zender opnieuw te starten."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gdy strumień kanału się zerwie, a serwer wyśle jego część ponownie, Sodalite pomija to, co już było widać, zamiast odtwarzać to dwa razy, i zachowuje bufor przewijania zamiast uruchamiać kanał od nowa."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando a transmissão de um canal cai e o servidor envia parte dela de novo, o Sodalite pula o que já foi exibido em vez de reproduzir duas vezes e mantém o buffer de retrocesso em vez de reiniciar o canal."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando a emissão de um canal cai e o servidor envia parte dela novamente, o Sodalite salta o que já foi mostrado em vez de o reproduzir duas vezes e mantém o buffer para recuar em vez de reiniciar o canal."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Când fluxul unui canal se întrerupe și serverul trimite din nou o parte din el, Sodalite sare peste ce a fost deja afișat în loc să îl redea de două ori și păstrează bufferul de derulare înapoi în loc să repornească canalul."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если поток канала обрывается и сервер присылает его часть повторно, Sodalite пропускает уже показанное, а не воспроизводит его дважды, и сохраняет буфер перемотки, а не перезапускает канал."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keď sa stream kanála preruší a server pošle jeho časť znova, Sodalite preskočí to, čo už bolo vidieť, namiesto toho, aby to prehral dvakrát, a ponechá vyrovnávaciu pamäť na pretáčanie namiesto reštartu kanála."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "När en kanals ström bryts och servern skickar en del av den igen hoppar Sodalite över det som redan visats i stället för att spela upp det två gånger, och behåller bufferten för att spola tillbaka i stället för att starta om kanalen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kanalın yayını kesilip sunucu bir kısmını yeniden gönderdiğinde Sodalite, zaten gösterilen kısmı iki kez oynatmak yerine atlar ve kanalı yeniden başlatmak yerine geri sarma arabelleğini korur."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо потік каналу обривається і сервер надсилає його частину повторно, Sodalite пропускає вже показане, а не відтворює його двічі, і зберігає буфер перемотування, а не перезапускає канал."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当频道的串流中断、服务器重新发送其中一部分时，Sodalite 会跳过已经显示过的内容而不是重复播放，并保留回放缓冲区，而不是重新启动频道。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當頻道的串流中斷、伺服器重新傳送其中一部分時，Sodalite 會略過已經顯示過的內容而不是重複播放，並保留倒轉緩衝區，而不是重新啟動頻道。"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.liveReconnect.title" : {
+      "comment" : "What's New 1.1.0: title for live TV that skips a repeated stretch after a reconnect and keeps its rewind buffer.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Živé vysílání přečká opětovné připojení"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-tv klarer en genforbindelse"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-TV übersteht Verbindungsabbrüche"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η ζωντανή TV αντέχει την επανασύνδεση"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live TV rides out a reconnect"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La TV en directo aguanta una reconexión"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suora TV selviää uudelleenyhdistämisestä"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La TV en direct résiste à une reconnexion"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TV uživo podnosi ponovno povezivanje"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Az élő TV kibírja az újracsatlakozást"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La TV in diretta supera una riconnessione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブTVが再接続を乗り切る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라이브 TV가 재연결을 견딥니다"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direkte-TV tåler en ny tilkobling"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-tv overleeft een herverbinding"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telewizja na żywo przetrwa ponowne połączenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A TV ao vivo resiste a uma reconexão"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A TV em direto resiste a uma nova ligação"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TV-ul live rezistă unei reconectări"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прямой эфир переживает переподключение"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Živé vysielanie prežije opätovné pripojenie"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-tv klarar en återanslutning"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canlı TV yeniden bağlanmayı atlatır"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пряме мовлення витримує перепідключення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直播电视可以挺过重新连接"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直播電視能撐過重新連線"
+          }
+        }
+      }
+    },
     "changelog.1_1_0.multiview.body" : {
       "extractionState" : "manual",
       "localizations" : {

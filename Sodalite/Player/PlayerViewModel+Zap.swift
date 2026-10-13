@@ -176,6 +176,7 @@ extension PlayerViewModel {
         liveRetuneInFlight = false
         lastLiveRetuneAt = nil
         liveRetuneCount = 0
+        cancelLiveReplayRetry()
         liveFirstPlayingAt = nil
         hasStartedPlaying = false
         liveTunerReleasedWhileSuspended = false

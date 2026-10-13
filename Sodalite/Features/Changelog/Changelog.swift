@@ -152,6 +152,12 @@ enum Changelog {
                     "changelog.1_1_0.guideGenres.body",
                     icon: "tag"
                 ),
+                ChangelogHighlight(
+                    .improve,
+                    "changelog.1_1_0.liveReconnect.title",
+                    "changelog.1_1_0.liveReconnect.body",
+                    icon: "antenna.radiowaves.left.and.right"
+                ),
             ]
         ),
         // MARK: 1.0.0

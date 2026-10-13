@@ -876,6 +876,10 @@ final class PlayerViewModel {
     var liveRetuneInFlight = false
     var lastLiveRetuneAt: Date?
     var liveRetuneCount = 0
+    /// AetherEngine#747: retries that keep the engine's cache and replay history after a verified
+    /// replay ran out of in-engine reopens, spent before the full retune above.
+    var liveReplayRetryCount = 0
+    var liveReplayRetryTask: Task<Void, Never>?
     /// When live first reached .playing; gates startup-window spinner masking (cold transcodes stall
     /// once right after start while the server catches up to real time).
     var liveFirstPlayingAt: Date?
@@ -1843,6 +1847,13 @@ final class PlayerViewModel {
             .sink { [weak self] in self?.handleLiveSourceReset() }
             .store(in: &cancellables)
 
+        // AetherEngine#747: the same replay, but the engine still holds the DVR window and knows
+        // which packets it already played, so a retry on that session comes before a retune.
+        player.liveSourceReplayExhausted
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.handleLiveSourceReplayExhausted() }
+            .store(in: &cancellables)
+
         // Sodalite#104: a pause longer than the DVR depth costs the viewer the stretch the sliding
         // window took while they were away, and the resume lands somewhere else. The engine's clamp
         // is right and was silent; this is the sentence that goes with it.
@@ -2461,6 +2472,7 @@ final class PlayerViewModel {
         // Live recovery counts its own attempts; a manual retry is not one of the automatic retunes.
         liveRetuneCount = 0
         lastLiveRetuneAt = nil
+        cancelLiveReplayRetry()
         clearError()
         player.stop()
         beginPlayback()
