@@ -12,18 +12,22 @@
 </p>
 
 <p align="center">
+  <a href="https://apps.apple.com/app/sodalite/id6764418563"><img src=".github/app-store-badge.svg" alt="Download on the App Store" height="72"></a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/tvOS-26%2B-black?logo=apple">
   <img src="https://img.shields.io/badge/iOS%20%7C%20iPadOS-26%2B-black?logo=apple">
   <img src="https://img.shields.io/badge/Swift-6.0%2B-F05138?logo=swift&logoColor=white">
   <img src="https://img.shields.io/badge/license-GPL--3.0%20%2B%20App%20Store%20Exception-lightgrey">
   <img src="https://img.shields.io/badge/languages-26-blue">
-  <img src="https://img.shields.io/badge/status-public%20beta-orange">
+  <a href="https://apps.apple.com/app/sodalite/id6764418563"><img src="https://img.shields.io/badge/App%20Store-free-0D96F6?logo=appstore&logoColor=white"></a>
   <a href="https://discord.gg/P7NvpzNqnG"><img src="https://img.shields.io/badge/Discord-join-5865F2?logo=discord&logoColor=white"></a>
   <a href="https://ko-fi.com/superuser404"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?logo=kofi&logoColor=white"></a>
 </p>
 
-> 🧪 **Public Beta is open.** One TestFlight link installs on **Apple TV, iPhone and iPad**: **https://testflight.apple.com/join/nWeQzmBX**
-> See [BETA.md](BETA.md) for what to focus on and how to report bugs.
+> 🎉 **Sodalite is on the App Store**, free, as one universal app for **Apple TV, iPhone and iPad**: **[apps.apple.com/app/sodalite](https://apps.apple.com/app/sodalite/id6764418563)**
+> Want the next version early? Upcoming releases are tested in the [public TestFlight beta](https://testflight.apple.com/join/nWeQzmBX) first, see [BETA.md](BETA.md).
 
 ---
 
@@ -134,7 +138,7 @@ The Seerr integration isn't a tacked-on link to a web view. It's a first-class p
 - **Direct Play** for almost every codec on your server: H.264, HEVC, HEVC Main10, AV1, VP9, VP8, MPEG-4 Part 2 (XVID / DIVX), MPEG-2, VC-1, and the legacy Microsoft tail that old rips carry (MS-MPEG4 v1 / v2 / v3, the DivX 3.x era, plus WMV1 / WMV2 / WMV3), and the Flash tail (Sorenson Spark, On2 VP6). Containers: MKV, MP4, MOV, AVI, MPEG-TS, M2TS, VOB, 3GP, WebM, OGG, ASF / WMV including its WMA audio, and FLV including its Nellymoser, ADPCM and Speex audio. Server-side transcoding stays reserved for fringe codecs such as Theora and RealVideo.
 - **HDR10, HDR10+, Dolby Vision, HLG**: auto-detected, sent through with full color metadata. HDR10+ streams forward per-frame ST 2094-40 dynamic metadata so HDR10+ displays apply the source's tone-mapping curves; Dolby Vision streams switch DV-capable Apple TVs into Dolby Vision mode for Profile 5, 8.1 and 8.4 (Profile 7 is converted to single-layer 8.1 on device so it engages DV too): Profile 5 signals via a bare `dvh1` track tag, while 8.1 and 8.4 carry `dvh1` in `SUPPLEMENTAL-CODECS` on an `hvc1` base. On Apple TV the display switches to the matching HDR mode automatically (Match Content); on iPhone and iPad the built-in HDR display renders it directly. On a display that has no Dolby Vision of its own, an experimental Playback setting can hand the per-frame Dolby Vision data to the Apple TV instead of the panel, so a Profile 8.1 source is composed on device rather than sent as its static HDR10 layer.
 - **Dolby Atmos** via EAC3+JOC, wrapped as Dolby MAT 2.0 so an AVR's Atmos light actually comes on over an Apple TV; on iPhone and iPad it plays through spatialized audio where the device supports it
-- **Dolby Atmos from TrueHD, heights included**: Apple TV cannot bitstream TrueHD, so until now a TrueHD Atmos track played as its lossless 7.1 core and every height channel was gone. Now the engine decodes the Atmos objects, renders them into a 7.1.4 speaker bed and hands that to tvOS as Apple Positional Audio, which reaches your receiver or soundbar as Dolby Atmos (and AirPods as Spatial Audio), and when the file plays directly, a film that carries TrueHD Atmos opens on that track in its language (a track you picked yourself for that title still wins). On by default: for anyone on the default bridge it replaces a lossy EAC3 5.1 with a 7.1.4 bed at 3.84 Mbit/s. Someone who chose lossless FLAC 7.1 trades that for the heights, so the switch is in Playback settings, next to Prefer Lossless Audio
+- **Dolby Atmos from TrueHD and DTS:X, heights included**: Apple TV cannot bitstream TrueHD or DTS-HD, so until now a TrueHD Atmos or DTS:X track played as its lossless 7.1 core and every height channel was gone. Now the engine decodes the heights and objects, renders them into a 7.1.4 speaker bed and hands that to tvOS as Apple Positional Audio, which reaches your receiver or soundbar as Dolby Atmos (and AirPods as Spatial Audio), and when the file plays directly, a film that carries TrueHD Atmos or DTS:X opens on that track in its language (a track you picked yourself for that title still wins). A plain DTS-HD Master Audio track without DTS:X is recognised on its first frames and keeps the regular bridge. On by default: for anyone on the default bridge it replaces a lossy EAC3 5.1 with a 7.1.4 bed at 3.84 Mbit/s. Someone who chose lossless FLAC 7.1 trades that for the heights, so the switch is in Playback settings, next to Prefer Lossless Audio
 - **Multichannel surround**: 5.1, 7.1 with correct channel layout
 - **Resume** from where you left off, on any device
 - **Restart from the beginning**: a dedicated button on movies, series and episodes to play from the start instead of resuming
@@ -246,6 +250,10 @@ For the full pipeline detail (HDR routing, Atmos passthrough, A/V sync, channel-
 | Seerr (optional) | 2.0+ |
 
 A 1080p Apple TV HD will technically run the app, but Direct Play of 4K HDR content needs the 4K hardware. On iPhone and iPad the built-in display renders HDR directly, no external panel required.
+
+## Install
+
+Get Sodalite from the **[App Store](https://apps.apple.com/app/sodalite/id6764418563)**. One download covers Apple TV, iPhone and iPad. To try upcoming versions before they ship, join the [public TestFlight beta](https://testflight.apple.com/join/nWeQzmBX).
 
 ## Building from source
 

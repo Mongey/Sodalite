@@ -47,6 +47,9 @@ final class GuideViewModel {
     private(set) var filter: GuideFilter = .default
     private(set) var searchText = ""
 
+    /// Genre narrowing (#182), applied client-side on top of `filter` and the search.
+    let genres: GuideGenreController
+
     private let service: JellyfinLiveTvServiceProtocol
     private let userID: String
     /// Everything fetched for the active filter, before the search narrows it.
@@ -72,6 +75,10 @@ final class GuideViewModel {
         self.metrics = metrics
         self.axis = GuideAxis(now: now, pointsPerMinute: metrics.pointsPerMinute)
         self.anchorTime = now
+        self.genres = GuideGenreController(service: service, userID: userID)
+        genres.guideWindow = { [unowned self] in (axis.start, axis.end) }
+        genres.onSnapToNow = { [unowned self] in jumpToNow() }
+        genres.onChannelsChanged = { [unowned self] in recomputeVisibleChannels() }
     }
 
     var allLoadedPrograms: [JellyfinProgram] { programsByChannel.values.flatMap { $0 } }
@@ -138,6 +145,7 @@ final class GuideViewModel {
         // long-running guide a fresh EPG.
         requestedProgramChannelIDs = []
         anchorTime = min(max(anchorTime, rebuilt.start), rebuilt.end)
+        genres.invalidate()
         return true
     }
 
@@ -207,9 +215,9 @@ final class GuideViewModel {
 
     private func recomputeVisibleChannels() {
         let query = searchText
-        channels = query.isEmpty
-            ? fetchedChannels
-            : fetchedChannels.filter { Self.matches(channel: $0, query: query) }
+        channels = fetchedChannels.filter { channel in
+            genres.admits(channel) && (query.isEmpty || Self.matches(channel: channel, query: query))
+        }
     }
 
     // MARK: - Search matching

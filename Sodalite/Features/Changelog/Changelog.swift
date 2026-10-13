@@ -140,6 +140,24 @@ enum Changelog {
                     "changelog.1_1_0.storageFull.body",
                     icon: "externaldrive.badge.exclamationmark"
                 ),
+                ChangelogHighlight(
+                    .new,
+                    "changelog.1_1_0.showAll.title",
+                    "changelog.1_1_0.showAll.body",
+                    icon: "square.grid.2x2"
+                ),
+                ChangelogHighlight(
+                    .new,
+                    "changelog.1_1_0.guideGenres.title",
+                    "changelog.1_1_0.guideGenres.body",
+                    icon: "tag"
+                ),
+                ChangelogHighlight(
+                    .improve,
+                    "changelog.1_1_0.liveReconnect.title",
+                    "changelog.1_1_0.liveReconnect.body",
+                    icon: "antenna.radiowaves.left.and.right"
+                ),
             ]
         ),
         // MARK: 1.0.0

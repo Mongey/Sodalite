@@ -401,7 +401,8 @@ extension PlayerViewModel {
                 // post-load selectAudioTrack reload that misfired on single-track channels.
                 preferredAudioLanguages: effectivePreferredAudioLanguage().map { [$0] } ?? [],
                 teletextPage: preferences.liveTeletextPage.page,
-                sharedOutputRole: sharedOutputRole
+                sharedOutputRole: sharedOutputRole,
+                hostRetriesExhaustedLiveReplay: true
             ),
             // #64: the viewer's audio pick, named at load. It is the only way onto a track other than
             // the container default here, because the ingest is forward-only and the engine refuses
@@ -536,7 +537,8 @@ extension PlayerViewModel {
             // post-load selectAudioTrack reload that misfired on single-track channels.
             preferredAudioLanguages: effectivePreferredAudioLanguage().map { [$0] } ?? [],
             teletextPage: preferences.liveTeletextPage.page,
-            sharedOutputRole: sharedOutputRole
+            sharedOutputRole: sharedOutputRole,
+            hostRetriesExhaustedLiveReplay: true
         )
         // #64: same pick on the server route, where the engine could re-point in place but a
         // re-tune is what the viewer asked for either way. One spelling, one behaviour.
@@ -1004,6 +1006,52 @@ extension PlayerViewModel {
             await self.retuneLiveStream()
             self.liveRetuneInFlight = false
         }
+    }
+
+    /// Waits before each retained-history retry. The source just repeated media the engine already
+    /// played, so an immediate retry reads the same repeat; the wait lets it move on.
+    static let liveReplayRetryDelays: [Double] = [5, 15]
+
+    /// Engine `liveSourceReplayExhausted` entry (AetherEngine#747): the source repeated media the
+    /// engine had already played and its own reopens found nothing new. Unlike `liveSourceReset`, the
+    /// session still holds the DVR window and the packet history, and a retune would throw both away
+    /// (and can replay the broadcast again). So retry on that session after a wait, twice, and only
+    /// then retune. A `false` from the engine means the session cannot continue (custom ingest
+    /// without a reopen, changed track layout): retune at once.
+    func handleLiveSourceReplayExhausted() {
+        guard isLiveSession, !serverConfirmedUnreachable, !liveRetuneInFlight else {
+            LogTap.shared.note("[Live] replay retry skipped: retune in flight or server unreachable")
+            return
+        }
+        guard liveReplayRetryCount < Self.liveReplayRetryDelays.count else {
+            LogTap.shared.note("[Live] replay retries spent (\(liveReplayRetryCount)); retuning")
+            handleLiveSourceReset()
+            return
+        }
+        let delay = Self.liveReplayRetryDelays[liveReplayRetryCount]
+        liveReplayRetryCount += 1
+        let attempt = liveReplayRetryCount
+        let session = playSessionID
+        LogTap.shared.note("[Live] source repeated itself; retry \(attempt) on the same session in \(Int(delay))s")
+        liveReplayRetryTask?.cancel()
+        liveReplayRetryTask = Task { [weak self] in
+            try? await Task.sleep(for: .seconds(delay))
+            // A zap or retune in the meantime owns the session now; this retry belongs to the old one.
+            guard let self, !Task.isCancelled, self.playSessionID == session, !self.liveRetuneInFlight else { return }
+            self.liveReplayRetryTask = nil
+            if self.player.retryLiveSourceRecovery() {
+                LogTap.shared.note("[Live] replay retry \(attempt) accepted, cache and history kept")
+            } else {
+                LogTap.shared.note("[Live] replay retry \(attempt) refused by the engine; retuning")
+                self.handleLiveSourceReset()
+            }
+        }
+    }
+
+    func cancelLiveReplayRetry() {
+        liveReplayRetryTask?.cancel()
+        liveReplayRetryTask = nil
+        liveReplayRetryCount = 0
     }
 
     /// Live audio switch (#64): re-tune the channel with the picked stream named at load.

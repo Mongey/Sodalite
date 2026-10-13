@@ -15,6 +15,8 @@ struct HorizontalMediaRow: View {
     var showsSeriesArtwork: Bool = false
     /// Per-card server chip (Sodalite#85).
     var itemLabel: ((JellyfinItem) -> String?)? = nil
+    /// Set on a capped row: a trailing card that opens the full list.
+    var onShowAll: (() -> Void)? = nil
     /// Overrides the tier's row inset so the row can line up with a host screen that insets differently.
     var inset: CGFloat? = nil
 
@@ -62,6 +64,11 @@ struct HorizontalMediaRow: View {
                             )
                         }
                         .mediaContextMenu(for: item) { onItemSelected?(item) }
+                    }
+                    if let onShowAll {
+                        FocusableCard(action: onShowAll, exposesButtonSemantics: true) { isFocused in
+                            ShowAllCard(style: cardStyle, isFocused: isFocused)
+                        }
                     }
                 }
             }

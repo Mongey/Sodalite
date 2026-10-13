@@ -29,6 +29,22 @@ struct JellyfinChannel: Codable, Sendable, Identifiable, Equatable {
     var isFavorite: Bool { userData?.isFavorite ?? false }
 }
 
+extension JellyfinChannel {
+    /// Same XMLTV over-escaping as program text (#182): the name is display-only, so it is decoded
+    /// here once rather than on every surface that draws it.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        self.init(
+            id: try c.decode(String.self, forKey: .id),
+            name: try c.decode(String.self, forKey: .name).epgDisplayText,
+            channelNumber: try c.decodeIfPresent(String.self, forKey: .channelNumber),
+            imageTags: try c.decodeIfPresent([String: String].self, forKey: .imageTags),
+            currentProgram: try c.decodeIfPresent(JellyfinProgram.self, forKey: .currentProgram),
+            userData: try c.decodeIfPresent(ChannelUserData.self, forKey: .userData),
+            serverID: try c.decodeIfPresent(String.self, forKey: .serverID))
+    }
+}
+
 /// Channel `UserData` slice the guide reads; favorites use the same UserData.IsFavorite as regular items.
 struct ChannelUserData: Codable, Sendable, Equatable {
     let isFavorite: Bool?
@@ -121,6 +137,42 @@ struct JellyfinProgram: Codable, Sendable, Identifiable, Equatable {
     func isAiring(at now: Date) -> Bool {
         guard let start = startDate, let end = endDate else { return false }
         return now >= start && now < end
+    }
+}
+
+extension JellyfinProgram {
+    /// Decodes the XML entities over-escaping XMLTV feeds leave in the text ("Food &amp; Cooking",
+    /// #182) once, here, so no surface has to remember to. Genres stay raw: the guide sends them back
+    /// as `Genres`, which the server matches against the stored, still-escaped value.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        func text(_ key: CodingKeys) throws -> String? {
+            try c.decodeIfPresent(String.self, forKey: key)?.epgDisplayText
+        }
+        self.init(
+            id: try c.decode(String.self, forKey: .id),
+            channelId: try c.decodeIfPresent(String.self, forKey: .channelId),
+            channelName: try text(.channelName),
+            name: try c.decode(String.self, forKey: .name).epgDisplayText,
+            overview: try text(.overview),
+            startDate: try c.decodeIfPresent(Date.self, forKey: .startDate),
+            endDate: try c.decodeIfPresent(Date.self, forKey: .endDate),
+            genres: try c.decodeIfPresent([String].self, forKey: .genres),
+            imageTags: try c.decodeIfPresent([String: String].self, forKey: .imageTags),
+            isLive: try c.decodeIfPresent(Bool.self, forKey: .isLive),
+            isNews: try c.decodeIfPresent(Bool.self, forKey: .isNews),
+            isMovie: try c.decodeIfPresent(Bool.self, forKey: .isMovie),
+            isSeries: try c.decodeIfPresent(Bool.self, forKey: .isSeries),
+            isKids: try c.decodeIfPresent(Bool.self, forKey: .isKids),
+            isSports: try c.decodeIfPresent(Bool.self, forKey: .isSports),
+            seriesName: try text(.seriesName),
+            parentIndexNumber: try c.decodeIfPresent(Int.self, forKey: .parentIndexNumber),
+            indexNumber: try c.decodeIfPresent(Int.self, forKey: .indexNumber),
+            episodeTitle: try text(.episodeTitle),
+            timerId: try c.decodeIfPresent(String.self, forKey: .timerId),
+            seriesTimerId: try c.decodeIfPresent(String.self, forKey: .seriesTimerId),
+            productionYear: try c.decodeIfPresent(Int.self, forKey: .productionYear),
+            serverID: try c.decodeIfPresent(String.self, forKey: .serverID))
     }
 }
 

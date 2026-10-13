@@ -10,6 +10,9 @@ struct SparseGridStoreTests {
         var requests: [Int] = []
         var failing: Set<Int> = []
         var totalOverride: Int?
+        /// AIOMetadata's emulated Jellyfin: requests over 100 are answered with 50, and the total
+        /// is only what was served plus one page of lookahead until the catalog runs out.
+        var emulatesAIOMetadata = false
         init(count: Int) { all = (0..<count).map { Server.item("i\($0)") } }
         static func item(_ id: String, type: String = "Movie") -> JellyfinItem {
             try! JSONDecoder().decode(JellyfinItem.self,
@@ -18,6 +21,13 @@ struct SparseGridStoreTests {
         func fetch(_ start: Int, _ limit: Int) async throws -> JellyfinItemsResponse {
             requests.append(start)
             if failing.contains(start) { throw URLError(.timedOut) }
+            if emulatesAIOMetadata {
+                let served = limit > 100 ? 50 : limit
+                let items = Array(all.dropFirst(start).prefix(served))
+                let more = start + items.count < all.count
+                return JellyfinItemsResponse(items: items,
+                    totalRecordCount: start + items.count + (more && !items.isEmpty ? served : 0))
+            }
             return JellyfinItemsResponse(items: Array(all.dropFirst(start).prefix(limit)),
                                          totalRecordCount: totalOverride ?? all.count)
         }
@@ -219,5 +229,53 @@ struct SparseGridStoreTests {
         await store.waitForIdle()
         #expect(store.item(at: 0)?.id == "i0")
         if case .loaded = store.firstPage {} else { Issue.record("first page should recover") }
+    }
+
+    @Test func aShortPageIsFilledFromWhereItStopped() async {
+        let server = Server(count: 1200)
+        server.emulatesAIOMetadata = true
+        let store = await started(server, pageSize: 200)
+        #expect(server.requests == [0, 50, 100])
+        #expect(store.item(at: 199)?.id == "i199")
+        #expect(store.slots.count > 200)
+    }
+
+    @Test func aLookaheadTotalGrowsUntilTheCatalogEnds() async {
+        let server = Server(count: 1200)
+        server.emulatesAIOMetadata = true
+        let store = await started(server, pageSize: 200)
+        for page in 1..<6 {
+            store.slotAppeared(page * 200)
+            await store.waitForIdle()
+        }
+        #expect(store.slots.count == 1200)
+        #expect(store.item(at: 1199)?.id == "i1199")
+        #expect(store.loadedItems.count == 1200)
+    }
+
+    @Test func aRefetchOfAnEarlyPageKeepsTheRowsBehindIt() async {
+        let server = Server(count: 1200)
+        server.emulatesAIOMetadata = true
+        let store = await started(server, pageSize: 200)
+        store.slotAppeared(600)
+        await store.waitForIdle()
+        let grown = store.slots.count
+        store.revalidate()
+        await store.waitForIdle()
+        #expect(store.slots.count == grown)
+        #expect(store.item(at: 650)?.id == "i650")
+    }
+
+    @Test func aChunkThatFailsLeavesThePageToRetry() async {
+        let server = Server(count: 1200)
+        server.emulatesAIOMetadata = true
+        server.failing = [50]
+        let store = await started(server, pageSize: 200)
+        #expect(store.item(at: 49)?.id == "i49")
+        #expect(store.slots[50] == .pending)
+        server.failing = []
+        store.slotAppeared(50)
+        await store.waitForIdle()
+        #expect(store.item(at: 199)?.id == "i199")
     }
 }

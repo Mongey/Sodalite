@@ -23,6 +23,7 @@ struct ChannelListView: View {
 
     @State private var searchText = ""
     @State private var channelSelection: ChannelSelection?
+    @State private var isPickingGenre = false
 
     init(model: ChannelListViewModel,
          tint: Color,
@@ -36,6 +37,9 @@ struct ChannelListView: View {
         content
             .onChange(of: searchText) { _, newValue in model.apply(searchText: newValue) }
             .task { await model.load() }
+            .menuPresentation(isPresented: $isPickingGenre) {
+                GuideGenrePicker(genres: model.genres, tint: tint)
+            }
             .sheet(item: $channelSelection) { selected in
                 ChannelScheduleSheet(model: model, channel: selected.channel, tint: tint,
                                      onWatchLive: { context in
@@ -75,9 +79,15 @@ struct ChannelListView: View {
                         .listRowBackground(Color.clear)
                 }
                 if model.channels.isEmpty {
-                    ContentUnavailableView("livetv.guide.empty.filtered",
-                                           systemImage: "line.3.horizontal.decrease.circle")
-                        .listRowBackground(Color.clear)
+                    if model.genres.isResolving {
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                            .listRowBackground(Color.clear)
+                    } else {
+                        ContentUnavailableView("livetv.guide.empty.filtered",
+                                               systemImage: "line.3.horizontal.decrease.circle")
+                            .listRowBackground(Color.clear)
+                    }
                 }
                 ForEach(model.channels) { channel in
                     ChannelRow(channel: channel,
@@ -134,6 +144,12 @@ struct ChannelListView: View {
                         next.category = next.category == category ? nil : category
                         Task { await model.apply(filter: next) }
                     }
+                }
+                // Verbatim: an EPG genre is server data, not a catalog key (#182).
+                phoneChip(model.genres.filter.chipLabel.map { Text(verbatim: $0) }
+                            ?? Text("livetv.guide.filter.genre"),
+                          isOn: model.genres.filter.isActive) {
+                    isPickingGenre = true
                 }
                 if model.hasRadioChannels {
                     phoneChip(Text("livetv.guide.filter.radio"), isOn: model.filter.kind == .radio) {

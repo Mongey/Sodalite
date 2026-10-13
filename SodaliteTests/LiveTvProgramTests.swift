@@ -20,6 +20,30 @@ struct LiveTvProgramTests {
         #expect(program.episodeTitle == "The One After Ross Says Rachel")
     }
 
+    /// #182: over-escaping XMLTV feeds. Text is decoded for display, genres stay raw for the query.
+    @Test func programDecodesEscapedEPGTextButKeepsGenresRaw() throws {
+        let json = """
+        {"Id":"p3","Name":"Tom &amp; Jerry","ChannelId":"c1","Overview":"Cat &amp;amp; mouse",
+         "EpisodeTitle":"Caf&#233;","Genres":["Food &amp; Cooking"]}
+        """
+        let program = try decoder.decode(JellyfinProgram.self, from: Data(json.utf8))
+        #expect(program.name == "Tom & Jerry")
+        #expect(program.overview == "Cat & mouse")
+        #expect(program.episodeTitle == "Café")
+        #expect(program.genres == ["Food &amp; Cooking"])
+    }
+
+    @Test func channelNameDecodesEscapedEPGText() throws {
+        let json = """
+        {"Id":"c1","Name":"Food &amp; Drink TV","ChannelNumber":"7",
+         "CurrentProgram":{"Id":"p1","Name":"Salt &amp; Pepper"}}
+        """
+        let channel = try decoder.decode(JellyfinChannel.self, from: Data(json.utf8))
+        #expect(channel.name == "Food & Drink TV")
+        #expect(channel.currentProgram?.name == "Salt & Pepper")
+        #expect(channel.channelNumber == "7")
+    }
+
     @Test func programDecodesWithoutEpisodeMetadata() throws {
         let json = """
         {"Id":"p2","Name":"Evening News","ChannelId":"c2"}

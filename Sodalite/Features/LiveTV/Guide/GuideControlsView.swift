@@ -12,6 +12,7 @@ struct GuideControlsView: View {
     var isFocusable: Bool = true
 
     @State private var isSearching = false
+    @State private var isPickingGenre = false
 
     /// `detailCover` takes an Identifiable item; the search cover carries no payload of its own.
     private struct SearchRequest: Identifiable { let id = "guide.search" }
@@ -26,6 +27,9 @@ struct GuideControlsView: View {
         .frame(height: metrics.controlsHeight)
         .detailCover(item: searchBinding) { _ in
             GuideSearchCover(model: model, tint: tint)
+        }
+        .menuPresentation(isPresented: $isPickingGenre) {
+            GuideGenrePicker(genres: model.genres, tint: tint)
         }
     }
 
@@ -55,6 +59,14 @@ struct GuideControlsView: View {
                 next.category = next.category == category ? nil : category
                 Task { await model.apply(filter: next) }
             }
+        }
+
+        // Verbatim for the same reason as the search chip: an EPG genre is server data (#182).
+        GuideChip(title: model.genres.filter.chipLabel.map { Text(verbatim: $0) }
+                    ?? Text("livetv.guide.filter.genre"),
+                  isOn: model.genres.filter.isActive,
+                  tint: tint, isFocusable: isFocusable) {
+            isPickingGenre = true
         }
 
         if model.hasRadioChannels {

@@ -185,6 +185,7 @@ final class GuideGridViewController: UIViewController,
         observeRows()
         observeFavorites()
         observeTimerState()
+        observeGenreFilter()
         observeScrollRequests()
         installGestures()
 
@@ -449,6 +450,19 @@ final class GuideGridViewController: UIViewController,
         }
     }
 
+    /// Genre selection separately: a genre that adds no channel still changes which cells are dimmed.
+    private func observeGenreFilter() {
+        withObservationTracking {
+            _ = model.genres.filter
+        } onChange: { [weak self] in
+            Task { @MainActor in
+                guard let self else { return }
+                self.reloadVisibleCells()
+                self.observeGenreFilter()
+            }
+        }
+    }
+
     /// Jumps requested by the controls or a category snap, which the grid did not initiate.
     private func observeScrollRequests() {
         withObservationTracking {
@@ -619,6 +633,7 @@ final class GuideGridViewController: UIViewController,
         cell.configure(title: program.name,
                        isAiring: program.isAiring(at: Date()),
                        hasTimer: model.timers.hasTimer(programID: program.id),
+                       isDimmed: model.genres.isOutside(program),
                        tint: tint, dependencies: dependencies, theme: theme)
     }
 

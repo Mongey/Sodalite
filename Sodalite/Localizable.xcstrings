@@ -65804,157 +65804,157 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stopy TrueHD s Dolby Atmos si nyní zachovají výškové kanály. Sodalite vykreslí objekty Atmos a pošle je do receiveru nebo soundbaru jako Dolby Atmos, případně do AirPods jako prostorový zvuk, a když film takovou stopu má, vybere ji ve vašem jazyce. Zapnuto ve výchozím stavu, vypnout lze v nastavení přehrávání."
+            "value" : "Stopy TrueHD Atmos a DTS:X si nyní zachovají výškové kanály. Sodalite vykreslí výšky a objekty a pošle je do receiveru nebo soundbaru jako Dolby Atmos, případně do AirPods jako prostorový zvuk, a když film takovou stopu má, vybere ji ve vašem jazyce. Zapnuto ve výchozím stavu, vypnout lze v nastavení přehrávání."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-spor med Dolby Atmos beholder nu deres højdekanaler. Sodalite gengiver Atmos-objekterne og sender dem til din receiver eller soundbar som Dolby Atmos eller til AirPods som rumlig lyd, og vælger TrueHD Atmos-sporet på dit sprog, når en film har et. Slået til som standard og kan slås fra i indstillingerne for afspilning."
+            "value" : "TrueHD Atmos- og DTS:X-spor beholder nu deres højdekanaler. Sodalite gengiver højder og objekter og sender dem til din receiver eller soundbar som Dolby Atmos eller til AirPods som rumlig lyd, og vælger et sådant spor på dit sprog, når en film har et. Slået til som standard og kan slås fra i indstillingerne for afspilning."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-Spuren mit Dolby Atmos behalten jetzt ihre Höhenkanäle. Sodalite rendert die Atmos-Objekte und gibt sie als Dolby Atmos an Receiver oder Soundbar weiter, an AirPods als 3D-Audio, und wählt die TrueHD-Atmos-Spur in deiner Sprache, wenn ein Film eine hat. Standardmäßig an, abschaltbar in den Wiedergabeeinstellungen."
+            "value" : "TrueHD-Atmos- und DTS:X-Spuren behalten jetzt ihre Höhenkanäle. Sodalite rendert Höhen und Objekte und gibt sie als Dolby Atmos an Receiver oder Soundbar weiter, an AirPods als 3D-Audio, und wählt eine solche Spur in deiner Sprache, wenn ein Film eine hat. Standardmäßig an, abschaltbar in den Wiedergabeeinstellungen."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Τα κομμάτια TrueHD με Dolby Atmos διατηρούν πλέον τα κανάλια ύψους τους. Το Sodalite αποδίδει τα αντικείμενα Atmos και τα στέλνει στον δέκτη ή στο soundbar ως Dolby Atmos ή στα AirPods ως χωρικό ήχο, και επιλέγει το κομμάτι TrueHD Atmos στη γλώσσα σας όταν μια ταινία έχει. Ενεργό από προεπιλογή, απενεργοποιείται στις ρυθμίσεις αναπαραγωγής."
+            "value" : "Τα κομμάτια TrueHD Atmos και DTS:X διατηρούν πλέον τα κανάλια ύψους τους. Το Sodalite αποδίδει τα ύψη και τα αντικείμενα και τα στέλνει στον δέκτη ή στο soundbar ως Dolby Atmos ή στα AirPods ως χωρικό ήχο, και επιλέγει τέτοιο κομμάτι στη γλώσσα σας όταν μια ταινία έχει. Ενεργό από προεπιλογή, απενεργοποιείται στις ρυθμίσεις αναπαραγωγής."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD tracks with Dolby Atmos now keep their height channels. Sodalite renders the Atmos objects and sends them to your receiver or soundbar as Dolby Atmos, or to AirPods as Spatial Audio, and picks the TrueHD Atmos track in your language when a film has one. On by default, and switchable in the playback settings."
+            "value" : "TrueHD Atmos and DTS:X tracks now keep their height channels. Sodalite renders the heights and objects and sends them to your receiver or soundbar as Dolby Atmos, or to AirPods as Spatial Audio, and picks such a track in your language when a film has one. On by default, and switchable in the playback settings."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las pistas TrueHD con Dolby Atmos ahora conservan sus canales de altura. Sodalite renderiza los objetos Atmos y los envía a tu receptor o barra de sonido como Dolby Atmos, o a los AirPods como audio espacial, y elige la pista TrueHD Atmos en tu idioma cuando la película tiene una. Activado por defecto, se puede desactivar en los ajustes de reproducción."
+            "value" : "Las pistas TrueHD Atmos y DTS:X ahora conservan sus canales de altura. Sodalite renderiza las alturas y los objetos y los envía a tu receptor o barra de sonido como Dolby Atmos, o a los AirPods como audio espacial, y elige una pista así en tu idioma cuando la película tiene una. Activado por defecto, se puede desactivar en los ajustes de reproducción."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmosia sisältävät TrueHD-raidat säilyttävät nyt korkeuskanavansa. Sodalite renderöi Atmos-objektit ja lähettää ne vastaanottimeen tai soundbariin Dolby Atmosina tai AirPodeihin tilaäänenä, ja valitsee TrueHD Atmos -raidan kielelläsi, kun elokuvassa sellainen on. Oletuksena päällä, poistettavissa toistoasetuksista."
+            "value" : "TrueHD Atmos- ja DTS:X-raidat säilyttävät nyt korkeuskanavansa. Sodalite renderöi korkeudet ja objektit ja lähettää ne vastaanottimeen tai soundbariin Dolby Atmosina tai AirPodeihin tilaäänenä, ja valitsee tällaisen raidan kielelläsi, kun elokuvassa sellainen on. Oletuksena päällä, poistettavissa toistoasetuksista."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les pistes TrueHD en Dolby Atmos conservent désormais leurs canaux de hauteur. Sodalite effectue le rendu des objets Atmos et les envoie à votre ampli ou barre de son en Dolby Atmos, ou aux AirPods en audio spatial, et choisit la piste TrueHD Atmos dans votre langue quand un film en a une. Activé par défaut, désactivable dans les réglages de lecture."
+            "value" : "Les pistes TrueHD Atmos et DTS:X conservent désormais leurs canaux de hauteur. Sodalite effectue le rendu des hauteurs et des objets et les envoie à votre ampli ou barre de son en Dolby Atmos, ou aux AirPods en audio spatial, et choisit une telle piste dans votre langue quand un film en a une. Activé par défaut, désactivable dans les réglages de lecture."
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD zapisi s Dolby Atmosom sada zadržavaju visinske kanale. Sodalite renderira Atmos objekte i šalje ih prijemniku ili soundbaru kao Dolby Atmos, a AirPodsima kao prostorni zvuk, te bira TrueHD Atmos zapis na vašem jeziku kad ga film ima. Uključeno prema zadanim postavkama, isključuje se u postavkama reprodukcije."
+            "value" : "TrueHD Atmos i DTS:X zapisi sada zadržavaju visinske kanale. Sodalite renderira visine i objekte i šalje ih prijemniku ili soundbaru kao Dolby Atmos, a AirPodsima kao prostorni zvuk, te bira takav zapis na vašem jeziku kad ga film ima. Uključeno prema zadanim postavkama, isključuje se u postavkama reprodukcije."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Dolby Atmost tartalmazó TrueHD sávok mostantól megtartják a magassági csatornáikat. A Sodalite rendereli az Atmos objektumokat, Dolby Atmosként küldi őket az erősítőnek vagy hangprojektornak, térhatású hangként az AirPodsnak, és a nyelvedhez tartozó TrueHD Atmos sávot választja, ha a filmben van ilyen. Alapból bekapcsolva, a lejátszási beállításokban kikapcsolható."
+            "value" : "A TrueHD Atmos és DTS:X sávok mostantól megtartják a magassági csatornáikat. A Sodalite rendereli a magassági csatornákat és az objektumokat, Dolby Atmosként küldi őket az erősítőnek vagy hangprojektornak, térhatású hangként az AirPodsnak, és ilyen sávot választ a nyelveden, ha a filmben van. Alapból bekapcsolva, a lejátszási beállításokban kikapcsolható."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le tracce TrueHD con Dolby Atmos ora mantengono i canali di altezza. Sodalite esegue il rendering degli oggetti Atmos e li invia al ricevitore o alla soundbar come Dolby Atmos, oppure agli AirPods come audio spaziale, e sceglie la traccia TrueHD Atmos nella tua lingua quando un film ne ha una. Attivo per impostazione predefinita, disattivabile nelle impostazioni di riproduzione."
+            "value" : "Le tracce TrueHD Atmos e DTS:X ora mantengono i canali di altezza. Sodalite esegue il rendering di altezze e oggetti e li invia al ricevitore o alla soundbar come Dolby Atmos, oppure agli AirPods come audio spaziale, e sceglie una traccia simile nella tua lingua quando un film ne ha una. Attivo per impostazione predefinita, disattivabile nelle impostazioni di riproduzione."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos付きのTrueHDトラックで、ハイトチャンネルが保持されるようになりました。SodaliteがAtmosオブジェクトをレンダリングし、レシーバーやサウンドバーにはDolby Atmosとして、AirPodsには空間オーディオとして送り、映画にTrueHD Atmosトラックがあればあなたの言語のものを選びます。デフォルトでオン、再生設定で切り替えられます。"
+            "value" : "TrueHD AtmosとDTS:Xのトラックで、ハイトチャンネルが保持されるようになりました。Sodaliteがハイトとオブジェクトをレンダリングし、レシーバーやサウンドバーにはDolby Atmosとして、AirPodsには空間オーディオとして送り、映画にそのようなトラックがあればあなたの言語のものを選びます。デフォルトでオン、再生設定で切り替えられます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos가 포함된 TrueHD 트랙이 이제 높이 채널을 유지합니다. Sodalite가 Atmos 오브젝트를 렌더링하여 리시버나 사운드바에는 Dolby Atmos로, AirPods에는 공간 음향으로 보내고, 영화에 TrueHD Atmos 트랙이 있으면 사용자 언어의 트랙을 선택합니다. 기본적으로 켜져 있으며 재생 설정에서 끌 수 있습니다."
+            "value" : "TrueHD Atmos 및 DTS:X 트랙이 이제 높이 채널을 유지합니다. Sodalite가 높이 채널과 오브젝트를 렌더링하여 리시버나 사운드바에는 Dolby Atmos로, AirPods에는 공간 음향으로 보내고, 영화에 해당 트랙이 있으면 사용자 언어의 트랙을 선택합니다. 기본적으로 켜져 있으며 재생 설정에서 끌 수 있습니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-spor med Dolby Atmos beholder nå høydekanalene sine. Sodalite gjengir Atmos-objektene og sender dem til receiveren eller lydplanken som Dolby Atmos, eller til AirPods som romlig lyd, og velger TrueHD Atmos-sporet på ditt språk når en film har et. På som standard, kan slås av i avspillingsinnstillingene."
+            "value" : "TrueHD Atmos- og DTS:X-spor beholder nå høydekanalene sine. Sodalite gjengir høyder og objekter og sender dem til receiveren eller lydplanken som Dolby Atmos, eller til AirPods som romlig lyd, og velger et slikt spor på ditt språk når en film har et. På som standard, kan slås av i avspillingsinnstillingene."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-sporen met Dolby Atmos behouden nu hun hoogtekanalen. Sodalite rendert de Atmos-objecten en stuurt ze als Dolby Atmos naar je receiver of soundbar, of als ruimtelijke audio naar AirPods, en kiest het TrueHD Atmos-spoor in jouw taal als een film er een heeft. Standaard aan, uit te zetten in de afspeelinstellingen."
+            "value" : "TrueHD Atmos- en DTS:X-sporen behouden nu hun hoogtekanalen. Sodalite rendert de hoogtes en objecten en stuurt ze als Dolby Atmos naar je receiver of soundbar, of als ruimtelijke audio naar AirPods, en kiest zo'n spoor in jouw taal als een film er een heeft. Standaard aan, uit te zetten in de afspeelinstellingen."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ścieżki TrueHD z Dolby Atmos zachowują teraz kanały wysokości. Sodalite renderuje obiekty Atmos i wysyła je do amplitunera lub soundbara jako Dolby Atmos, a do AirPods jako dźwięk przestrzenny, oraz wybiera ścieżkę TrueHD Atmos w Twoim języku, gdy film ją ma. Domyślnie włączone, można wyłączyć w ustawieniach odtwarzania."
+            "value" : "Ścieżki TrueHD Atmos i DTS:X zachowują teraz kanały wysokości. Sodalite renderuje kanały wysokości i obiekty i wysyła je do amplitunera lub soundbara jako Dolby Atmos, a do AirPods jako dźwięk przestrzenny, oraz wybiera taką ścieżkę w Twoim języku, gdy film ją ma. Domyślnie włączone, można wyłączyć w ustawieniach odtwarzania."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faixas TrueHD com Dolby Atmos agora mantêm seus canais de altura. O Sodalite renderiza os objetos Atmos e os envia ao seu receiver ou soundbar como Dolby Atmos, ou aos AirPods como Áudio Espacial, e escolhe a faixa TrueHD Atmos no seu idioma quando um filme tem uma. Ativado por padrão, pode ser desativado nos ajustes de reprodução."
+            "value" : "Faixas TrueHD Atmos e DTS:X agora mantêm seus canais de altura. O Sodalite renderiza as alturas e os objetos e os envia ao seu receiver ou soundbar como Dolby Atmos, ou aos AirPods como Áudio Espacial, e escolhe uma faixa assim no seu idioma quando um filme tem uma. Ativado por padrão, pode ser desativado nos ajustes de reprodução."
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As faixas TrueHD com Dolby Atmos mantêm agora os canais de altura. O Sodalite processa os objetos Atmos e envia-os para o recetor ou barra de som como Dolby Atmos, ou para os AirPods como áudio espacial, e escolhe a faixa TrueHD Atmos no seu idioma quando um filme tem uma. Ativado por predefinição, pode ser desativado nas definições de reprodução."
+            "value" : "As faixas TrueHD Atmos e DTS:X mantêm agora os canais de altura. O Sodalite processa as alturas e os objetos e envia-os para o recetor ou barra de som como Dolby Atmos, ou para os AirPods como áudio espacial, e escolhe uma faixa assim no seu idioma quando um filme tem uma. Ativado por predefinição, pode ser desativado nas definições de reprodução."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pistele TrueHD cu Dolby Atmos își păstrează acum canalele de înălțime. Sodalite randează obiectele Atmos și le trimite receiverului sau soundbarului ca Dolby Atmos, ori căștilor AirPods ca audio spațial, și alege pista TrueHD Atmos în limba ta când un film are una. Activat implicit, se poate dezactiva din setările de redare."
+            "value" : "Pistele TrueHD Atmos și DTS:X își păstrează acum canalele de înălțime. Sodalite randează înălțimile și obiectele și le trimite receiverului sau soundbarului ca Dolby Atmos, ori căștilor AirPods ca audio spațial, și alege o astfel de pistă în limba ta când un film are una. Activat implicit, se poate dezactiva din setările de redare."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дорожки TrueHD с Dolby Atmos теперь сохраняют высотные каналы. Sodalite рендерит объекты Atmos и передаёт их на ресивер или саундбар как Dolby Atmos, а на AirPods как пространственное аудио, и выбирает дорожку TrueHD Atmos на вашем языке, если она есть в фильме. Включено по умолчанию, отключается в настройках воспроизведения."
+            "value" : "Дорожки TrueHD Atmos и DTS:X теперь сохраняют высотные каналы. Sodalite рендерит высоты и объекты и передаёт их на ресивер или саундбар как Dolby Atmos, а на AirPods как пространственное аудио, и выбирает такую дорожку на вашем языке, если она есть в фильме. Включено по умолчанию, отключается в настройках воспроизведения."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stopy TrueHD s Dolby Atmos si teraz zachovajú výškové kanály. Sodalite vykreslí objekty Atmos a pošle ich do prijímača alebo soundbaru ako Dolby Atmos, prípadne do AirPods ako priestorový zvuk, a keď film takú stopu má, vyberie ju vo vašom jazyku. Predvolene zapnuté, vypnúť sa dá v nastaveniach prehrávania."
+            "value" : "Stopy TrueHD Atmos a DTS:X si teraz zachovajú výškové kanály. Sodalite vykreslí výšky a objekty a pošle ich do prijímača alebo soundbaru ako Dolby Atmos, prípadne do AirPods ako priestorový zvuk, a keď film takú stopu má, vyberie ju vo vašom jazyku. Predvolene zapnuté, vypnúť sa dá v nastaveniach prehrávania."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD-spår med Dolby Atmos behåller nu sina höjdkanaler. Sodalite renderar Atmos-objekten och skickar dem till din receiver eller soundbar som Dolby Atmos, eller till AirPods som rumsligt ljud, och väljer TrueHD Atmos-spåret på ditt språk när en film har ett. På som standard, kan stängas av i uppspelningsinställningarna."
+            "value" : "TrueHD Atmos- och DTS:X-spår behåller nu sina höjdkanaler. Sodalite renderar höjder och objekt och skickar dem till din receiver eller soundbar som Dolby Atmos, eller till AirPods som rumsligt ljud, och väljer ett sådant spår på ditt språk när en film har ett. På som standard, kan stängas av i uppspelningsinställningarna."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos içeren TrueHD parçaları artık yükseklik kanallarını koruyor. Sodalite Atmos nesnelerini işler ve alıcınıza ya da ses çubuğunuza Dolby Atmos olarak, AirPods'a uzamsal ses olarak gönderir ve bir filmde varsa dilinizdeki TrueHD Atmos parçasını seçer. Varsayılan olarak açık, oynatma ayarlarından kapatılabilir."
+            "value" : "TrueHD Atmos ve DTS:X parçaları artık yükseklik kanallarını koruyor. Sodalite yükseklikleri ve nesneleri işler ve alıcınıza ya da ses çubuğunuza Dolby Atmos olarak, AirPods'a uzamsal ses olarak gönderir ve bir filmde varsa dilinizdeki böyle bir parçayı seçer. Varsayılan olarak açık, oynatma ayarlarından kapatılabilir."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Доріжки TrueHD з Dolby Atmos тепер зберігають висотні канали. Sodalite рендерить об’єкти Atmos і передає їх на ресивер або саундбар як Dolby Atmos, а на AirPods як просторове аудіо, та вибирає доріжку TrueHD Atmos вашою мовою, якщо вона є у фільмі. Увімкнено за замовчуванням, вимикається в налаштуваннях відтворення."
+            "value" : "Доріжки TrueHD Atmos і DTS:X тепер зберігають висотні канали. Sodalite рендерить висоти й об’єкти і передає їх на ресивер або саундбар як Dolby Atmos, а на AirPods як просторове аудіо, та вибирає таку доріжку вашою мовою, якщо вона є у фільмі. Увімкнено за замовчуванням, вимикається в налаштуваннях відтворення."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "带 Dolby Atmos 的 TrueHD 音轨现在会保留其高度声道。Sodalite 会渲染 Atmos 对象，并以 Dolby Atmos 发送到你的功放或回音壁，或以空间音频发送到 AirPods；影片有 TrueHD Atmos 音轨时，会选择你的语言的那条。默认开启，可在播放设置中关闭。"
+            "value" : "TrueHD Atmos 和 DTS:X 音轨现在会保留其高度声道。Sodalite 会渲染高度声道和对象，并以 Dolby Atmos 发送到你的功放或回音壁，或以空间音频发送到 AirPods；影片有此类音轨时，会选择你的语言的那条。默认开启，可在播放设置中关闭。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "含 Dolby Atmos 的 TrueHD 音軌現在會保留其高度聲道。Sodalite 會渲染 Atmos 物件，並以 Dolby Atmos 傳送至你的擴大機或聲霸，或以空間音訊傳送至 AirPods；影片有 TrueHD Atmos 音軌時，會選擇你的語言的那條。預設開啟，可在播放設定中關閉。"
+            "value" : "TrueHD Atmos 和 DTS:X 音軌現在會保留其高度聲道。Sodalite 會渲染高度聲道和物件，並以 Dolby Atmos 傳送至你的擴大機或聲霸，或以空間音訊傳送至 AirPods；影片有此類音軌時，會選擇你的語言的那條。預設開啟，可在播放設定中關閉。"
           }
         }
       }
@@ -65966,157 +65966,157 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos z TrueHD"
+            "value" : "Dolby Atmos z TrueHD a DTS:X"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos fra TrueHD"
+            "value" : "Dolby Atmos fra TrueHD og DTS:X"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos aus TrueHD"
+            "value" : "Dolby Atmos aus TrueHD und DTS:X"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos από TrueHD"
+            "value" : "Dolby Atmos από TrueHD και DTS:X"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos from TrueHD"
+            "value" : "Dolby Atmos from TrueHD and DTS:X"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos desde TrueHD"
+            "value" : "Dolby Atmos desde TrueHD y DTS:X"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos TrueHD:stä"
+            "value" : "Dolby Atmos TrueHD:stä ja DTS:X:stä"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos depuis TrueHD"
+            "value" : "Dolby Atmos depuis TrueHD et DTS:X"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos iz TrueHD-a"
+            "value" : "Dolby Atmos iz TrueHD-a i DTS:X-a"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos TrueHD-ból"
+            "value" : "Dolby Atmos TrueHD-ból és DTS:X-ből"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos da TrueHD"
+            "value" : "Dolby Atmos da TrueHD e DTS:X"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHDからDolby Atmos"
+            "value" : "TrueHDとDTS:XからDolby Atmos"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD의 Dolby Atmos"
+            "value" : "TrueHD 및 DTS:X의 Dolby Atmos"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos fra TrueHD"
+            "value" : "Dolby Atmos fra TrueHD og DTS:X"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos uit TrueHD"
+            "value" : "Dolby Atmos uit TrueHD en DTS:X"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos z TrueHD"
+            "value" : "Dolby Atmos z TrueHD i DTS:X"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos a partir de TrueHD"
+            "value" : "Dolby Atmos a partir de TrueHD e DTS:X"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos a partir de TrueHD"
+            "value" : "Dolby Atmos a partir de TrueHD e DTS:X"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos din TrueHD"
+            "value" : "Dolby Atmos din TrueHD și DTS:X"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos из TrueHD"
+            "value" : "Dolby Atmos из TrueHD и DTS:X"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos z TrueHD"
+            "value" : "Dolby Atmos z TrueHD a DTS:X"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos från TrueHD"
+            "value" : "Dolby Atmos från TrueHD och DTS:X"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD'den Dolby Atmos"
+            "value" : "TrueHD ve DTS:X'ten Dolby Atmos"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos із TrueHD"
+            "value" : "Dolby Atmos із TrueHD і DTS:X"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "来自 TrueHD 的 Dolby Atmos"
+            "value" : "来自 TrueHD 和 DTS:X 的 Dolby Atmos"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "來自 TrueHD 的 Dolby Atmos"
+            "value" : "來自 TrueHD 和 DTS:X 的 Dolby Atmos"
           }
         }
       }
@@ -67741,6 +67741,330 @@
         }
       }
     },
+    "changelog.1_1_0.guideGenres.body" : {
+      "comment" : "What's New 1.1.0: genre filter in the Live TV guide (#182)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vedle kategorií v programu živé TV je nyní čip Žánr se žánry z vašich programových dat, například sportovní liga nebo komedie. Vyberte jeden nebo více a program zobrazí jen kanály, které je vysílají, buď právě teď, nebo kdekoli v programu. Ostatní pořady na těchto kanálech jsou ztlumené."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ved siden af kategorierne i Live TV-guiden viser en Genre-knap genrerne fra dine programdata, for eksempel en sportsliga eller Comedy. Vælg en eller flere, og guiden viser kun de kanaler, der sender dem, enten lige nu eller et sted i guiden. Alt andet på de kanaler nedtones."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neben den Kategorien im Live-TV-Guide listet ein Genre-Chip die Genres aus deinen Programmdaten auf, etwa eine Sportliga oder Comedy. Wähle eines oder mehrere, und der Guide zeigt nur die Sender, die sie ausstrahlen, entweder gerade jetzt oder irgendwo im Guide. Alles andere auf diesen Sendern wird abgedunkelt."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δίπλα στις κατηγορίες του οδηγού Live TV, ένα κουμπί Είδος εμφανίζει τα είδη από τα δεδομένα προγράμματός σας, όπως ένα αθλητικό πρωτάθλημα ή Κωμωδία. Επιλέξτε ένα ή περισσότερα και ο οδηγός δείχνει μόνο τα κανάλια που τα μεταδίδουν, είτε τώρα είτε οπουδήποτε στον οδηγό. Όλα τα υπόλοιπα σε αυτά τα κανάλια εμφανίζονται αχνά."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Genre chip next to the categories in the Live TV guide lists the genres from your guide data, such as a sports league or Comedy. Pick one or several, and the guide shows only the channels airing them, either right now or anywhere in the guide. Everything else on those channels is dimmed."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Junto a las categorías de la guía de TV en directo, un botón Género muestra los géneros de tus datos de guía, como una liga deportiva o Comedia. Elige uno o varios y la guía muestra solo los canales que los emiten, ahora mismo o en cualquier momento de la guía. Todo lo demás en esos canales se atenúa."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live TV -oppaan kategorioiden vieressä oleva Lajityyppi-painike näyttää ohjelmatietojesi lajityypit, kuten urheilusarjan tai komedian. Valitse yksi tai useampi, niin opas näyttää vain kanavat, jotka lähettävät niitä, joko juuri nyt tai missä tahansa oppaassa. Kaikki muu näillä kanavilla himmennetään."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À côté des catégories du guide TV en direct, une puce Genre liste les genres de vos données de programme, par exemple une ligue sportive ou Comédie. Choisissez-en un ou plusieurs, et le guide n'affiche que les chaînes qui les diffusent, maintenant ou n'importe où dans le guide. Le reste de ces chaînes est atténué."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokraj kategorija u vodiču TV-a uživo, gumb Žanr prikazuje žanrove iz vaših programskih podataka, poput sportske lige ili komedije. Odaberite jedan ili više i vodič prikazuje samo kanale koji ih emitiraju, sada ili bilo gdje u vodiču. Sve ostalo na tim kanalima je zatamnjeno."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Az élő TV műsorújságban a kategóriák mellett egy Műfaj gomb sorolja fel a műsoradatok műfajait, például egy sportbajnokságot vagy a vígjátékot. Válasszon egyet vagy többet, és a műsorújság csak az ezeket sugárzó csatornákat mutatja, akár most, akár bárhol a műsorújságban. A csatornák többi műsora halványítva jelenik meg."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accanto alle categorie della guida TV in diretta, un pulsante Genere elenca i generi dei dati della guida, come una lega sportiva o Commedia. Scegline uno o più e la guida mostra solo i canali che li trasmettono, adesso o in qualsiasi punto della guida. Tutto il resto su quei canali viene attenuato."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブTV番組表のカテゴリの横に「ジャンル」ボタンが追加され、スポーツリーグやコメディなど番組表データのジャンルを一覧できます。1つまたは複数選ぶと、今放送中、または番組表のどこかでそれを放送するチャンネルだけが表示されます。それらのチャンネルのほかの番組は暗く表示されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라이브 TV 편성표의 카테고리 옆에 있는 장르 버튼에서 스포츠 리그나 코미디처럼 편성표 데이터에 있는 장르를 볼 수 있습니다. 하나 이상 선택하면 지금 또는 편성표 어디에서든 해당 장르를 방송하는 채널만 표시됩니다. 그 채널의 나머지 프로그램은 흐리게 표시됩니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ved siden av kategoriene i Live TV-guiden viser en Sjanger-knapp sjangrene fra programdataene dine, for eksempel en idrettsliga eller Komedie. Velg én eller flere, så viser guiden bare kanalene som sender dem, enten akkurat nå eller hvor som helst i guiden. Alt annet på disse kanalene dempes."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naast de categorieën in de Live TV-gids staat een Genre-knop met de genres uit je gidsgegevens, zoals een sportcompetitie of Comedy. Kies er een of meer, en de gids toont alleen de zenders die ze uitzenden, nu meteen of ergens in de gids. Al het andere op die zenders wordt gedimd."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obok kategorii w przewodniku telewizji na żywo przycisk Gatunek pokazuje gatunki z danych programu, na przykład ligę sportową albo komedię. Wybierz jeden lub kilka, a przewodnik pokaże tylko kanały, które je nadają, teraz albo w dowolnym miejscu przewodnika. Reszta programów na tych kanałach jest przyciemniona."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao lado das categorias no guia de TV ao vivo, um botão Gênero lista os gêneros dos seus dados de guia, como uma liga esportiva ou Comédia. Escolha um ou vários, e o guia mostra só os canais que os transmitem, agora mesmo ou em qualquer ponto do guia. O restante nesses canais fica esmaecido."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao lado das categorias no guia de TV em direto, um botão Género lista os géneros dos seus dados de guia, como uma liga desportiva ou Comédia. Escolha um ou vários, e o guia mostra apenas os canais que os transmitem, agora mesmo ou em qualquer ponto do guia. O resto nesses canais fica esbatido."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lângă categoriile din ghidul TV live, un buton Gen afișează genurile din datele ghidului, de exemplu o ligă sportivă sau Comedie. Alege unul sau mai multe, iar ghidul arată doar canalele care le difuzează, acum sau oriunde în ghid. Restul programelor de pe acele canale este estompat."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рядом с категориями в телегиде прямого эфира появилась кнопка «Жанр» со списком жанров из ваших данных телегида, например спортивная лига или комедия. Выберите один или несколько, и телегид покажет только каналы, которые их транслируют, прямо сейчас или в любой момент телегида. Остальные передачи на этих каналах затемняются."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vedľa kategórií v programe živej TV je teraz tlačidlo Žáner so žánrami z vašich programových údajov, napríklad športová liga alebo komédia. Vyberte jeden alebo viac a program zobrazí len kanály, ktoré ich vysielajú, buď práve teraz, alebo kdekoľvek v programe. Ostatné relácie na týchto kanáloch sú stlmené."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bredvid kategorierna i Live TV-guiden listar en Genre-knapp genrerna från dina programdata, till exempel en idrottsliga eller Komedi. Välj en eller flera, så visar guiden bara de kanaler som sänder dem, antingen just nu eller var som helst i guiden. Allt annat på de kanalerna tonas ned."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canlı TV rehberindeki kategorilerin yanında yer alan Tür düğmesi, rehber verilerinizdeki türleri listeler, örneğin bir spor ligi veya Komedi. Bir veya birkaçını seçin, rehber yalnızca bunları yayınlayan kanalları gösterir, şu anda ya da rehberin herhangi bir yerinde. Bu kanallardaki diğer her şey soluk gösterilir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поруч із категоріями в телегіді прямого ефіру з'явилася кнопка «Жанр» зі списком жанрів із ваших даних телегіду, наприклад спортивна ліга чи комедія. Виберіть один або кілька, і телегід покаже лише канали, що їх транслюють, просто зараз або будь-де в телегіді. Решта передач на цих каналах затемнюється."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直播电视节目指南的分类旁新增“类型”按钮，列出节目数据中的类型，例如某个体育联赛或喜剧。选择一个或多个后，指南只显示正在播出或在指南任意时段播出这些类型的频道，这些频道上的其他节目会变暗。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直播電視節目表的分類旁新增「類型」按鈕，列出節目資料中的類型，例如某個運動聯賽或喜劇。選擇一個或多個後，節目表只顯示正在播出或在節目表任意時段播出這些類型的頻道，這些頻道上的其他節目會變暗。"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.guideGenres.title" : {
+      "comment" : "What's New 1.1.0: genre filter in the Live TV guide (#182)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtr žánrů v programu"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genrefilter i guiden"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre-Filter im Guide"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Φίλτρο ειδών στον οδηγό"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre filter in the guide"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtro de géneros en la guía"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lajityyppisuodatin oppaassa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtre par genre dans le guide"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtar žanrova u vodiču"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Műfajszűrő a műsorújságban"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtro per genere nella guida"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "番組表のジャンルフィルタ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "편성표 장르 필터"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sjangerfilter i guiden"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genrefilter in de gids"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtr gatunków w przewodniku"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtro de gênero no guia"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtro de género no guia"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtru de gen în ghid"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтр по жанрам в телегиде"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter žánrov v programe"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genrefilter i guiden"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rehberde tür filtresi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фільтр за жанрами в телегіді"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "节目指南类型筛选"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "節目表類型篩選"
+          }
+        }
+      }
+    },
     "changelog.1_1_0.homeVideos.body" : {
       "comment" : "Changelog highlight for the 1.1.0 release",
       "extractionState" : "manual",
@@ -68385,6 +68709,330 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "整理我的媒體"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.liveReconnect.body" : {
+      "comment" : "What's New 1.1.0: body for live TV that skips a repeated stretch after a reconnect and keeps its rewind buffer.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Když se stream kanálu přeruší a server pošle jeho část znovu, Sodalite přeskočí to, co už bylo vidět, místo aby to přehrálo dvakrát, a ponechá vyrovnávací paměť pro přetáčení, místo aby kanál spustil znovu."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Når en kanals stream afbrydes, og serveren sender en del af den igen, springer Sodalite det over, der allerede er vist, i stedet for at afspille det to gange, og beholder tilbagespolingsbufferen i stedet for at genstarte kanalen."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bricht der Stream eines Senders ab und schickt der Server einen Teil davon erneut, überspringt Sodalite, was schon zu sehen war, statt es doppelt abzuspielen, und behält den Zurückspul-Puffer, statt den Sender neu zu starten."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όταν η ροή ενός καναλιού διακόπτεται και ο διακομιστής στέλνει ξανά μέρος της, το Sodalite παραλείπει ό,τι έχει ήδη προβληθεί αντί να το παίξει δύο φορές και κρατά το buffer επαναφοράς αντί να επανεκκινήσει το κανάλι."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When a channel's stream drops and the server sends part of it again, Sodalite skips what was already shown instead of playing it twice, and keeps the rewind buffer instead of restarting the channel."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuando la emisión de un canal se corta y el servidor vuelve a enviar parte de ella, Sodalite omite lo que ya se ha visto en lugar de reproducirlo dos veces y conserva el búfer para retroceder en lugar de reiniciar el canal."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kun kanavan lähetys katkeaa ja palvelin lähettää osan siitä uudelleen, Sodalite ohittaa jo näytetyn sen sijaan, että toistaisi sen kahdesti, ja säilyttää kelauspuskurin sen sijaan, että käynnistäisi kanavan uudelleen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand le flux d'une chaîne se coupe et que le serveur en renvoie une partie, Sodalite saute ce qui a déjà été affiché au lieu de le lire deux fois, et conserve la mémoire tampon de retour en arrière au lieu de redémarrer la chaîne."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kad se prijenos kanala prekine i poslužitelj ponovno pošalje njegov dio, Sodalite preskače ono što je već prikazano umjesto da to reproducira dvaput i zadržava međuspremnik za premotavanje umjesto da ponovno pokrene kanal."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ha egy csatorna adása megszakad, és a szerver egy részét újra elküldi, a Sodalite átugorja a már látottakat ahelyett, hogy kétszer játszaná le, és megtartja a visszatekerési puffert ahelyett, hogy újraindítaná a csatornát."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando lo stream di un canale si interrompe e il server ne invia di nuovo una parte, Sodalite salta ciò che è già stato mostrato invece di riprodurlo due volte e mantiene il buffer per tornare indietro invece di riavviare il canale."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャンネルのストリームが途切れ、サーバーがその一部を再送した場合、Sodaliteは表示済みの部分を二重に再生せずにスキップし、チャンネルを再起動せずに巻き戻し用バッファを保持します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채널 스트림이 끊긴 뒤 서버가 일부를 다시 보내면, Sodalite는 이미 표시된 부분을 두 번 재생하지 않고 건너뛰며, 채널을 다시 시작하지 않고 되감기 버퍼를 유지합니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Når en kanals strøm brytes og serveren sender en del av den på nytt, hopper Sodalite over det som allerede er vist i stedet for å spille det av to ganger, og beholder tilbakespolingsbufferen i stedet for å starte kanalen på nytt."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als de stream van een zender wegvalt en de server een deel ervan opnieuw stuurt, slaat Sodalite over wat al te zien was in plaats van het twee keer af te spelen, en behoudt de terugspoelbuffer in plaats van de zender opnieuw te starten."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gdy strumień kanału się zerwie, a serwer wyśle jego część ponownie, Sodalite pomija to, co już było widać, zamiast odtwarzać to dwa razy, i zachowuje bufor przewijania zamiast uruchamiać kanał od nowa."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando a transmissão de um canal cai e o servidor envia parte dela de novo, o Sodalite pula o que já foi exibido em vez de reproduzir duas vezes e mantém o buffer de retrocesso em vez de reiniciar o canal."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando a emissão de um canal cai e o servidor envia parte dela novamente, o Sodalite salta o que já foi mostrado em vez de o reproduzir duas vezes e mantém o buffer para recuar em vez de reiniciar o canal."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Când fluxul unui canal se întrerupe și serverul trimite din nou o parte din el, Sodalite sare peste ce a fost deja afișat în loc să îl redea de două ori și păstrează bufferul de derulare înapoi în loc să repornească canalul."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если поток канала обрывается и сервер присылает его часть повторно, Sodalite пропускает уже показанное, а не воспроизводит его дважды, и сохраняет буфер перемотки, а не перезапускает канал."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keď sa stream kanála preruší a server pošle jeho časť znova, Sodalite preskočí to, čo už bolo vidieť, namiesto toho, aby to prehral dvakrát, a ponechá vyrovnávaciu pamäť na pretáčanie namiesto reštartu kanála."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "När en kanals ström bryts och servern skickar en del av den igen hoppar Sodalite över det som redan visats i stället för att spela upp det två gånger, och behåller bufferten för att spola tillbaka i stället för att starta om kanalen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kanalın yayını kesilip sunucu bir kısmını yeniden gönderdiğinde Sodalite, zaten gösterilen kısmı iki kez oynatmak yerine atlar ve kanalı yeniden başlatmak yerine geri sarma arabelleğini korur."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо потік каналу обривається і сервер надсилає його частину повторно, Sodalite пропускає вже показане, а не відтворює його двічі, і зберігає буфер перемотування, а не перезапускає канал."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当频道的串流中断、服务器重新发送其中一部分时，Sodalite 会跳过已经显示过的内容而不是重复播放，并保留回放缓冲区，而不是重新启动频道。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當頻道的串流中斷、伺服器重新傳送其中一部分時，Sodalite 會略過已經顯示過的內容而不是重複播放，並保留倒轉緩衝區，而不是重新啟動頻道。"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.liveReconnect.title" : {
+      "comment" : "What's New 1.1.0: title for live TV that skips a repeated stretch after a reconnect and keeps its rewind buffer.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Živé vysílání přečká opětovné připojení"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-tv klarer en genforbindelse"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-TV übersteht Verbindungsabbrüche"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η ζωντανή TV αντέχει την επανασύνδεση"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live TV rides out a reconnect"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La TV en directo aguanta una reconexión"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suora TV selviää uudelleenyhdistämisestä"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La TV en direct résiste à une reconnexion"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TV uživo podnosi ponovno povezivanje"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Az élő TV kibírja az újracsatlakozást"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La TV in diretta supera una riconnessione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブTVが再接続を乗り切る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라이브 TV가 재연결을 견딥니다"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direkte-TV tåler en ny tilkobling"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-tv overleeft een herverbinding"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telewizja na żywo przetrwa ponowne połączenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A TV ao vivo resiste a uma reconexão"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A TV em direto resiste a uma nova ligação"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TV-ul live rezistă unei reconectări"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прямой эфир переживает переподключение"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Živé vysielanie prežije opätovné pripojenie"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live-tv klarar en återanslutning"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canlı TV yeniden bağlanmayı atlatır"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пряме мовлення витримує перепідключення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直播电视可以挺过重新连接"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直播電視能撐過重新連線"
           }
         }
       }
@@ -70651,6 +71299,330 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "控制項背景淡入淡出更順暢"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.showAll.body" : {
+      "comment" : "Changelog highlight for the 1.1.0 release",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Řádky Všechny filmy a Všechny seriály na domovské obrazovce nyní končí kartou Zobrazit vše, která otevře celý seznam s vlastním řazením."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rækkerne Alle film og Alle serier på startskærmen slutter nu med et Vis alle-kort, der åbner hele listen med egen sortering."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Reihen Alle Filme und Alle Serien auf dem Startbildschirm enden jetzt mit einer Karte Alle anzeigen, die die komplette Liste mit eigener Sortierung öffnet."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι σειρές Όλες οι ταινίες και Όλες οι σειρές στην αρχική οθόνη τελειώνουν πλέον με μια κάρτα Εμφάνιση όλων που ανοίγει ολόκληρη τη λίστα με δική της ταξινόμηση."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The All Movies and All Series rows on Home now end in a Show All card that opens the complete list, with its own sort order."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las filas Todas las películas y Todas las series de Inicio terminan ahora en una tarjeta Ver todo que abre la lista completa, con su propio orden."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aloitusnäytön rivit Kaikki elokuvat ja Kaikki sarjat päättyvät nyt Näytä kaikki -korttiin, joka avaa koko luettelon omalla lajittelullaan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les rangées Tous les films et Toutes les séries de l’accueil se terminent désormais par une carte Tout afficher qui ouvre la liste complète, avec son propre tri."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retci Svi filmovi i Sve serije na početnom zaslonu sada završavaju karticom Prikaži sve koja otvara cijeli popis s vlastitim redoslijedom."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A kezdőképernyő Összes film és Összes sorozat sora mostantól egy Összes megjelenítése kártyával zárul, amely saját rendezéssel nyitja meg a teljes listát."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le righe Tutti i film e Tutte le serie nella Home ora terminano con una scheda Mostra tutto che apre l’elenco completo, con un ordinamento proprio."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホームの「すべての映画」と「すべての番組」の行の最後に「すべて表示」カードが追加され、独自の並び順で一覧全体を開けるようになりました。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "홈의 모든 영화와 모든 시리즈 행 끝에 모두 보기 카드가 추가되어 자체 정렬 순서로 전체 목록을 열 수 있습니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Radene Alle filmer og Alle serier på startsiden slutter nå med et Vis alle-kort som åpner hele listen med egen sortering."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De rijen Alle films en Alle series op het beginscherm eindigen nu met een kaart Alles tonen die de volledige lijst opent, met een eigen sortering."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rzędy Wszystkie filmy i Wszystkie seriale na ekranie głównym kończą się teraz kartą Pokaż wszystko, która otwiera pełną listę z własnym sortowaniem."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As fileiras Todos os filmes e Todas as séries no Início agora terminam com um cartão Ver tudo que abre a lista completa, com ordenação própria."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As filas Todos os filmes e Todas as séries no Início terminam agora com um cartão Ver tudo que abre a lista completa, com ordenação própria."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rândurile Toate filmele și Toate serialele de pe ecranul principal se termină acum cu un card Afișează tot, care deschide lista completă, cu propria sortare."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ряды «Все фильмы» и «Все сериалы» на главном экране теперь заканчиваются карточкой «Показать все», которая открывает полный список со своей сортировкой."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riadky Všetky filmy a Všetky seriály na domovskej obrazovke teraz končia kartou Zobraziť všetko, ktorá otvorí celý zoznam s vlastným radením."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raderna Alla filmer och Alla serier på startsidan slutar nu med ett Visa alla-kort som öppnar hela listan med egen sortering."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekrandaki Tüm filmler ve Tüm diziler satırları artık tam listeyi kendi sıralamasıyla açan bir Tümünü göster kartıyla bitiyor."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ряди «Усі фільми» та «Усі серіали» на головному екрані тепер завершуються карткою «Показати все», яка відкриває повний список із власним сортуванням."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主屏幕上的“所有电影”和“所有剧集”行末尾现在有一张“显示全部”卡片，可按独立的排序方式打开完整列表。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主畫面上的「所有電影」和「所有影集」列尾端現在有一張「顯示全部」卡片，可依獨立的排序方式開啟完整清單。"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.showAll.title" : {
+      "comment" : "Changelog highlight for the 1.1.0 release",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit vše na konci řádku"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vis alle for enden af rækken"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle anzeigen am Ende der Reihe"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμφάνιση όλων στο τέλος της σειράς"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show All at the end of the row"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver todo al final de la fila"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Näytä kaikki rivin lopussa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout afficher en fin de rangée"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prikaži sve na kraju retka"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Összes megjelenítése a sor végén"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra tutto in fondo alla riga"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行の最後に「すべて表示」"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "행 끝에 모두 보기"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vis alle på slutten av raden"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles tonen aan het einde van de rij"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż wszystko na końcu rzędu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver tudo no fim da fileira"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver tudo no fim da fila"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afișează tot la capătul rândului"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Показать все» в конце ряда"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť všetko na konci riadku"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visa alla i slutet av raden"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satır sonunda Tümünü göster"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Показати все» в кінці ряду"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行末的“显示全部”"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列尾的「顯示全部」"
           }
         }
       }
@@ -102092,6 +103064,168 @@
         }
       }
     },
+    "home.showAll" : {
+      "comment" : "Last card of a capped Home row, opens the full list",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit vše"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vis alle"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle anzeigen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμφάνιση όλων"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show All"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver todo"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Näytä kaikki"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout afficher"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prikaži sve"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Összes megjelenítése"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra tutto"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべて表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모두 보기"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vis alle"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles tonen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż wszystko"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver tudo"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver tudo"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afișează tot"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать все"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť všetko"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visa alla"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tümünü göster"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показати все"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示全部"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示全部"
+          }
+        }
+      }
+    },
     "home.topRatedMovies" : {
       "comment" : "Section title for top rated movies",
       "extractionState" : "manual",
@@ -108074,6 +109208,168 @@
         }
       }
     },
+    "livetv.guide.filter.genre" : {
+      "comment" : "Guide filter chip: opens the genre picker (#182)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žánr"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Είδος"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Género"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lajityyppi"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žanr"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Műfaj"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genere"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ジャンル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장르"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sjanger"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatunek"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gênero"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Género"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жанр"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žáner"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tür"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жанр"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "类型"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "類型"
+          }
+        }
+      }
+    },
     "livetv.guide.filter.kids" : {
       "comment" : "Guide filter chip: channels currently airing children's programming",
       "extractionState" : "manual",
@@ -109042,6 +110338,816 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "體育"
+          }
+        }
+      }
+    },
+    "livetv.guide.genre.all" : {
+      "comment" : "Genre picker row that clears the genre selection",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Všechny žánry"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle genrer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Genres"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όλα τα είδη"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All genres"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los géneros"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaikki lajityypit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les genres"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svi žanrovi"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minden műfaj"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutti i generi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのジャンル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 장르"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle sjangre"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle genres"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie gatunki"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos os gêneros"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos os géneros"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toate genurile"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все жанры"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Všetky žánre"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alla genrer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm türler"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усі жанри"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有类型"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有類型"
+          }
+        }
+      }
+    },
+    "livetv.guide.genre.empty" : {
+      "comment" : "Genre picker empty state: the server's guide data carries no genres",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data programu neobsahují žádné žánry"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programdataene indeholder ingen genrer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Programmdaten enthalten keine Genres"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τα δεδομένα προγράμματος δεν περιέχουν είδη"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The guide data contains no genres"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los datos de la guía no contienen géneros"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ohjelmatiedoissa ei ole lajityyppejä"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données du guide ne contiennent aucun genre"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podaci vodiča ne sadrže žanrove"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A műsorújság adatai nem tartalmaznak műfajokat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I dati della guida non contengono generi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "番組表データにジャンルがありません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "편성표 데이터에 장르가 없습니다"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programdataene inneholder ingen sjangre"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De gidsgegevens bevatten geen genres"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dane przewodnika nie zawierają gatunków"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os dados do guia não contêm gêneros"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os dados do guia não contêm géneros"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datele ghidului nu conțin genuri"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В данных телегида нет жанров"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Údaje programu neobsahujú žiadne žánre"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programdatan innehåller inga genrer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rehber verilerinde tür yok"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У даних телегіду немає жанрів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "节目指南数据中没有类型"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "節目表資料中沒有類型"
+          }
+        }
+      }
+    },
+    "livetv.guide.genre.scope.guide" : {
+      "comment" : "Genre picker scope: match anywhere in the guide's time window",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celý program"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hele guiden"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganzer Guide"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ολόκληρος ο οδηγός"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whole guide"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toda la guía"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koko opas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout le guide"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cijeli vodič"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teljes műsorújság"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutta la guida"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "番組表全体"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "편성표 전체"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hele guiden"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hele gids"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cały przewodnik"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guia inteiro"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guia completo"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tot ghidul"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Весь телегид"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celý program"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hela guiden"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm rehber"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увесь телегід"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "整个指南"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "整個節目表"
+          }
+        }
+      }
+    },
+    "livetv.guide.genre.scope.now" : {
+      "comment" : "Genre picker scope: match the program airing right now",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Právě běží"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vises nu"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Läuft jetzt"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προβάλλεται τώρα"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On now"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En emisión"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nyt menossa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En ce moment"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sada na programu"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most műsoron"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In onda ora"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放送中"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금 방송 중"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Går nå"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nu op tv"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teraz na antenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No ar agora"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agora no ar"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acum în difuzare"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сейчас в эфире"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Práve beží"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sänds nu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdi yayında"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зараз в ефірі"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在播出"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在播出"
+          }
+        }
+      }
+    },
+    "livetv.guide.genre.title" : {
+      "comment" : "Title of the guide's genre picker",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žánry"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genrer"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genres"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Είδη"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genres"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Géneros"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lajityypit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genres"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žanrovi"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Műfajok"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ジャンル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장르"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sjangre"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genres"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatunki"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gêneros"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Géneros"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genuri"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жанры"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žánre"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genrer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Türler"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жанри"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "类型"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "類型"
           }
         }
       }
@@ -203360,157 +205466,157 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos z TrueHD"
+            "value" : "Dolby Atmos z TrueHD a DTS:X"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos fra TrueHD"
+            "value" : "Dolby Atmos fra TrueHD og DTS:X"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos aus TrueHD"
+            "value" : "Dolby Atmos aus TrueHD und DTS:X"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos από TrueHD"
+            "value" : "Dolby Atmos από TrueHD και DTS:X"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos from TrueHD"
+            "value" : "Dolby Atmos from TrueHD and DTS:X"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos desde TrueHD"
+            "value" : "Dolby Atmos desde TrueHD y DTS:X"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos TrueHD:stä"
+            "value" : "Dolby Atmos TrueHD:stä ja DTS:X:stä"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos depuis TrueHD"
+            "value" : "Dolby Atmos depuis TrueHD et DTS:X"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos iz TrueHD-a"
+            "value" : "Dolby Atmos iz TrueHD-a i DTS:X-a"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos TrueHD-ból"
+            "value" : "Dolby Atmos TrueHD-ból és DTS:X-ből"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos da TrueHD"
+            "value" : "Dolby Atmos da TrueHD e DTS:X"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHDからDolby Atmos"
+            "value" : "TrueHDとDTS:XからDolby Atmos"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD의 Dolby Atmos"
+            "value" : "TrueHD 및 DTS:X의 Dolby Atmos"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos fra TrueHD"
+            "value" : "Dolby Atmos fra TrueHD og DTS:X"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos uit TrueHD"
+            "value" : "Dolby Atmos uit TrueHD en DTS:X"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos z TrueHD"
+            "value" : "Dolby Atmos z TrueHD i DTS:X"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos a partir de TrueHD"
+            "value" : "Dolby Atmos a partir de TrueHD e DTS:X"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos a partir de TrueHD"
+            "value" : "Dolby Atmos a partir de TrueHD e DTS:X"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos din TrueHD"
+            "value" : "Dolby Atmos din TrueHD și DTS:X"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos из TrueHD"
+            "value" : "Dolby Atmos из TrueHD и DTS:X"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos z TrueHD"
+            "value" : "Dolby Atmos z TrueHD a DTS:X"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos från TrueHD"
+            "value" : "Dolby Atmos från TrueHD och DTS:X"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD'den Dolby Atmos"
+            "value" : "TrueHD ve DTS:X'ten Dolby Atmos"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dolby Atmos із TrueHD"
+            "value" : "Dolby Atmos із TrueHD і DTS:X"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "来自 TrueHD 的 Dolby Atmos"
+            "value" : "来自 TrueHD 和 DTS:X 的 Dolby Atmos"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "來自 TrueHD 的 Dolby Atmos"
+            "value" : "來自 TrueHD 和 DTS:X 的 Dolby Atmos"
           }
         }
       }
@@ -203522,157 +205628,157 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachová výškové kanály stop TrueHD Atmos a pošle je jako Dolby Atmos, do AirPods jako prostorový zvuk, a vybere takovou stopu ve vašem jazyce. Ztrátové. Vypnuto přehraje stopy podle nastavení výše."
+            "value" : "Zachová výškové kanály stop TrueHD Atmos a DTS:X a pošle je jako Dolby Atmos, do AirPods jako prostorový zvuk, a vybere takovou stopu ve vašem jazyce. Ztrátové. Vypnuto přehraje stopy podle nastavení výše."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bevarer højdekanalerne i TrueHD Atmos-spor og sender dem som Dolby Atmos, til AirPods som rumlig lyd, og vælger et sådant spor på dit sprog. Med tab. Slået fra afspilles de efter indstillingen ovenfor."
+            "value" : "Bevarer højdekanalerne i TrueHD Atmos- og DTS:X-spor og sender dem som Dolby Atmos, til AirPods som rumlig lyd, og vælger et sådant spor på dit sprog. Med tab. Slået fra afspilles de efter indstillingen ovenfor."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Behält die Höhenkanäle von TrueHD-Atmos-Spuren und gibt sie als Dolby Atmos aus, an AirPods als 3D-Audio, und wählt eine solche Spur in deiner Sprache. Verlustbehaftet. Aus: Wiedergabe nach der Einstellung darüber."
+            "value" : "Behält die Höhenkanäle von TrueHD-Atmos- und DTS:X-Spuren und gibt sie als Dolby Atmos aus, an AirPods als 3D-Audio, und wählt eine solche Spur in deiner Sprache. Verlustbehaftet. Aus: Wiedergabe nach der Einstellung darüber."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Διατηρεί τα κανάλια ύψους των κομματιών TrueHD Atmos και τα στέλνει ως Dolby Atmos, στα AirPods ως χωρικό ήχο, και επιλέγει τέτοιο κομμάτι στη γλώσσα σας. Με απώλειες. Όταν είναι ανενεργό, παίζουν σύμφωνα με την παραπάνω ρύθμιση."
+            "value" : "Διατηρεί τα κανάλια ύψους των κομματιών TrueHD Atmos και DTS:X και τα στέλνει ως Dolby Atmos, στα AirPods ως χωρικό ήχο, και επιλέγει τέτοιο κομμάτι στη γλώσσα σας. Με απώλειες. Όταν είναι ανενεργό, παίζουν σύμφωνα με την παραπάνω ρύθμιση."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keeps the height channels of TrueHD Atmos tracks and sends them as Dolby Atmos, to AirPods as Spatial Audio, and picks such a track in your language. Lossy. Off plays them through the setting above."
+            "value" : "Keeps the height channels of TrueHD Atmos and DTS:X tracks and sends them as Dolby Atmos, to AirPods as Spatial Audio, and picks such a track in your language. Lossy. Off plays them through the setting above."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conserva los canales de altura de las pistas TrueHD Atmos y los envía como Dolby Atmos, a los AirPods como audio espacial, y elige una pista así en tu idioma. Con pérdida. Desactivado, se reproducen según el ajuste de arriba."
+            "value" : "Conserva los canales de altura de las pistas TrueHD Atmos y DTS:X y los envía como Dolby Atmos, a los AirPods como audio espacial, y elige una pista así en tu idioma. Con pérdida. Desactivado, se reproducen según el ajuste de arriba."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Säilyttää TrueHD Atmos -raitojen korkeuskanavat ja lähettää ne Dolby Atmosina, AirPodeihin tilaäänenä, ja valitsee tällaisen raidan kielelläsi. Häviöllinen. Pois päältä ne toistetaan yllä olevan asetuksen mukaan."
+            "value" : "Säilyttää TrueHD Atmos- ja DTS:X-raitojen korkeuskanavat ja lähettää ne Dolby Atmosina, AirPodeihin tilaäänenä, ja valitsee tällaisen raidan kielelläsi. Häviöllinen. Pois päältä ne toistetaan yllä olevan asetuksen mukaan."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conserve les canaux de hauteur des pistes TrueHD Atmos et les envoie en Dolby Atmos, aux AirPods en audio spatial, et choisit une telle piste dans votre langue. Avec perte. Désactivé, elles suivent le réglage ci-dessus."
+            "value" : "Conserve les canaux de hauteur des pistes TrueHD Atmos et DTS:X et les envoie en Dolby Atmos, aux AirPods en audio spatial, et choisit une telle piste dans votre langue. Avec perte. Désactivé, elles suivent le réglage ci-dessus."
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zadržava visinske kanale TrueHD Atmos zapisa i šalje ih kao Dolby Atmos, AirPodsima kao prostorni zvuk, te bira takav zapis na vašem jeziku. S gubicima. Isključeno ih reproducira prema postavci iznad."
+            "value" : "Zadržava visinske kanale TrueHD Atmos i DTS:X zapisa i šalje ih kao Dolby Atmos, AirPodsima kao prostorni zvuk, te bira takav zapis na vašem jeziku. S gubicima. Isključeno ih reproducira prema postavci iznad."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Megtartja a TrueHD Atmos sávok magassági csatornáit, Dolby Atmosként küldi őket, az AirPodsnak térhatású hangként, és ilyen sávot választ a nyelveden. Veszteséges. Kikapcsolva a fenti beállítás szerint szólnak."
+            "value" : "Megtartja a TrueHD Atmos és DTS:X sávok magassági csatornáit, Dolby Atmosként küldi őket, az AirPodsnak térhatású hangként, és ilyen sávot választ a nyelveden. Veszteséges. Kikapcsolva a fenti beállítás szerint szólnak."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantiene i canali di altezza delle tracce TrueHD Atmos e li invia come Dolby Atmos, agli AirPods come audio spaziale, e sceglie una traccia simile nella tua lingua. Con perdita. Disattivato, seguono l'impostazione sopra."
+            "value" : "Mantiene i canali di altezza delle tracce TrueHD Atmos e DTS:X e li invia come Dolby Atmos, agli AirPods come audio spaziale, e sceglie una traccia simile nella tua lingua. Con perdita. Disattivato, seguono l'impostazione sopra."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD Atmosトラックのハイトチャンネルを保持してDolby Atmosとして、AirPodsには空間オーディオとして送り、あなたの言語のそのようなトラックを選びます。非可逆です。オフにすると上の設定に従って再生します。"
+            "value" : "TrueHD AtmosとDTS:Xトラックのハイトチャンネルを保持してDolby Atmosとして、AirPodsには空間オーディオとして送り、あなたの言語のそのようなトラックを選びます。非可逆です。オフにすると上の設定に従って再生します。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD Atmos 트랙의 높이 채널을 유지해 Dolby Atmos로, AirPods에는 공간 음향으로 보내고, 사용자 언어의 해당 트랙을 선택합니다. 손실 압축입니다. 끄면 위 설정에 따라 재생됩니다."
+            "value" : "TrueHD Atmos 및 DTS:X 트랙의 높이 채널을 유지해 Dolby Atmos로, AirPods에는 공간 음향으로 보내고, 사용자 언어의 해당 트랙을 선택합니다. 손실 압축입니다. 끄면 위 설정에 따라 재생됩니다."
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beholder høydekanalene i TrueHD Atmos-spor og sender dem som Dolby Atmos, til AirPods som romlig lyd, og velger et slikt spor på ditt språk. Med tap. Av spiller dem etter innstillingen over."
+            "value" : "Beholder høydekanalene i TrueHD Atmos- og DTS:X-spor og sender dem som Dolby Atmos, til AirPods som romlig lyd, og velger et slikt spor på ditt språk. Med tap. Av spiller dem etter innstillingen over."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Behoudt de hoogtekanalen van TrueHD Atmos-sporen en stuurt ze als Dolby Atmos, naar AirPods als ruimtelijke audio, en kiest zo'n spoor in jouw taal. Met verlies. Uit speelt ze af volgens de instelling hierboven."
+            "value" : "Behoudt de hoogtekanalen van TrueHD Atmos- en DTS:X-sporen en stuurt ze als Dolby Atmos, naar AirPods als ruimtelijke audio, en kiest zo'n spoor in jouw taal. Met verlies. Uit speelt ze af volgens de instelling hierboven."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachowuje kanały wysokości ścieżek TrueHD Atmos i wysyła je jako Dolby Atmos, do AirPods jako dźwięk przestrzenny, oraz wybiera taką ścieżkę w Twoim języku. Stratne. Wyłączone odtwarza je według ustawienia powyżej."
+            "value" : "Zachowuje kanały wysokości ścieżek TrueHD Atmos i DTS:X i wysyła je jako Dolby Atmos, do AirPods jako dźwięk przestrzenny, oraz wybiera taką ścieżkę w Twoim języku. Stratne. Wyłączone odtwarza je według ustawienia powyżej."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantém os canais de altura das faixas TrueHD Atmos e os envia como Dolby Atmos, aos AirPods como Áudio Espacial, e escolhe uma faixa assim no seu idioma. Com perda. Desativado, elas seguem o ajuste acima."
+            "value" : "Mantém os canais de altura das faixas TrueHD Atmos e DTS:X e os envia como Dolby Atmos, aos AirPods como Áudio Espacial, e escolhe uma faixa assim no seu idioma. Com perda. Desativado, elas seguem o ajuste acima."
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantém os canais de altura das faixas TrueHD Atmos e envia-os como Dolby Atmos, para os AirPods como áudio espacial, e escolhe uma faixa assim no seu idioma. Com perda. Desativado, seguem a definição acima."
+            "value" : "Mantém os canais de altura das faixas TrueHD Atmos e DTS:X e envia-os como Dolby Atmos, para os AirPods como áudio espacial, e escolhe uma faixa assim no seu idioma. Com perda. Desativado, seguem a definição acima."
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Păstrează canalele de înălțime ale pistelor TrueHD Atmos și le trimite ca Dolby Atmos, către AirPods ca audio spațial, și alege o astfel de pistă în limba ta. Cu pierderi. Dezactivat, se redau după setarea de mai sus."
+            "value" : "Păstrează canalele de înălțime ale pistelor TrueHD Atmos și DTS:X și le trimite ca Dolby Atmos, către AirPods ca audio spațial, și alege o astfel de pistă în limba ta. Cu pierderi. Dezactivat, se redau după setarea de mai sus."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сохраняет высотные каналы дорожек TrueHD Atmos и передаёт их как Dolby Atmos, на AirPods как пространственное аудио, и выбирает такую дорожку на вашем языке. С потерями. Если выключено, они воспроизводятся по настройке выше."
+            "value" : "Сохраняет высотные каналы дорожек TrueHD Atmos и DTS:X и передаёт их как Dolby Atmos, на AirPods как пространственное аудио, и выбирает такую дорожку на вашем языке. С потерями. Если выключено, они воспроизводятся по настройке выше."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachová výškové kanály stôp TrueHD Atmos a pošle ich ako Dolby Atmos, do AirPods ako priestorový zvuk, a vyberie takú stopu vo vašom jazyku. Stratové. Vypnuté ich prehrá podľa nastavenia vyššie."
+            "value" : "Zachová výškové kanály stôp TrueHD Atmos a DTS:X a pošle ich ako Dolby Atmos, do AirPods ako priestorový zvuk, a vyberie takú stopu vo vašom jazyku. Stratové. Vypnuté ich prehrá podľa nastavenia vyššie."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Behåller höjdkanalerna i TrueHD Atmos-spår och skickar dem som Dolby Atmos, till AirPods som rumsligt ljud, och väljer ett sådant spår på ditt språk. Med förlust. Av spelar dem enligt inställningen ovan."
+            "value" : "Behåller höjdkanalerna i TrueHD Atmos- och DTS:X-spår och skickar dem som Dolby Atmos, till AirPods som rumsligt ljud, och väljer ett sådant spår på ditt språk. Med förlust. Av spelar dem enligt inställningen ovan."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TrueHD Atmos parçalarının yükseklik kanallarını korur, Dolby Atmos olarak, AirPods'a uzamsal ses olarak gönderir ve dilinizdeki böyle bir parçayı seçer. Kayıplı. Kapalıyken yukarıdaki ayara göre çalınır."
+            "value" : "TrueHD Atmos ve DTS:X parçalarının yükseklik kanallarını korur, Dolby Atmos olarak, AirPods'a uzamsal ses olarak gönderir ve dilinizdeki böyle bir parçayı seçer. Kayıplı. Kapalıyken yukarıdaki ayara göre çalınır."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зберігає висотні канали доріжок TrueHD Atmos і передає їх як Dolby Atmos, на AirPods як просторове аудіо, та вибирає таку доріжку вашою мовою. Із втратами. Якщо вимкнено, вони відтворюються за налаштуванням вище."
+            "value" : "Зберігає висотні канали доріжок TrueHD Atmos і DTS:X і передає їх як Dolby Atmos, на AirPods як просторове аудіо, та вибирає таку доріжку вашою мовою. Із втратами. Якщо вимкнено, вони відтворюються за налаштуванням вище."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留 TrueHD Atmos 音轨的高度声道，以 Dolby Atmos 发送，发送到 AirPods 时为空间音频，并选择你的语言中的此类音轨。有损。关闭时按上方设置播放。"
+            "value" : "保留 TrueHD Atmos 和 DTS:X 音轨的高度声道，以 Dolby Atmos 发送，发送到 AirPods 时为空间音频，并选择你的语言中的此类音轨。有损。关闭时按上方设置播放。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留 TrueHD Atmos 音軌的高度聲道，以 Dolby Atmos 傳送，傳送至 AirPods 時為空間音訊，並選擇你的語言中的此類音軌。有損。關閉時依上方設定播放。"
+            "value" : "保留 TrueHD Atmos 和 DTS:X 音軌的高度聲道，以 Dolby Atmos 傳送，傳送至 AirPods 時為空間音訊，並選擇你的語言中的此類音軌。有損。關閉時依上方設定播放。"
           }
         }
       }

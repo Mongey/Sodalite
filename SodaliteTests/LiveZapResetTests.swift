@@ -32,6 +32,8 @@ struct LiveZapResetTests {
         vm.liveRetuneCount = 2
         vm.lastLiveRetuneAt = Date()
         vm.liveRetuneInFlight = true
+        vm.liveReplayRetryCount = 1
+        vm.liveReplayRetryTask = Task {}
         vm.liveFirstPlayingAt = Date()
         vm.pendingLiveAudioStreamIndex = 3
         vm.liveProgramWindow = [try new().currentProgram!]
@@ -56,6 +58,8 @@ struct LiveZapResetTests {
         #expect(vm.liveRetuneCount == 0)
         #expect(vm.lastLiveRetuneAt == nil)
         #expect(vm.liveRetuneInFlight == false)
+        #expect(vm.liveReplayRetryCount == 0)
+        #expect(vm.liveReplayRetryTask == nil)
         #expect(vm.liveFirstPlayingAt == nil)
         #expect(vm.pendingLiveAudioStreamIndex == nil)
         #expect(vm.liveProgramWindow.isEmpty)
@@ -68,6 +72,29 @@ struct LiveZapResetTests {
         #expect(vm.hasStartedPlaying == false)
         #expect(vm.forcedSubtitleFallback == .none)
         #expect(vm.activeSubtitleCodec == nil)
+    }
+
+    /// AetherEngine#747: a repeated source is retried on the session that still holds the DVR
+    /// window, after a wait, and a zap in the meantime takes the pending retry with it.
+    @Test func anExhaustedReplayWaitsForARetryInsteadOfRetuning() throws {
+        let vm = makeViewModel(RecordingPlaybackService())
+        vm.handleLiveSourceReplayExhausted()
+        #expect(vm.liveReplayRetryCount == 1)
+        #expect(vm.liveReplayRetryTask != nil)
+        #expect(vm.liveRetuneCount == 0, "the first answer to a repeat is not a retune")
+        #expect(vm.liveRetuneInFlight == false)
+
+        vm.resetLiveSessionState(switchingTo: try new())
+        #expect(vm.liveReplayRetryTask == nil)
+        #expect(vm.liveReplayRetryCount == 0)
+    }
+
+    @Test func aRetuneInFlightTakesPrecedenceOverAReplayRetry() {
+        let vm = makeViewModel(RecordingPlaybackService())
+        vm.liveRetuneInFlight = true
+        vm.handleLiveSourceReplayExhausted()
+        #expect(vm.liveReplayRetryCount == 0)
+        #expect(vm.liveReplayRetryTask == nil)
     }
 
     @Test func theServerSideCloseKeepsTheAudioPick() async {

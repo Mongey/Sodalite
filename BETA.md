@@ -2,6 +2,8 @@
 
 Thanks for testing Sodalite. This page tells you how to get the build, what to look at, and how to report what you find.
 
+> **Just want to use Sodalite?** It is on the [App Store](https://apps.apple.com/app/sodalite/id6764418563), free. The TestFlight beta carries the *next* version before it ships, so it can be rougher, and installing it replaces the App Store version on that device. If TestFlight shows no build to install, there is no pre-release in testing right now: use the App Store version until the next one is up.
+
 ## What Sodalite is
 
 A native media player for your own Jellyfin server, one universal app for **Apple TV, iPhone and iPad**, with built-in [Seerr](https://github.com/Fallenbagel/jellyseerr) browse + request flow. Direct Play, live TV with DVR, real HDR10 / Dolby Vision, real Dolby Atmos. On iPhone and iPad you also get AirPlay and Picture in Picture. Open source ([GPL-3.0 with App Store Exception](LICENSE)), no telemetry.
