@@ -16,6 +16,8 @@ final class ChannelListViewModel {
     private(set) var searchText = ""
 
     let timers: LiveTimerStore
+    /// Genre narrowing (#182), shared with the guide grid.
+    let genres: GuideGenreController
 
     private let service: JellyfinLiveTvServiceProtocol
     private let userID: String
@@ -33,6 +35,9 @@ final class ChannelListViewModel {
         self.service = service
         self.userID = userID
         self.timers = timers
+        self.genres = GuideGenreController(service: service, userID: userID)
+        genres.guideWindow = { [unowned self] in (windowStart, windowEnd) }
+        genres.onChannelsChanged = { [unowned self] in recomputeVisibleChannels() }
     }
 
     /// The two days the schedule sheet offers, matching the grid's axis.
@@ -56,6 +61,8 @@ final class ChannelListViewModel {
     func refresh() async {
         loadGeneration += 1
         fetchedChannels = []
+        // A "now" genre match is as old as the moment it was made.
+        genres.invalidate()
         await fetchChannels()
     }
 
@@ -123,9 +130,11 @@ final class ChannelListViewModel {
     }
 
     private func recomputeVisibleChannels() {
-        channels = searchText.isEmpty
-            ? fetchedChannels
-            : fetchedChannels.filter { GuideViewModel.matches(channel: $0, query: searchText) }
+        let query = searchText
+        channels = fetchedChannels.filter { channel in
+            genres.admits(channel)
+                && (query.isEmpty || GuideViewModel.matches(channel: channel, query: query))
+        }
     }
 
     // MARK: - Programs

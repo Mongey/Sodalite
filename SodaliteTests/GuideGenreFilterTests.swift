@@ -110,13 +110,13 @@ struct GuideGenreFilterTests {
         await model.load()
         #expect(model.channels.map(\.id) == ["c0", "c1", "c2"])
 
-        await model.apply(genreFilter: GuideGenreFilter(genres: ["NFL"], scope: .guide))
+        await model.genres.apply(GuideGenreFilter(genres: ["NFL"], scope: .guide))
         #expect(model.channels.map(\.id) == ["c1"])
         #expect(service.lastGenres == "NFL")
         #expect(service.lastWindowWasAiring == false)
-        #expect(!model.isResolvingGenres)
+        #expect(!model.genres.isResolving)
 
-        await model.apply(genreFilter: GuideGenreFilter(scope: .guide))
+        await model.genres.apply(GuideGenreFilter(scope: .guide))
         #expect(model.channels.map(\.id) == ["c0", "c1", "c2"])
     }
 
@@ -125,7 +125,7 @@ struct GuideGenreFilterTests {
         let model = GuideViewModel(service: service, userID: "u",
                                    timers: LiveTimerStore(service: service, userID: "u"), metrics: .tv)
         await model.load()
-        await model.apply(genreFilter: GuideGenreFilter(genres: ["NFL", "Comedy"]))
+        await model.genres.apply(GuideGenreFilter(genres: ["NFL", "Comedy"]))
         #expect(service.lastWindowWasAiring == true)
         #expect(model.channels.map(\.id) == ["c1", "c2"])
         model.apply(searchText: "c2")
@@ -139,9 +139,22 @@ struct GuideGenreFilterTests {
         let model = GuideViewModel(service: service, userID: "u",
                                    timers: LiveTimerStore(service: service, userID: "u"), metrics: .tv)
         await model.load()
-        await model.apply(genreFilter: GuideGenreFilter(genres: ["NFL"]))
-        #expect(!model.genreFilter.isActive)
-        #expect(model.genreError != nil)
+        await model.genres.apply(GuideGenreFilter(genres: ["NFL"]))
+        #expect(!model.genres.filter.isActive)
+        #expect(model.genres.error != nil)
+        #expect(model.channels.map(\.id) == ["c0", "c1", "c2"])
+    }
+
+    @Test func theIPhoneListNarrowsTheSameWay() async {
+        let service = GenreStub()
+        let model = ChannelListViewModel(service: service, userID: "u",
+                                         timers: LiveTimerStore(service: service, userID: "u"))
+        await model.load()
+        #expect(model.channels.map(\.id) == ["c0", "c1", "c2"])
+        await model.genres.apply(GuideGenreFilter(genres: ["Comedy"], scope: .guide))
+        #expect(model.channels.map(\.id) == ["c2"])
+        #expect(service.lastWindowWasAiring == false)
+        await model.genres.apply(GuideGenreFilter(scope: .guide))
         #expect(model.channels.map(\.id) == ["c0", "c1", "c2"])
     }
 
@@ -149,8 +162,8 @@ struct GuideGenreFilterTests {
         let service = GenreStub()
         let model = GuideViewModel(service: service, userID: "u",
                                    timers: LiveTimerStore(service: service, userID: "u"), metrics: .tv)
-        await model.loadGenres(for: .now)
-        #expect(model.genreNames[.now] == ["Comedy", "NFL", "Sports"])
+        await model.genres.loadNames(for: .now)
+        #expect(model.genres.names[.now] == ["Comedy", "NFL", "Sports"])
         #expect(service.lastGenres == nil)
     }
 }

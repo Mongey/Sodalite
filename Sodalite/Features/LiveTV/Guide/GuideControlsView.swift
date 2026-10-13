@@ -29,7 +29,7 @@ struct GuideControlsView: View {
             GuideSearchCover(model: model, tint: tint)
         }
         .menuPresentation(isPresented: $isPickingGenre) {
-            GuideGenrePicker(model: model, tint: tint)
+            GuideGenrePicker(genres: model.genres, tint: tint)
         }
     }
 
@@ -62,9 +62,9 @@ struct GuideControlsView: View {
         }
 
         // Verbatim for the same reason as the search chip: an EPG genre is server data (#182).
-        GuideChip(title: model.genreFilter.chipLabel.map { Text(verbatim: $0) }
+        GuideChip(title: model.genres.filter.chipLabel.map { Text(verbatim: $0) }
                     ?? Text("livetv.guide.filter.genre"),
-                  isOn: model.genreFilter.isActive,
+                  isOn: model.genres.filter.isActive,
                   tint: tint, isFocusable: isFocusable) {
             isPickingGenre = true
         }

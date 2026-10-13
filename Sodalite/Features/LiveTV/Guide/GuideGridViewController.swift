@@ -451,7 +451,7 @@ final class GuideGridViewController: UIViewController,
     /// Genre selection separately: a genre that adds no channel still changes which cells are dimmed.
     private func observeGenreFilter() {
         withObservationTracking {
-            _ = model.genreFilter
+            _ = model.genres.filter
         } onChange: { [weak self] in
             Task { @MainActor in
                 guard let self else { return }
@@ -631,7 +631,7 @@ final class GuideGridViewController: UIViewController,
         cell.configure(title: program.name,
                        isAiring: program.isAiring(at: Date()),
                        hasTimer: model.timers.hasTimer(programID: program.id),
-                       isDimmed: model.isOutsideGenres(program),
+                       isDimmed: model.genres.isOutside(program),
                        tint: tint, dependencies: dependencies, theme: theme)
     }
 

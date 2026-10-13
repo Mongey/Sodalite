@@ -48,23 +48,13 @@ final class GuideViewModel {
     private(set) var searchText = ""
 
     /// Genre narrowing (#182), applied client-side on top of `filter` and the search.
-    private(set) var genreFilter = GuideGenreFilter()
-    /// The genres on offer per scope, nil until fetched.
-    private(set) var genreNames: [GuideGenreFilter.Scope: [String]] = [:]
-    private(set) var loadingGenreScope: GuideGenreFilter.Scope?
-    private(set) var genreError: String?
-    /// True while the channels matching the selected genres are being resolved, so the canvas shows
-    /// progress rather than the "nothing matches" state.
-    private(set) var isResolvingGenres = false
+    let genres: GuideGenreController
 
     private let service: JellyfinLiveTvServiceProtocol
     private let userID: String
     /// Everything fetched for the active filter, before the search narrows it.
     private var fetchedChannels: [JellyfinChannel] = []
     private var requestedProgramChannelIDs: Set<String> = []
-    /// Channels with a program in the active genre selection. nil while no genre is selected.
-    private var genreChannelIDs: Set<String>?
-    private var genreGeneration = 0
     private var loadGeneration = 0
     /// The generation whose fetch loop is running. Re-entry is refused per generation only: a filter
     /// switch mid-paging has to start its own loop while the old one is still suspended in its request,
@@ -85,6 +75,10 @@ final class GuideViewModel {
         self.metrics = metrics
         self.axis = GuideAxis(now: now, pointsPerMinute: metrics.pointsPerMinute)
         self.anchorTime = now
+        self.genres = GuideGenreController(service: service, userID: userID)
+        genres.guideWindow = { [unowned self] in (axis.start, axis.end) }
+        genres.onSnapToNow = { [unowned self] in jumpToNow() }
+        genres.onChannelsChanged = { [unowned self] in recomputeVisibleChannels() }
     }
 
     var allLoadedPrograms: [JellyfinProgram] { programsByChannel.values.flatMap { $0 } }
@@ -151,10 +145,7 @@ final class GuideViewModel {
         // long-running guide a fresh EPG.
         requestedProgramChannelIDs = []
         anchorTime = min(max(anchorTime, rebuilt.start), rebuilt.end)
-        // Both genre lists describe the old window (the "now" one the old moment), and so does the
-        // set of matching channels.
-        genreNames = [:]
-        if genreFilter.isActive { Task { await resolveGenreChannels() } }
+        genres.invalidate()
         return true
     }
 
@@ -224,88 +215,9 @@ final class GuideViewModel {
 
     private func recomputeVisibleChannels() {
         let query = searchText
-        let genreIDs = genreChannelIDs
         channels = fetchedChannels.filter { channel in
-            if let genreIDs, !genreIDs.contains(channel.id) { return false }
-            return query.isEmpty || Self.matches(channel: channel, query: query)
+            genres.admits(channel) && (query.isEmpty || Self.matches(channel: channel, query: query))
         }
-    }
-
-    // MARK: - Genres (#182)
-
-    /// Upper bound on programs pulled for a genre list or a match. A full day of a 500-channel
-    /// IPTV line-up is about 12k programs; past this the list is a sample, which still names every
-    /// genre that is on more than rarely.
-    static let genreProgramCap = 6000
-
-    private func window(for scope: GuideGenreFilter.Scope) -> GuideProgramWindow {
-        switch scope {
-        case .now: .airing
-        case .guide: .range(start: axis.start, end: axis.end)
-        }
-    }
-
-    /// Fetch the genres on offer for `scope`. The "now" list is always refetched, it goes stale
-    /// within the hour; the window list is kept until the axis moves.
-    func loadGenres(for scope: GuideGenreFilter.Scope) async {
-        if scope == .guide, genreNames[scope] != nil { return }
-        guard loadingGenreScope != scope else { return }
-        loadingGenreScope = scope
-        genreError = nil
-        defer { if loadingGenreScope == scope { loadingGenreScope = nil } }
-        do {
-            let programs = try await service.getProgramIndex(
-                userID: userID, window: window(for: scope), genres: nil, cap: Self.genreProgramCap)
-            genreNames[scope] = GuideGenreFilter.genreNames(in: programs)
-        } catch {
-            genreError = ErrorText.user(for: error)
-        }
-    }
-
-    func apply(genreFilter newValue: GuideGenreFilter) async {
-        guard newValue != genreFilter else { return }
-        let scopeSnapsToNow = newValue.isActive && newValue.scope == .now
-            && (!genreFilter.isActive || genreFilter.scope != .now)
-        genreFilter = newValue
-        // Same reasoning as the categories: a "now" match parked at 23:00 reads as a broken filter.
-        if scopeSnapsToNow { jumpToNow() }
-        await resolveGenreChannels()
-    }
-
-    private func resolveGenreChannels() async {
-        genreGeneration += 1
-        let generation = genreGeneration
-        guard genreFilter.isActive else {
-            genreChannelIDs = nil
-            isResolvingGenres = false
-            recomputeVisibleChannels()
-            return
-        }
-        isResolvingGenres = true
-        genreChannelIDs = []
-        recomputeVisibleChannels()
-        do {
-            let programs = try await service.getProgramIndex(
-                userID: userID, window: window(for: genreFilter.scope),
-                genres: genreFilter.queryValue, cap: Self.genreProgramCap)
-            guard generation == genreGeneration else { return }
-            genreChannelIDs = Set(programs.compactMap(\.channelId))
-            genreError = nil
-        } catch {
-            guard generation == genreGeneration else { return }
-            // Leaving the grid empty would read as "nothing matches". Drop the selection instead
-            // and say why in the picker.
-            genreFilter.genres = []
-            genreChannelIDs = nil
-            genreError = ErrorText.user(for: error)
-        }
-        isResolvingGenres = false
-        recomputeVisibleChannels()
-    }
-
-    /// Whether a program falls outside an active genre selection, which the grid dims.
-    func isOutsideGenres(_ program: JellyfinProgram) -> Bool {
-        genreFilter.isActive && !genreFilter.matches(program)
     }
 
     // MARK: - Search matching
