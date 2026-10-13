@@ -40,7 +40,7 @@ final class DevicePreferences {
         didSet { store.set(preferLosslessAudioBridge, forKey: Keys.preferLosslessAudioBridge) }
     }
 
-    /// AetherEngine#731, default ON. A TrueHD Atmos track keeps its heights: the engine renders the
+    /// AetherEngine#731 and #744, default ON. A TrueHD Atmos or DTS:X track keeps its heights: the engine renders the
     /// objects into a 7.1.4 bed and hands tvOS Apple Positional Audio, which reaches an Atmos receiver
     /// as Dolby MAT and AirPods as Spatial Audio. Lossy, so OFF falls back to `preferLosslessAudioBridge`'s
     /// choice. A device value: it describes the speakers behind this box.
