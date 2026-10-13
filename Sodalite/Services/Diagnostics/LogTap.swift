@@ -53,7 +53,8 @@ final class LogTap: ObservableObject {
     // 300: holds a full HLS-wrapper session start (init.mp4 dump + m3u8 bodies + per-request logs) through the eventual AVPlayer failure; the previous 80 rolled the init.mp4 summary off before the failure landed.
     private let maxLines = 300
 
-    private nonisolated init() {}
+    /// Internal, not private, so a test can own a buffer that nothing else in the process writes into.
+    nonisolated init() {}
 
     /// Append one line to the buffer. Safe to call from any thread.
     ///

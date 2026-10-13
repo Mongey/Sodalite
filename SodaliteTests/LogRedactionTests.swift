@@ -178,14 +178,14 @@ struct LogRedactionTests {
     @Test("redaction runs on the way into the buffer, not only in the view")
     @MainActor
     func tapRedactsOnIngest() async {
-        LogTap.shared.clear()
-        LogTap.shared.note("[test] url=https://s/x?api_key=\(token)")
+        // Its own instance, so clearing it cannot wipe a line another test is waiting for in the shared one.
+        let tap = LogTap()
+        tap.note("[test] url=https://s/x?api_key=\(token)")
         // note(_:) hops to the main queue; let that drain.
         await Task.yield()
         try? await Task.sleep(for: .milliseconds(50))
-        #expect(LogTap.shared.lines.contains { $0.contains("api_key=<redacted>") })
-        #expect(!LogTap.shared.lines.contains { $0.contains(token) })
-        LogTap.shared.clear()
+        #expect(tap.lines.contains { $0.contains("api_key=<redacted>") })
+        #expect(!tap.lines.contains { $0.contains(token) })
     }
 
     @Test("an Xtream Codes path loses its password and keeps the account name", arguments: [
