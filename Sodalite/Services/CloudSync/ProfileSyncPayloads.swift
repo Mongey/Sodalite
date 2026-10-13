@@ -225,6 +225,9 @@ struct ProfileHomePayload: Codable, Equatable {
     var combineServersExcluded: [String]?
     /// My Media order and hiding (Sodalite#85). Optional so a record from an older build decodes.
     var libraryLayoutJSON: Data?
+    /// The Home banner's HomeHeroMode. Optional so a record from an older build decodes, and nil
+    /// while the profile never chose, so the default stays a default on every device.
+    var heroMode: String?
 }
 
 /// Type-erased profile payload, the per-profile counterpart of `SettingsSyncPayload`.

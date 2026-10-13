@@ -9,6 +9,7 @@ struct HomeCustomizeView: View {
     @State private var mergeCWNextUp = false
     @State private var rewatchNextUp = false
     @State private var collectionGrouping: CollectionGrouping = .system
+    @State private var heroMode: HomeHeroMode = .default
     /// My Media's libraries across every combined server, and their order and hidden flags (Sodalite#85).
     @State private var libraries: [JellyfinLibrary] = []
     @State private var librarySources: [HomeSource] = []
@@ -26,6 +27,7 @@ struct HomeCustomizeView: View {
         ScrollView {
             VStack(spacing: 28) {
                 header
+                heroRow
                 mergeRowToggle
                 rewatchRowToggle
                 collectionGroupingRow
@@ -41,6 +43,7 @@ struct HomeCustomizeView: View {
             mergeCWNextUp = HomeRowConfig.mergeContinueWatchingNextUp(scope: scope)
             rewatchNextUp = HomeRowConfig.enableRewatchingNextUp(scope: scope)
             collectionGrouping = HomeRowConfig.collectionGrouping(scope: scope)
+            heroMode = HomeHeroMode.stored(scope: scope)
             layout = LibraryLayout.load(scope: scope)
             // Per-library rows are otherwise discovered only on Home load, so Customize showed a stale list right after a server add/switch. Reconcile here too.
             Task { await reconcileLibraries() }
@@ -105,6 +108,30 @@ struct HomeCustomizeView: View {
                     )
             }
         }
+        .padding(.horizontal, hInset)
+    }
+
+    // MARK: - Banner
+
+    /// What the banner at the top of Home shows, or Off. First because the banner is the first thing on Home.
+    private var heroRow: some View {
+        ValuePickerRow(
+            icon: "rectangle.topthird.inset.filled",
+            title: "home.customize.hero",
+            subtitle: "home.customize.hero.subtitle",
+            options: HomeHeroMode.allCases,
+            selection: Binding(
+                get: { heroMode },
+                set: { newValue in
+                    movingID = nil
+                    movingLibrary = nil
+                    heroMode = newValue
+                    HomeHeroMode.setStored(newValue, scope: scope)
+                    NotificationCenter.default.post(name: .homeConfigDidChange, object: nil)
+                }
+            ),
+            label: { $0.localizedLabel }
+        )
         .padding(.horizontal, hInset)
     }
 

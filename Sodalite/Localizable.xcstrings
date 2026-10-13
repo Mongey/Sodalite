@@ -68365,6 +68365,330 @@
         }
       }
     },
+    "changelog.1_1_0.homeBanner.body" : {
+      "comment" : "What's New 1.1.0: body of the highlight introducing the banner at the top of Home",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domů nyní otevírá velký banner, který sám listuje tituly. V Přizpůsobit domov zvolíte, co ukazuje: nově přidané, náhodně vybrané nezhlédnuté tituly z knihovny nebo oblíbené, případně ho vypnete. Na iPhonu na výšku ukazuje plakát."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hjem åbner nu med et stort banner, der selv bladrer gennem titler. Under Tilpas hjem vælger du, hvad det viser: nyligt tilføjet, tilfældige usete titler fra dit bibliotek eller dine favoritter, eller du slår det fra. På en iPhone på højkant viser det plakaten."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Startseite beginnt jetzt mit einem großen Banner, das von selbst durch Titel blättert. Unter Startseite anpassen wählst du, was es zeigt: Neues, zufällige ungesehene Titel aus deiner Bibliothek oder deine Favoriten, oder du schaltest es aus. Auf dem iPhone im Hochformat zeigt es das Poster."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η Αρχική ανοίγει τώρα με ένα μεγάλο banner που εναλλάσσει τίτλους μόνο του. Στην Προσαρμογή αρχικής επιλέγετε τι δείχνει: πρόσφατες προσθήκες, τυχαίους τίτλους που δεν έχετε δει ή τα αγαπημένα σας, ή το απενεργοποιείτε. Σε iPhone σε κατακόρυφο προσανατολισμό δείχνει την αφίσα."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home now opens on a large banner that pages through titles by itself. Customize Home picks what it shows: what is new, random unwatched titles from your library, or your favorites, or turns it off. On an upright iPhone it shows the poster."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicio ahora abre con un banner grande que pasa los títulos solo. En Personalizar inicio eliges qué muestra: lo añadido recientemente, títulos no vistos al azar de tu biblioteca o tus favoritos, o lo desactivas. En un iPhone en vertical muestra el póster."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koti avautuu nyt suurella bannerilla, joka selaa nimikkeitä itsestään. Mukauta aloitusnäyttö -kohdassa valitset, mitä se näyttää: uudet lisäykset, satunnaisia katsomattomia nimikkeitä kirjastostasi tai suosikkisi, tai poistat sen käytöstä. Pystyasennossa olevassa iPhonessa se näyttää julisteen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'accueil s'ouvre désormais sur une grande bannière qui fait défiler les titres d'elle-même. Dans Personnaliser l'accueil, choisissez ce qu'elle affiche : les ajouts récents, des titres non vus au hasard dans votre bibliothèque ou vos favoris, ou désactivez-la. Sur un iPhone en portrait, elle affiche l'affiche du titre."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Početna se sada otvara velikim bannerom koji sam lista naslove. U Prilagodi početnu birate što prikazuje: nedavno dodano, nasumične nepogledane naslove iz biblioteke ili favorite, ili ga isključite. Na iPhoneu u uspravnom položaju prikazuje poster."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Kezdőlap mostantól egy nagy bannerrel nyílik, amely magától lapozza a címeket. A Kezdőképernyő testreszabása menüben választhatod ki, mit mutasson: az újdonságokat, véletlenszerű, még nem látott címeket a könyvtáradból vagy a kedvenceidet, vagy ki is kapcsolhatod. Álló iPhone-on a plakátot mutatja."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Home ora si apre con un grande banner che scorre i titoli da solo. In Personalizza home scegli cosa mostra: le novità, titoli non visti a caso dalla tua libreria o i tuoi preferiti, oppure lo disattivi. Su un iPhone in verticale mostra la locandina."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホームの上部に、タイトルを自動でめくる大きなバナーが加わりました。ホームのカスタマイズで、最近追加されたもの、ライブラリから選ぶ未視聴のタイトル、お気に入りの中から表示内容を選ぶか、オフにできます。縦向きのiPhoneではポスターを表示します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이제 홈이 타이틀을 자동으로 넘기는 큰 배너로 시작합니다. 홈 사용자 지정에서 표시할 내용을 선택하세요. 최근 추가 항목, 라이브러리의 시청하지 않은 무작위 타이틀, 즐겨찾기 중에서 고르거나 끌 수 있습니다. 세로로 든 iPhone에서는 포스터를 보여줍니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hjem åpner nå med et stort banner som blar gjennom titler av seg selv. Under Tilpass hjem velger du hva det viser: nylig lagt til, tilfeldige usette titler fra biblioteket eller favorittene dine, eller du slår det av. På en iPhone i stående retning viser det plakaten."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home opent nu met een grote banner die zelf door titels bladert. Bij Home aanpassen kies je wat die toont: nieuw toegevoegd, willekeurige ongeziene titels uit je bibliotheek of je favorieten, of je zet hem uit. Op een rechtop gehouden iPhone toont hij de poster."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran główny otwiera się teraz dużym banerem, który sam przewija tytuły. W Dostosuj stronę główną wybierasz, co pokazuje: nowości, losowe nieobejrzane tytuły z biblioteki lub ulubione, albo go wyłączasz. Na iPhonie w pionie pokazuje plakat."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Início agora abre com um banner grande que passa os títulos sozinho. Em Personalizar início você escolhe o que ele mostra: os adicionados recentemente, títulos não assistidos aleatórios da sua biblioteca ou seus favoritos, ou o desativa. No iPhone em pé ele mostra o pôster."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Início abre agora com um banner grande que passa os títulos sozinho. Em Personalizar início escolhe o que mostra: os adicionados recentemente, títulos não vistos aleatórios da sua biblioteca ou os seus favoritos, ou desativa-o. Num iPhone na vertical mostra o cartaz."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecranul principal se deschide acum cu un banner mare care derulează singur titlurile. În Personalizează ecranul principal alegi ce afișează: noutățile, titluri nevizionate alese aleatoriu din bibliotecă sau favoritele, sau îl dezactivezi. Pe un iPhone ținut vertical afișează posterul."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главная теперь открывается большим баннером, который сам листает тайтлы. В разделе «Настроить главную» выберите, что он показывает: недавно добавленное, случайные непросмотренные тайтлы из медиатеки или избранное, либо отключите его. На iPhone в вертикальном положении он показывает постер."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domov sa teraz otvára veľkým bannerom, ktorý sám listuje titulmi. V Prispôsobiť domov si vyberiete, čo ukazuje: novo pridané, náhodné nepozreté tituly z knižnice alebo obľúbené, prípadne ho vypnete. Na iPhone na výšku ukazuje plagát."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hem öppnar nu med en stor banner som bläddrar genom titlar av sig själv. Under Anpassa hem väljer du vad den visar: nytillagt, slumpvisa osedda titlar från ditt bibliotek eller dina favoriter, eller så stänger du av den. På en iPhone i stående läge visar den affischen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana sayfa artık başlıklar arasında kendiliğinden geçen büyük bir afişle açılıyor. Ana Ekranı Özelleştir bölümünden ne göstereceğini seçebilirsiniz: yeni eklenenler, kütüphanenizden rastgele izlenmemiş başlıklar ya da favorileriniz; isterseniz kapatabilirsiniz. Dikey tutulan iPhone'da posteri gösterir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Головна тепер відкривається великим банером, який сам гортає тайтли. У розділі «Налаштувати головну» виберіть, що він показує: нещодавно додане, випадкові непереглянуті тайтли з медіатеки чи обране, або вимкніть його. На iPhone у вертикальному положенні він показує постер."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首页现在以一个会自动翻页的大横幅开场。在“自定义首页”中选择它显示的内容：最近添加、媒体库中随机的未观看作品或你的收藏，也可以关闭。竖持 iPhone 时显示海报。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首頁現在以一個會自動翻頁的大橫幅開場。在「自訂主畫面」中選擇它顯示的內容：最近新增、媒體庫中隨機的未觀看作品或你的收藏，也可以關閉。直持 iPhone 時顯示海報。"
+          }
+        }
+      }
+    },
+    "changelog.1_1_0.homeBanner.title" : {
+      "comment" : "What's New 1.1.0: title of the highlight introducing the banner at the top of Home",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner na Domů"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et banner på Hjem"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Banner auf der Startseite"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ένα banner στην Αρχική"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A banner on Home"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un banner en Inicio"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banneri Kotinäkymään"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une bannière sur l'accueil"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner na Početnoj"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner a Kezdőlapon"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un banner nella Home"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホームにバナー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "홈 배너"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et banner på Hjem"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Een banner op Home"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baner na ekranie głównym"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um banner no Início"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um banner no Início"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un banner pe ecranul principal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Баннер на главной"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner na Domov"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En banner på Hem"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana sayfada afiş"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Банер на головній"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首页横幅"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首頁橫幅"
+          }
+        }
+      }
+    },
     "changelog.1_1_0.homeVideos.body" : {
       "comment" : "Changelog highlight for the 1.1.0 release",
       "extractionState" : "manual",
@@ -100236,6 +100560,330 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "按一下移動列；右側開關顯示或隱藏該列。"
+          }
+        }
+      }
+    },
+    "home.customize.hero" : {
+      "comment" : "Customize Home: picker for what the large banner at the top of Home shows (Off, Recently Added, Discover, Favorites)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banneri"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bannière"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バナー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "배너"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baner"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Баннер"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banner"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afiş"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Банер"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "横幅"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "橫幅"
+          }
+        }
+      }
+    },
+    "home.customize.hero.subtitle" : {
+      "comment" : "Customize Home: explains the banner picker",
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co ukazuje velký banner nahoře na Domů"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hvad det store banner øverst på Hjem viser"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was das große Banner oben auf der Startseite zeigt"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τι δείχνει το μεγάλο banner στην κορυφή της Αρχικής"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What the large banner at the top of Home shows"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qué muestra el banner grande en la parte superior de Inicio"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mitä Kotinäkymän yläosan suuri banneri näyttää"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce qu'affiche la grande bannière en haut de l'accueil"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Što prikazuje veliki banner na vrhu Početne"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit mutasson a Kezdőlap tetején lévő nagy banner"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosa mostra il grande banner in cima alla Home"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム上部の大きなバナーに表示する内容"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "홈 상단의 큰 배너에 표시할 내용"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hva det store banneret øverst på Hjem viser"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wat de grote banner bovenaan Home toont"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co pokazuje duży baner na górze ekranu głównego"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O que o banner grande no topo do Início mostra"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O que o banner grande no topo do Início mostra"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce afișează bannerul mare din partea de sus a ecranului principal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что показывает большой баннер вверху главной"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Čo zobrazuje veľký banner hore na Domov"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vad den stora bannern överst på Hem visar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana sayfanın üstündeki büyük afişin ne göstereceği"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Що показує великий банер угорі головної"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首页顶部大横幅显示的内容"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首頁頂部大橫幅顯示的內容"
           }
         }
       }
@@ -162789,30 +163437,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在電影和單集頁面的標題旁顯示解析度、HDR 格式和音訊格式。"
-          }
-        }
-      }
-    },
-    "settings.appearance.homeHero" : {
-      "comment" : "Appearance setting (Mac): toggle for the banner carousel at the top of Home",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home Banner"
-          }
-        }
-      }
-    },
-    "settings.appearance.homeHero.subtitle" : {
-      "comment" : "Appearance setting (Mac): explains the Home banner toggle",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A large banner of the newest movies and shows at the top of Home"
           }
         }
       }

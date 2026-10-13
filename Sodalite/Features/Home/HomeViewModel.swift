@@ -4,11 +4,10 @@ import SwiftUI
 final class HomeViewModel {
     var rows: [HomeRowData] = []
     var tagRows: [HomeTagRowData] = []
-    /// The hero carousel: the newest titles that have a backdrop to show (see loadHero).
+    /// The banner at the top of Home, in the profile's HomeHeroMode (see loadHero).
     var heroItems: [JellyfinItem] = []
     @ObservationIgnored var heroTask: Task<Void, Never>?
-    /// Mirrors the Home Banner setting, so a load fetches the hero only when it will be shown.
-    @ObservationIgnored var heroEnabled = false
+    @ObservationIgnored var heroLoadedMode: HomeHeroMode?
     var isLoading = true
     /// Home's own verdict: the fan-out drained and not one row produced anything. Deliberately not
     /// a message. Home can only know THAT the load failed; WHY comes from

@@ -1,36 +1,30 @@
 import Foundation
 
 extension HomeViewModel {
-    func setHeroEnabled(_ enabled: Bool) {
-        guard enabled != heroEnabled else { return }
-        heroEnabled = enabled
-        reloadHero()
-    }
-
+    /// Runs with every Home load, so a changed mode in Customize Home lands with the row reload it
+    /// already triggers. Discover keeps its picks across reloads of the same mode: a reshuffle on
+    /// every return to the tab would swap the banner out from under someone about to tap it.
     func reloadHero() {
+        let mode = HomeHeroMode.stored(scope: homeScope)
+        if mode == .discover, heroLoadedMode == .discover, !heroItems.isEmpty { return }
         heroTask?.cancel()
-        guard heroEnabled else {
+        guard mode != .off else {
             heroItems = []
+            heroLoadedMode = .off
             return
         }
-        heroTask = Task { [weak self] in await self?.loadHero() }
+        heroTask = Task { [weak self] in await self?.loadHero(mode) }
     }
 
     /// How many titles the carousel pages through.
     static let heroLimit = 8
 
-    /// The newest movies and shows across every source, keeping only the ones with a backdrop: a
-    /// hero without art is a black slab. Its own query rather than the Recently Added row's, because
-    /// that row may be switched off and asks for none of the overview, genre and rating fields the
-    /// hero prints. A source that fails just contributes nothing; the rows report reachability.
-    func loadHero() async {
-        let query = ItemQuery(
-            includeItemTypes: [.movie, .series],
-            sortBy: "DateCreated",
-            sortOrder: "Descending",
-            limit: Self.heroLimit * 2,
-            fields: JellyfinEndpoint.homeRowFields + ",Overview,Genres,OfficialRating,ProductionYear"
-        )
+    /// Movies and shows across every source, keeping only the ones with a backdrop: a hero without
+    /// art is a black slab. Its own query rather than a row's, because that row may be switched off
+    /// and asks for none of the overview, genre and rating fields the hero prints. A source that
+    /// fails just contributes nothing; the rows report reachability.
+    func loadHero(_ mode: HomeHeroMode) async {
+        let query = Self.heroQuery(mode)
         let perSource = await withTaskGroup(of: [JellyfinItem].self) { group in
             for source in sources {
                 group.addTask {
@@ -47,16 +41,46 @@ extension HomeViewModel {
             return all
         }
         guard !Task.isCancelled else { return }
-        heroItems = Array(
-            perSource.joined()
-                .filter { !($0.backdropImageTags ?? []).isEmpty }
-                // ISO 8601 strings sort chronologically as text.
-                .sorted { ($0.dateCreated ?? "") > ($1.dateCreated ?? "") }
-                .prefix(Self.heroLimit)
+        let candidates = perSource.joined().filter { !($0.backdropImageTags ?? []).isEmpty }
+        let ordered: [JellyfinItem] = switch mode {
+        // ISO 8601 strings sort chronologically as text.
+        case .recentlyAdded: candidates.sorted { ($0.dateCreated ?? "") > ($1.dateCreated ?? "") }
+        // Each server shuffled its own; shuffling again mixes the servers of a combined Home.
+        case .discover, .favorites: candidates.shuffled()
+        case .off: []
+        }
+        heroItems = Array(ordered.prefix(Self.heroLimit))
+        heroLoadedMode = mode
+    }
+
+    private static func heroQuery(_ mode: HomeHeroMode) -> ItemQuery {
+        var query = ItemQuery(
+            includeItemTypes: [.movie, .series],
+            limit: heroLimit * 2,
+            fields: JellyfinEndpoint.homeRowFields + ",Overview,Genres,OfficialRating,ProductionYear"
         )
+        switch mode {
+        case .recentlyAdded:
+            query.sortBy = "DateCreated"
+            query.sortOrder = "Descending"
+        case .discover:
+            query.sortBy = "Random"
+            query.filters = ["IsUnplayed"]
+        case .favorites:
+            query.sortBy = "Random"
+            query.isFavorite = true
+        case .off:
+            break
+        }
+        return query
     }
 
     func heroBackdropURL(for item: JellyfinItem) -> URL? {
         imageService.backdropURL(for: item, maxWidth: ImageWidth.fullBleed)
+    }
+
+    /// The portrait banner on iPhone stands the title's poster up instead of cropping a backdrop to a sliver.
+    func heroPosterURL(for item: JellyfinItem) -> URL? {
+        imageService.posterURL(for: item, maxWidth: ImageWidth.fullBleed)
     }
 }

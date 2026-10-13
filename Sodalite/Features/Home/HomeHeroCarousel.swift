@@ -1,16 +1,21 @@
 import SwiftUI
 
-/// The top of Home: the newest titles as a full-width banner that pages
-/// by itself, the way the TV app opens. The art runs to the window's top edge under the toolbar; the title, a line of
-/// facts, the overview and Play sit over a scrim at the bottom leading corner.
+/// The top of Home: the profile's HomeHeroMode titles as a full-width banner that pages by itself,
+/// the way the TV app opens. The art runs to the window's top edge under the toolbar; the title, a
+/// line of facts, the overview and Play sit over a scrim at the bottom leading corner. An upright
+/// iPhone gets its own shape: the poster standing up, the text centred under it.
 struct HomeHeroCarousel: View {
     let items: [JellyfinItem]
     let backdropURL: (JellyfinItem) -> URL?
+    let posterURL: (JellyfinItem) -> URL?
     let onOpen: (JellyfinItem) -> Void
     let onPlay: (JellyfinItem) -> Void
 
     @Environment(\.dependencies) private var dependencies
     @Environment(\.horizontalSizeClass) private var hSizeClass
+    #if os(iOS)
+    @Environment(\.verticalSizeClass) private var vSizeClass
+    #endif
 
     @State private var index = 0
     /// The pointer is over the banner, or on tvOS focus is on its buttons; either way it holds still.
@@ -30,6 +35,16 @@ struct HomeHeroCarousel: View {
 
     private var isCompact: Bool { hSizeClass == .compact }
 
+    /// An iPhone held upright. A backdrop cropped to that width is a sliver of a face, so this shape
+    /// trades it for the poster. Landscape iPhones and compact iPad windows keep the wide banner.
+    private var isPortrait: Bool {
+        #if os(iOS)
+        isCompact && vSizeClass == .regular
+        #else
+        false
+        #endif
+    }
+
     private var titleSize: CGFloat {
         #if os(tvOS)
         64
@@ -47,11 +62,7 @@ struct HomeHeroCarousel: View {
             // The box is a placeholder sized off the window, and everything else is laid onto it, so
             // the art, the text and the pager all agree on one height. Built the other way round, the
             // filled backdrop picked the size and the clip cut the buttons and the dots off the bottom.
-            Color.clear
-                .containerRelativeFrame(.vertical) { height, _ in
-                    isCompact ? max(320, height * 0.5) : max(440, height * 0.66)
-                }
-                .frame(maxWidth: .infinity)
+            bannerBox
                 // Up under the transparent toolbar, the way the TV app's banner reaches the window's
                 // top edge. Pinned to the bottom: `ignoresSafeArea` inside a scroll view let the art
                 // hang below the banner as well.
@@ -65,19 +76,27 @@ struct HomeHeroCarousel: View {
                 .onGeometryChange(for: CGFloat.self) { max(0, $0.frame(in: .global).minY) } action: {
                     topExtension = $0
                 }
-                                .overlay(alignment: .bottomLeading) {
-                    details(for: current)
-                        // Lined up with the rows' titles below it.
-                        .padding(.leading, LayoutMetrics.current(hSizeClass).rowInset)
-                        .padding(.trailing, isCompact ? LayoutMetrics.current(hSizeClass).rowInset : 160)
-                        .padding(.bottom, 52)
-                        .id(current.originKey)
-                        .transition(.opacity)
+                .overlay(alignment: isPortrait ? .bottom : .bottomLeading) {
+                    Group {
+                        if isPortrait {
+                            portraitDetails(for: current)
+                                .padding(.horizontal, LayoutMetrics.current(hSizeClass).rowInset)
+                                .padding(.bottom, 36)
+                        } else {
+                            details(for: current)
+                                // Lined up with the rows' titles below it.
+                                .padding(.leading, LayoutMetrics.current(hSizeClass).rowInset)
+                                .padding(.trailing, isCompact ? LayoutMetrics.current(hSizeClass).rowInset : 160)
+                                .padding(.bottom, 52)
+                        }
+                    }
+                    .id(current.originKey)
+                    .transition(.opacity)
                 }
                 .overlay(alignment: .bottom) {
-                    pager.padding(.bottom, 20)
+                    pager.padding(.bottom, isPortrait ? 12 : 20)
                 }
-                .overlay { arrows }
+                .overlay { if !isPortrait { arrows } }
                 #if os(tvOS)
                 // Focus stands in for the pointer: a page change rebuilds the buttons, which would
                 // throw focus off the one the viewer is on.
@@ -113,8 +132,25 @@ struct HomeHeroCarousel: View {
 
     // MARK: - Layers
 
+    /// A placeholder sized off the window, or upright off the width on an iPhone held that way.
+    @ViewBuilder
+    private var bannerBox: some View {
+        if isPortrait {
+            // 4:5 holds a 2:3 poster with little lost at the sides and leaves the first row in view.
+            Color.clear
+                .aspectRatio(4.0 / 5.0, contentMode: .fit)
+                .frame(maxWidth: .infinity)
+        } else {
+            Color.clear
+                .containerRelativeFrame(.vertical) { height, _ in
+                    isCompact ? max(320, height * 0.5) : max(440, height * 0.66)
+                }
+                .frame(maxWidth: .infinity)
+        }
+    }
+
     private func backdrop(for item: JellyfinItem) -> some View {
-        AsyncCachedImage(url: backdropURL(item)) { image in
+        AsyncCachedImage(url: isPortrait ? (posterURL(item) ?? backdropURL(item)) : backdropURL(item)) { image in
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -129,16 +165,55 @@ struct HomeHeroCarousel: View {
 
     private var scrim: some View {
         ZStack {
-            LinearGradient(
-                stops: [.init(color: .clear, location: 0.35), .init(color: .black.opacity(0.85), location: 1)],
-                startPoint: .top, endPoint: .bottom
-            )
-            LinearGradient(
-                stops: [.init(color: .black.opacity(0.6), location: 0), .init(color: .clear, location: 0.55)],
-                startPoint: .leading, endPoint: .trailing
-            )
+            if isPortrait {
+                // The text is centred over the bottom third, so the darkening starts higher and
+                // there is no leading side to shade.
+                LinearGradient(
+                    stops: [.init(color: .clear, location: 0.45), .init(color: .black.opacity(0.9), location: 1)],
+                    startPoint: .top, endPoint: .bottom
+                )
+            } else {
+                LinearGradient(
+                    stops: [.init(color: .clear, location: 0.35), .init(color: .black.opacity(0.85), location: 1)],
+                    startPoint: .top, endPoint: .bottom
+                )
+                LinearGradient(
+                    stops: [.init(color: .black.opacity(0.6), location: 0), .init(color: .clear, location: 0.55)],
+                    startPoint: .leading, endPoint: .trailing
+                )
+            }
         }
         .allowsHitTesting(false)
+    }
+
+    /// The upright iPhone's text: logo, facts and the two buttons, centred. No overview, the poster
+    /// already says what the title is and two lines of it would push Play off the art.
+    private func portraitDetails(for item: JellyfinItem) -> some View {
+        VStack(spacing: 12) {
+            ContentLogoTitle(
+                itemID: item.id,
+                logo: .from(imageTags: item.imageTags, hasFullDetail: true)
+            ) {
+                Text(item.name)
+                    .font(.system(size: titleSize, weight: .bold))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+            }
+            .frame(maxWidth: 260, maxHeight: 90, alignment: .bottom)
+
+            if let facts = facts(for: item) {
+                Text(verbatim: facts)
+                    .font(.footnote.weight(.medium))
+                    .foregroundStyle(.white.opacity(0.85))
+                    .lineLimit(1)
+            }
+
+            heroButtons(for: item)
+                .padding(.top, 4)
+        }
+        .frame(maxWidth: .infinity)
+        .foregroundStyle(.white)
+        .environment(\.serverSession, item.serverID.map { dependencies.sessionRegistry.session(forServerID: $0) })
     }
 
     private func details(for item: JellyfinItem) -> some View {
@@ -184,38 +259,46 @@ struct HomeHeroCarousel: View {
             .focusSection()
             .padding(.top, 8)
             #else
-            HStack(spacing: 12) {
-                Button {
-                    onPlay(item)
-                } label: {
-                    Label("detail.play", systemImage: "play.fill")
-                        .font(.headline)
-                        .padding(.horizontal, 22)
-                        .padding(.vertical, 10)
-                        .foregroundStyle(.black)
-                        .background(.white, in: Capsule())
-                }
-                .buttonStyle(.plain)
-
-                Button {
-                    onOpen(item)
-                } label: {
-                    Image(systemName: "info")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .frame(width: 40, height: 40)
-                        .glassEffect(.regular.interactive(), in: .circle)
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel(Text(verbatim: item.name))
-            }
-            .padding(.top, 4)
+            heroButtons(for: item)
+                .padding(.top, 4)
             #endif
         }
         .foregroundStyle(.white)
         // The serverSession a combined Home's secondary title needs for its logo request.
         .environment(\.serverSession, item.serverID.map { dependencies.sessionRegistry.session(forServerID: $0) })
     }
+
+    #if !os(tvOS)
+    private func heroButtons(for item: JellyfinItem) -> some View {
+        HStack(spacing: 12) {
+            Button {
+                onPlay(item)
+            } label: {
+                Label("detail.play", systemImage: "play.fill")
+                    .font(.headline)
+                    .padding(.horizontal, 22)
+                    .padding(.vertical, 10)
+                    .foregroundStyle(.black)
+                    .background(.white, in: Capsule())
+            }
+            .buttonStyle(.plain)
+
+            Button {
+                onOpen(item)
+            } label: {
+                Image(systemName: "info")
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(width: 40, height: 40)
+                    .glassEffect(.regular.interactive(), in: .circle)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text(verbatim: item.name))
+        }
+    }
+    #else
+    private func heroButtons(for item: JellyfinItem) -> some View { EmptyView() }
+    #endif
 
     @ViewBuilder
     private var pager: some View {

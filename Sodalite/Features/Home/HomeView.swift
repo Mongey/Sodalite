@@ -321,14 +321,13 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 // Invisible zero-height scroll-to-top anchor for when focus leaves the rows.
                 Color.clear.frame(height: 0).id("top")
-                if dependencies.appearancePreferences.showHomeHero {
-                    HomeHeroCarousel(
-                        items: vm.heroItems,
-                        backdropURL: vm.heroBackdropURL(for:),
-                        onOpen: { selectedItem = $0 },
-                        onPlay: { heroPlayItem = $0 }
-                    )
-                }
+                HomeHeroCarousel(
+                    items: vm.heroItems,
+                    backdropURL: vm.heroBackdropURL(for:),
+                    posterURL: vm.heroPosterURL(for:),
+                    onOpen: { selectedItem = $0 },
+                    onPlay: { heroPlayItem = $0 }
+                )
                 LazyVStack(alignment: .leading, spacing: 40) {
                     if !vm.unreachableServerNames.isEmpty {
                         CombinedHomeNotice(serverNames: vm.unreachableServerNames)
@@ -422,10 +421,6 @@ struct HomeView: View {
                 .padding(.vertical, 40)
             }
             .scrollsUnderShellChrome()
-            // Off by default everywhere but the Mac, so nothing is fetched for a banner nobody sees.
-            .onChange(of: dependencies.appearancePreferences.showHomeHero, initial: true) { _, enabled in
-                vm.setHeroEnabled(enabled)
-            }
             #if os(tvOS)
             // tvOS only: the move it answers is the focus engine handing Up to the tab bar. On the Mac
             // the hero rebuilds its buttons on every page, focus left the first row each time, and
