@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://apps.apple.com/app/sodalite/id6764418563"><img src=".github/app-store-badge.svg" alt="Download on the App Store" height="54"></a>
+  <a href="https://apps.apple.com/app/sodalite/id6764418563"><img src=".github/app-store-badge.svg" alt="Download on the App Store" height="72"></a>
 </p>
 
 <p align="center">
