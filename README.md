@@ -12,18 +12,22 @@
 </p>
 
 <p align="center">
+  <a href="https://apps.apple.com/app/sodalite/id6764418563"><img src=".github/app-store-badge.svg" alt="Download on the App Store" height="54"></a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/tvOS-26%2B-black?logo=apple">
   <img src="https://img.shields.io/badge/iOS%20%7C%20iPadOS-26%2B-black?logo=apple">
   <img src="https://img.shields.io/badge/Swift-6.0%2B-F05138?logo=swift&logoColor=white">
   <img src="https://img.shields.io/badge/license-GPL--3.0%20%2B%20App%20Store%20Exception-lightgrey">
   <img src="https://img.shields.io/badge/languages-26-blue">
-  <img src="https://img.shields.io/badge/status-public%20beta-orange">
+  <a href="https://apps.apple.com/app/sodalite/id6764418563"><img src="https://img.shields.io/badge/App%20Store-free-0D96F6?logo=appstore&logoColor=white"></a>
   <a href="https://discord.gg/P7NvpzNqnG"><img src="https://img.shields.io/badge/Discord-join-5865F2?logo=discord&logoColor=white"></a>
   <a href="https://ko-fi.com/superuser404"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?logo=kofi&logoColor=white"></a>
 </p>
 
-> 🧪 **Public Beta is open.** One TestFlight link installs on **Apple TV, iPhone and iPad**: **https://testflight.apple.com/join/nWeQzmBX**
-> See [BETA.md](BETA.md) for what to focus on and how to report bugs.
+> 🎉 **Sodalite is on the App Store**, free, as one universal app for **Apple TV, iPhone and iPad**: **[apps.apple.com/app/sodalite](https://apps.apple.com/app/sodalite/id6764418563)**
+> Want the next version early? Upcoming releases are tested in the [public TestFlight beta](https://testflight.apple.com/join/nWeQzmBX) first, see [BETA.md](BETA.md).
 
 ---
 
@@ -246,6 +250,10 @@ For the full pipeline detail (HDR routing, Atmos passthrough, A/V sync, channel-
 | Seerr (optional) | 2.0+ |
 
 A 1080p Apple TV HD will technically run the app, but Direct Play of 4K HDR content needs the 4K hardware. On iPhone and iPad the built-in display renders HDR directly, no external panel required.
+
+## Install
+
+Get Sodalite from the **[App Store](https://apps.apple.com/app/sodalite/id6764418563)**. One download covers Apple TV, iPhone and iPad. To try upcoming versions before they ship, join the [public TestFlight beta](https://testflight.apple.com/join/nWeQzmBX).
 
 ## Building from source
 
