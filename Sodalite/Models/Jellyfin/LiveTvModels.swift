@@ -124,6 +124,42 @@ struct JellyfinProgram: Codable, Sendable, Identifiable, Equatable {
     }
 }
 
+extension JellyfinProgram {
+    /// Decodes the XML entities over-escaping XMLTV feeds leave in the text ("Food &amp; Cooking",
+    /// #182) once, here, so no surface has to remember to. Genres stay raw: the guide sends them back
+    /// as `Genres`, which the server matches against the stored, still-escaped value.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        func text(_ key: CodingKeys) throws -> String? {
+            try c.decodeIfPresent(String.self, forKey: key)?.epgDisplayText
+        }
+        self.init(
+            id: try c.decode(String.self, forKey: .id),
+            channelId: try c.decodeIfPresent(String.self, forKey: .channelId),
+            channelName: try text(.channelName),
+            name: try c.decode(String.self, forKey: .name).epgDisplayText,
+            overview: try text(.overview),
+            startDate: try c.decodeIfPresent(Date.self, forKey: .startDate),
+            endDate: try c.decodeIfPresent(Date.self, forKey: .endDate),
+            genres: try c.decodeIfPresent([String].self, forKey: .genres),
+            imageTags: try c.decodeIfPresent([String: String].self, forKey: .imageTags),
+            isLive: try c.decodeIfPresent(Bool.self, forKey: .isLive),
+            isNews: try c.decodeIfPresent(Bool.self, forKey: .isNews),
+            isMovie: try c.decodeIfPresent(Bool.self, forKey: .isMovie),
+            isSeries: try c.decodeIfPresent(Bool.self, forKey: .isSeries),
+            isKids: try c.decodeIfPresent(Bool.self, forKey: .isKids),
+            isSports: try c.decodeIfPresent(Bool.self, forKey: .isSports),
+            seriesName: try text(.seriesName),
+            parentIndexNumber: try c.decodeIfPresent(Int.self, forKey: .parentIndexNumber),
+            indexNumber: try c.decodeIfPresent(Int.self, forKey: .indexNumber),
+            episodeTitle: try text(.episodeTitle),
+            timerId: try c.decodeIfPresent(String.self, forKey: .timerId),
+            seriesTimerId: try c.decodeIfPresent(String.self, forKey: .seriesTimerId),
+            productionYear: try c.decodeIfPresent(Int.self, forKey: .productionYear),
+            serverID: try c.decodeIfPresent(String.self, forKey: .serverID))
+    }
+}
+
 /// Global EPG bounds from `/LiveTv/GuideInfo`; sets the guide's time axis.
 struct JellyfinGuideInfo: Codable, Sendable, Equatable {
     let startDate: Date?
