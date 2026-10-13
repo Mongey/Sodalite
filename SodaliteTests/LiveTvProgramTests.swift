@@ -33,6 +33,17 @@ struct LiveTvProgramTests {
         #expect(program.genres == ["Food &amp; Cooking"])
     }
 
+    @Test func channelNameDecodesEscapedEPGText() throws {
+        let json = """
+        {"Id":"c1","Name":"Food &amp; Drink TV","ChannelNumber":"7",
+         "CurrentProgram":{"Id":"p1","Name":"Salt &amp; Pepper"}}
+        """
+        let channel = try decoder.decode(JellyfinChannel.self, from: Data(json.utf8))
+        #expect(channel.name == "Food & Drink TV")
+        #expect(channel.currentProgram?.name == "Salt & Pepper")
+        #expect(channel.channelNumber == "7")
+    }
+
     @Test func programDecodesWithoutEpisodeMetadata() throws {
         let json = """
         {"Id":"p2","Name":"Evening News","ChannelId":"c2"}
