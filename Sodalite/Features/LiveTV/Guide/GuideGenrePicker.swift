@@ -80,7 +80,7 @@ struct GuideGenrePicker: View {
                 // not be switched off from here.
                 ForEach(listed(names), id: \.self) { name in
                     // Verbatim: an EPG genre is server data, not a catalog key.
-                    row(id: name, title: Text(verbatim: name),
+                    row(id: name, title: Text(verbatim: name.epgDisplayText),
                         isSelected: model.genreFilter.genres.contains(name)) {
                         var genres = model.genreFilter.genres
                         if genres.contains(name) { genres.remove(name) } else { genres.insert(name) }
@@ -174,7 +174,8 @@ extension GuideGenreFilter.Scope {
 extension GuideGenreFilter {
     /// The chip's label: the genre itself, or the first one and how many more.
     var chipLabel: String? {
-        let sorted = genres.sorted { $0.localizedStandardCompare($1) == .orderedAscending }
+        let sorted = genres.map(\.epgDisplayText)
+            .sorted { $0.localizedStandardCompare($1) == .orderedAscending }
         guard let first = sorted.first else { return nil }
         let head = first.count > 18 ? String(first.prefix(17)) + "\u{2026}" : first
         return sorted.count == 1 ? head : "\(head) +\(sorted.count - 1)"

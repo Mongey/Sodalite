@@ -56,6 +56,17 @@ struct GuideGenreFilterTests {
         #expect(GuideGenreFilter(genres: ["NFL", "NBA", "MLB"]).chipLabel == "MLB +2")
     }
 
+    @Test func doublyEscapedEPGTextIsDecodedForDisplayOnly() {
+        #expect("Food &amp; Cooking".epgDisplayText == "Food & Cooking")
+        #expect("Rock &amp;amp; Roll".epgDisplayText == "Rock & Roll")
+        #expect("Caf&#233; &#x26; Bar".epgDisplayText == "Café & Bar")
+        #expect("Tom & Jerry".epgDisplayText == "Tom & Jerry")
+        #expect("A &bogus; B".epgDisplayText == "A &bogus; B")
+        let filter = GuideGenreFilter(genres: ["Food &amp; Cooking"])
+        #expect(filter.chipLabel == "Food & Cooking")
+        #expect(filter.queryValue == "Food &amp; Cooking")
+    }
+
     // MARK: - Query
 
     @Test func theAiringIndexAsksForWhatIsOnNow() {
