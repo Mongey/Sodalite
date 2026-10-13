@@ -146,6 +146,12 @@ enum Changelog {
                     "changelog.1_1_0.showAll.body",
                     icon: "square.grid.2x2"
                 ),
+                ChangelogHighlight(
+                    .new,
+                    "changelog.1_1_0.guideGenres.title",
+                    "changelog.1_1_0.guideGenres.body",
+                    icon: "tag"
+                ),
             ]
         ),
         // MARK: 1.0.0

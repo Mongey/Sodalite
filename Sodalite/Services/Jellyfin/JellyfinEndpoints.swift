@@ -82,6 +82,8 @@ enum JellyfinEndpoint: APIEndpoint {
     // Live TV
     case liveTvChannels(userID: String, startIndex: Int, limit: Int, filter: GuideFilter)
     case liveTvPrograms(channelIDs: [String], userID: String, minEndDate: Date, maxStartDate: Date)
+    /// Programs across the whole line-up, slim (no images): the guide's genre list and genre matches (#182).
+    case liveTvProgramIndex(userID: String, window: GuideProgramWindow, genres: String?, startIndex: Int, limit: Int)
     case liveTvRecommendedPrograms(userID: String, category: LiveProgramCategory, limit: Int)
     case liveTvGuideInfo
     case closeLiveStream(liveStreamID: String)
@@ -180,7 +182,7 @@ enum JellyfinEndpoint: APIEndpoint {
             "/Items/\(itemID)/RemoteSearch/Subtitles/\(subtitleID.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? subtitleID)"
         case .liveTvChannels:
             "/LiveTv/Channels"
-        case .liveTvPrograms:
+        case .liveTvPrograms, .liveTvProgramIndex:
             "/LiveTv/Programs"
         case .liveTvRecommendedPrograms:
             "/LiveTv/Programs/Recommended"
@@ -424,8 +426,32 @@ enum JellyfinEndpoint: APIEndpoint {
                 URLQueryItem(name: "MaxStartDate", value: iso.string(from: maxStart)),
                 URLQueryItem(name: "SortBy", value: "StartDate"),
                 URLQueryItem(name: "EnableImages", value: "true"),
-                URLQueryItem(name: "Fields", value: "Overview,SeriesName,ParentIndexNumber,IndexNumber,EpisodeTitle"),
+                // Genres: the guide dims programs outside an active genre filter (#182).
+                URLQueryItem(name: "Fields", value: "Overview,SeriesName,ParentIndexNumber,IndexNumber,EpisodeTitle,Genres"),
             ]
+
+        case .liveTvProgramIndex(let userID, let window, let genres, let startIndex, let limit):
+            var items = [
+                URLQueryItem(name: "UserId", value: userID),
+                URLQueryItem(name: "StartIndex", value: String(startIndex)),
+                URLQueryItem(name: "Limit", value: String(limit)),
+                // A stable order is what makes StartIndex paging safe.
+                URLQueryItem(name: "SortBy", value: "StartDate,SortName"),
+                URLQueryItem(name: "EnableImages", value: "false"),
+                URLQueryItem(name: "EnableUserData", value: "false"),
+                URLQueryItem(name: "EnableTotalRecordCount", value: "false"),
+                URLQueryItem(name: "Fields", value: "Genres"),
+            ]
+            switch window {
+            case .airing:
+                items.append(URLQueryItem(name: "IsAiring", value: "true"))
+            case .range(let start, let end):
+                let iso = ISO8601DateFormatter()
+                items.append(URLQueryItem(name: "MinEndDate", value: iso.string(from: start)))
+                items.append(URLQueryItem(name: "MaxStartDate", value: iso.string(from: end)))
+            }
+            if let genres { items.append(URLQueryItem(name: "Genres", value: genres)) }
+            return items
 
         case .liveTvRecommendedPrograms(let userID, let category, let limit):
             let flags: [URLQueryItem] = switch category {
